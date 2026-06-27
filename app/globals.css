@@ -1,0 +1,357 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens — "Deep forest & ivory"
+   (token names kept generic; the accent family is still called "sage")
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-cream: #f5f3ec;
+  --color-cream-deep: #ebe7da;
+  --color-paper: #fbfaf4;
+  --color-ink: #1b211c;
+  --color-ink-soft: #3d473e;
+  --color-muted: #6b716a;
+  --color-sage: #2f5d45;
+  --color-sage-deep: #284f3b;
+  --color-sage-soft: #9aac95;
+  --color-terra: #a8603f;
+  --color-terra-soft: #c0784f;
+  --color-line: rgba(27, 33, 28, 0.12);
+  --color-line-soft: rgba(27, 33, 28, 0.07);
+
+  --font-serif: var(--font-display), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 18px;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  letter-spacing: -0.005em;
+}
+
+::selection {
+  background: var(--color-sage);
+  color: var(--color-paper);
+}
+
+/* Display headings */
+.font-display {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-weight: 380;
+  letter-spacing: -0.018em;
+  line-height: 1.04;
+}
+
+/* Small uppercase eyebrow label */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-sage-deep);
+}
+
+/* ---------------------------------------------------------------------------
+   Layout helpers
+   --------------------------------------------------------------------------- */
+.container-x {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .container-x {
+    padding-inline: 3.5rem;
+  }
+}
+
+.container-prose {
+  max-width: 46rem;
+}
+
+/* Hairline used throughout */
+.rule {
+  height: 1px;
+  background: var(--color-line);
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons / links
+   --------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  transition: transform 0.45s var(--ease-out-soft), background-color 0.3s ease,
+    color 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn-primary {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.btn-primary:hover {
+  background: var(--color-sage-deep);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+}
+.btn-secondary:hover {
+  border-color: var(--color-ink);
+}
+
+.btn .arrow {
+  transition: transform 0.4s var(--ease-out-soft);
+}
+.btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Underline-on-hover text link */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease-out-soft);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---------------------------------------------------------------------------
+   Reveal on scroll
+   --------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s var(--ease-out-soft), transform 0.9s var(--ease-out-soft);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Card */
+.card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  transition: transform 0.5s var(--ease-out-soft), box-shadow 0.5s var(--ease-out-soft),
+    border-color 0.5s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -28px rgba(38, 38, 31, 0.28);
+  border-color: var(--color-sage-soft);
+}
+
+/* Number marker */
+.marker-num {
+  font-family: var(--font-serif);
+  font-weight: 360;
+  font-size: 0.95rem;
+  color: var(--color-sage-deep);
+  letter-spacing: 0.04em;
+}
+
+/* Prominent number marker — used in the numbered "principle" sections */
+.marker-num-lg {
+  font-family: var(--font-serif);
+  font-weight: 380;
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--color-sage-deep);
+  letter-spacing: 0.01em;
+}
+@media (min-width: 768px) {
+  .marker-num-lg {
+    font-size: 3rem;
+  }
+}
+
+/* Subtle, premium "clickable term" affordance for glossary pop-ups */
+.term-trigger {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-underline-offset: 0.22em;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-sage-soft);
+  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+}
+.term-trigger:hover,
+.term-trigger:focus-visible {
+  color: var(--color-sage-deep);
+  text-decoration-color: var(--color-sage-deep);
+}
+
+/* ---------------------------------------------------------------------------
+   Motion layer — modern, professional
+   --------------------------------------------------------------------------- */
+
+/* Film-grain overlay for an editorial, tactile feel */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Drifting ambient blob */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-26px, 34px, 0) scale(1.08);
+  }
+}
+.animate-float-slow {
+  animation: float-slow 16s ease-in-out infinite;
+}
+
+/* Infinite marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Word-reveal mask (hero) */
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+/* Card sheen on hover */
+.sheen {
+  position: relative;
+  overflow: hidden;
+}
+.sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transition: transform 0.9s var(--ease-out-soft);
+  pointer-events: none;
+}
+.sheen:hover::before {
+  transform: translateX(120%);
+}
+
+/* Modal entrance */
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.modal-pop {
+  animation: modal-pop 0.4s var(--ease-out-soft);
+}
+
+/* Animated link arrow underline scrub used in nav */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .marquee-track,
+  .modal-pop {
+    animation: none !important;
+  }
+}

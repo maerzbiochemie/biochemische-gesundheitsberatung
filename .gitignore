@@ -1,0 +1,15 @@
+/node_modules
+/.next
+/out
+/build
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+.DS_Store
+
+# Cloudflare / next-on-pages build output
+/.vercel
+
+# Working files — not needed for deployment
+/instructions.txt
+/Website.docx
