@@ -116,14 +116,17 @@ export const home = {
       "Oft beginnt es nicht mit einem klaren Auslöser.",
     ],
     signals: koerperSignale,
-    followup: [
+    button: { label: "Zur Beratung für Privatkunden", href: "/privatkunden" },
+  },
+  // Eigene Lösungs-Sektion nach der B2C-Signalliste
+  solutionBlock: {
+    headline: "Wenn kleine Veränderungen zusammenkommen",
+    body: [
       "Wenn mehrere kleine Veränderungen zusammenkommen, entsteht schnell das Gefühl: Irgendetwas passt nicht mehr – aber es ist schwer zu greifen, wo man anfangen soll.",
       "Vielleicht haben Sie Laborwerte, Empfehlungen oder Gesundheitsinformationen gesammelt, aber keine klare Einordnung.",
       "Oder Sie haben gar keine akuten Beschwerden – sondern einfach den Wunsch, Ihren Körper besser zu verstehen und Gesundheit bewusster zu gestalten.",
-    ],
-    solution:
       "Biochemische Gesundheitsberatung hilft dabei, diese Signale nicht isoliert zu betrachten, sondern körperliche Zusammenhänge verständlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
-    button: { label: "Zur Beratung für Privatkunden", href: "/privatkunden" },
+    ],
   },
   // B2B-Entscheidungssektion
   b2bLanding: {
@@ -211,7 +214,7 @@ export const glossary = {
 export const privatkunden = {
   hero: {
     eyebrow: "Für Privatkunden",
-    title: "Vielleicht ist es nicht ein einzelnes Problem. Vielleicht hängt mehr zusammen.",
+    title: "Es ist nicht ein einzelnes Problem. Es hängt mehr zusammen.",
     intro: "Oft beginnt es nicht mit einem klaren Auslöser.",
     signals: koerperSignale,
     afterSignals: [
@@ -221,11 +224,10 @@ export const privatkunden = {
     question: "Was ist für Ihren Körper jetzt wirklich relevant?",
   },
   catcher: {
-    title: "Vielleicht brauchen Sie nicht mehr Disziplin – sondern mehr Verständnis.",
+    title: "Sie brauchen nicht mehr Disziplin – sondern mehr Verständnis.",
     body: [
       "Viele Menschen versuchen, ihre Gesundheit über noch mehr Kontrolle zu verbessern: bessere Ernährung, mehr Bewegung, mehr Schlaf, weniger Stress, gezieltere Supplemente oder strengere Routinen.",
       "Das kann sinnvoll sein. Aber manchmal ist nicht die nächste Maßnahme entscheidend, sondern die Frage, warum der Körper überhaupt so reagiert.",
-      "Wenn Energie, Verdauung, Schlaf, Stress, Zyklus, Regeneration oder Belastbarkeit aus dem Gleichgewicht geraten, lohnt sich ein Blick auf die Zusammenhänge dahinter.",
       "Biochemische Gesundheitsberatung hilft dabei, diese Zusammenhänge verständlich einzuordnen und daraus eine Strategie zu entwickeln, die zu Ihrem Körper und Ihrem Alltag passt.",
     ],
   },
@@ -625,12 +627,10 @@ export const b2b = {
     title: "Wenn Kundenfälle komplexer werden, braucht Beratung mehr Tiefe.",
     body: [
       "Der Gesundheitsmarkt verändert sich. Kunden und Klienten bringen heute immer häufiger eigene Recherchen, Laborwerte, Beschwerden, Supplementlisten, Trainingspläne oder widersprüchliche Empfehlungen mit.",
-      "Gleichzeitig wächst der Anspruch an Unternehmen, Studios, Praxen, Trainer und Coaches: Menschen möchten individueller begleitet werden, Empfehlungen besser verstehen und Lösungen erhalten, die zu ihrem Körper und Alltag passen.",
-      "Genau hier entsteht die Herausforderung.",
+      "Gleichzeitig steigt der Anspruch an Unternehmen, Studios, Praxen, Trainer und Coaches: Menschen möchten individueller begleitet werden und Empfehlungen erhalten, die zu ihrem Körper, Alltag und Ziel passen.",
       "Nicht jeder Körper reagiert gleich. Nicht jede Lösung passt zu jedem Menschen. Und nicht jeder Fall lässt sich mit einem Standardschema sinnvoll begleiten.",
       "Biochemische Gesundheitsberatung unterstützt dabei, komplexe Informationen zu sortieren, körperliche Zusammenhänge verständlich einzuordnen und Empfehlungen fachlich fundierter aufzubauen.",
-      "Ziel ist nicht, Ihre bestehende Arbeit zu ersetzen.",
-      "Ziel ist, Ihre Arbeit fachlich zu stärken – damit Sie Ihre Kunden individueller, strukturierter und sicherer begleiten können.",
+      "Ziel ist, Ihre bestehende Arbeit fachlich zu stärken – damit Sie Ihre Kunden individueller, strukturierter und sicherer begleiten können.",
     ],
   },
   zielgruppe: {

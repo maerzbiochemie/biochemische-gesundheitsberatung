@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, Eyebrow, Section } from "@/components/ui";
+import { ButtonLink, Eyebrow, Section, SignalList } from "@/components/ui";
 import { CTABand } from "@/components/CTABand";
 import { WordReveal } from "@/components/Animated";
 import { Marquee } from "@/components/Marquee";
@@ -128,77 +128,80 @@ export default function HomePage() {
       <Marquee />
 
       {/* -------------------------------------- B2C decision section (Privatkunden) */}
-      <Section tone="cream">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
-            <div className="flex justify-center">
+      <Section tone="paper">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Reveal>
               <Eyebrow>Für Privatkunden</Eyebrow>
-            </div>
-            <h2 className="font-display mt-6 text-[1.9rem] leading-[1.12] md:text-4xl lg:text-[2.7rem]">
-              {home.b2cLanding.headline}
-            </h2>
-          </Reveal>
-          <Reveal delay={80} className="mt-6 space-y-4 text-lg text-[var(--color-ink-soft)]">
-            {home.b2cLanding.intro.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-          </Reveal>
-        </div>
-
-        {/* Körper-Signale als ruhige Kacheln (keine Bullet-Liste) */}
-        <div className="mx-auto mt-10 grid max-w-4xl gap-3 sm:grid-cols-2 md:grid-cols-3">
-          {home.b2cLanding.signals.map((s, i) => (
-            <Reveal
-              key={s}
-              delay={i * 60}
-              className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] px-5 py-4 text-center text-[var(--color-ink-soft)]"
-            >
-              {s}
+              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
+                {home.b2cLanding.headline}
+              </h2>
             </Reveal>
-          ))}
-        </div>
-
-        <div className="mx-auto mt-10 max-w-3xl space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-          {home.b2cLanding.followup.map((p) => (
-            <Reveal key={p}>
-              <p>{p}</p>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal className="mx-auto mt-8 max-w-3xl">
-          <p className="font-display text-xl leading-snug text-[var(--color-ink)] md:text-2xl">
-            {home.b2cLanding.solution}
-          </p>
-          <div className="mt-8">
-            <ButtonLink href={home.b2cLanding.button.href}>{home.b2cLanding.button.label}</ButtonLink>
           </div>
-        </Reveal>
+          <div className="md:col-span-6 md:col-start-7">
+            <Reveal delay={120}>
+              <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
+                {home.b2cLanding.intro.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </div>
+              <SignalList items={home.b2cLanding.signals} className="mt-8" />
+              <div className="mt-8">
+                <ButtonLink href={home.b2cLanding.button.href}>
+                  {home.b2cLanding.button.label}
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </Section>
+
+      {/* -------------------------- Lösungs-Sektion (eigene Überschrift, kein Kasten) */}
+      <Section tone="cream">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Reveal>
+              <h2 className="font-display text-4xl leading-tight md:text-5xl">
+                {home.solutionBlock.headline}
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal delay={120} className="md:col-span-6 md:col-start-7">
+            <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
+              {home.solutionBlock.body.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+          </Reveal>
+        </div>
       </Section>
 
       {/* -------------------------------------- B2B decision section (Unternehmen) */}
       <Section tone="paper">
-        <Reveal>
-          <div className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-cream-deep)] p-8 md:p-12">
-            <div className="grid gap-8 md:grid-cols-12 md:items-center">
-              <div className="md:col-span-8">
-                <Eyebrow>Für Unternehmen & Fachpersonen</Eyebrow>
-                <h2 className="font-display mt-5 text-2xl leading-snug md:text-[2rem]">
-                  {home.b2bLanding.headline}
-                </h2>
-                <div className="mt-4 space-y-3 text-[var(--color-ink-soft)] md:text-lg">
-                  {home.b2bLanding.text.map((p) => (
-                    <p key={p}>{p}</p>
-                  ))}
-                </div>
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Reveal>
+              <Eyebrow>Für Unternehmen & Fachpersonen</Eyebrow>
+              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
+                {home.b2bLanding.headline}
+              </h2>
+            </Reveal>
+          </div>
+          <div className="md:col-span-6 md:col-start-7">
+            <Reveal delay={120}>
+              <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
+                {home.b2bLanding.text.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
               </div>
-              <div className="md:col-span-4 md:flex md:justify-end">
+              <div className="mt-8">
                 <ButtonLink href={home.b2bLanding.button.href} variant="secondary">
                   {home.b2bLanding.button.label}
                 </ButtonLink>
               </div>
-            </div>
+            </Reveal>
           </div>
-        </Reveal>
+        </div>
       </Section>
 
       {/* ------------------------------------------------------------ Approach */}
@@ -220,52 +223,14 @@ export default function HomePage() {
             </Reveal>
           ))}
         </div>
-      </Section>
-
-      {/* ------------------------------------------------------------ Services */}
-      <Section tone="paper">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <Reveal className="max-w-xl">
-            <Eyebrow>{home.services.eyebrow}</Eyebrow>
-            <h2 className="font-display mt-6 text-4xl md:text-5xl">{home.services.title}</h2>
-          </Reveal>
-          <Reveal delay={120}>
-            <Link href="/leistungen" className="link-underline inline-flex items-center gap-2 text-[var(--color-sage-deep)]">
-              Alle Leistungen & Preise <span aria-hidden>→</span>
-            </Link>
-          </Reveal>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {home.services.items.map((item, i) => (
-            <Reveal key={item.title} delay={i * 110} className="card card-hover sheen flex flex-col p-8">
-              <span className="marker-num-lg">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="font-display mt-5 text-2xl leading-snug md:text-[1.7rem]">{item.title}</h3>
-              <p className="mt-3 text-[var(--color-ink-soft)]">{item.body}</p>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* ------------------------------------------------------------- Process */}
-      <Section tone="cream">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>{home.process.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{home.process.title}</h2>
+        <Reveal className="mt-10">
+          <Link
+            href="/leistungen"
+            className="link-underline inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
+          >
+            Leistungen & Preise ansehen <span aria-hidden>→</span>
+          </Link>
         </Reveal>
-        <ol className="mt-14 space-y-px">
-          {home.process.steps.map((step, i) => (
-            <Reveal
-              key={step.title}
-              as="li"
-              delay={i * 70}
-              className="group grid gap-3 border-t border-[var(--color-line)] py-7 md:grid-cols-12 md:items-baseline md:gap-6"
-            >
-              <span className="marker-num-lg md:col-span-1">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="font-display text-2xl md:col-span-4 md:text-[1.7rem]">{step.title}</h3>
-              <p className="text-[var(--color-ink-soft)] md:col-span-7">{step.body}</p>
-            </Reveal>
-          ))}
-        </ol>
       </Section>
 
       {/* ------------------------------------------------------------- About */}

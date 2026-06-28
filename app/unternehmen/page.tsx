@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function UnternehmenPage() {
-  const { hero, herausforderung, gewinn, zielgruppe, formen, staerken, preise, finalCta } = b2b;
+  const { hero, herausforderung, gewinn, zielgruppe, formen, preise, finalCta } = b2b;
   return (
     <>
       {/* Hero */}
@@ -130,27 +130,6 @@ export default function UnternehmenPage() {
         <Reveal className="mt-10 max-w-3xl">
           <p className="text-[var(--color-ink-soft)]">{formen.footnote}</p>
         </Reveal>
-      </Section>
-
-      {/* Fachliche Tiefe, die Ihre Arbeit stärkt */}
-      <Section tone="cream">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Reveal>
-              <Eyebrow>{staerken.eyebrow}</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-                {staerken.title}
-              </h2>
-            </Reveal>
-          </div>
-          <Reveal delay={120} className="md:col-span-6 md:col-start-7">
-            <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-              {staerken.body.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-            </div>
-          </Reveal>
-        </div>
       </Section>
 
       {/* Preise / Formate */}

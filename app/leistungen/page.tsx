@@ -56,7 +56,7 @@ export default function LeistungenPage() {
               <div className="md:col-span-7">
                 <p className="text-[var(--color-ink-soft)]">{erstgespraech.body}</p>
                 <p className="mt-5 font-medium text-[var(--color-ink)]">{erstgespraech.listIntro}</p>
-                <div className="mt-3 grid gap-x-8 gap-y-2 text-[var(--color-ink-soft)] sm:grid-cols-2">
+                <div className="mt-3 space-y-2 text-[var(--color-ink-soft)]">
                   {erstgespraech.list.map((q) => (
                     <p key={q}>{q}</p>
                   ))}

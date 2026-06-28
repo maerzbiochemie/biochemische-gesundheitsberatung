@@ -63,7 +63,7 @@ export function TermPopover({ term, children }: { term: TermKey; children: strin
           id={panelId}
           role="dialog"
           aria-label={entry.title}
-          className="modal-pop absolute left-0 top-full z-50 mt-2 block w-[min(22rem,82vw)] rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-5 text-left shadow-[0_24px_60px_-28px_rgba(27,33,28,0.5)]"
+          className="modal-pop absolute left-0 top-full z-50 mt-2 block w-[min(22rem,82vw)] rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-5 text-left normal-case tracking-normal shadow-[0_24px_60px_-28px_rgba(27,33,28,0.5)]"
         >
           <span className="flex items-start justify-between gap-3">
             <span className="font-display text-lg text-[var(--color-ink)]">{entry.title}</span>

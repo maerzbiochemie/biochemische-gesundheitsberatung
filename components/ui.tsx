@@ -12,6 +12,31 @@ export function Eyebrow({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * A highlighted list of short body-signal statements. Typographic emphasis and
+ * a subtle accent rule instead of boxes or bullet points.
+ */
+export function SignalList({
+  items,
+  className = "",
+}: {
+  items: readonly string[];
+  className?: string;
+}) {
+  return (
+    <ul className={`space-y-4 border-l-2 border-[var(--color-sage)]/40 pl-6 ${className}`}>
+      {items.map((s) => (
+        <li
+          key={s}
+          className="font-display text-lg leading-snug text-[var(--color-sage-deep)] md:text-xl"
+        >
+          {s}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /** Pill button that renders as a link. */
 export function ButtonLink({
   href,

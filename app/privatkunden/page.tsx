@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/Reveal";
-import { Eyebrow, Section } from "@/components/ui";
+import { Eyebrow, Section, SignalList } from "@/components/ui";
 import { BookingButton } from "@/components/BookingButton";
 import { privatkunden } from "@/content/site";
 
@@ -14,74 +14,53 @@ export default function PrivatkundenPage() {
   const { hero, catcher, praevention, zielgruppen, nutzen, process, finalCta } = privatkunden;
   return (
     <>
-      {/* Hero */}
+      {/* Hero — links Überschrift, rechts Text & hervorgehobene Signale (keine Kästen) */}
       <section className="bg-[var(--color-cream)] pb-16 pt-32 md:pb-20 md:pt-44">
         <div className="container-x">
-          <Reveal>
-            <Eyebrow>{hero.eyebrow}</Eyebrow>
-          </Reveal>
-          <Reveal as="h1" delay={80} className="font-display mt-7 max-w-4xl text-[2.1rem] leading-[1.08] sm:text-5xl lg:text-[3.3rem]">
-            {hero.title}
-          </Reveal>
-          <Reveal delay={140} className="mt-7 max-w-2xl text-lg text-[var(--color-ink-soft)]">
-            {hero.intro}
-          </Reveal>
-
-          {/* Körper-Signale als ruhige Kacheln */}
-          <div className="mt-8 grid max-w-4xl gap-3 sm:grid-cols-2 md:grid-cols-3">
-            {hero.signals.map((s, i) => (
-              <Reveal
-                key={s}
-                delay={i * 60}
-                className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] px-5 py-4 text-center text-[var(--color-ink-soft)]"
-              >
-                {s}
+          <div className="grid gap-12 md:grid-cols-12">
+            <div className="md:col-span-5">
+              <Reveal>
+                <Eyebrow>{hero.eyebrow}</Eyebrow>
               </Reveal>
-            ))}
+              <Reveal as="h1" delay={80} className="font-display mt-7 text-[2.1rem] leading-[1.08] sm:text-4xl lg:text-5xl">
+                {hero.title}
+              </Reveal>
+            </div>
+            <div className="md:col-span-6 md:col-start-7">
+              <Reveal delay={140} className="text-lg text-[var(--color-ink-soft)]">
+                {hero.intro}
+              </Reveal>
+              <SignalList items={hero.signals} className="mt-8" />
+              <Reveal delay={120} className="mt-8 space-y-4 text-[var(--color-ink-soft)] md:text-lg">
+                {hero.afterSignals.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+                <p className="text-[var(--color-muted)]">{hero.questionLead}</p>
+              </Reveal>
+              <Reveal delay={160}>
+                <p className="font-display mt-3 text-2xl leading-snug text-[var(--color-ink)] md:text-3xl">
+                  {hero.question}
+                </p>
+              </Reveal>
+            </div>
           </div>
-
-          <Reveal delay={120} className="mt-8 max-w-2xl space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-            {hero.afterSignals.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-            <p className="text-[var(--color-muted)]">{hero.questionLead}</p>
-          </Reveal>
-          <Reveal delay={160}>
-            <p className="font-display mt-3 max-w-3xl text-2xl leading-snug text-[var(--color-ink)] md:text-3xl">
-              {hero.question}
-            </p>
-          </Reveal>
         </div>
       </section>
 
-      {/* Emotional catcher */}
+      {/* Verständnis & Prävention — zwei ruhige, hochwertige Boxen */}
       <Section tone="paper">
-        <div className="grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Reveal>
-              <h2 className="font-display text-3xl leading-snug md:text-[2.4rem]">{catcher.title}</h2>
-            </Reveal>
-          </div>
-          <Reveal delay={100} className="md:col-span-6 md:col-start-7">
-            <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
+        <div className="grid gap-6 md:grid-cols-2">
+          <Reveal className="flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-cream)] p-8 md:p-10">
+            <h2 className="font-display text-2xl leading-snug md:text-3xl">{catcher.title}</h2>
+            <div className="mt-5 space-y-4 text-[var(--color-ink-soft)]">
               {catcher.body.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
           </Reveal>
-        </div>
-      </Section>
-
-      {/* Prävention */}
-      <Section tone="deep">
-        <div className="grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Reveal>
-              <h2 className="font-display text-3xl leading-snug md:text-[2.4rem]">{praevention.title}</h2>
-            </Reveal>
-          </div>
-          <Reveal delay={100} className="md:col-span-6 md:col-start-7">
-            <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
+          <Reveal delay={120} className="flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-cream)] p-8 md:p-10">
+            <h2 className="font-display text-2xl leading-snug md:text-3xl">{praevention.title}</h2>
+            <div className="mt-5 space-y-4 text-[var(--color-ink-soft)]">
               {praevention.body.map((p) => (
                 <p key={p}>{p}</p>
               ))}

@@ -39,17 +39,17 @@ export function Header() {
     >
       <div className="container-x">
         <div className="flex h-16 items-center justify-between md:h-20">
-          <Link href="/" className="group flex flex-col leading-none">
+          <Link href="/" className="group relative flex shrink-0 flex-col justify-center leading-none">
             <span className="font-display text-xl tracking-tight md:text-[1.4rem]">
               {site.name}
             </span>
-            <span className="mt-0.5 text-[0.62rem] uppercase tracking-[0.2em] text-[var(--color-muted)]">
+            <span className="absolute left-0 top-full whitespace-nowrap text-[0.62rem] uppercase tracking-[0.2em] text-[var(--color-muted)]">
               {site.tagline}
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-x-4 lg:flex xl:gap-x-6">
             {site.nav.map((item) => {
               const base = item.href.split("#")[0];
               // "/#ansatz" points at the home page section — never a "page".
@@ -58,7 +58,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`link-underline text-sm transition-colors ${
+                  className={`link-underline whitespace-nowrap text-sm transition-colors ${
                     active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-soft)]"
                   } hover:text-[var(--color-ink)]`}
                 >
@@ -70,7 +70,7 @@ export function Header() {
               href={site.booking.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary !px-5 !py-2.5 text-sm"
+              className="btn btn-primary whitespace-nowrap !px-4 !py-2.5 text-sm"
             >
               Erstgespräch
               <span className="arrow" aria-hidden>
