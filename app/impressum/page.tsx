@@ -20,14 +20,6 @@ export default function ImpressumPage() {
           </h1>
         </Reveal>
 
-        {/* Prüfungs-Hinweis (Platzhalter-Vorlage) */}
-        <Reveal delay={80} className="mt-8 flex gap-4 rounded-[var(--radius-card)] border border-[var(--color-sage)]/45 bg-[var(--color-paper)] p-5 md:p-6">
-          <span aria-hidden className="mt-0.5 text-xl text-[var(--color-sage-deep)]">
-            ⓘ
-          </span>
-          <p className="text-sm text-[var(--color-ink-soft)]">Hinweis: {impressum.notice}</p>
-        </Reveal>
-
         <div className="mt-12 space-y-10">
           {impressum.sections.map((sec) => (
             <Reveal key={sec.heading}>

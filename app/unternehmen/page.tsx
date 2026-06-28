@@ -5,17 +5,17 @@ import { BookingButton } from "@/components/BookingButton";
 import { b2b } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Für Unternehmen & Fachpersonen",
+  title: "Für Unternehmen",
   description:
-    "Biochemische Fachberatung für Praxen, Studios, Coaches, Teams und gesundheitsnahe Unternehmen. Fachliche Beratung, Konzeptentwicklung und schriftliche Ausarbeitungen.",
+    "Biochemische Fachberatung für Praxen, Studios, Coaches, Teams und gesundheitsnahe Unternehmen. Mehr fachliche Tiefe, klare Struktur und praxisnahe Umsetzung für Ihre Arbeit.",
 };
 
-export default function B2BPage() {
-  const { hero, warum, zielgruppe, formen, staerken, gewinn, preise, finalCta } = b2b;
+export default function UnternehmenPage() {
+  const { hero, herausforderung, gewinn, zielgruppe, formen, staerken, preise, finalCta } = b2b;
   return (
     <>
       {/* Hero */}
-      <section className="bg-[var(--color-cream)] pb-16 pt-32 md:pb-24 md:pt-44">
+      <section className="bg-[var(--color-cream)] pb-16 pt-32 md:pb-20 md:pt-44">
         <div className="container-x">
           <Reveal>
             <Eyebrow>{hero.eyebrow}</Eyebrow>
@@ -34,22 +34,46 @@ export default function B2BPage() {
         </div>
       </section>
 
-      {/* Warum biochemische Fachberatung für Unternehmen sinnvoll ist */}
+      {/* Strategische Herausforderung — direkt nach dem Hero */}
       <Section tone="paper">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Reveal>
-              <Eyebrow>{warum.eyebrow}</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">{warum.title}</h2>
+              <Eyebrow>{herausforderung.eyebrow}</Eyebrow>
+              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
+                {herausforderung.title}
+              </h2>
             </Reveal>
           </div>
           <Reveal delay={120} className="md:col-span-6 md:col-start-7">
             <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-              {warum.body.map((p) => (
+              {herausforderung.body.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
           </Reveal>
+        </div>
+      </Section>
+
+      {/* Ihr Mehrwert — hervorgehobener Value-Block, direkt nach der Herausforderung */}
+      <Section tone="deep">
+        <Reveal className="max-w-2xl">
+          <Eyebrow>{gewinn.eyebrow}</Eyebrow>
+          <h2 className="font-display mt-6 text-4xl md:text-5xl">{gewinn.title}</h2>
+        </Reveal>
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {gewinn.items.map((item, i) => (
+            <Reveal
+              key={item.title}
+              delay={i * 80}
+              className="flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-8 transition-transform duration-500 hover:-translate-y-1 md:p-9"
+            >
+              <h3 className="font-display text-2xl leading-snug text-[var(--color-sage-deep)] md:text-[1.7rem]">
+                {item.title}
+              </h3>
+              <p className="mt-4 text-[var(--color-ink-soft)]">{item.body}</p>
+            </Reveal>
+          ))}
         </div>
       </Section>
 
@@ -85,7 +109,7 @@ export default function B2BPage() {
       </Section>
 
       {/* Tiefe nach Bedarf */}
-      <Section tone="deep">
+      <Section tone="paper">
         <Reveal className="max-w-xl">
           <Eyebrow>{formen.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{formen.title}</h2>
@@ -95,7 +119,7 @@ export default function B2BPage() {
             <Reveal
               key={item.title}
               delay={i * 110}
-              className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-8"
+              className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-cream)] p-8"
             >
               <span className="marker-num-lg">{item.n}</span>
               <h3 className="font-display mt-4 text-2xl md:text-[1.7rem]">{item.title}</h3>
@@ -109,7 +133,7 @@ export default function B2BPage() {
       </Section>
 
       {/* Fachliche Tiefe, die Ihre Arbeit stärkt */}
-      <Section tone="paper">
+      <Section tone="cream">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Reveal>
@@ -126,26 +150,6 @@ export default function B2BPage() {
               ))}
             </div>
           </Reveal>
-        </div>
-      </Section>
-
-      {/* Was Sie durch die Zusammenarbeit gewinnen */}
-      <Section tone="cream">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>{gewinn.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{gewinn.title}</h2>
-        </Reveal>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
-          {gewinn.items.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={i * 90}
-              className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-8"
-            >
-              <h3 className="font-display text-2xl text-[var(--color-sage-deep)]">{item.title}</h3>
-              <p className="mt-3 text-[var(--color-ink-soft)]">{item.body}</p>
-            </Reveal>
-          ))}
         </div>
       </Section>
 

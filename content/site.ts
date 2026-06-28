@@ -14,9 +14,10 @@ export const site = {
   ],
   nav: [
     { label: "Ansatz", href: "/#ansatz" },
-    { label: "Leistungen & Preise", href: "/leistungen" },
+    { label: "Für Privatkunden", href: "/privatkunden" },
+    { label: "Für Unternehmen", href: "/unternehmen" },
     { label: "Über mich", href: "/ueber-mich" },
-    { label: "Für Unternehmen", href: "/fuer-unternehmen" },
+    { label: "Leistungen & Preise", href: "/leistungen" },
     { label: "FAQ", href: "/faq" },
     { label: "Kontakt", href: "/kontakt" },
   ],
@@ -39,6 +40,17 @@ export const site = {
   footerDisclaimer:
     "Die biochemische Gesundheitsberatung ersetzt keine ärztliche Diagnostik oder Behandlung.",
 } as const;
+
+// Körper-Signale — geteilt zwischen Landing-B2C-Sektion und Privatkunden-Hero.
+export const koerperSignale = [
+  "Man schläft etwas schlechter.",
+  "Die Verdauung ist empfindlicher.",
+  "Die Energie schwankt.",
+  "Stress wirkt stärker nach.",
+  "Training fühlt sich anders an.",
+  "Regeneration dauert länger.",
+  "Der Zyklus verändert sich.",
+] as const;
 
 export const home = {
   hero: {
@@ -96,27 +108,31 @@ export const home = {
       },
     ],
   },
-  // "Für wen?" — Privatpersonen
-  audience: {
-    eyebrow: "Für wen",
-    quote: "Für Menschen, die mehr möchten als allgemeine Gesundheitstipps.",
-    items: [
-      "Leistungsorientierte Menschen mit wenig Zeit, die Verantwortung für ihre Gesundheit übernehmen möchten.",
-      "Sportlich aktive Menschen und ehemalige Leistungssportler, die merken, dass ihr Körper heute eine andere Strategie braucht als früher.",
-      "Menschen mit wiederkehrenden Beschwerden, die bereits vieles ausprobiert haben – aber keine klare Einordnung oder langfristige Strategie gefunden haben.",
+  // B2C-Entscheidungssektion (ersetzt den früheren kurzen Privatkunden-Block)
+  b2cLanding: {
+    headline: "Vielleicht ist es nicht ein einzelnes Problem. Vielleicht hängt mehr zusammen.",
+    intro: [
+      "Viele Menschen machen bereits vieles richtig – und merken trotzdem, dass ihr Körper nicht mehr so klar, stabil oder belastbar reagiert, wie sie es erwarten.",
+      "Oft beginnt es nicht mit einem klaren Auslöser.",
     ],
+    signals: koerperSignale,
+    followup: [
+      "Wenn mehrere kleine Veränderungen zusammenkommen, entsteht schnell das Gefühl: Irgendetwas passt nicht mehr – aber es ist schwer zu greifen, wo man anfangen soll.",
+      "Vielleicht haben Sie Laborwerte, Empfehlungen oder Gesundheitsinformationen gesammelt, aber keine klare Einordnung.",
+      "Oder Sie haben gar keine akuten Beschwerden – sondern einfach den Wunsch, Ihren Körper besser zu verstehen und Gesundheit bewusster zu gestalten.",
+    ],
+    solution:
+      "Biochemische Gesundheitsberatung hilft dabei, diese Signale nicht isoliert zu betrachten, sondern körperliche Zusammenhänge verständlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
+    button: { label: "Zur Beratung für Privatkunden", href: "/privatkunden" },
   },
-  // Eigene, klar getrennte Sektion für Unternehmen & Fachpersonen
-  b2b: {
-    eyebrow: "Für Unternehmen & Fachpersonen",
-    quote:
-      "Für Fachpersonen, die Gesundheit tiefer verstehen und verantwortungsvoll anwenden möchten.",
-    items: [
-      "Unternehmen, Praxen und Studios, die fachliche Tiefe brauchen, ohne sich selbst durch die Informationsflut arbeiten zu müssen.",
-      "Coaches, Personal Trainer und Trainer, die ihre Angebote wissenschaftlich schärfen und individueller gestalten möchten.",
-      "Heilpraktiker, Osteopathen und Therapeuten, die bei komplexen oder wiederkehrenden Themen eine biochemische Perspektive ergänzen möchten.",
+  // B2B-Entscheidungssektion
+  b2bLanding: {
+    headline: "Sie arbeiten mit Menschen und möchten fachlich tiefer einordnen?",
+    text: [
+      "Kunden und Klienten bringen heute immer häufiger eigene Recherchen, Laborwerte, Beschwerden, Supplementlisten, Ernährungspläne oder widersprüchliche Empfehlungen mit.",
+      "Nicht jeder Körper reagiert gleich. Nicht jede Lösung passt zu jedem Menschen. Und nicht jeder Fall lässt sich mit einem Standardschema sinnvoll begleiten.",
     ],
-    cta: { label: "Mehr für Unternehmen & Fachpersonen", href: "/fuer-unternehmen" },
+    button: { label: "Mehr für Unternehmen erfahren", href: "/unternehmen" },
   },
   services: {
     eyebrow: "Leistungen im Überblick",
@@ -189,6 +205,106 @@ export const glossary = {
     title: "Biochemie",
     text: "Biochemie beschäftigt sich mit den Prozessen, die im Körper im Hintergrund ablaufen: wie Zellen Energie gewinnen, Nährstoffe verwerten, Signale weitergeben und sich an Belastung, Ernährung, Schlaf, Stress oder Regeneration anpassen.",
     source: "",
+  },
+} as const;
+
+export const privatkunden = {
+  hero: {
+    eyebrow: "Für Privatkunden",
+    title: "Vielleicht ist es nicht ein einzelnes Problem. Vielleicht hängt mehr zusammen.",
+    intro: "Oft beginnt es nicht mit einem klaren Auslöser.",
+    signals: koerperSignale,
+    afterSignals: [
+      "Gleichzeitig gibt es viele mögliche Erklärungen und Empfehlungen. Ernährung, Mikronährstoffe, Schlaf, Stress, Hormone, Darm, Training, Laborwerte – alles scheint wichtig zu sein.",
+    ],
+    questionLead: "Die entscheidende Frage ist:",
+    question: "Was ist für Ihren Körper jetzt wirklich relevant?",
+  },
+  catcher: {
+    title: "Vielleicht brauchen Sie nicht mehr Disziplin – sondern mehr Verständnis.",
+    body: [
+      "Viele Menschen versuchen, ihre Gesundheit über noch mehr Kontrolle zu verbessern: bessere Ernährung, mehr Bewegung, mehr Schlaf, weniger Stress, gezieltere Supplemente oder strengere Routinen.",
+      "Das kann sinnvoll sein. Aber manchmal ist nicht die nächste Maßnahme entscheidend, sondern die Frage, warum der Körper überhaupt so reagiert.",
+      "Wenn Energie, Verdauung, Schlaf, Stress, Zyklus, Regeneration oder Belastbarkeit aus dem Gleichgewicht geraten, lohnt sich ein Blick auf die Zusammenhänge dahinter.",
+      "Biochemische Gesundheitsberatung hilft dabei, diese Zusammenhänge verständlich einzuordnen und daraus eine Strategie zu entwickeln, die zu Ihrem Körper und Ihrem Alltag passt.",
+    ],
+  },
+  praevention: {
+    title: "Nicht erst handeln, wenn der Körper laut wird.",
+    body: [
+      "Gesundheit bedeutet nicht nur, Beschwerden zu reduzieren. Gesundheit bedeutet auch, den eigenen Körper besser kennenzulernen, Belastungsgrenzen zu verstehen und Routinen aufzubauen, die langfristig tragen.",
+      "Biochemische Gesundheitsberatung kann deshalb auch dann sinnvoll sein, wenn Sie keine akuten Beschwerden haben, sondern Ihren Gesundheitsstatus bewusster einordnen möchten.",
+      "Es geht um Prävention, Verständnis und eine Strategie, die zu Ihrem Leben passt.",
+    ],
+  },
+  zielgruppen: {
+    title: "Für wen ist die Beratung geeignet?",
+    intro:
+      "Die Beratung eignet sich für Menschen, die ihre Gesundheit nicht pauschal betrachten möchten, sondern verstehen wollen, welche körperlichen Zusammenhänge bei ihnen eine Rolle spielen können.",
+    items: [
+      {
+        title: "Leistungsorientierte Menschen mit wenig Zeit",
+        body: "Für Menschen, die viel leisten, Verantwortung tragen und merken, dass Energie, Schlaf, Verdauung, Stress oder Belastbarkeit nicht mehr selbstverständlich funktionieren.",
+      },
+      {
+        title: "Sportlich aktive Menschen und ehemalige Leistungssportler",
+        body: "Für Menschen, die ihren Körper gut kennen, aber merken, dass frühere Strategien heute nicht mehr ausreichen. Wenn Training allein nicht mehr alles reguliert, werden Regeneration, Ernährung, Stress, Schlaf, Zyklus, Alltag und Belastungssteuerung wichtiger.",
+      },
+      {
+        title: "Menschen mit wiederkehrenden Beschwerden",
+        body: "Für Menschen, die immer wieder an ähnlichen Themen hängen bleiben und bereits vieles ausprobiert haben. Hier geht es nicht darum, noch mehr einzelne Tipps zu sammeln, sondern körperliche Zusammenhänge verständlich einzuordnen und daraus eine sinnvolle Strategie abzuleiten.",
+      },
+      {
+        title: "Gesundheitsbewusste und neugierige Menschen",
+        body: "Für Menschen, die nicht erst warten möchten, bis etwas nicht mehr funktioniert. Wenn Sie Ihren Gesundheitsstatus besser verstehen, Ihre Routinen gezielter gestalten oder Ihren Körper präventiv unterstützen möchten, kann die Beratung helfen, vorhandene Informationen sinnvoll zu sortieren und Ihre nächsten Schritte bewusster zu wählen.",
+      },
+    ],
+  },
+  nutzen: {
+    title: "Was Sie konkret aus der Beratung mitnehmen",
+    intro:
+      "Ziel ist nicht, möglichst viele Maßnahmen gleichzeitig umzusetzen. Ziel ist, besser zu verstehen, welche nächsten Schritte für Ihren Körper, Ihren Alltag und Ihre Ziele wirklich relevant sind.",
+    items: [
+      {
+        title: "Verständliche Einordnung",
+        body: "Sie verstehen, welche körperlichen Prozesse und Einflussfaktoren bei Ihrer Situation eine Rolle spielen können.",
+      },
+      {
+        title: "Klare Prioritäten",
+        body: "Aus vielen Informationen entsteht eine klare Struktur: Was ist jetzt wichtig, was kann warten und was passt realistisch in Ihren Alltag?",
+      },
+      {
+        title: "Biochemischer Gesundheitskompass",
+        body: "Sie erhalten eine schriftliche Ausarbeitung mit biochemischer Einordnung, individueller Strategie und konkreten Empfehlungen zum Nachlesen.",
+      },
+      {
+        title: "Alltagstaugliche Umsetzung",
+        body: "Die Empfehlungen werden so aufgebaut, dass sie zu Ihrer Belastbarkeit, Ihren Routinen und Ihren Zielen passen.",
+      },
+      {
+        title: "Mehr Verständnis für Ihren Körper",
+        body: "Sie sollen nicht nur Empfehlungen erhalten, sondern verstehen, warum bestimmte Schritte für Ihren Körper sinnvoll sein können.",
+      },
+    ],
+  },
+  process: {
+    eyebrow: "So läuft die Zusammenarbeit ab",
+    title: "In fünf Schritten zu Ihrer Strategie",
+    steps: [
+      { title: "Kostenloses Erstgespräch", body: "Ihr Anliegen, Ihre Erwartungen und die Passung zur Beratung werden geklärt." },
+      { title: "Anamnese", body: "Sie erhalten einen ausführlichen Fragebogen als Grundlage für die Analyse." },
+      { title: "Analysegespräch", body: "Ihre Beschwerden, Ziele, Routinen und relevanten Einflussfaktoren werden im Detail besprochen." },
+      { title: "Biochemischer Gesundheitskompass", body: "Sie erhalten eine schriftliche Ausarbeitung mit biochemischer Einordnung, individueller Strategie und konkreten Empfehlungen." },
+      { title: "Abschlussgespräch & Ausblick", body: "Das Abschlussgespräch findet nach drei Monaten statt. Wir werten Ihre bisherige Entwicklung aus, ordnen Veränderungen ein und strukturieren die nächsten sinnvollen Schritte." },
+    ],
+  },
+  finalCta: {
+    title: "Sie möchten wissen, was für Ihren Körper relevant ist?",
+    body: [
+      "Im kostenlosen Erstgespräch klären wir gemeinsam, worum es bei Ihnen geht, welche Themen im Vordergrund stehen und ob die biochemische Gesundheitsberatung zu Ihrer Situation passt.",
+      "Sie müssen vorab nicht wissen, welche Leistung die richtige ist.",
+    ],
+    note: "Die biochemische Gesundheitsberatung ersetzt keine ärztliche Diagnostik oder Behandlung.",
   },
 } as const;
 
@@ -504,14 +620,17 @@ export const b2b = {
       "Genau hier setzt meine Arbeit an: Ich unterstütze gesundheitsnahe Unternehmen und Fachpersonen dabei, biochemisches Fachwissen verständlich, strukturiert und praxisnah in ihre Arbeit zu integrieren – ohne Standardsystem, sondern passend zu Zielgruppe, Angebot und fachlichem Anspruch.",
     ],
   },
-  warum: {
-    eyebrow: "Relevanz",
-    title: "Warum biochemische Fachberatung für Unternehmen sinnvoll ist",
+  herausforderung: {
+    eyebrow: "Die Herausforderung",
+    title: "Wenn Kundenfälle komplexer werden, braucht Beratung mehr Tiefe.",
     body: [
-      "Der Gesundheitsmarkt wird komplexer. Kunden, Klienten und Patienten bringen immer häufiger eigene Recherchen, Laborwerte, Diagnosen, Supplementlisten, Trainingspläne oder widersprüchliche Empfehlungen mit. Gleichzeitig wächst der Anspruch an Fachpersonen, diese Informationen verantwortungsvoll einzuordnen und verständlich zu kommunizieren.",
-      "Für Unternehmen entsteht dadurch eine klare Herausforderung: Es reicht nicht mehr, einzelne Empfehlungen weiterzugeben. Entscheidend ist, Zusammenhänge zu verstehen, Prioritäten zu setzen und fachlich tragfähige Konzepte zu entwickeln.",
-      "Biochemische Gesundheitsberatung unterstützt hier als fachliche Ergänzung, Sparring, Konzeptentwicklung oder schriftliche Ausarbeitung – so tief, wie es für das Unternehmen, das Team oder den konkreten Anwendungsfall sinnvoll ist.",
-      "Ziel ist nicht, bestehende Arbeit zu ersetzen, sondern sie fachlich zu stärken.",
+      "Der Gesundheitsmarkt verändert sich. Kunden und Klienten bringen heute immer häufiger eigene Recherchen, Laborwerte, Beschwerden, Supplementlisten, Trainingspläne oder widersprüchliche Empfehlungen mit.",
+      "Gleichzeitig wächst der Anspruch an Unternehmen, Studios, Praxen, Trainer und Coaches: Menschen möchten individueller begleitet werden, Empfehlungen besser verstehen und Lösungen erhalten, die zu ihrem Körper und Alltag passen.",
+      "Genau hier entsteht die Herausforderung.",
+      "Nicht jeder Körper reagiert gleich. Nicht jede Lösung passt zu jedem Menschen. Und nicht jeder Fall lässt sich mit einem Standardschema sinnvoll begleiten.",
+      "Biochemische Gesundheitsberatung unterstützt dabei, komplexe Informationen zu sortieren, körperliche Zusammenhänge verständlich einzuordnen und Empfehlungen fachlich fundierter aufzubauen.",
+      "Ziel ist nicht, Ihre bestehende Arbeit zu ersetzen.",
+      "Ziel ist, Ihre Arbeit fachlich zu stärken – damit Sie Ihre Kunden individueller, strukturierter und sicherer begleiten können.",
     ],
   },
   zielgruppe: {
@@ -593,7 +712,7 @@ export const b2b = {
       },
       {
         title: "Klare Struktur",
-        body: "Aus vielen Informationen entsteht ein verständlicher roter Faden für Beratung, Coaching, Training oder interne Arbeit.",
+        body: "Aus vielen Informationen entsteht eine klare Entscheidungsgrundlage für Beratung, Coaching, Training oder interne Arbeit.",
       },
       {
         title: "Individuelle Tiefe",
@@ -602,6 +721,14 @@ export const b2b = {
       {
         title: "Praxisnahe Umsetzung",
         body: "Biochemisches Wissen wird so aufbereitet, dass es im Alltag, im Team oder in der Arbeit mit Klienten wirklich nutzbar wird.",
+      },
+      {
+        title: "Bessere Zielorientierung",
+        body: "Empfehlungen können individueller begründet, verständlicher erklärt und gezielter auf die Ziele Ihrer Kunden ausgerichtet werden.",
+      },
+      {
+        title: "Stärkere Angebotsqualität",
+        body: "Bestehende Beratungsprozesse, Workshops, Konzepte oder Programme können fachlich geschärft und hochwertiger positioniert werden.",
       },
     ],
   },
@@ -808,7 +935,6 @@ export const kontakt = {
 // Strukturierte Vorlage — finale Rechtstexte werden vor Veröffentlichung geprüft/ergänzt.
 export const impressum = {
   title: "Impressum",
-  notice: "Dieses Impressum wird vor Veröffentlichung rechtlich geprüft und ggf. ergänzt.",
   sections: [
     {
       heading: "Angaben gemäß § 5 DDG",
@@ -824,122 +950,6 @@ export const impressum = {
     {
       heading: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
       lines: ["Milva März", "Jurastraße 27-1", "72072 Tübingen-Derendingen"],
-    },
-  ],
-} as const;
-
-// Strukturierte Platzhalter-Vorlage — finaler Text folgt aus Generator/Rechtsprüfung.
-// HINWEIS (Entwurf): Dieser Text ist eine an die tatsächliche Verarbeitung dieser
-// Website angepasste Vorlage und ersetzt keine anwaltliche Prüfung. Mit eckigen
-// Klammern […] markierte Angaben (Hosting-Anbieter, Speicherfristen, Drittland-
-// garantien) müssen vor Veröffentlichung ergänzt und der Gesamttext geprüft werden.
-export const datenschutz = {
-  title: "Datenschutzerklärung",
-  notice:
-    "Diese Datenschutzerklärung ist ein Entwurf. Sie wird vor Veröffentlichung rechtlich geprüft und final ergänzt. Mit eckigen Klammern [ … ] gekennzeichnete Stellen müssen noch durch konkrete Angaben ersetzt werden.",
-  intro:
-    "Der Schutz Ihrer personenbezogenen Daten ist mir ein wichtiges Anliegen. Personenbezogene Daten werden auf dieser Website nur im technisch notwendigen Umfang und im Rahmen der gesetzlichen Vorschriften (DSGVO, BDSG, TDDDG) verarbeitet. Die folgende Erklärung gibt einen Überblick darüber, welche Daten zu welchem Zweck verarbeitet werden.",
-  responsible: {
-    heading: "Verantwortliche Stelle",
-    intro: "Verantwortlich für die Datenverarbeitung auf dieser Website ist:",
-    lines: [
-      "Milva März",
-      "Biochemische Gesundheitsberatung",
-      "Jurastraße 27-1",
-      "72072 Tübingen-Derendingen",
-    ],
-    email: "maerz.biochemie@gmail.com",
-  },
-  sections: [
-    {
-      heading: "Allgemeine Hinweise zur Datenverarbeitung",
-      body: [
-        "Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Die Nutzung dieser Website ist grundsätzlich ohne Angabe personenbezogener Daten möglich. Solche Daten werden nur erhoben, wenn Sie sie aktiv mitteilen – etwa über das Kontaktformular.",
-        "Rechtsgrundlage der Verarbeitung ist je nach Fall Art. 6 Abs. 1 DSGVO, insbesondere zur Anbahnung oder Durchführung eines (vor-)vertraglichen Verhältnisses (lit. b) sowie aufgrund berechtigter Interessen an einer sicheren und funktionsfähigen Website (lit. f).",
-      ],
-    },
-    {
-      heading: "Hosting und Server-Logfiles",
-      body: [
-        "Diese Website wird bei Cloudflare gehostet und über das Content-Delivery- und Sicherheitsnetzwerk von Cloudflare ausgeliefert. Anbieter ist die Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA, in der EU vertreten durch die Cloudflare Germany GmbH, c/o Design Offices München Atlas, Rosenheimer Straße 143C, 81671 München. Cloudflare verarbeitet die über die Website übermittelten Daten in meinem Auftrag auf Grundlage eines Vertrags zur Auftragsverarbeitung (Art. 28 DSGVO).",
-        "Beim Aufruf der Website werden automatisch technische Zugriffsdaten verarbeitet, die Ihr Browser übermittelt. Dazu gehören in der Regel: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, der Hostname des zugreifenden Rechners, die Uhrzeit der Serveranfrage sowie die IP-Adresse. Diese Verarbeitung ist erforderlich, um die Website technisch fehlerfrei und sicher auszuliefern (Art. 6 Abs. 1 lit. f DSGVO).",
-        "Diese Zugriffsdaten werden nur für einen kurzen Zeitraum gespeichert und anschließend automatisch gelöscht. Nähere Angaben zur Verarbeitung und Speicherdauer durch Cloudflare ergeben sich aus der Datenschutzerklärung von Cloudflare. Da Cloudflare ein US-Unternehmen ist, kann dabei eine Übermittlung in die USA erfolgen; diese wird auf geeignete Garantien (z. B. EU-Standardvertragsklauseln) gestützt.",
-      ],
-    },
-    {
-      heading: "SSL- bzw. TLS-Verschlüsselung",
-      body: [
-        "Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie an „https://“ in der Adresszeile Ihres Browsers sowie am Schloss-Symbol.",
-        "Bei aktiver Verschlüsselung können die Daten, die Sie an mich übermitteln, nicht ohne Weiteres von Dritten mitgelesen werden.",
-      ],
-    },
-    {
-      heading: "Kontaktformular und E-Mail-Kontakt",
-      body: [
-        "Wenn Sie mir über das Kontaktformular oder per E-Mail eine Anfrage zukommen lassen, werden Ihre Angaben – Name, E-Mail-Adresse, optional Telefonnummer, die Auswahl „Privatperson“ oder „Unternehmen & Fachperson“ sowie Ihre Nachricht – zur Bearbeitung Ihrer Anfrage gespeichert und verarbeitet.",
-        "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Anbahnung einer Zusammenarbeit zusammenhängt, im Übrigen auf Grundlage des berechtigten Interesses an der Beantwortung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO).",
-        "Für den technischen Versand der über das Formular eingehenden Nachrichten wird der Dienst Resend als Auftragsverarbeiter eingesetzt. Anbieter ist die Plus Five Five, Inc. (Resend), USA; eine öffentlich angegebene postalische Anschrift liegt nicht vor, die Kontaktaufnahme erfolgt über support@resend.com. Mit dem Anbieter ist ein Vertrag zur Auftragsverarbeitung abzuschließen. Da es sich um ein US-Unternehmen handelt, kann eine Übermittlung in die USA erfolgen; diese ist auf geeignete Garantien (z. B. EU-Standardvertragsklauseln) zu stützen.",
-        "Bitte beachten Sie: Übermitteln Sie über das Kontaktformular keine ausführlichen sensiblen Gesundheitsdaten. Diese besonderen Kategorien personenbezogener Daten (Art. 9 DSGVO) werden erst im Rahmen des Anamnesebogens und auf gesonderter Rechtsgrundlage strukturiert erhoben.",
-        "Ihre Angaben verbleiben bei mir, bis Sie um Löschung bitten, eine erteilte Einwilligung widerrufen oder der Zweck der Speicherung entfällt. Zwingende gesetzliche Aufbewahrungsfristen bleiben unberührt.",
-      ],
-    },
-    {
-      heading: "Terminbuchung über Calendly",
-      body: [
-        "Für die Buchung des kostenlosen Erstgesprächs verweise ich über einen externen Link auf den Dienst Calendly (Calendly LLC, USA). Calendly ist ein vollständig dezentral organisiertes Unternehmen ohne festen Unternehmenssitz; die maßgebliche postalische Anschrift sowie weitere Angaben sind der Datenschutzerklärung von Calendly zu entnehmen [Anschrift aus der Calendly-Datenschutzerklärung ergänzen]. Calendly ist nicht in diese Website eingebunden – es werden keine Skripte, Cookies oder sonstigen Inhalte von Calendly auf dieser Website geladen.",
-        "Erst wenn Sie den Link aktiv anklicken, werden Sie auf die Plattform von Calendly weitergeleitet. Die dort von Ihnen eingegebenen Daten (z. B. Name, E-Mail-Adresse, gewählter Termin) werden eigenverantwortlich durch Calendly verarbeitet; es gelten die Datenschutzbestimmungen von Calendly. [Bei Buchungen kann eine Übermittlung in die USA erfolgen; geeignete Garantien sind zu prüfen und zu ergänzen.]",
-      ],
-    },
-    {
-      heading: "Cookies und externe Dienste",
-      body: [
-        "Diese Website setzt keine Cookies zu Analyse-, Tracking- oder Marketingzwecken ein. Es werden keine Webanalyse-Dienste (z. B. Google Analytics), keine Marketing-Pixel (z. B. Meta, TikTok, LinkedIn) und keine eingebetteten Social-Media-Inhalte verwendet.",
-        "Technisch notwendige Cookies, die zum sicheren Betrieb der Website beitragen – etwa zur Angriffsabwehr durch den eingesetzten Hosting- und Sicherheitsdienstleister Cloudflare –, können gesetzt werden. Diese Cookies sind für den Betrieb der Website erforderlich und bedürfen keiner Einwilligung.",
-        "Schriftarten werden lokal von diesem Server ausgeliefert; ein Abruf von Schriftarten über externe Anbieter (z. B. Google Fonts) findet nicht statt.",
-        "Sollten künftig einwilligungspflichtige Cookies oder Dienste eingesetzt werden, wird zuvor Ihre Einwilligung über ein entsprechendes Auswahlfenster eingeholt und diese Erklärung ergänzt.",
-      ],
-    },
-    {
-      heading: "Ihre Rechte als betroffene Person",
-      body: [
-        "Sie haben im Rahmen der gesetzlichen Bestimmungen jederzeit das Recht auf:",
-      ],
-      list: [
-        "Auskunft über Ihre gespeicherten personenbezogenen Daten (Art. 15 DSGVO)",
-        "Berichtigung unrichtiger Daten (Art. 16 DSGVO)",
-        "Löschung Ihrer Daten (Art. 17 DSGVO)",
-        "Einschränkung der Verarbeitung (Art. 18 DSGVO)",
-        "Datenübertragbarkeit (Art. 20 DSGVO)",
-        "Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)",
-        "Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)",
-      ],
-      after:
-        "Zur Ausübung Ihrer Rechte sowie bei Fragen zum Datenschutz genügt eine formlose Mitteilung an die oben genannte verantwortliche Stelle.",
-    },
-    {
-      heading: "Speicherdauer",
-      body: [
-        "Anfragen über das Kontaktformular oder per E-Mail werden spätestens sechs Monate nach abschließender Bearbeitung gelöscht, sofern keine Zusammenarbeit zustande kommt und keine gesetzlichen Aufbewahrungspflichten bestehen.",
-        "Kommt eine Zusammenarbeit zustande, werden die für die Geschäftsbeziehung erforderlichen Daten für deren Dauer gespeichert. Unterliegen Daten steuer- oder handelsrechtlichen Aufbewahrungspflichten (z. B. § 147 AO, § 257 HGB), werden sie bis zum Ablauf der gesetzlichen Fristen – in der Regel bis zu zehn Jahre – aufbewahrt und anschließend gelöscht.",
-        "Technische Zugriffsdaten (Server-Logfiles) werden nur für einen kurzen Zeitraum gespeichert und anschließend automatisch gelöscht (siehe Abschnitt „Hosting und Server-Logfiles“).",
-      ],
-    },
-    {
-      heading: "Beschwerderecht bei der Aufsichtsbehörde",
-      body: [
-        "Ihnen steht ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu, insbesondere in dem Mitgliedstaat Ihres Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Für die verantwortliche Stelle ist folgende Aufsichtsbehörde zuständig:",
-      ],
-      list: [
-        "Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg",
-        "Lautenschlagerstraße 20, 70173 Stuttgart",
-        "[Kontaktdaten der Aufsichtsbehörde vor Veröffentlichung prüfen und ergänzen.]",
-      ],
-    },
-    {
-      heading: "Aktualität und Änderung dieser Datenschutzerklärung",
-      body: [
-        "Diese Datenschutzerklärung hat den Stand Juni 2026. Durch die Weiterentwicklung der Website oder aufgrund geänderter gesetzlicher bzw. behördlicher Vorgaben kann es notwendig werden, diese Erklärung anzupassen.",
-      ],
     },
   ],
 } as const;

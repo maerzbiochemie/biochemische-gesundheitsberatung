@@ -8,7 +8,7 @@ import { MoreInfo } from "@/components/MoreInfo";
 import { BookingButton } from "@/components/BookingButton";
 import { Portrait } from "@/components/Portrait";
 import { Faq } from "@/components/Faq";
-import { GlossaryText } from "@/components/Glossary";
+import { GlossaryText, TermPopover } from "@/components/Glossary";
 import { site, home, faq } from "@/content/site";
 import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
@@ -38,7 +38,10 @@ export default function HomePage() {
         />
         <div className="container-x relative">
           <Reveal>
-            <Eyebrow>{home.hero.eyebrow}</Eyebrow>
+            {/* First (and only) interactive occurrence — tooltip explains "Biochemie". */}
+            <Eyebrow>
+              <TermPopover term="biochemie">{home.hero.eyebrow}</TermPopover>
+            </Eyebrow>
           </Reveal>
           <WordReveal
             as="h1"
@@ -124,6 +127,80 @@ export default function HomePage() {
       {/* ----------------- Keyword band — moved below "Bedeutung von Gesundheit" */}
       <Marquee />
 
+      {/* -------------------------------------- B2C decision section (Privatkunden) */}
+      <Section tone="cream">
+        <div className="mx-auto max-w-3xl text-center">
+          <Reveal>
+            <div className="flex justify-center">
+              <Eyebrow>Für Privatkunden</Eyebrow>
+            </div>
+            <h2 className="font-display mt-6 text-[1.9rem] leading-[1.12] md:text-4xl lg:text-[2.7rem]">
+              {home.b2cLanding.headline}
+            </h2>
+          </Reveal>
+          <Reveal delay={80} className="mt-6 space-y-4 text-lg text-[var(--color-ink-soft)]">
+            {home.b2cLanding.intro.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </Reveal>
+        </div>
+
+        {/* Körper-Signale als ruhige Kacheln (keine Bullet-Liste) */}
+        <div className="mx-auto mt-10 grid max-w-4xl gap-3 sm:grid-cols-2 md:grid-cols-3">
+          {home.b2cLanding.signals.map((s, i) => (
+            <Reveal
+              key={s}
+              delay={i * 60}
+              className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] px-5 py-4 text-center text-[var(--color-ink-soft)]"
+            >
+              {s}
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-10 max-w-3xl space-y-4 text-[var(--color-ink-soft)] md:text-lg">
+          {home.b2cLanding.followup.map((p) => (
+            <Reveal key={p}>
+              <p>{p}</p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="mx-auto mt-8 max-w-3xl">
+          <p className="font-display text-xl leading-snug text-[var(--color-ink)] md:text-2xl">
+            {home.b2cLanding.solution}
+          </p>
+          <div className="mt-8">
+            <ButtonLink href={home.b2cLanding.button.href}>{home.b2cLanding.button.label}</ButtonLink>
+          </div>
+        </Reveal>
+      </Section>
+
+      {/* -------------------------------------- B2B decision section (Unternehmen) */}
+      <Section tone="paper">
+        <Reveal>
+          <div className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-cream-deep)] p-8 md:p-12">
+            <div className="grid gap-8 md:grid-cols-12 md:items-center">
+              <div className="md:col-span-8">
+                <Eyebrow>Für Unternehmen & Fachpersonen</Eyebrow>
+                <h2 className="font-display mt-5 text-2xl leading-snug md:text-[2rem]">
+                  {home.b2bLanding.headline}
+                </h2>
+                <div className="mt-4 space-y-3 text-[var(--color-ink-soft)] md:text-lg">
+                  {home.b2bLanding.text.map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
+                </div>
+              </div>
+              <div className="md:col-span-4 md:flex md:justify-end">
+                <ButtonLink href={home.b2bLanding.button.href} variant="secondary">
+                  {home.b2bLanding.button.label}
+                </ButtonLink>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </Section>
+
       {/* ------------------------------------------------------------ Approach */}
       <Section tone="cream">
         <Reveal className="max-w-2xl">
@@ -142,67 +219,6 @@ export default function HomePage() {
               <p className="mt-3 text-[var(--color-ink-soft)]">{step.body}</p>
             </Reveal>
           ))}
-        </div>
-      </Section>
-
-      {/* -------------------------------------------------- Für wen — Privat */}
-      <Section tone="deep">
-        <div className="grid gap-12 md:grid-cols-12 md:items-start">
-          <div className="md:col-span-5">
-            <Reveal>
-              <Eyebrow>{home.audience.eyebrow}</Eyebrow>
-              <p className="font-display mt-6 text-3xl leading-snug md:text-[2.6rem]">
-                „{home.audience.quote}“
-              </p>
-            </Reveal>
-          </div>
-          <div className="md:col-span-6 md:col-start-7">
-            <ul className="space-y-px">
-              {home.audience.items.map((item, i) => (
-                <Reveal
-                  key={i}
-                  as="li"
-                  delay={i * 90}
-                  className="flex gap-5 border-t border-[var(--color-line)] py-6 first:border-t-0 md:gap-7"
-                >
-                  <span className="marker-num-lg shrink-0">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="mt-1 text-[var(--color-ink-soft)] md:text-lg">{item}</span>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Section>
-
-      {/* ------------------------------- Für Unternehmen & Fachpersonen (eigene Sektion) */}
-      <Section tone="cream">
-        <div className="grid gap-12 md:grid-cols-12 md:items-start">
-          <div className="md:col-span-5">
-            <Reveal>
-              <Eyebrow>{home.b2b.eyebrow}</Eyebrow>
-              <p className="font-display mt-6 text-3xl leading-snug md:text-[2.6rem]">
-                „{home.b2b.quote}“
-              </p>
-              <ButtonLink href={home.b2b.cta.href} variant="secondary" className="mt-9">
-                {home.b2b.cta.label}
-              </ButtonLink>
-            </Reveal>
-          </div>
-          <div className="md:col-span-6 md:col-start-7">
-            <ul className="space-y-px">
-              {home.b2b.items.map((item, i) => (
-                <Reveal
-                  key={i}
-                  as="li"
-                  delay={i * 90}
-                  className="flex gap-5 border-t border-[var(--color-line)] py-6 first:border-t-0 md:gap-7"
-                >
-                  <span className="marker-num-lg shrink-0">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="mt-1 text-[var(--color-ink-soft)] md:text-lg">{item}</span>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
         </div>
       </Section>
 
@@ -263,9 +279,7 @@ export default function HomePage() {
               <Eyebrow>{home.aboutTeaser.eyebrow}</Eyebrow>
               <div className="mt-6 space-y-5 text-lg text-[var(--color-ink-soft)]">
                 {home.aboutTeaser.body.map((p) => (
-                  <p key={p}>
-                    <GlossaryText text={p} term="biochemie" />
-                  </p>
+                  <p key={p}>{p}</p>
                 ))}
               </div>
               <Link
