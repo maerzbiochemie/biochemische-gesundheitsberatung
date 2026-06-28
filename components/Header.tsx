@@ -39,7 +39,7 @@ export function Header() {
     >
       <div className="container-x">
         <div className="flex h-16 items-center justify-between md:h-20">
-          <Link href="/" className="group relative flex shrink-0 flex-col justify-center leading-none">
+          <Link href="/" className="group relative flex shrink-0 flex-col justify-center leading-none lg:-ml-4 xl:-ml-6">
             <span className="font-display text-xl tracking-tight md:text-[1.4rem]">
               {site.name}
             </span>
