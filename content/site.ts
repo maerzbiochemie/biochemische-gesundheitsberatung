@@ -110,21 +110,22 @@ export const home = {
   },
   // B2C-Entscheidungssektion (ersetzt den früheren kurzen Privatkunden-Block)
   b2cLanding: {
-    headline: "Vielleicht ist es nicht ein einzelnes Problem. Vielleicht hängt mehr zusammen.",
+    headline:
+      "Häufig ist es nicht ein einzelner Auslöser, sondern ein Zusammenspiel verschiedener Faktoren.",
     intro: [
-      "Viele Menschen machen bereits vieles richtig – und merken trotzdem, dass ihr Körper nicht mehr so klar, stabil oder belastbar reagiert, wie sie es erwarten.",
+      "Viele Menschen machen bereits einiges richtig, dennoch fühlt sich der Körper nicht mehr klar, stabil oder belastbar an.",
       "Oft beginnt es nicht mit einem klaren Auslöser.",
     ],
     signals: koerperSignale,
     button: { label: "Zur Beratung für Privatkunden", href: "/privatkunden" },
   },
-  // Eigene Lösungs-Sektion nach der B2C-Signalliste
+  // Eigene „Stagnation"-Sektion nach der B2C-Signalliste
   solutionBlock: {
-    headline: "Wenn kleine Veränderungen zusammenkommen",
+    headline: "Stagnation",
+    subheadline: "Das Gefühl, nicht voranzukommen",
     body: [
-      "Wenn mehrere kleine Veränderungen zusammenkommen, entsteht schnell das Gefühl: Irgendetwas passt nicht mehr – aber es ist schwer zu greifen, wo man anfangen soll.",
+      "Wenn mehrere kleine Veränderungen zusammenkommen, entsteht schnell das Gefühl, dass irgendetwas nicht stimmt. Es ist aber schwer zu greifen, wo man anfangen soll.",
       "Vielleicht haben Sie Laborwerte, Empfehlungen oder Gesundheitsinformationen gesammelt, aber keine klare Einordnung.",
-      "Oder Sie haben gar keine akuten Beschwerden – sondern einfach den Wunsch, Ihren Körper besser zu verstehen und Gesundheit bewusster zu gestalten.",
       "Biochemische Gesundheitsberatung hilft dabei, diese Signale nicht isoliert zu betrachten, sondern körperliche Zusammenhänge verständlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
     ],
   },
@@ -214,29 +215,33 @@ export const glossary = {
 export const privatkunden = {
   hero: {
     eyebrow: "Für Privatkunden",
-    title: "Es ist nicht ein einzelnes Problem. Es hängt mehr zusammen.",
+    title:
+      "Häufig ist es nicht ein einzelner Auslöser, sondern ein Zusammenspiel verschiedener Faktoren.",
     intro: "Oft beginnt es nicht mit einem klaren Auslöser.",
     signals: koerperSignale,
-    afterSignals: [
-      "Gleichzeitig gibt es viele mögliche Erklärungen und Empfehlungen. Ernährung, Mikronährstoffe, Schlaf, Stress, Hormone, Darm, Training, Laborwerte – alles scheint wichtig zu sein.",
-    ],
+    afterSignals: [],
     questionLead: "Die entscheidende Frage ist:",
     question: "Was ist für Ihren Körper jetzt wirklich relevant?",
+    questionTooltip: [
+      "Jeder Körper reagiert anders. Stoffwechsel, Immunsystem, Stressachse, Belastungstoleranz, Ernährung, Schlaf und Alltag greifen individuell ineinander.",
+      "Deshalb reicht es oft nicht, allgemeine Empfehlungen umzusetzen. Entscheidend ist die Frage: Was braucht genau dieser Körper – und was ist jetzt der sinnvollste nächste Schritt?",
+      "Ziel ist ein Konzept, das nicht nur „gesund“ klingt, sondern zu Ihrer aktuellen Situation passt und möglichst gezielt Entlastung, Stabilität und Besserung unterstützt.",
+    ],
   },
   catcher: {
     title: "Sie brauchen nicht mehr Disziplin – sondern mehr Verständnis.",
     body: [
-      "Viele Menschen versuchen, ihre Gesundheit über noch mehr Kontrolle zu verbessern: bessere Ernährung, mehr Bewegung, mehr Schlaf, weniger Stress, gezieltere Supplemente oder strengere Routinen.",
-      "Das kann sinnvoll sein. Aber manchmal ist nicht die nächste Maßnahme entscheidend, sondern die Frage, warum der Körper überhaupt so reagiert.",
-      "Biochemische Gesundheitsberatung hilft dabei, diese Zusammenhänge verständlich einzuordnen und daraus eine Strategie zu entwickeln, die zu Ihrem Körper und Ihrem Alltag passt.",
+      "Viele Menschen versuchen, ihre Gesundheit durch mehr Kontrolle zu verbessern: Ernährung, Bewegung, Schlaf, Stressmanagement oder Supplemente.",
+      "Doch manchmal ist nicht die nächste Maßnahme entscheidend, sondern die Frage, warum der Körper überhaupt so reagiert.",
+      "Biochemische Gesundheitsberatung hilft dabei, diese Zusammenhänge verständlich einzuordnen und daraus eine passende Strategie abzuleiten.",
     ],
   },
   praevention: {
     title: "Nicht erst handeln, wenn der Körper laut wird.",
     body: [
-      "Gesundheit bedeutet nicht nur, Beschwerden zu reduzieren. Gesundheit bedeutet auch, den eigenen Körper besser kennenzulernen, Belastungsgrenzen zu verstehen und Routinen aufzubauen, die langfristig tragen.",
-      "Biochemische Gesundheitsberatung kann deshalb auch dann sinnvoll sein, wenn Sie keine akuten Beschwerden haben, sondern Ihren Gesundheitsstatus bewusster einordnen möchten.",
-      "Es geht um Prävention, Verständnis und eine Strategie, die zu Ihrem Leben passt.",
+      "Gesundheit bedeutet nicht nur, Beschwerden zu reduzieren. Es bedeutet auch, den eigenen Körper besser zu verstehen, Belastungsgrenzen zu erkennen und Routinen aufzubauen, die langfristig tragen.",
+      "Biochemische Gesundheitsberatung kann deshalb auch dann sinnvoll sein, wenn keine akuten Beschwerden bestehen – sondern der Wunsch, den eigenen Gesundheitsstatus bewusster einzuordnen.",
+      "Für mehr Prävention, Verständnis und eine Strategie, die zu Ihrem Leben passt.",
     ],
   },
   zielgruppen: {
@@ -525,11 +530,11 @@ export const ueberMich = {
     eyebrow: "Wissenschaftliche Grundlage",
     title: "Warum Biochemie und Gesundheit zusammengehören",
     body: [
-      "Biochemie verbindet Biologie und Chemie. Sie erklärt, wie biologische Prozesse im Körper auf molekularer Ebene funktionieren – also wie Zellen Energie gewinnen, Nährstoffe verwerten, Signale weitergeben, auf Belastung reagieren und miteinander kommunizieren.",
-      "Der Körper ist kein einzelnes Organ und keine isolierte Beschwerde. Er ist ein komplexes Netzwerk aus Stoffwechselwegen, Zellfunktionen, Hormonsignalen, Immunreaktionen, Organen und Regulationsmechanismen. Diese Ebenen beeinflussen sich ständig gegenseitig.",
-      "Genau deshalb reicht es oft nicht, nur ein Symptom oder einen einzelnen Laborwert zu betrachten. Entscheidend ist die Frage: Welche Prozesse stehen dahinter? Welche Systeme sind beteiligt? Und welche Faktoren im Alltag können diese Prozesse unterstützen oder zusätzlich belasten?",
-      "Ein besonderer Schwerpunkt meiner Arbeit liegt dabei auf dem Immunsystem. Es überwacht, reguliert, kommuniziert und reagiert auf Belastungen. Bei vielen Beschwerden, Entzündungsprozessen oder chronischen Themen wird seine Rolle jedoch unterschätzt.",
-      "Biochemische Gesundheitsberatung bedeutet für mich deshalb: Stoffwechsel, Immunsystem, Hormone, Zellgesundheit, Organe, Nervensystem und Alltag nicht getrennt zu betrachten, sondern ihre Verbindung verständlich zu machen.",
+      "Biochemie zeigt, wie der Körper im Inneren arbeitet – auf Ebene der Zellen, Moleküle und Regulationssysteme.",
+      "Sie erklärt, wie Energie entsteht, Nährstoffe verarbeitet werden, Hormone wirken, Immunreaktionen ablaufen und der Körper auf Belastungen reagiert.",
+      "Dabei funktioniert kein System für sich allein: Stoffwechsel, Immunsystem, Nervensystem, Organe und Alltag stehen ständig miteinander in Verbindung.",
+      "Genau deshalb können Beschwerden, Laborwerte oder körperliche Veränderungen selten nur aus einer einzelnen Perspektive verstanden werden.",
+      "Wichtig ist der Blick auf die Prozesse dahinter – und darauf, was den Körper im Alltag unterstützt oder zusätzlich belastet.",
     ],
     pullquote: "So entsteht Orientierung statt Informationsüberflutung.",
   },
@@ -625,12 +630,14 @@ export const b2b = {
   herausforderung: {
     eyebrow: "Die Herausforderung",
     title: "Wenn Kundenfälle komplexer werden, braucht Beratung mehr Tiefe.",
+    highlights: [
+      "Nicht jeder Körper reagiert gleich.",
+      "Nicht jede Empfehlung passt zu jedem Menschen.",
+      "Und nicht jeder Fall lässt sich mit einem Standardschema sinnvoll begleiten.",
+    ],
     body: [
-      "Der Gesundheitsmarkt verändert sich. Kunden und Klienten bringen heute immer häufiger eigene Recherchen, Laborwerte, Beschwerden, Supplementlisten, Trainingspläne oder widersprüchliche Empfehlungen mit.",
-      "Gleichzeitig steigt der Anspruch an Unternehmen, Studios, Praxen, Trainer und Coaches: Menschen möchten individueller begleitet werden und Empfehlungen erhalten, die zu ihrem Körper, Alltag und Ziel passen.",
-      "Nicht jeder Körper reagiert gleich. Nicht jede Lösung passt zu jedem Menschen. Und nicht jeder Fall lässt sich mit einem Standardschema sinnvoll begleiten.",
-      "Biochemische Gesundheitsberatung unterstützt dabei, komplexe Informationen zu sortieren, körperliche Zusammenhänge verständlich einzuordnen und Empfehlungen fachlich fundierter aufzubauen.",
-      "Ziel ist, Ihre bestehende Arbeit fachlich zu stärken – damit Sie Ihre Kunden individueller, strukturierter und sicherer begleiten können.",
+      "Gerade wenn Kunden Laborwerte, Beschwerden, Supplemente oder widersprüchliche Informationen mitbringen, braucht Beratung mehr Tiefe.",
+      "Biochemische Gesundheitsberatung unterstützt dabei, Zusammenhänge zu erkennen, Informationen zu sortieren und Empfehlungen fachlich fundierter aufzubauen.",
     ],
   },
   zielgruppe: {

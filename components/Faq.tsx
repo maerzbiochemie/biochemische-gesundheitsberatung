@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Glossary } from "@/components/Glossary";
 
 type FaqItem = { q: string; a: readonly string[] };
 
@@ -50,7 +51,9 @@ export function Faq({ items }: { items: readonly FaqItem[] }) {
             >
               <div className="max-w-2xl space-y-3 pb-7 text-[var(--color-ink-soft)]">
                 {item.a.map((p) => (
-                  <p key={p}>{p}</p>
+                  <p key={p}>
+                    <Glossary>{p}</Glossary>
+                  </p>
                 ))}
               </div>
             </div>

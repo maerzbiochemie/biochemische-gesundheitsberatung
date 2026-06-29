@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow, Section } from "@/components/ui";
+import { Glossary } from "@/components/Glossary";
 import { Portrait } from "@/components/Portrait";
 import { BookingButton } from "@/components/BookingButton";
 import { ueberMich } from "@/content/site";
@@ -28,7 +29,9 @@ export default function UeberMichPage() {
           </Reveal>
           <Reveal delay={160} className="mt-8 max-w-2xl space-y-4 text-lg text-[var(--color-ink-soft)]">
             {hero.body.map((p) => (
-              <p key={p}>{p}</p>
+              <p key={p}>
+                <Glossary>{p}</Glossary>
+              </p>
             ))}
           </Reveal>
         </div>
@@ -55,7 +58,9 @@ export default function UeberMichPage() {
             <p className="mt-1 text-[var(--color-sage-deep)]">{person.role}</p>
             <div className="mt-6 space-y-4 text-[var(--color-ink-soft)]">
               {person.body.map((p) => (
-                <p key={p}>{p}</p>
+                <p key={p}>
+                <Glossary>{p}</Glossary>
+              </p>
               ))}
             </div>
           </Reveal>
@@ -77,7 +82,9 @@ export default function UeberMichPage() {
             <Reveal delay={120}>
               <div className="space-y-4 text-[var(--color-ink-soft)]">
                 {biochemie.body.map((p) => (
-                  <p key={p}>{p}</p>
+                  <p key={p}>
+                <Glossary>{p}</Glossary>
+              </p>
                 ))}
               </div>
               <blockquote className="font-display mt-8 border-l-2 border-[var(--color-sage)] pl-6 text-2xl leading-snug text-[var(--color-ink)]">

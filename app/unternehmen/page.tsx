@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/Reveal";
-import { Eyebrow, Section } from "@/components/ui";
+import { Eyebrow, Section, SignalList } from "@/components/ui";
+import { Glossary } from "@/components/Glossary";
 import { BookingButton } from "@/components/BookingButton";
 import { b2b } from "@/content/site";
 
@@ -28,7 +29,9 @@ export default function UnternehmenPage() {
           </Reveal>
           <Reveal delay={200} className="mt-8 max-w-2xl space-y-4 text-lg text-[var(--color-ink-soft)]">
             {hero.body.map((p) => (
-              <p key={p}>{p}</p>
+              <p key={p}>
+              <Glossary>{p}</Glossary>
+            </p>
             ))}
           </Reveal>
         </div>
@@ -46,9 +49,12 @@ export default function UnternehmenPage() {
             </Reveal>
           </div>
           <Reveal delay={120} className="md:col-span-6 md:col-start-7">
-            <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
+            <SignalList items={herausforderung.highlights} />
+            <div className="mt-8 space-y-4 text-[var(--color-ink-soft)] md:text-lg">
               {herausforderung.body.map((p) => (
-                <p key={p}>{p}</p>
+                <p key={p}>
+                  <Glossary>{p}</Glossary>
+                </p>
               ))}
             </div>
           </Reveal>

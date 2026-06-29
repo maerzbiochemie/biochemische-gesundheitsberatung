@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow, Section } from "@/components/ui";
 import { Faq } from "@/components/Faq";
+import { Glossary } from "@/components/Glossary";
 import { BookingButton } from "@/components/BookingButton";
 import { faq } from "@/content/site";
 
@@ -24,7 +25,7 @@ export default function FaqPage() {
             {faq.title}
           </Reveal>
           <Reveal delay={160} className="mt-6 max-w-2xl text-lg text-[var(--color-ink-soft)]">
-            {faq.subtitle}
+            <Glossary>{faq.subtitle}</Glossary>
           </Reveal>
         </div>
       </section>

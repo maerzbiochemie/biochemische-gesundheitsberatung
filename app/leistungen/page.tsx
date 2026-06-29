@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { ButtonLink, Eyebrow, Section } from "@/components/ui";
+import { Glossary } from "@/components/Glossary";
 import { BookingButton } from "@/components/BookingButton";
 import { leistungen, site } from "@/content/site";
 
@@ -24,7 +25,9 @@ function PageHero() {
         </Reveal>
         <Reveal delay={160} className="mt-8 max-w-2xl space-y-4 text-lg text-[var(--color-ink-soft)]">
           {body.map((p) => (
-            <p key={p}>{p}</p>
+            <p key={p}>
+              <Glossary>{p}</Glossary>
+            </p>
           ))}
         </Reveal>
       </div>
@@ -54,7 +57,9 @@ export default function LeistungenPage() {
                 </div>
               </div>
               <div className="md:col-span-7">
-                <p className="text-[var(--color-ink-soft)]">{erstgespraech.body}</p>
+                <p className="text-[var(--color-ink-soft)]">
+                  <Glossary>{erstgespraech.body}</Glossary>
+                </p>
                 <p className="mt-5 font-medium text-[var(--color-ink)]">{erstgespraech.listIntro}</p>
                 <div className="mt-3 space-y-2 text-[var(--color-ink-soft)]">
                   {erstgespraech.list.map((q) => (
@@ -64,6 +69,9 @@ export default function LeistungenPage() {
                 <p className="mt-6 text-sm italic text-[var(--color-muted)]">
                   {erstgespraech.footnote}
                 </p>
+                <div className="mt-7">
+                  <BookingButton label="Termin für kostenloses Erstgespräch buchen" />
+                </div>
               </div>
             </div>
           </div>
@@ -75,7 +83,9 @@ export default function LeistungenPage() {
         <Reveal className="max-w-2xl">
           <Eyebrow>{basispaket.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{basispaket.title}</h2>
-          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{basispaket.intro}</p>
+          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">
+            <Glossary>{basispaket.intro}</Glossary>
+          </p>
         </Reveal>
 
         {/* Zusammensetzung + Gesamtumfang + Abrechnung */}
@@ -103,7 +113,9 @@ export default function LeistungenPage() {
             <p className="eyebrow">{basispaket.billing.title}</p>
             <div className="mt-4 space-y-4 text-[var(--color-ink-soft)]">
               {basispaket.billing.body.map((p) => (
-                <p key={p}>{p}</p>
+                <p key={p}>
+              <Glossary>{p}</Glossary>
+            </p>
               ))}
             </div>
           </div>
@@ -136,7 +148,9 @@ export default function LeistungenPage() {
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{begleitung.title}</h2>
           <div className="mt-6 space-y-4 text-lg text-[var(--color-ink-soft)]">
             {begleitung.intro.map((p) => (
-              <p key={p}>{p}</p>
+              <p key={p}>
+              <Glossary>{p}</Glossary>
+            </p>
             ))}
           </div>
         </Reveal>
@@ -171,7 +185,9 @@ export default function LeistungenPage() {
         <Reveal className="max-w-2xl">
           <Eyebrow>{pakete.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{pakete.title}</h2>
-          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{pakete.intro}</p>
+          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">
+            <Glossary>{pakete.intro}</Glossary>
+          </p>
         </Reveal>
         <div className="mt-14 grid items-stretch gap-6 md:grid-cols-3">
           {pakete.items.map((item, i) => (
@@ -278,7 +294,9 @@ export default function LeistungenPage() {
             </span>
             <div>
               <p className="eyebrow mb-2">Hinweis</p>
-              <p className="max-w-3xl text-[var(--color-ink-soft)]">{hinweis}</p>
+              <p className="max-w-3xl text-[var(--color-ink-soft)]">
+                <Glossary>{hinweis}</Glossary>
+              </p>
             </div>
           </div>
         </Reveal>

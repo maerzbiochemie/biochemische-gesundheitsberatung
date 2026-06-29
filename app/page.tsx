@@ -8,7 +8,7 @@ import { MoreInfo } from "@/components/MoreInfo";
 import { BookingButton } from "@/components/BookingButton";
 import { Portrait } from "@/components/Portrait";
 import { Faq } from "@/components/Faq";
-import { GlossaryText, TermPopover } from "@/components/Glossary";
+import { Glossary, TermPopover } from "@/components/Glossary";
 import { site, home, faq } from "@/content/site";
 import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
@@ -54,7 +54,9 @@ export default function HomePage() {
             <Reveal delay={160} className="md:col-span-7 lg:col-span-6">
               <div className="space-y-5 text-lg text-[var(--color-ink-soft)]">
                 {home.hero.body.map((p) => (
-                  <p key={p}>{p}</p>
+                  <p key={p}>
+                  <Glossary>{p}</Glossary>
+                </p>
                 ))}
               </div>
               <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-start">
@@ -106,8 +108,10 @@ export default function HomePage() {
           <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={120}>
               <div className="space-y-5 text-[var(--color-ink-soft)]">
-                {home.system.body.map((p, i) => (
-                  <p key={p}>{i === 0 ? <GlossaryText text={p} term="gesundheit" /> : p}</p>
+                {home.system.body.map((p) => (
+                  <p key={p}>
+                    <Glossary>{p}</Glossary>
+                  </p>
                 ))}
               </div>
               <blockquote className="font-display mt-10 border-l-2 border-[var(--color-sage)] pl-6 text-2xl leading-snug text-[var(--color-ink)]">
@@ -142,7 +146,9 @@ export default function HomePage() {
             <Reveal delay={120}>
               <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
                 {home.b2cLanding.intro.map((p) => (
-                  <p key={p}>{p}</p>
+                  <p key={p}>
+                  <Glossary>{p}</Glossary>
+                </p>
                 ))}
               </div>
               <SignalList items={home.b2cLanding.signals} className="mt-8" />
@@ -164,13 +170,21 @@ export default function HomePage() {
               <h2 className="font-display text-4xl leading-tight md:text-5xl">
                 {home.solutionBlock.headline}
               </h2>
+              <p className="font-display mt-4 text-xl text-[var(--color-sage-deep)] md:text-2xl">
+                {home.solutionBlock.subheadline}
+              </p>
             </Reveal>
           </div>
           <Reveal delay={120} className="md:col-span-6 md:col-start-7">
             <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
               {home.solutionBlock.body.map((p) => (
-                <p key={p}>{p}</p>
+                <p key={p}>
+                  <Glossary>{p}</Glossary>
+                </p>
               ))}
+            </div>
+            <div className="mt-8">
+              <BookingButton />
             </div>
           </Reveal>
         </div>
@@ -191,7 +205,9 @@ export default function HomePage() {
             <Reveal delay={120}>
               <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
                 {home.b2bLanding.text.map((p) => (
-                  <p key={p}>{p}</p>
+                  <p key={p}>
+                  <Glossary>{p}</Glossary>
+                </p>
                 ))}
               </div>
               <div className="mt-8">
@@ -244,7 +260,9 @@ export default function HomePage() {
               <Eyebrow>{home.aboutTeaser.eyebrow}</Eyebrow>
               <div className="mt-6 space-y-5 text-lg text-[var(--color-ink-soft)]">
                 {home.aboutTeaser.body.map((p) => (
-                  <p key={p}>{p}</p>
+                  <p key={p}>
+                  <Glossary>{p}</Glossary>
+                </p>
                 ))}
               </div>
               <Link
