@@ -139,7 +139,7 @@ export default function UnternehmenPage() {
       </Section>
 
       {/* Preise / Formate */}
-      <Section tone="paper">
+      <Section tone="cream">
         <Reveal className="max-w-xl">
           <Eyebrow>{preise.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{preise.title}</h2>

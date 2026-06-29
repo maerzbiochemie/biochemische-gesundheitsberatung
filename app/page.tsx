@@ -167,12 +167,10 @@ export default function HomePage() {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Reveal>
-              <h2 className="font-display text-4xl leading-tight md:text-5xl">
-                {home.solutionBlock.headline}
-              </h2>
-              <p className="font-display mt-4 text-xl text-[var(--color-sage-deep)] md:text-2xl">
+              <Eyebrow>{home.solutionBlock.headline}</Eyebrow>
+              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
                 {home.solutionBlock.subheadline}
-              </p>
+              </h2>
             </Reveal>
           </div>
           <Reveal delay={120} className="md:col-span-6 md:col-start-7">
