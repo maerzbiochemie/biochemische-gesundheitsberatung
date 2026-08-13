@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ errors }, { status: 422 });
   }
 
-  const to = process.env.CONTACT_TO_EMAIL || "maerz.biochemie@gmail.com";
+  const to = process.env.CONTACT_TO_EMAIL || "kontakt@biochemische-gesundheitsberatung.com";
   const from = process.env.CONTACT_FROM_EMAIL || "Website <onboarding@resend.dev>";
   const apiKey = process.env.RESEND_API_KEY;
 

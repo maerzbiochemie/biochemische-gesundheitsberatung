@@ -76,8 +76,8 @@ export default function DatenschutzPage() {
           />
           <p className={P}>
             E-Mail:{" "}
-            <a href="mailto:maerz.biochemie@gmail.com" className="link-underline break-all text-[var(--color-sage-deep)]">
-              maerz.biochemie@gmail.com
+            <a href="mailto:kontakt@biochemische-gesundheitsberatung.com" className="link-underline break-all text-[var(--color-sage-deep)]">
+              kontakt@biochemische-gesundheitsberatung.com
             </a>
           </p>
           <p className={P}>Website: https://biochemische-gesundheitsberatung.com</p>
@@ -424,8 +424,8 @@ export default function DatenschutzPage() {
           />
           <p className={P}>
             Zur Ausübung Ihrer Rechte genügt eine formlose Mitteilung an:{" "}
-            <a href="mailto:maerz.biochemie@gmail.com" className="link-underline break-all text-[var(--color-sage-deep)]">
-              maerz.biochemie@gmail.com
+            <a href="mailto:kontakt@biochemische-gesundheitsberatung.com" className="link-underline break-all text-[var(--color-sage-deep)]">
+              kontakt@biochemische-gesundheitsberatung.com
             </a>
           </p>
 
@@ -470,8 +470,8 @@ export default function DatenschutzPage() {
           </p>
           <p className={P}>
             Wenn Sie von Ihrem Widerspruchsrecht Gebrauch machen möchten, genügt eine E-Mail an:{" "}
-            <a href="mailto:maerz.biochemie@gmail.com" className="link-underline break-all text-[var(--color-sage-deep)]">
-              maerz.biochemie@gmail.com
+            <a href="mailto:kontakt@biochemische-gesundheitsberatung.com" className="link-underline break-all text-[var(--color-sage-deep)]">
+              kontakt@biochemische-gesundheitsberatung.com
             </a>
           </p>
 

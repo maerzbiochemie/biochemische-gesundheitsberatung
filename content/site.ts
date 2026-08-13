@@ -4,7 +4,7 @@ export const site = {
   name: "Milva März",
   role: "Biochemikerin B.Sc.",
   tagline: "Biochemische Gesundheitsberatung",
-  email: "maerz.biochemie@gmail.com",
+  email: "kontakt@biochemische-gesundheitsberatung.com",
   address: ["Jurastraße 27-1", "72072 Tübingen-Derendingen"],
   // TODO (Launch): finale Social-Media-URLs eintragen. Keine erfundenen Links —
   // bleiben ohne href (nicht klickbar), bis echte URLs vorliegen.
@@ -952,7 +952,7 @@ export const impressum = {
         "72072 Tübingen-Derendingen",
         "Deutschland",
       ],
-      email: "maerz.biochemie@gmail.com",
+      email: "kontakt@biochemische-gesundheitsberatung.com",
     },
     {
       heading: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
