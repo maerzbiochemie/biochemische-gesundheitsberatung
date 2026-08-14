@@ -24,6 +24,7 @@ export const site = {
   legalNav: [
     { label: "Impressum", href: "/impressum" },
     { label: "Datenschutzerklärung", href: "/datenschutz" },
+    { label: "Widerrufsbelehrung", href: "/widerrufsbelehrung" },
   ],
   cta: {
     primary: { label: "Kostenloses Erstgespräch anfragen", href: "/kontakt" },
@@ -343,19 +344,20 @@ export const leistungen = {
     eyebrow: "Das Herzstück",
     title: "Das Basispaket",
     intro:
-      "Das Basispaket bildet den strukturierten Einstieg in die biochemische Gesundheitsberatung. Es besteht aus Analysegespräch, Biochemischem Gesundheitskompass und Abschlussgespräch & Ausblick und kann nur gemeinsam gebucht werden.",
-    gesamt: "520 €",
+      "Das Basispaket bildet den strukturierten Einstieg in die biochemische Gesundheitsberatung. Es besteht aus Analysegespräch, Besprechung des Biochemischen Gesundheitskompasses, dem Biochemischen Gesundheitskompass und Abschlussgespräch & Ausblick und kann nur gemeinsam gebucht werden.",
+    gesamt: "640 €",
     gesamtLabel: "Gesamtumfang",
     gesamtNote: "Abrechnung erfolgt schrittweise nach erbrachter Leistung.",
     zusammensetzung: [
       ["Analysegespräch", "150 €"],
+      ["Besprechung des Biochemischen Gesundheitskompasses", "120 €"],
       ["Biochemischer Gesundheitskompass", "250 €"],
       ["Abschlussgespräch & Ausblick", "120 €"],
     ],
     billing: {
       title: "Hinweis zur Abrechnung",
       body: [
-        "Der Gesamtpreis von 520 € beschreibt den Umfang des Basispakets. Die einzelnen Bestandteile werden jeweils erst nach Durchführung des jeweiligen Termins beziehungsweise nach Bereitstellung der schriftlichen Ausarbeitung abgerechnet. So zahlen Sie nur für Leistungen, die tatsächlich stattgefunden haben oder erbracht wurden.",
+        "Der Gesamtpreis von 640 € beschreibt den Umfang des Basispakets. Die einzelnen Bestandteile werden jeweils erst nach Durchführung des jeweiligen Termins beziehungsweise nach Bereitstellung der schriftlichen Ausarbeitung abgerechnet. So zahlen Sie nur für Leistungen, die tatsächlich stattgefunden haben oder erbracht wurden.",
         "Falls ein Termin verschoben werden muss, kann dieser neu vereinbart werden. Die Abrechnung erfolgt entsprechend erst nach dem wahrgenommenen Termin.",
       ],
     },
@@ -369,13 +371,20 @@ export const leistungen = {
       },
       {
         n: "02",
+        title: "Besprechung des Biochemischen Gesundheitskompasses",
+        meta: "im Anschluss an das Analysegespräch · ca. 1,5 Stunden",
+        body: "Bevor Sie Ihren schriftlichen Biochemischen Gesundheitskompass erhalten, besprechen wir gemeinsam die zentralen Ergebnisse aus dem Analysegespräch und ordnen erste Schwerpunkte ein.",
+        note: "So haben Sie bereits vor der schriftlichen Ausarbeitung die Möglichkeit, Rückfragen zu stellen und Prioritäten mitzugestalten.",
+      },
+      {
+        n: "03",
         title: "Biochemischer Gesundheitskompass",
         meta: "schriftliche Ausarbeitung",
         body: "Nach dem Analysegespräch erhalten Sie Ihren individuell ausgearbeiteten Biochemischen Gesundheitskompass. Er verbindet Ihre Ausgangssituation mit einer verständlichen biochemischen Einordnung und konkreten Handlungsschritten für Ihren Alltag.",
         note: "Der Gesundheitskompass dient nicht nur als Maßnahmenplan, sondern auch als persönliche Wissensgrundlage, die Sie jederzeit nachlesen können.",
       },
       {
-        n: "03",
+        n: "04",
         title: "Abschlussgespräch & Ausblick",
         meta: "nach drei Monaten · ca. 60 Minuten",
         body: "Das Abschlussgespräch findet nach drei Monaten statt. Wir werten Ihre bisherige Entwicklung aus, ordnen Veränderungen ein und strukturieren die nächsten sinnvollen Schritte.",
@@ -431,8 +440,8 @@ export const leistungen = {
     items: [
       {
         title: "Gesundheitskompass",
-        sub: "Analysegespräch + Biochemischer Gesundheitskompass + Abschlussgespräch & Ausblick",
-        price: "520 €",
+        sub: "Analysegespräch + Besprechung + Biochemischer Gesundheitskompass + Abschlussgespräch & Ausblick",
+        price: "640 €",
         priceSuffix: "Gesamtumfang",
         body: "Der strukturierte Einstieg in die biochemische Gesundheitsberatung. Geeignet, wenn Sie Ihre Situation fundiert verstehen, körperliche Zusammenhänge nachvollziehen und einen klaren schriftlichen Plan erhalten möchten.",
         note: "Abrechnung erfolgt schrittweise nach erbrachter Leistung.",
@@ -441,7 +450,7 @@ export const leistungen = {
       {
         title: "Performer",
         sub: "Gesundheitskompass + regelmäßige Begleitung",
-        price: "520 €",
+        price: "640 €",
         priceSuffix: "zzgl. 90 € pro Woche",
         body: "Geeignet, wenn Sie Ihr Konzept nicht nur erhalten, sondern aktiv und strukturiert umsetzen möchten – mit regelmäßiger Unterstützung, fachlicher Einordnung und Anpassung einzelner Empfehlungen.",
         note: "Mindestlaufzeit der Begleitung: 4 Wochen.",
@@ -450,7 +459,7 @@ export const leistungen = {
       {
         title: "High Performer",
         sub: "Gesundheitskompass + persönliche und tägliche Begleitung",
-        price: "520 €",
+        price: "640 €",
         priceSuffix: "zzgl. 160 € pro Woche",
         body: "Geeignet, wenn Sie eine persönliche und tägliche Begleitung wünschen, beruflich oder sportlich stark eingespannt sind oder komplexere Themen mitbringen. Im Vordergrund stehen die persönliche, tägliche Begleitung sowie engere Verlaufseinordnung und Anpassung der Strategie.",
         note: "Mindestlaufzeit der Begleitung: 4 Wochen.",
@@ -820,15 +829,15 @@ export const faq = {
     {
       q: "Kann ich das Analysegespräch oder den Gesundheitskompass einzeln buchen?",
       a: [
-        "Nein. Analysegespräch, Biochemischer Gesundheitskompass und Abschlussgespräch & Ausblick bilden gemeinsam das Basispaket.",
-        "Diese drei Bestandteile gehören zusammen, weil eine sinnvolle Strategie zuerst eine ausführliche Einordnung braucht, anschließend schriftlich ausgearbeitet wird und im Abschlussgespräch gemeinsam eingeordnet werden sollte.",
+        "Nein. Analysegespräch, Besprechung des Biochemischen Gesundheitskompasses, der schriftliche Gesundheitskompass und das Abschlussgespräch & Ausblick bilden gemeinsam das Basispaket.",
+        "Diese vier Bestandteile gehören zusammen, weil eine sinnvolle Strategie zuerst eine ausführliche Einordnung braucht, anschließend gemeinsam besprochen und schriftlich ausgearbeitet wird und im Abschlussgespräch gemeinsam eingeordnet werden sollte.",
       ],
     },
     {
       q: "Wie läuft die Zusammenarbeit ab?",
       a: [
         "Die Zusammenarbeit beginnt mit einem kostenlosen Erstgespräch. Danach erhalten Sie einen ausführlichen Anamnesebogen.",
-        "Auf dieser Grundlage findet das Analysegespräch statt. Anschließend wird Ihr Biochemischer Gesundheitskompass schriftlich ausgearbeitet. Im Abschlussgespräch besprechen wir die wichtigsten Punkte, ordnen Ihre nächsten Schritte ein und schauen, wie der weitere Weg sinnvoll gestaltet werden kann.",
+        "Auf dieser Grundlage findet das Analysegespräch statt. Anschließend besprechen wir gemeinsam die zentralen Ergebnisse, bevor Ihr Biochemischer Gesundheitskompass schriftlich ausgearbeitet wird. Im Abschlussgespräch besprechen wir die wichtigsten Punkte, ordnen Ihre nächsten Schritte ein und schauen, wie der weitere Weg sinnvoll gestaltet werden kann.",
       ],
     },
     {
@@ -879,7 +888,7 @@ export const faq = {
     {
       q: "Wie wird abgerechnet?",
       a: [
-        "Das Basispaket hat einen Gesamtumfang von 520 €.",
+        "Das Basispaket hat einen Gesamtumfang von 640 €.",
         "Die Abrechnung erfolgt schrittweise nach erbrachter Leistung: jeweils nach dem Termin beziehungsweise nach Bereitstellung des Biochemischen Gesundheitskompasses. So zahlen Sie nur für Leistungen, die tatsächlich stattgefunden haben oder erbracht wurden.",
         "Wenn ein Termin verschoben werden muss, kann dieser neu vereinbart werden. Die Abrechnung erfolgt entsprechend erst nach dem wahrgenommenen Termin.",
       ],

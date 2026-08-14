@@ -121,8 +121,8 @@ export default function LeistungenPage() {
           </div>
         </Reveal>
 
-        {/* Drei verbundene Bestandteile */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        {/* Vier verbundene Bestandteile */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {basispaket.cards.map((item, i) => (
             <Reveal key={item.title} delay={i * 110} className="card flex flex-col p-8">
               <span className="marker-num-lg">{item.n}</span>
@@ -135,7 +135,7 @@ export default function LeistungenPage() {
         </div>
         <Reveal className="mt-8">
           <p className="text-sm text-[var(--color-muted)]">
-            Hinweis: Diese drei Bestandteile gehören zusammen und können nur gemeinsam als Basispaket
+            Hinweis: Diese vier Bestandteile gehören zusammen und können nur gemeinsam als Basispaket
             gebucht werden.
           </p>
         </Reveal>
