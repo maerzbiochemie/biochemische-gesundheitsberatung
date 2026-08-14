@@ -24,7 +24,6 @@ export const site = {
   legalNav: [
     { label: "Impressum", href: "/impressum" },
     { label: "Datenschutzerklärung", href: "/datenschutz" },
-    { label: "Widerrufsbelehrung", href: "/widerrufsbelehrung" },
   ],
   cta: {
     primary: { label: "Kostenloses Erstgespräch anfragen", href: "/kontakt" },
