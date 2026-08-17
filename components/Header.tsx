@@ -31,7 +31,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 print:hidden transition-all duration-500 ${
         scrolled || open
           ? "bg-[var(--color-cream)]/90 backdrop-blur-md border-b border-[var(--color-line)]"
           : "bg-transparent border-b border-transparent"

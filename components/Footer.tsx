@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-ink)] text-[var(--color-paper)]">
+    <footer className="bg-[var(--color-ink)] text-[var(--color-paper)] print:hidden">
       <div className="container-x py-20 md:py-24">
         {/* Centered brand block */}
         <div className="text-center">

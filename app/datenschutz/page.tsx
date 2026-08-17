@@ -307,6 +307,33 @@ export default function DatenschutzPage() {
             eingebunden.
           </p>
 
+          <h3 className={H3}>g. Anamnesebogen (Online-Fragebogen)</h3>
+          <p className={P}>
+            Unter /anamnesebogen biete ich einen passwortgeschützten Online-Fragebogen zur Vorbereitung des Ersttermins an. Den Zugang
+            und das Passwort erhalten Sie individuell von mir.
+          </p>
+          <p className={P}>
+            Ihre Eingaben in diesem Fragebogen — einschließlich etwaiger Gesundheitsdaten im Sinne von Art. 9 DSGVO — werden
+            ausschließlich lokal in Ihrem Browser verarbeitet, dort AES-256-verschlüsselt zwischengespeichert und automatisch 24 Stunden
+            nach Ihrer letzten Eingabe selbst gelöscht. Über die Schaltfläche „Zurücksetzen“ können Sie Ihre Angaben jederzeit sofort
+            löschen. Ihre Eingaben werden zu keinem Zeitpunkt an einen Server übertragen; ich erhalte sie nur, wenn Sie den ausgefüllten
+            Bogen als PDF exportieren und mir zukommen lassen — gleichwertig entweder als Freigabe-Link zu einer PDF-Datei aus Ihrem
+            eigenen, verschlüsselten Cloud-Speicher (z. B. Proton Drive) oder postalisch als Ausdruck. Wählen Sie den Freigabe-Link-Weg,
+            schützen Sie diesen bitte zusätzlich mit einem Passwort, das Sie mir über einen anderen Kanal als die E-Mail mitteilen (z. B.
+            Telefon oder SMS), und setzen Sie eine kurze Gültigkeitsdauer (z. B. 7 Tage); für Passwort, Ablauf und Löschung in Ihrem
+            eigenen Cloud-Konto sind Sie selbst verantwortlich. Sobald ich die Datei über diesen Link herunterlade und übernehme, gelten
+            für die weitere Aufbewahrung wieder meine üblichen Speicher- und Löschpflichten.
+          </p>
+          <p className={P}>
+            Diese Seite wird wie die übrige Website über Cloudflare ausgeliefert (siehe Abschnitt b oben); ein weiterer, gesonderter
+            Hosting-Dienstleister ist damit für den Anamnesebogen nicht mehr beteiligt.
+          </p>
+          <p className={P}>
+            Für die Verarbeitung der in diesem Fragebogen angegebenen Gesundheitsdaten hole ich Ihre gesonderte, ausdrückliche
+            Einwilligung gemäß Art. 9 Abs. 2 lit. a DSGVO direkt im Fragebogen ein. Die vollständige, gesonderte
+            Einwilligungserklärung und Datenschutzerklärung zum Anamnesebogen finden Sie am Ende des Fragebogens selbst.
+          </p>
+
           {/* 3 */}
           <h2 className={H2}>3. Datenweitergabe an Dritte</h2>
           <p className={P}>

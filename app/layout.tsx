@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${display.variable} ${inter.variable}`}>
       <body>
-        <div className="grain-overlay" aria-hidden />
+        <div className="grain-overlay print:hidden" aria-hidden />
         <ScrollProgress />
         <Header />
         <main>{children}</main>
