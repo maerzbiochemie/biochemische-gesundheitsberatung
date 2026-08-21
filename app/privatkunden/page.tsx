@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow, Section, SignalList } from "@/components/ui";
 import { Glossary, InlineInfo } from "@/components/Glossary";
@@ -12,31 +13,31 @@ import { privatkunden } from "@/content/site";
 function BenefitIcon({ index }: { index: number }) {
   const drawings = [
     // Verständliche Einordnung — connected nodes
-    <>
+    <Fragment key="einordnung">
       <circle cx="7" cy="10" r="2.5" />
       <circle cx="24" cy="8" r="2.5" />
       <circle cx="16" cy="25" r="2.5" />
       <path d="M9.3 11 L21.7 9 M8.5 12.4 L14.6 22.7 M17.4 22.8 L22.9 10.2" />
-    </>,
+    </Fragment>,
     // Klare Prioritäten — ranked lines
-    <path d="M6 9h20M6 16h13M6 23h7" />,
+    <path key="priorities" d="M6 9h20M6 16h13M6 23h7" />,
     // Biochemischer Gesundheitskompass — compass
-    <>
+    <Fragment key="kompass">
       <circle cx="16" cy="16" r="11" />
       <path d="M11 21 L17.5 17.5 L21 11 L14.5 14.5 Z" />
       <circle cx="16" cy="16" r="0.8" />
-    </>,
+    </Fragment>,
     // Alltagstaugliche Umsetzung — winding path
-    <>
+    <Fragment key="umsetzung">
       <path d="M7 25c0-6 6-6 6-11s6-5 6 0 6 6 6 0" />
       <circle cx="7" cy="25" r="1.6" />
       <circle cx="25" cy="13" r="1.6" />
-    </>,
+    </Fragment>,
     // Mehr Verständnis für den Körper — person
-    <>
+    <Fragment key="verstaendnis">
       <circle cx="16" cy="9" r="3.6" />
       <path d="M9 25c0-7 3-10 7-10s7 3 7 10" />
-    </>,
+    </Fragment>,
   ];
   return (
     <svg
