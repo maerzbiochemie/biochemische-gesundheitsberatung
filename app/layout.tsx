@@ -45,6 +45,17 @@ export const metadata: Metadata = {
     siteName: "Milva März — Biochemische Gesundheitsberatung",
     locale: "de_DE",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
   },
 };
 
