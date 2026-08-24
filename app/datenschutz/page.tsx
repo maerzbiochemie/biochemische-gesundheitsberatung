@@ -320,10 +320,10 @@ export default function DatenschutzPage() {
             Bogen als PDF exportieren und mir zukommen lassen — gleichwertig entweder über einen von mir bereitgestellten,
             passwortgeschützten und zeitlich befristeten Freigabe-Link zu einem eigens dafür angelegten Ordner in meinem eigenen,
             verschlüsselten Cloud-Speicher (Proton Drive) oder postalisch als Ausdruck. Für den Freigabe-Link-Weg richte ich Ihnen den
-            Link ein (Gültigkeit z. B. 7 Tage) und sende ihn Ihnen per E-Mail; das zugehörige Passwort teile ich Ihnen über einen anderen
-            Kanal mit (z. B. Telefon oder SMS). Sobald ich Ihre Datei über diesen Link herunterlade und übernehme, gelten für die weitere
-            Aufbewahrung wieder meine üblichen Speicher- und Löschpflichten; den Ordner samt Inhalt lösche ich spätestens nach Ablauf der
-            Gültigkeitsdauer.
+            Link ein (Gültigkeit: 7 Tage) und sende ihn Ihnen per E-Mail; das zugehörige Passwort teile ich Ihnen über einen anderen
+            Kanal mit (z. B. Telefon oder SMS). Ich lösche Ordner und Datei umgehend, sobald ich Ihre Datei über diesen Link
+            heruntergeladen und übernommen habe, spätestens jedoch nach Ablauf der 7 Tage. Ab der Übernahme gelten für die weitere
+            Aufbewahrung wieder meine üblichen Speicher- und Löschpflichten.
           </p>
           <p className={P}>
             Diese Seite wird wie die übrige Website über Cloudflare ausgeliefert (siehe Abschnitt b oben); ein weiterer, gesonderter
