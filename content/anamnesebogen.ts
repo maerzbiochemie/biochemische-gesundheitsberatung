@@ -17,7 +17,6 @@ interface FieldBase {
   name: string;
   label: string;
   hint?: string;
-  added?: string;
 }
 
 export interface TextField extends FieldBase {
@@ -350,10 +349,9 @@ export const sections: Section[] = [
         type: "check",
         label: "Tumor- / Krebserkrankung",
         name: "s5_tumor",
+        hint: "Freiwillige Angabe als Hintergrundinformation für das Beratungsgespräch – keine Diagnosestellung.",
         cols: 1,
         other: true,
-        added: "Ihre Ergänzung",
-        hint: "Freiwillige Angabe als Hintergrundinformation für das Beratungsgespräch — keine Diagnosestellung.",
         options: [
           "keine bekannt",
           "eigene Vorgeschichte (aktuell oder früher)",
@@ -568,7 +566,7 @@ export const sections: Section[] = [
           "low carb",
           "ketogen",
           "kalorienreduziert",
-          "intervallfasten",
+          "Intervallfasten",
           "intuitiv",
           "keine bestimmte Ernährungsform",
         ],
@@ -587,14 +585,13 @@ export const sections: Section[] = [
       {
         type: "note",
         tone: "info",
-        title: "Genussmittel und Substanzen — ergänzt auf Ihren Wunsch",
+        title: "Genussmittel und Substanzen",
         text: "Alkohol ist oben bereits erfasst. Ergänzend zu Nikotin/Rauchen und allgemeinem Substanzkonsum — freiwillige Angabe, dient nur als Hintergrundinformation, keine Wertung.",
       },
       {
         type: "radiotext",
         label: "Nikotin / Rauchen",
         name: "s8_nikotin",
-        added: "Neu (Vorschlag 1)",
         options: ["nein", "gelegentlich", "regelmäßig"],
         textPlaceholder: "Menge, seit wann (z. B. Zigaretten/Tag, Vape, seit wann)",
       },
@@ -602,7 +599,6 @@ export const sections: Section[] = [
         type: "radiotext",
         label: "Andere Substanzen (z. B. Cannabis, weitere Freizeitsubstanzen)",
         name: "s8_substanzen",
-        added: "Ihre Ergänzung",
         options: ["nein", "ja"],
         textPlaceholder: "welche, wie häufig (freiwillige Angabe)",
       },
@@ -610,7 +606,6 @@ export const sections: Section[] = [
         type: "text",
         label: "Praktische Rahmenbedingungen für Ernährungsempfehlungen (z. B. Budget, Kochzeit, Verfügbarkeit)",
         name: "s8_rahmenbedingungen",
-        added: "Neu (Vorschlag 3)",
         hint: "Hilft, Empfehlungen alltagstauglich zu gestalten.",
       },
       {
@@ -634,7 +629,6 @@ export const sections: Section[] = [
         type: "text",
         label: "Bildschirmzeit am Abend vor dem Schlafengehen",
         name: "s9_bildschirmzeit_abends",
-        added: "Neu (Vorschlag 2)",
         hint: "z. B. Handy/PC/TV in der letzten Stunde vor dem Einschlafen — relevant für Melatonin und Schlafqualität.",
       },
       {
@@ -787,7 +781,6 @@ export const sections: Section[] = [
         label: "Schwangerschaften / Geburten / Fehlgeburten / Abbrüche, falls relevant",
         name: "s10_schwangerschaften",
         lines: 2,
-        hint: "Bereits im Original enthalten — freiwillige Angabe.",
       },
       {
         type: "check",
@@ -856,7 +849,7 @@ export const sections: Section[] = [
         options: [
           "trockene Augen",
           "trockener Mund",
-          "Aphten",
+          "Aphthen",
           "Zahnfleischbluten",
           "belegte Zunge",
           "wiederkehrende Halsschmerzen",

@@ -17,15 +17,10 @@ const INPUT =
 
 const PRINT_VALUE = "hidden whitespace-pre-wrap rounded-lg border border-[var(--color-line)] p-3 text-[14px] print:block";
 
-function FieldLabel({ label, name, hint, added }: { label: string; name: string; hint?: string; added?: string }) {
+function FieldLabel({ label, name, hint }: { label: string; name: string; hint?: string }) {
   return (
     <label htmlFor={name} className="mb-2 block text-sm font-medium text-[var(--color-ink)]">
       {label}
-      {added && (
-        <span className="ml-2 inline-block rounded-full bg-[var(--color-terra-soft)]/20 px-2 py-0.5 align-middle text-[10.5px] font-semibold uppercase tracking-wide text-[var(--color-terra)]">
-          {added}
-        </span>
-      )}
       {hint && <span className="mt-1 block text-xs font-normal text-[var(--color-muted)]">{hint}</span>}
     </label>
   );
