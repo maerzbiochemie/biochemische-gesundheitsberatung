@@ -302,11 +302,11 @@ function AnamnesebogenContent() {
         <WarnNote title="So senden Sie den ausgefüllten Bogen zurück">
           <p>
             Bitte füllen Sie den Bogen hier aus und speichern Sie ihn anschließend als PDF (Button „Drucken / Als PDF“ unten). Am
-            einfachsten: Laden Sie die PDF-Datei in Ihr eigenes Proton Drive (oder einen anderen Cloud-Speicher Ihrer Wahl) hoch und
-            teilen Sie mir den Freigabe-Link per E-Mail ({site.email}). Schützen Sie den Link zusätzlich mit einem Passwort und teilen
-            Sie mir dieses auf einem anderen Weg mit (z.&nbsp;B. Telefon oder SMS, nicht in derselben E-Mail); setzen Sie außerdem eine
-            kurze Gültigkeitsdauer, z.&nbsp;B. 7 Tage. Für Passwort, Ablauf und Löschung in Ihrem eigenen Cloud-Konto sind Sie selbst
-            verantwortlich. Genauso gut können Sie den ausgedruckten Bogen auch <strong>per Post</strong> senden an: Milva März,
+            einfachsten: Ich richte Ihnen dafür einen passwortgeschützten, zeitlich befristeten Freigabe-Link zu einem eigens angelegten
+            Ordner in meinem Proton Drive ein. Link und Passwort erhalten Sie von mir getrennt (den Link per E-Mail, das Passwort auf
+            einem anderen Weg, z.&nbsp;B. Telefon oder SMS). Laden Sie darüber bitte ausschließlich Ihren fertig ausgefüllten Fragebogen
+            hoch. Falls Sie diesen Link noch nicht haben, melden Sie sich einfach bei mir ({site.email}). Genauso gut können Sie den
+            ausgedruckten Bogen auch <strong>per Post</strong> senden an: Milva März,
             Biochemische Gesundheitsberatung, Jurastraße 27-1, 72072 Tübingen-Derendingen. Ihre Eingaben verlassen dabei nie diesen
             Browser, werden dort verschlüsselt gespeichert und automatisch 24 Stunden nach der letzten Eingabe selbst gelöscht — speichern
             Sie die PDF also rechtzeitig vorher.
@@ -347,8 +347,8 @@ function AnamnesebogenContent() {
         <footer className="pb-2 pt-10 text-center text-xs text-[var(--color-muted)]">
           Version 2.3 · Online-Fragebogen · Ihre Eingaben werden ausschließlich lokal in diesem Browser gespeichert (kein Server-Upload),
           dort verschlüsselt (AES-256) und löschen sich automatisch 24 Stunden nach der letzten Eingabe von selbst. Bitte speichern Sie
-          den ausgefüllten Bogen rechtzeitig vorher als PDF — danach senden Sie ihn bitte per Freigabe-Link aus Ihrem eigenen Proton
-          Drive oder per Post an die Praxisadresse. Über „Zurücksetzen“ können Sie Ihre Angaben auch jederzeit sofort löschen, was
+          den ausgefüllten Bogen rechtzeitig vorher als PDF — danach senden Sie ihn bitte über den von mir bereitgestellten
+          Proton-Drive-Freigabe-Link oder per Post an die Praxisadresse. Über „Zurücksetzen“ können Sie Ihre Angaben auch jederzeit sofort löschen, was
           besonders auf gemeinsam genutzten oder öffentlichen Geräten wichtig ist.
         </footer>
       </div>

@@ -343,7 +343,35 @@ export const sections: Section[] = [
           "Asthma / Allergien",
           "Endometriose",
           "Lupus",
+          "Neurodermitis",
+          "Fibromyalgie",
+          "Multiple Sklerose",
         ],
+      },
+      {
+        type: "check",
+        label: "Bekannte Volkskrankheiten",
+        name: "s5_volkskrankheiten",
+        cols: 2,
+        other: true,
+        options: [
+          "Bluthochdruck (Hypertonie)",
+          "Diabetes Typ 2",
+          "Angina Pectoris / koronare Herzkrankheit",
+          "Gicht",
+          "Herzinfarkt / Schlaganfall",
+          "Fettstoffwechselstörung (hohes Cholesterin)",
+          "Osteoporose",
+          "COPD / chronische Bronchitis",
+        ],
+      },
+      {
+        type: "table",
+        label: "Erkrankungen in der Familie (genetische Vorgeschichte)",
+        name: "s5_familienanamnese",
+        hint: "Freiwillige Angabe, hilft bei der Einschätzung erblicher Veranlagungen.",
+        columns: ["Erkrankung", "Verwandtschaftsgrad (z. B. Mutter, Vater, Geschwister)", "Alter bei Diagnose (falls bekannt)"],
+        rows: 3,
       },
       {
         type: "check",
@@ -1178,6 +1206,7 @@ export const consentIntro = {
   heading: "Einwilligung zur Verarbeitung meiner Gesundheitsdaten",
   paragraphs: [
     "Ich willige ausdrücklich ein, dass Milva März, Biochemische Gesundheitsberatung, Jurastraße 27-1, 72072 Tübingen-Derendingen die von mir in diesem Gesundheits- und Ernährungsfragebogen angegebenen Gesundheitsdaten (u. a. Vorerkrankungen, Symptome, Medikamenteneinnahme, Laborwerte, Ernährungs- und Lebensgewohnheiten) zum Zweck der individuellen biochemischen Gesundheits- und Ernährungsberatung verarbeitet und speichert.",
+    "Sofern ich im Abschnitt „Erkrankungen in der Familie“ Angaben zu Verwandten mache, willige ich zudem ein, dass diese Angaben (ohne Namen, nur Verwandtschaftsgrad, Erkrankung und Diagnosealter) ausschließlich zur Einschätzung meiner eigenen gesundheitlichen Veranlagung verarbeitet werden.",
     "Mir ist bekannt, dass:",
   ],
   bullets: [
@@ -1211,7 +1240,7 @@ export const privacyNoticeBlocks: LegalBlock[] = [
   },
   {
     type: "p",
-    text: "3. Kategorien personenbezogener Daten — Kontaktdaten (Name, Anschrift, E-Mail, Telefon); Gesundheitsdaten i. S. v. Art. 9 DSGVO (Vorerkrankungen, Symptome, Medikamente, Laborwerte, Ernährungs- und Lebensgewohnheiten, Beschwerden).",
+    text: "3. Kategorien personenbezogener Daten — Kontaktdaten (Name, Anschrift, E-Mail, Telefon); Gesundheitsdaten i. S. v. Art. 9 DSGVO (Vorerkrankungen, Symptome, Medikamente, Laborwerte, Ernährungs- und Lebensgewohnheiten, Beschwerden) sowie ggf. anonymisierte Angaben zu Erkrankungen bei Familienangehörigen (nur Verwandtschaftsgrad, keine Namen), sofern freiwillig angegeben.",
   },
   { type: "p", text: "4. Rechtsgrundlage" },
   {
@@ -1231,7 +1260,7 @@ export const privacyNoticeBlocks: LegalBlock[] = [
   },
   {
     type: "p",
-    text: "6. Speicherdauer — Beim Ausfüllen dieses Online-Bogens: Ihre Eingaben werden ausschließlich lokal, verschlüsselt (AES-256) in Ihrem Browser zwischengespeichert, nie an einen Server übertragen und automatisch 24 Stunden nach Ihrer letzten Eingabe von selbst gelöscht; über „Zurücksetzen“ können Sie sie jederzeit sofort löschen. Erst nachdem Sie mir den ausgedruckten/exportierten Bogen zukommen lassen — per Post oder als Freigabe-Link zu einer PDF-Datei aus Ihrem eigenen, verschlüsselten Cloud-Speicher (z. B. Proton Drive), gleichwertig zur postalischen Zusendung — werden Ihre Gesundheitsdaten für die Dauer des Beratungsverhältnisses und bis zu 3 Jahre danach gespeichert, sofern keine gesetzliche Aufbewahrungspflicht entgegensteht (z. B. handels-/steuerrechtliche Fristen für Rechnungsunterlagen, § 147 AO, § 257 HGB: 6–10 Jahre). Danach werden die Daten gelöscht oder anonymisiert. Nutzen Sie den Freigabe-Link-Weg, schützen Sie diesen bitte zusätzlich mit einem Passwort, das Sie mir über einen anderen Kanal als die E-Mail mitteilen (z. B. Telefon oder SMS), und setzen Sie eine kurze Gültigkeitsdauer (z. B. 7 Tage); für Passwort, Ablauffrist und Löschung in Ihrem eigenen Cloud-Konto sind Sie selbst verantwortlich. Ab dem Zeitpunkt, zu dem ich die Datei über diesen Link herunterlade und übernehme, gelten für die weitere Aufbewahrung wieder die vorstehend genannten Fristen und Löschpflichten.",
+    text: "6. Speicherdauer — Beim Ausfüllen dieses Online-Bogens: Ihre Eingaben werden ausschließlich lokal, verschlüsselt (AES-256) in Ihrem Browser zwischengespeichert, nie an einen Server übertragen und automatisch 24 Stunden nach Ihrer letzten Eingabe von selbst gelöscht; über „Zurücksetzen“ können Sie sie jederzeit sofort löschen. Erst nachdem Sie mir den ausgedruckten/exportierten Bogen zukommen lassen — per Post oder über einen von mir bereitgestellten, passwortgeschützten und zeitlich befristeten Freigabe-Link zu einem eigens dafür angelegten Ordner in meinem eigenen, verschlüsselten Cloud-Speicher (Proton Drive), gleichwertig zur postalischen Zusendung — werden Ihre Gesundheitsdaten für die Dauer des Beratungsverhältnisses und bis zu 3 Jahre danach gespeichert, sofern keine gesetzliche Aufbewahrungspflicht entgegensteht (z. B. handels-/steuerrechtliche Fristen für Rechnungsunterlagen, § 147 AO, § 257 HGB: 6–10 Jahre). Danach werden die Daten gelöscht oder anonymisiert. Für den Freigabe-Link-Weg richte ich Ihnen den Link ein (Gültigkeit z. B. 7 Tage) und teile ihn Ihnen per E-Mail mit; das zugehörige Passwort teile ich Ihnen über einen anderen Kanal mit (z. B. Telefon oder SMS). Laden Sie darüber bitte ausschließlich Ihren fertig ausgefüllten Fragebogen als PDF hoch. Ab dem Zeitpunkt, zu dem ich Ihre Datei aus diesem Ordner herunterlade und übernehme, gelten für die weitere Aufbewahrung wieder die vorstehend genannten Fristen und Löschpflichten; den Ordner samt Inhalt lösche ich spätestens nach Ablauf der Gültigkeitsdauer.",
   },
   { type: "p", text: "(Hinweis: Als nicht-ärztliche Beratung gilt hier NICHT die ärztliche 10-Jahres-Dokumentationspflicht nach § 630f BGB.)" },
   {

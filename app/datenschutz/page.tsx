@@ -317,12 +317,13 @@ export default function DatenschutzPage() {
             ausschließlich lokal in Ihrem Browser verarbeitet, dort AES-256-verschlüsselt zwischengespeichert und automatisch 24 Stunden
             nach Ihrer letzten Eingabe selbst gelöscht. Über die Schaltfläche „Zurücksetzen“ können Sie Ihre Angaben jederzeit sofort
             löschen. Ihre Eingaben werden zu keinem Zeitpunkt an einen Server übertragen; ich erhalte sie nur, wenn Sie den ausgefüllten
-            Bogen als PDF exportieren und mir zukommen lassen — gleichwertig entweder als Freigabe-Link zu einer PDF-Datei aus Ihrem
-            eigenen, verschlüsselten Cloud-Speicher (z. B. Proton Drive) oder postalisch als Ausdruck. Wählen Sie den Freigabe-Link-Weg,
-            schützen Sie diesen bitte zusätzlich mit einem Passwort, das Sie mir über einen anderen Kanal als die E-Mail mitteilen (z. B.
-            Telefon oder SMS), und setzen Sie eine kurze Gültigkeitsdauer (z. B. 7 Tage); für Passwort, Ablauf und Löschung in Ihrem
-            eigenen Cloud-Konto sind Sie selbst verantwortlich. Sobald ich die Datei über diesen Link herunterlade und übernehme, gelten
-            für die weitere Aufbewahrung wieder meine üblichen Speicher- und Löschpflichten.
+            Bogen als PDF exportieren und mir zukommen lassen — gleichwertig entweder über einen von mir bereitgestellten,
+            passwortgeschützten und zeitlich befristeten Freigabe-Link zu einem eigens dafür angelegten Ordner in meinem eigenen,
+            verschlüsselten Cloud-Speicher (Proton Drive) oder postalisch als Ausdruck. Für den Freigabe-Link-Weg richte ich Ihnen den
+            Link ein (Gültigkeit z. B. 7 Tage) und sende ihn Ihnen per E-Mail; das zugehörige Passwort teile ich Ihnen über einen anderen
+            Kanal mit (z. B. Telefon oder SMS). Sobald ich Ihre Datei über diesen Link herunterlade und übernehme, gelten für die weitere
+            Aufbewahrung wieder meine üblichen Speicher- und Löschpflichten; den Ordner samt Inhalt lösche ich spätestens nach Ablauf der
+            Gültigkeitsdauer.
           </p>
           <p className={P}>
             Diese Seite wird wie die übrige Website über Cloudflare ausgeliefert (siehe Abschnitt b oben); ein weiterer, gesonderter
