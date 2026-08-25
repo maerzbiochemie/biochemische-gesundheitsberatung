@@ -9,9 +9,28 @@ import { BookingButton } from "@/components/BookingButton";
 import { Portrait } from "@/components/Portrait";
 import { Faq } from "@/components/Faq";
 import { Glossary, TermPopover } from "@/components/Glossary";
+import { IconUnderstand, IconConnect, IconAct } from "@/components/icons";
+import {
+  IconMetabolism,
+  IconEnergy,
+  IconDigestion,
+  IconHormones,
+  IconNervous,
+  IconLoadRecovery,
+} from "@/components/icons";
 import { site, home, faq } from "@/content/site";
 import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
+
+const approachIcons = [IconUnderstand, IconConnect, IconAct];
+const themenfelderIcons = [
+  IconMetabolism,
+  IconEnergy,
+  IconDigestion,
+  IconHormones,
+  IconNervous,
+  IconLoadRecovery,
+];
 
 export default function HomePage() {
   return (
@@ -123,6 +142,19 @@ export default function HomePage() {
                 body={home.system.more.body}
                 className="mt-8"
               />
+              <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-[var(--color-line)] pt-8 sm:grid-cols-3">
+                {home.system.themenfelder.map((label, i) => {
+                  const Icon = themenfelderIcons[i];
+                  return (
+                    <li key={label} className="flex items-center gap-3">
+                      <Icon className="h-6 w-6 shrink-0 text-[var(--color-terra)]" />
+                      <span className="text-sm font-medium tracking-wide text-[var(--color-ink-soft)]">
+                        {label}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
             </Reveal>
           </div>
         </div>
@@ -225,17 +257,23 @@ export default function HomePage() {
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{home.approach.title}</h2>
         </Reveal>
         <div className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-line)] md:grid-cols-3">
-          {home.approach.steps.map((step, i) => (
-            <Reveal
-              key={step.n}
-              delay={i * 110}
-              className="group bg-[var(--color-paper)] p-8 transition-colors duration-500 hover:bg-[var(--color-cream-deep)] md:p-10"
-            >
-              <span className="marker-num-lg">{step.n}</span>
-              <h3 className="font-display mt-5 text-2xl md:text-3xl">{step.title}</h3>
-              <p className="mt-3 text-[var(--color-ink-soft)]">{step.body}</p>
-            </Reveal>
-          ))}
+          {home.approach.steps.map((step, i) => {
+            const Icon = approachIcons[i];
+            return (
+              <Reveal
+                key={step.n}
+                delay={i * 110}
+                className="group bg-[var(--color-paper)] p-8 transition-colors duration-500 hover:bg-[var(--color-cream-deep)] md:p-10"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="marker-num-lg">{step.n}</span>
+                  <Icon className="h-8 w-8 text-[var(--color-terra)] opacity-80 md:h-9 md:w-9" />
+                </div>
+                <h3 className="font-display mt-5 text-2xl md:text-3xl">{step.title}</h3>
+                <p className="mt-3 text-[var(--color-ink-soft)]">{step.body}</p>
+              </Reveal>
+            );
+          })}
         </div>
         <Reveal className="mt-10">
           <Link

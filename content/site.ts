@@ -77,6 +77,17 @@ export const home = {
     ],
     pullquote: "Entscheidend sind deshalb die Prozesse dahinter – nicht nur das einzelne Symptom.",
     heroQuote: "Wer Gesundheit verstehen will, muss den Körper als System betrachten.",
+    // Themenfelder — dieselben Begriffe, die bereits in system.body und im
+    // Gesundheitskompass (leistungen.kompass) verwendet werden, hier als
+    // eigene Liste mit Icons statt Bulletpoints.
+    themenfelder: [
+      "Stoffwechsel",
+      "Energiehaushalt",
+      "Verdauung",
+      "Hormonregulation",
+      "Nervensystem",
+      "Belastung & Regeneration",
+    ],
     more: {
       label: "Mehr erfahren",
       title: "Der Körper als zusammenhängendes Gefüge",

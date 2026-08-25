@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Fragment } from "react";
+import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow, Section, SignalList } from "@/components/ui";
 import { Glossary, InlineInfo } from "@/components/Glossary";
 import { BookingButton } from "@/components/BookingButton";
-import { privatkunden } from "@/content/site";
+import { BookletMockup } from "@/components/BookletMockup";
+import { privatkunden, home } from "@/content/site";
 
 /**
  * Calm, minimal line drawings for the benefit items — one per item, matching
@@ -123,6 +125,32 @@ export default function PrivatkundenPage() {
               ))}
             </div>
           </Reveal>
+        </div>
+      </Section>
+
+      {/* Biochemischer Gesundheitskompass — greifbar gemacht (Signature-Element der Seite) */}
+      <Section tone="deep">
+        <div className="grid gap-12 md:grid-cols-12 md:items-center">
+          <Reveal className="md:col-span-5">
+            <BookletMockup />
+          </Reveal>
+          <div className="md:col-span-6 md:col-start-7">
+            <Reveal delay={120}>
+              <Eyebrow>Ihr Ergebnis</Eyebrow>
+              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
+                {home.services.items[1].title}
+              </h2>
+              <p className="mt-6 text-lg text-[var(--color-ink-soft)]">
+                {home.services.items[1].body}
+              </p>
+              <Link
+                href="/leistungen"
+                className="link-underline mt-7 inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
+              >
+                Leistungen & Preise ansehen <span aria-hidden>→</span>
+              </Link>
+            </Reveal>
+          </div>
         </div>
       </Section>
 
