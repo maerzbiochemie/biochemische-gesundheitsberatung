@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Fragment } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { Eyebrow, Section, SignalList } from "@/components/ui";
+import { ButtonLink, Eyebrow, Section, SignalList } from "@/components/ui";
 import { Glossary, InlineInfo } from "@/components/Glossary";
 import { BookingButton } from "@/components/BookingButton";
 import { BookletMockup } from "@/components/BookletMockup";
-import { privatkunden, home } from "@/content/site";
+import { privatkunden, home, leistungen, site } from "@/content/site";
 
 /**
  * Calm, minimal line drawings for the benefit items — one per item, matching
@@ -65,6 +65,7 @@ export const metadata: Metadata = {
 
 export default function PrivatkundenPage() {
   const { hero, catcher, praevention, zielgruppen, nutzen, process, finalCta } = privatkunden;
+  const { pakete } = leistungen;
   return (
     <>
       {/* Hero — links Überschrift, rechts Text & hervorgehobene Signale (keine Kästen) */}
@@ -197,6 +198,89 @@ export default function PrivatkundenPage() {
             </Reveal>
           ))}
         </div>
+      </Section>
+
+      {/* Pakete im Vergleich — gespiegelt von /leistungen, mit Link zu allen Details */}
+      <Section tone="deep">
+        <Reveal className="max-w-2xl">
+          <Eyebrow>{pakete.eyebrow}</Eyebrow>
+          <h2 className="font-display mt-6 text-4xl md:text-5xl">{pakete.title}</h2>
+          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">
+            <Glossary>{pakete.intro}</Glossary>
+          </p>
+        </Reveal>
+        <div className="mt-14 grid items-stretch gap-6 md:grid-cols-3">
+          {pakete.items.map((item, i) => (
+            <Reveal
+              key={item.title}
+              delay={i * 110}
+              className={`relative flex flex-col rounded-[var(--radius-card)] border p-8 transition-transform duration-500 hover:-translate-y-1 ${
+                item.featured
+                  ? "border-[var(--color-sage)] bg-[var(--color-ink)] text-[var(--color-paper)]"
+                  : "border-[var(--color-line)] bg-[var(--color-paper)]"
+              }`}
+            >
+              {item.featured && (
+                <span className="absolute -top-3 left-8 rounded-full bg-[var(--color-sage)] px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-[var(--color-paper)]">
+                  Beliebt
+                </span>
+              )}
+              <h3 className="font-display text-2xl">{item.title}</h3>
+              <p
+                className={`mt-2 text-sm ${
+                  item.featured ? "text-[var(--color-paper)]/65" : "text-[var(--color-muted)]"
+                }`}
+              >
+                {item.sub}
+              </p>
+              <div className="mt-6 flex flex-wrap items-baseline gap-x-2">
+                <span className="font-display whitespace-nowrap text-4xl">{item.price}</span>
+                <span
+                  className={`mt-1 w-full text-base font-semibold ${
+                    item.featured ? "text-[var(--color-sage-soft)]" : "text-[var(--color-sage-deep)]"
+                  }`}
+                >
+                  {item.priceSuffix}
+                </span>
+              </div>
+              <p
+                className={`mt-6 ${
+                  item.featured ? "text-[var(--color-paper)]/75" : "text-[var(--color-ink-soft)]"
+                }`}
+              >
+                {item.body}
+              </p>
+              <p
+                className={`mt-4 text-sm ${
+                  item.featured ? "text-[var(--color-paper)]/60" : "text-[var(--color-muted)]"
+                }`}
+              >
+                {item.note}
+              </p>
+              <div className="mt-auto pt-8">
+                <ButtonLink
+                  href={site.cta.primary.href}
+                  variant={item.featured ? "primary" : "secondary"}
+                  className={
+                    item.featured
+                      ? "!bg-[var(--color-paper)] !text-[var(--color-ink)] hover:!bg-[var(--color-sage-soft)]"
+                      : ""
+                  }
+                >
+                  Anfragen
+                </ButtonLink>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal delay={120} className="mt-10">
+          <Link
+            href="/leistungen"
+            className="link-underline inline-flex items-center gap-2 text-[var(--color-sage-soft)]"
+          >
+            Alle Details zu Leistungen & Preisen ansehen <span aria-hidden>→</span>
+          </Link>
+        </Reveal>
       </Section>
 
       {/* Ablauf / Prozess */}
