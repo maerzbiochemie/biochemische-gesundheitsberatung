@@ -963,8 +963,10 @@ export const impressum = {
         "Jurastraße 27-1",
         "72072 Tübingen-Derendingen",
         "Deutschland",
+        "Kleinunternehmerin im Sinne von § 19 UStG (keine Umsatzsteuer ausgewiesen)",
       ],
       email: "kontakt@biochemische-gesundheitsberatung.com",
+      phone: "+49 162 9230556",
     },
     {
       heading: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",

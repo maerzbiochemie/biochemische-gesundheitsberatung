@@ -38,6 +38,17 @@ export default function ImpressumPage() {
                     </a>
                   </p>
                 )}
+                {"phone" in sec && sec.phone && (
+                  <p>
+                    Telefon:{" "}
+                    <a
+                      href={`tel:${sec.phone.replace(/\s/g, "")}`}
+                      className="link-underline text-[var(--color-sage-deep)]"
+                    >
+                      {sec.phone}
+                    </a>
+                  </p>
+                )}
               </div>
             </Reveal>
           ))}
