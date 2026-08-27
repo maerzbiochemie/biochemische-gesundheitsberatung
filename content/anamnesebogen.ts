@@ -80,7 +80,6 @@ export interface Section {
 
 export const coverFields: { label: string; name: string }[] = [
   { label: "Name", name: "cover_name" },
-  { label: "Geburtsdatum", name: "cover_geb" },
   { label: "Datum des Ausfüllens", name: "cover_datum" },
   { label: "Termin am", name: "cover_termin" },
   { label: "Telefon", name: "cover_tel" },
