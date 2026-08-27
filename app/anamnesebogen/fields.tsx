@@ -17,6 +17,9 @@ const INPUT =
 
 const PRINT_VALUE = "hidden whitespace-pre-wrap rounded-lg border border-[var(--color-line)] p-3 text-[14px] print:block";
 
+const TABLE_CELL_PRINT_VALUE =
+  "hidden whitespace-pre-wrap break-words px-2 py-1.5 text-[12.5px] leading-snug text-[var(--color-ink)] print:block print:text-black";
+
 function FieldLabel({ label, name, hint }: { label: string; name: string; hint?: string }) {
   return (
     <label htmlFor={name} className="mb-2 block text-sm font-medium text-[var(--color-ink)]">
@@ -192,16 +195,16 @@ export function TableInput({ field }: { field: TableField }) {
   }
 
   return (
-    <div className="my-4">
+    <div className="my-4 print:break-inside-avoid">
       <FieldLabel {...field} />
-      <div className="overflow-x-auto rounded-lg border border-[var(--color-line)]">
-        <table className="w-full min-w-[560px] border-collapse text-[13.3px]">
+      <div className="overflow-x-auto rounded-lg border border-[var(--color-line)] print:overflow-visible print:rounded-none print:border-black/25">
+        <table className="w-full min-w-[560px] border-collapse text-[13.3px] print:min-w-0 print:table-fixed">
           <thead>
-            <tr>
+            <tr className="print:break-inside-avoid">
               {field.columns.map((c) => (
                 <th
                   key={c}
-                  className="whitespace-nowrap border-b border-[var(--color-line)] bg-[var(--color-cream-deep)] px-2.5 py-2 text-left text-[12.3px] font-medium text-[var(--color-muted)]"
+                  className="whitespace-nowrap border-b border-[var(--color-line)] bg-[var(--color-cream-deep)] px-2.5 py-2 text-left text-[12.3px] font-medium text-[var(--color-muted)] print:whitespace-normal print:break-words print:border-black/40 print:bg-transparent print:align-bottom print:text-[11px] print:text-black"
                 >
                   {c}
                 </th>
@@ -210,15 +213,19 @@ export function TableInput({ field }: { field: TableField }) {
           </thead>
           <tbody>
             {rows.map((row, rIdx) => (
-              <tr key={rIdx}>
+              <tr key={rIdx} className="print:break-inside-avoid">
                 {row.map((cell, cIdx) => (
-                  <td key={cIdx} className="min-w-[110px] border-b border-[var(--color-line-soft)] p-1 last:border-b-0">
+                  <td
+                    key={cIdx}
+                    className="min-w-[110px] border-b border-[var(--color-line-soft)] p-1 last:border-b-0 print:min-w-0 print:border-black/15 print:p-1.5 print:align-top"
+                  >
                     <input
                       type="text"
-                      className="w-full bg-transparent px-2 py-1.5 text-[13.5px] text-[var(--color-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--color-sage)]"
+                      className="w-full bg-transparent px-2 py-1.5 text-[13.5px] text-[var(--color-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--color-sage)] print:hidden"
                       value={cell}
                       onChange={(e) => updateCell(rIdx, cIdx, e.target.value)}
                     />
+                    <div className={TABLE_CELL_PRINT_VALUE}>{cell || "—"}</div>
                   </td>
                 ))}
               </tr>
