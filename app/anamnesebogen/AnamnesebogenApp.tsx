@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import {
   consentCheckboxes,
   consentIntro,
-  coverFields,
   optionalProtocol,
   privacyNoticeBlocks,
   sections,
@@ -105,27 +104,6 @@ function TopBar() {
       <div className="mx-auto max-w-[860px]">
         <SectionNav />
       </div>
-    </div>
-  );
-}
-
-function CoverFields() {
-  const { getVal, setVal } = useFormData();
-  return (
-    <div className="overflow-hidden rounded-xl border border-[var(--color-line)]">
-      {coverFields.map((row, i) => (
-        <div key={row.name} className={`grid grid-cols-1 sm:grid-cols-[200px_1fr] ${i > 0 ? "border-t border-[var(--color-line)]" : ""}`}>
-          <div className="flex items-center bg-[var(--color-cream-deep)] px-3 py-2 text-[13.3px] font-medium text-[var(--color-ink)]">
-            {row.label}
-          </div>
-          <input
-            type="text"
-            className="bg-transparent px-3 py-2 text-[14.5px] text-[var(--color-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--color-sage)]"
-            value={getVal<string>(row.name, "")}
-            onChange={(e) => setVal(row.name, e.target.value)}
-          />
-        </div>
-      ))}
     </div>
   );
 }
@@ -294,10 +272,6 @@ function AnamnesebogenContent() {
             die Beratung vorbereitet werden.
           </p>
         </InfoNote>
-
-        <div className="my-5">
-          <CoverFields />
-        </div>
 
         <WarnNote title="So senden Sie den ausgefüllten Bogen zurück">
           <p>

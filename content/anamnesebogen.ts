@@ -78,14 +78,6 @@ export interface Section {
   fields: Field[];
 }
 
-export const coverFields: { label: string; name: string }[] = [
-  { label: "Name", name: "cover_name" },
-  { label: "Datum des Ausfüllens", name: "cover_datum" },
-  { label: "Termin am", name: "cover_termin" },
-  { label: "Telefon", name: "cover_tel" },
-  { label: "E-Mail", name: "cover_email" },
-];
-
 export const bodyMapCategories = [
   { key: "schmerz", label: "Schmerz", sym: "X", color: "#B5652F" },
   { key: "verspannung", label: "Verspannung", sym: "O", color: "#3F5744" },
