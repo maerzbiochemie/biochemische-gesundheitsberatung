@@ -72,8 +72,7 @@ export const home = {
     eyebrow: "Bedeutung von Gesundheit",
     title: "Der Körper funktioniert nicht isoliert – sondern im Verbund.",
     body: [
-      "Gesundheit bedeutet mehr als die Abwesenheit von Krankheit. Körperliche, mentale und alltägliche Faktoren beeinflussen sich gegenseitig – genau deshalb lässt sich Gesundheit nicht an einer einzelnen Stelle verstehen.",
-      "Wer Gesundheit verstehen will, muss den Körper als System betrachten: Verdauung, Energiehaushalt, Hormonregulation, Nervensystem, Belastung und Regeneration arbeiten nicht getrennt, sondern im Verbund.",
+      "Gesundheit ist kein Einzelsymptom, sondern das Zusammenspiel des ganzen Systems: Verdauung, Energiehaushalt, Hormone, Nervensystem, Belastung und Regeneration.",
     ],
     pullquote: "Entscheidend sind deshalb die Prozesse dahinter – nicht nur das einzelne Symptom.",
     heroQuote: "Wer Gesundheit verstehen will, muss den Körper als System betrachten.",
@@ -119,35 +118,37 @@ export const home = {
       },
     ],
   },
-  // B2C-Entscheidungssektion (ersetzt den früheren kurzen Privatkunden-Block)
-  b2cLanding: {
+  // Zusammengelegte B2C+„Stagnation"-Sektion — ein Problem-Framing statt zwei.
+  // Headline bewusst anders formuliert als privatkunden.hero.title, damit
+  // Besucher beim Klick zu /privatkunden keine wortgleiche Zeile doppelt lesen.
+  signalsBlock: {
+    eyebrow: "Woran Sie es merken",
     headline:
-      "Häufig ist es nicht ein einzelner Auslöser, sondern ein Zusammenspiel verschiedener Faktoren.",
+      "Oft ist es nicht ein einzelner Auslöser, sondern mehrere kleine Veränderungen, die sich addieren.",
     intro: [
-      "Viele Menschen machen bereits einiges richtig, dennoch fühlt sich der Körper nicht mehr klar, stabil oder belastbar an.",
-      "Oft beginnt es nicht mit einem klaren Auslöser.",
+      "Biochemische Gesundheitsberatung ordnet diese Signale ein und macht daraus einen klaren nächsten Schritt.",
     ],
     signals: koerperSignale,
-    button: { label: "Zur Beratung für Privatkunden", href: "/privatkunden" },
   },
-  // Eigene „Stagnation"-Sektion nach der B2C-Signalliste
-  solutionBlock: {
-    headline: "Stagnation",
-    subheadline: "Das Gefühl, nicht voranzukommen",
-    body: [
-      "Wenn mehrere kleine Veränderungen zusammenkommen, entsteht schnell das Gefühl, dass irgendetwas nicht stimmt. Es ist aber schwer zu greifen, wo man anfangen soll.",
-      "Vielleicht haben Sie Laborwerte, Empfehlungen oder Gesundheitsinformationen gesammelt, aber keine klare Einordnung.",
-      "Biochemische Gesundheitsberatung hilft dabei, diese Signale nicht isoliert zu betrachten, sondern körperliche Zusammenhänge verständlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
+  // Split-Card-Sektion — ersetzt die früheren zwei vollen B2C-/B2B-Sektionen.
+  audience: {
+    eyebrow: "Für wen ist die Beratung?",
+    title: "Zwei Wege, ein Ansatz",
+    cards: [
+      {
+        label: "Für Privatkunden",
+        headline: "Ihren Körper wirklich verstehen, statt nur Symptome zu behandeln.",
+        body: "Eine individuelle Einordnung Ihrer Situation – wissenschaftlich fundiert, statt pauschale Standardlösung.",
+        button: { label: "Zur Beratung für Privatkunden", href: "/privatkunden" },
+      },
+      {
+        label: "Für Unternehmen & Fachpersonen",
+        headline: "Sie arbeiten mit Menschen und möchten fachlich tiefer einordnen?",
+        body: "Kunden bringen heute Laborwerte, Recherchen und widersprüchliche Empfehlungen mit. Nicht jeder Körper reagiert gleich – Standardschemata reichen nicht.",
+        priceHint: "150 € pro Stunde · ab 250 € pauschal",
+        button: { label: "Mehr für Unternehmen erfahren", href: "/unternehmen" },
+      },
     ],
-  },
-  // B2B-Entscheidungssektion
-  b2bLanding: {
-    headline: "Sie arbeiten mit Menschen und möchten fachlich tiefer einordnen?",
-    text: [
-      "Kunden und Klienten bringen heute immer häufiger eigene Recherchen, Laborwerte, Beschwerden, Supplementlisten, Ernährungspläne oder widersprüchliche Empfehlungen mit.",
-      "Nicht jeder Körper reagiert gleich. Nicht jede Lösung passt zu jedem Menschen. Und nicht jeder Fall lässt sich mit einem Standardschema sinnvoll begleiten.",
-    ],
-    button: { label: "Mehr für Unternehmen erfahren", href: "/unternehmen" },
   },
   services: {
     eyebrow: "Leistungen im Überblick",
@@ -196,7 +197,7 @@ export const home = {
   aboutTeaser: {
     eyebrow: "Über mich",
     body: [
-      "Ich bin Milva März, Biochemikerin B.Sc. und seit vielen Jahren in der Fitness- und Gesundheitsbranche tätig. Ergänzend befinde ich mich in der Ausbildung zur Heilpraktikerin. Ich verbinde wissenschaftliches Verständnis mit praktischer Umsetzung – damit Gesundheitsstrategien nicht nur fachlich sinnvoll sind, sondern auch im Alltag funktionieren.",
+      "Biochemikerin B.Sc., seit Jahren in der Fitness- und Gesundheitsbranche, aktuell in Ausbildung zur Heilpraktikerin. Wissenschaft trifft Alltagstauglichkeit.",
     ],
   },
   finalCta: {
@@ -307,7 +308,7 @@ export const privatkunden = {
   },
   process: {
     eyebrow: "So läuft die Zusammenarbeit ab",
-    title: "In fünf Schritten zu Ihrer Strategie",
+    title: "So beginnt die Zusammenarbeit",
     steps: [
       { title: "Kostenloses Erstgespräch", body: "Ihr Anliegen, Ihre Erwartungen und die Passung zur Beratung werden geklärt." },
       { title: "Anamnese", body: "Sie erhalten einen ausführlichen Fragebogen als Grundlage für die Analyse." },

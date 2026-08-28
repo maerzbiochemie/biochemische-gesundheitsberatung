@@ -289,19 +289,23 @@ export default function PrivatkundenPage() {
           <Eyebrow>{process.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{process.title}</h2>
         </Reveal>
-        <ol className="mt-14 space-y-px">
-          {process.steps.map((step, i) => (
-            <Reveal
-              key={step.title}
-              as="li"
-              delay={i * 70}
-              className="grid gap-3 border-t border-[var(--color-line)] py-7 md:grid-cols-12 md:items-baseline md:gap-6"
-            >
-              <span className="marker-num-lg md:col-span-1">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="font-display text-2xl md:col-span-4 md:text-[1.7rem]">{step.title}</h3>
-              <p className="text-[var(--color-ink-soft)] md:col-span-7">{step.body}</p>
-            </Reveal>
-          ))}
+        <ol className="mt-14">
+          {process.steps.map((step, i) => {
+            const isLast = i === process.steps.length - 1;
+            return (
+              <Reveal key={step.title} as="li" delay={i * 90} className="flex gap-5 sm:gap-7">
+                <div className="flex flex-col items-center" aria-hidden>
+                  <span className="mt-1.5 h-3.5 w-3.5 shrink-0 rounded-full border-2 !border-[var(--color-terra)] bg-[var(--color-paper)]" />
+                  {!isLast && <span className="w-px flex-1 bg-[var(--color-terra)]/35" />}
+                </div>
+                <div className={isLast ? "pb-1" : "pb-12"}>
+                  <span className="marker-num !text-[var(--color-terra)]">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="font-display mt-2 text-2xl md:text-[1.7rem]">{step.title}</h3>
+                  <p className="mt-2 max-w-xl text-[var(--color-ink-soft)]">{step.body}</p>
+                </div>
+              </Reveal>
+            );
+          })}
         </ol>
       </Section>
 

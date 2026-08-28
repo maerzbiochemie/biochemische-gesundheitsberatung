@@ -7,6 +7,7 @@ import { Marquee } from "@/components/Marquee";
 import { MoreInfo } from "@/components/MoreInfo";
 import { BookingButton } from "@/components/BookingButton";
 import { Portrait } from "@/components/Portrait";
+import { BookletMockup } from "@/components/BookletMockup";
 import { Faq } from "@/components/Faq";
 import { Glossary, TermPopover } from "@/components/Glossary";
 import { IconUnderstand, IconConnect, IconAct } from "@/components/icons";
@@ -115,15 +116,17 @@ export default function HomePage() {
 
       {/* ------------------------------------------ Bedeutung von Gesundheit */}
       <Section tone="paper" id="ansatz">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Reveal>
-              <Eyebrow>{home.system.eyebrow}</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-                {home.system.title}
-              </h2>
-            </Reveal>
-          </div>
+        <Reveal className="max-w-2xl">
+          <Eyebrow>{home.system.eyebrow}</Eyebrow>
+          <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
+            {home.system.title}
+          </h2>
+        </Reveal>
+        <div className="mt-14 grid gap-12 md:grid-cols-12 md:items-center">
+          {/* Booklet-Mockup als Eyecatcher — greifbar machen, was am Ende entsteht */}
+          <Reveal className="md:col-span-5">
+            <BookletMockup />
+          </Reveal>
           <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={120}>
               <div className="space-y-5 text-[var(--color-ink-soft)]">
@@ -133,7 +136,7 @@ export default function HomePage() {
                   </p>
                 ))}
               </div>
-              <blockquote className="font-display mt-10 border-l-2 border-[var(--color-sage)] pl-6 text-2xl leading-snug text-[var(--color-ink)]">
+              <blockquote className="font-display mt-8 rounded-[var(--radius-card)] bg-[var(--color-walnut)] px-7 py-8 text-2xl leading-snug text-[var(--color-paper)] md:px-9 md:py-9">
                 {home.system.pullquote}
               </blockquote>
               <MoreInfo
@@ -163,90 +166,77 @@ export default function HomePage() {
       {/* ----------------- Keyword band — moved below "Bedeutung von Gesundheit" */}
       <Marquee />
 
-      {/* -------------------------------------- B2C decision section (Privatkunden) */}
-      <Section tone="paper">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Reveal>
-              <Eyebrow>Für Privatkunden</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-                {home.b2cLanding.headline}
-              </h2>
-            </Reveal>
-          </div>
-          <div className="md:col-span-6 md:col-start-7">
-            <Reveal delay={120}>
-              <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-                {home.b2cLanding.intro.map((p) => (
-                  <p key={p}>
-                  <Glossary>{p}</Glossary>
-                </p>
-                ))}
-              </div>
-              <SignalList items={home.b2cLanding.signals} className="mt-8" />
-              <div className="mt-8">
-                <ButtonLink href={home.b2cLanding.button.href}>
-                  {home.b2cLanding.button.label}
-                </ButtonLink>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </Section>
-
-      {/* -------------------------- Lösungs-Sektion (eigene Überschrift, kein Kasten) */}
+      {/* ------------------------- Signale erkennen (zusammengelegt: B2C + Stagnation) */}
       <Section tone="cream">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Reveal>
-              <Eyebrow>{home.solutionBlock.headline}</Eyebrow>
+              <Eyebrow>{home.signalsBlock.eyebrow}</Eyebrow>
               <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-                {home.solutionBlock.subheadline}
-              </h2>
-            </Reveal>
-          </div>
-          <Reveal delay={120} className="md:col-span-6 md:col-start-7">
-            <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-              {home.solutionBlock.body.map((p) => (
-                <p key={p}>
-                  <Glossary>{p}</Glossary>
-                </p>
-              ))}
-            </div>
-            <div className="mt-8">
-              <BookingButton />
-            </div>
-          </Reveal>
-        </div>
-      </Section>
-
-      {/* -------------------------------------- B2B decision section (Unternehmen) */}
-      <Section tone="paper">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Reveal>
-              <Eyebrow>Für Unternehmen & Fachpersonen</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-                {home.b2bLanding.headline}
+                {home.signalsBlock.headline}
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={120}>
               <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-                {home.b2bLanding.text.map((p) => (
+                {home.signalsBlock.intro.map((p) => (
                   <p key={p}>
-                  <Glossary>{p}</Glossary>
-                </p>
+                    <Glossary>{p}</Glossary>
+                  </p>
                 ))}
               </div>
-              <div className="mt-8">
-                <ButtonLink href={home.b2bLanding.button.href} variant="secondary">
-                  {home.b2bLanding.button.label}
-                </ButtonLink>
-              </div>
+              <SignalList items={home.signalsBlock.signals} className="mt-8" />
             </Reveal>
           </div>
+        </div>
+      </Section>
+
+      {/* ------------------------------- Für wen: Split-Cards statt zwei volle Sektionen */}
+      <Section tone="paper">
+        <Reveal className="max-w-2xl">
+          <Eyebrow>{home.audience.eyebrow}</Eyebrow>
+          <h2 className="font-display mt-6 text-4xl md:text-5xl">{home.audience.title}</h2>
+        </Reveal>
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {home.audience.cards.map((card, i) => {
+            const isB2B = i === 1;
+            return (
+              <Reveal
+                key={card.label}
+                delay={i * 110}
+                className={`card flex flex-col p-8 transition-transform duration-500 hover:-translate-y-1 md:p-10 ${
+                  isB2B ? "!bg-[var(--color-sage-tief)]" : "!bg-[var(--color-sand)]"
+                }`}
+              >
+                <span className={`eyebrow ${isB2B ? "!text-[var(--color-sand)]" : ""}`}>
+                  {card.label}
+                </span>
+                <h3
+                  className={`font-display mt-5 text-2xl leading-snug md:text-3xl ${
+                    isB2B ? "text-[var(--color-paper)]" : "text-[var(--color-ink)]"
+                  }`}
+                >
+                  {card.headline}
+                </h3>
+                <p className={`mt-4 ${isB2B ? "text-[var(--color-paper)]/80" : "text-[var(--color-ink-soft)]"}`}>
+                  {card.body}
+                </p>
+                {isB2B && "priceHint" in card && (
+                  <p className="mt-3 text-sm text-[var(--color-paper)]/70">{card.priceHint}</p>
+                )}
+                <div className="mt-auto pt-8">
+                  <ButtonLink
+                    href={card.button.href}
+                    variant={isB2B ? "primary" : "secondary"}
+                    className={isB2B ? "!bg-[var(--color-paper)] !text-[var(--color-sage-tief)]" : ""}
+                  >
+                    {card.button.label}
+                  </ButtonLink>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </Section>
 

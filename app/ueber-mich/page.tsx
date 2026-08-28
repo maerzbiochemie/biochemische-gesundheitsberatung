@@ -87,7 +87,7 @@ export default function UeberMichPage() {
               </p>
                 ))}
               </div>
-              <blockquote className="font-display mt-8 border-l-2 border-[var(--color-sage)] pl-6 text-2xl leading-snug text-[var(--color-ink)]">
+              <blockquote className="font-display mt-8 rounded-[var(--radius-card)] bg-[var(--color-walnut)] px-7 py-8 text-2xl leading-snug text-[var(--color-paper)] md:px-9 md:py-9">
                 {biochemie.pullquote}
               </blockquote>
             </Reveal>
