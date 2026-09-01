@@ -257,6 +257,16 @@ body {
   color: var(--color-sage-deep);
   text-decoration-color: var(--color-sage-deep);
 }
+/* On dark accent backgrounds (e.g. the walnut pull-quote), the default
+   sage-deep hover colour is unreadable — swap to a light accent instead. */
+.on-dark-quote .term-trigger {
+  text-decoration-color: var(--color-sand);
+}
+.on-dark-quote .term-trigger:hover,
+.on-dark-quote .term-trigger:focus-visible {
+  color: var(--color-sand);
+  text-decoration-color: var(--color-sand);
+}
 
 /* ---------------------------------------------------------------------------
    Motion layer — modern, professional

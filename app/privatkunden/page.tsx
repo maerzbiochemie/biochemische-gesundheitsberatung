@@ -68,8 +68,8 @@ export default function PrivatkundenPage() {
   const { pakete } = leistungen;
   return (
     <>
-      {/* Hero — links Überschrift, rechts Text & hervorgehobene Signale (keine Kästen) */}
-      <section className="bg-[var(--color-cream)] pb-16 pt-32 md:pb-20 md:pt-44">
+      {/* Hero — auf Sand-Fläche (echot die Privatkunden-Karte der Startseite), Frage als Walnuss-Zitatkasten */}
+      <section className="bg-[var(--color-sand)] pb-16 pt-32 md:pb-20 md:pt-44">
         <div className="container-x">
           <div className="grid gap-12 md:grid-cols-12">
             <div className="md:col-span-5">
@@ -84,19 +84,19 @@ export default function PrivatkundenPage() {
               <Reveal delay={140} className="text-lg text-[var(--color-ink-soft)]">
                 <Glossary>{hero.intro}</Glossary>
               </Reveal>
-              <SignalList items={hero.signals} className="mt-8" />
+              <SignalList items={hero.signals} layout="cards" className="mt-8" />
               <Reveal delay={120} className="mt-8 space-y-4 text-[var(--color-ink-soft)] md:text-lg">
                 {hero.afterSignals.map((p) => (
                   <p key={p}>
                 <Glossary>{p}</Glossary>
               </p>
                 ))}
-                <p className="text-[var(--color-muted)]">{hero.questionLead}</p>
+                <p className="text-[var(--color-sage-deep)]">{hero.questionLead}</p>
               </Reveal>
               <Reveal delay={160}>
-                <p className="font-display mt-3 text-2xl leading-snug text-[var(--color-ink)] md:text-3xl">
+                <div className="on-dark-quote font-display mt-4 rounded-[var(--radius-card)] bg-[var(--color-walnut)] px-6 py-6 text-2xl leading-snug text-[var(--color-paper)] md:px-7 md:py-7 md:text-3xl">
                   <InlineInfo trigger={hero.question} paragraphs={hero.questionTooltip} />
-                </p>
+                </div>
               </Reveal>
             </div>
           </div>

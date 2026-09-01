@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Magnetic } from "@/components/Magnetic";
+import { Reveal } from "@/components/Reveal";
 
 /** Small uppercase label sitting above headings. */
 export function Eyebrow({ children }: { children: ReactNode }) {
@@ -13,23 +14,45 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 }
 
 /**
- * A highlighted list of short body-signal statements. Typographic emphasis and
- * a subtle accent rule instead of boxes or bullet points.
+ * A highlighted list of short body-signal statements.
+ * - `layout="cards"` renders each statement in its own small box, two-up from
+ *   the `lg` breakpoint, and lets each box lift into view on scroll with a
+ *   short stagger. No marker dot.
  */
 export function SignalList({
   items,
   className = "",
+  layout = "list",
 }: {
   items: readonly string[];
   className?: string;
+  layout?: "list" | "cards";
 }) {
+  const text = "font-display text-lg leading-snug text-[var(--color-sage-deep)] md:text-xl";
+
+  if (layout === "cards") {
+    return (
+      <ul className={`grid gap-3 lg:grid-cols-2 ${className}`}>
+        {items.map((s, i) => (
+          <Reveal
+            as="li"
+            key={s}
+            delay={i * 70}
+            className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] px-5 py-4"
+          >
+            <span className="font-display text-base leading-snug text-[var(--color-sage-deep)] md:text-lg">
+              {s}
+            </span>
+          </Reveal>
+        ))}
+      </ul>
+    );
+  }
+
   return (
     <ul className={`space-y-4 border-l-2 border-[var(--color-sage)]/40 pl-6 ${className}`}>
       {items.map((s) => (
-        <li
-          key={s}
-          className="font-display text-lg leading-snug text-[var(--color-sage-deep)] md:text-xl"
-        >
+        <li key={s} className={text}>
           {s}
         </li>
       ))}
