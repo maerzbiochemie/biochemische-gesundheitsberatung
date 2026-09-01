@@ -222,9 +222,6 @@ export default function HomePage() {
                 <p className={`mt-4 ${isB2B ? "text-[var(--color-paper)]/80" : "text-[var(--color-ink-soft)]"}`}>
                   {card.body}
                 </p>
-                {isB2B && "priceHint" in card && (
-                  <p className="mt-3 text-sm text-[var(--color-paper)]/70">{card.priceHint}</p>
-                )}
                 <div className="mt-auto pt-8">
                   <ButtonLink
                     href={card.button.href}

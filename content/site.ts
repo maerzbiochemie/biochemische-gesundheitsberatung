@@ -145,7 +145,6 @@ export const home = {
         label: "Für Unternehmen & Fachpersonen",
         headline: "Sie arbeiten mit Menschen und möchten fachlich tiefer einordnen?",
         body: "Kunden bringen heute Laborwerte, Recherchen und widersprüchliche Empfehlungen mit. Nicht jeder Körper reagiert gleich – Standardschemata reichen nicht.",
-        priceHint: "150 € pro Stunde · ab 250 € pauschal",
         button: { label: "Mehr für Unternehmen erfahren", href: "/unternehmen" },
       },
     ],
