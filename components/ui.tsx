@@ -38,7 +38,7 @@ export function SignalList({
             as="li"
             key={s}
             delay={i * 70}
-            className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] px-5 py-4"
+            className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-cream-deep)] px-5 py-4"
           >
             <span className="font-display text-base leading-snug text-[var(--color-sage-deep)] md:text-lg">
               {s}
