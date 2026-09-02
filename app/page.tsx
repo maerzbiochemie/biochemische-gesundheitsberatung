@@ -186,8 +186,12 @@ export default function HomePage() {
                   </p>
                 ))}
               </div>
-              <SignalList items={home.signalsBlock.signals} className="mt-8" />
             </Reveal>
+            <SignalList
+              items={home.signalsBlock.signals}
+              layout="cards"
+              className="mt-8"
+            />
           </div>
         </div>
       </Section>
