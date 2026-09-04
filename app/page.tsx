@@ -10,7 +10,7 @@ import { Portrait } from "@/components/Portrait";
 import { BookletMockup } from "@/components/BookletMockup";
 import { Faq } from "@/components/Faq";
 import { Glossary, TermPopover } from "@/components/Glossary";
-import { IconUnderstand, IconConnect, IconAct } from "@/components/icons";
+import { IconUnderstand, IconConnect, IconStructure, IconAct } from "@/components/icons";
 import {
   IconMetabolism,
   IconEnergy,
@@ -23,7 +23,7 @@ import { site, home, faq } from "@/content/site";
 import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
 
-const approachIcons = [IconUnderstand, IconConnect, IconAct];
+const approachIcons = [IconUnderstand, IconConnect, IconStructure, IconAct];
 const themenfelderIcons = [
   IconMetabolism,
   IconEnergy,
@@ -69,6 +69,9 @@ export default function HomePage() {
             delay={0.15}
             className="font-display mt-7 max-w-4xl text-[2.3rem] leading-[1.08] sm:text-5xl lg:text-[3.9rem]"
           />
+          <Reveal delay={120} className="mt-6 max-w-2xl font-display text-xl text-[var(--color-sage-deep)] md:text-2xl">
+            {home.hero.subtitle}
+          </Reveal>
 
           <div className="mt-12 grid gap-10 md:grid-cols-12 md:gap-8">
             <Reveal delay={160} className="md:col-span-7 lg:col-span-6">
@@ -114,13 +117,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ Bedeutung von Gesundheit */}
-      <Section tone="paper" id="ansatz">
+      {/* ------------------------- Woran Sie es merken (Symptomblock, Pos. 2) */}
+      <Section tone="paper">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Reveal>
+              <Eyebrow>{home.signalsBlock.eyebrow}</Eyebrow>
+              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
+                {home.signalsBlock.headline}
+              </h2>
+            </Reveal>
+          </div>
+          <div className="md:col-span-6 md:col-start-7">
+            <SignalList items={home.signalsBlock.signals} layout="cards" />
+            <Reveal delay={120} className="mt-8 text-[var(--color-ink-soft)] md:text-lg">
+              <Glossary>{home.signalsBlock.closing}</Glossary>
+            </Reveal>
+          </div>
+        </div>
+      </Section>
+
+      {/* ---------------- Ein Symptom ist selten die ganze Geschichte (Pos. 3) */}
+      <Section tone="cream" id="ansatz">
         <Reveal className="max-w-2xl">
           <Eyebrow>{home.system.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
             {home.system.title}
           </h2>
+          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{home.system.subtitle}</p>
         </Reveal>
         <div className="mt-14 grid gap-12 md:grid-cols-12 md:items-center">
           {/* Booklet-Mockup als Eyecatcher — greifbar machen, was am Ende entsteht */}
@@ -166,38 +190,43 @@ export default function HomePage() {
       {/* ----------------- Keyword band — moved below "Bedeutung von Gesundheit" */}
       <Marquee />
 
-      {/* ------------------------- Signale erkennen (zusammengelegt: B2C + Stagnation) */}
-      <Section tone="cream">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Reveal>
-              <Eyebrow>{home.signalsBlock.eyebrow}</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-                {home.signalsBlock.headline}
-              </h2>
-            </Reveal>
-          </div>
-          <div className="md:col-span-6 md:col-start-7">
-            <Reveal delay={120}>
-              <div className="space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-                {home.signalsBlock.intro.map((p) => (
-                  <p key={p}>
-                    <Glossary>{p}</Glossary>
-                  </p>
-                ))}
-              </div>
-            </Reveal>
-            <SignalList
-              items={home.signalsBlock.signals}
-              layout="cards"
-              className="mt-8"
-            />
-          </div>
+      {/* -------------------------------------- Mein Ansatz (4 Phasen, Pos. 4) */}
+      <Section tone="paper">
+        <Reveal className="max-w-2xl">
+          <Eyebrow>{home.approach.eyebrow}</Eyebrow>
+          <h2 className="font-display mt-6 text-4xl md:text-5xl">{home.approach.title}</h2>
+        </Reveal>
+        <div className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-2 lg:grid-cols-4">
+          {home.approach.steps.map((step, i) => {
+            const Icon = approachIcons[i];
+            return (
+              <Reveal
+                key={step.n}
+                delay={i * 110}
+                className="group bg-[var(--color-paper)] p-8 transition-colors duration-500 hover:bg-[var(--color-cream-deep)] md:p-10"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="marker-num-lg">{step.n}</span>
+                  <Icon className="h-8 w-8 text-[var(--color-terra)] opacity-80 md:h-9 md:w-9" />
+                </div>
+                <h3 className="font-display mt-5 text-2xl md:text-3xl">{step.title}</h3>
+                <p className="mt-3 text-[var(--color-ink-soft)]">{step.body}</p>
+              </Reveal>
+            );
+          })}
         </div>
+        <Reveal className="mt-10">
+          <Link
+            href="/leistungen"
+            className="link-underline inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
+          >
+            Leistungen & Preise ansehen <span aria-hidden>→</span>
+          </Link>
+        </Reveal>
       </Section>
 
-      {/* ------------------------------- Für wen: Split-Cards statt zwei volle Sektionen */}
-      <Section tone="paper">
+      {/* ------------------------------- Für wen: Split-Cards (Pos. 5) */}
+      <Section tone="cream">
         <Reveal className="max-w-2xl">
           <Eyebrow>{home.audience.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{home.audience.title}</h2>
@@ -241,42 +270,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ------------------------------------------------------------ Approach */}
-      <Section tone="cream">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>{home.approach.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{home.approach.title}</h2>
-        </Reveal>
-        <div className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-line)] md:grid-cols-3">
-          {home.approach.steps.map((step, i) => {
-            const Icon = approachIcons[i];
-            return (
-              <Reveal
-                key={step.n}
-                delay={i * 110}
-                className="group bg-[var(--color-paper)] p-8 transition-colors duration-500 hover:bg-[var(--color-cream-deep)] md:p-10"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="marker-num-lg">{step.n}</span>
-                  <Icon className="h-8 w-8 text-[var(--color-terra)] opacity-80 md:h-9 md:w-9" />
-                </div>
-                <h3 className="font-display mt-5 text-2xl md:text-3xl">{step.title}</h3>
-                <p className="mt-3 text-[var(--color-ink-soft)]">{step.body}</p>
-              </Reveal>
-            );
-          })}
-        </div>
-        <Reveal className="mt-10">
-          <Link
-            href="/leistungen"
-            className="link-underline inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
-          >
-            Leistungen & Preise ansehen <span aria-hidden>→</span>
-          </Link>
-        </Reveal>
-      </Section>
-
-      {/* ------------------------------------------------------------- About */}
+      {/* ---------------------------------------- Kurzbio Milva (Pos. 6) */}
       <Section tone="paper">
         <div className="grid gap-12 md:grid-cols-12 md:items-center">
           <Reveal className="md:col-span-4">
@@ -292,6 +286,9 @@ export default function HomePage() {
                 </p>
                 ))}
               </div>
+              <p className="mt-6 text-sm tracking-wide text-[var(--color-sage-deep)]">
+                {home.aboutTeaser.qualifikationen}
+              </p>
               <Link
                 href="/ueber-mich"
                 className="link-underline mt-7 inline-flex items-center gap-2 text-[var(--color-sage-deep)]"

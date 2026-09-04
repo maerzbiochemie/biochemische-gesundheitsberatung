@@ -38,6 +38,15 @@ export function IconConnect({ className = "" }: IconProps) {
   );
 }
 
+/** Strukturieren — gestaffelte Balken: aus Einordnung wird eine klare Reihenfolge. */
+export function IconStructure({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden {...shared}>
+      <path d="M6 8h20M6 15h13M6 22h7" />
+    </svg>
+  );
+}
+
 /** Umsetzen — Pfeil zum Haken: aus Erkenntnis wird ein konkreter Schritt. */
 export function IconAct({ className = "" }: IconProps) {
   return (

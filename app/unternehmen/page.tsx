@@ -49,37 +49,12 @@ export default function UnternehmenPage() {
             </Reveal>
           </div>
           <Reveal delay={120} className="md:col-span-6 md:col-start-7">
-            <SignalList items={herausforderung.highlights} />
-            <div className="mt-8 space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-              {herausforderung.body.map((p) => (
-                <p key={p}>
-                  <Glossary>{p}</Glossary>
-                </p>
-              ))}
-            </div>
+            <p className="text-[var(--color-sage-deep)]">{herausforderung.lead}</p>
+            <SignalList items={herausforderung.highlights} className="mt-4" />
+            <p className="mt-8 text-[var(--color-ink-soft)] md:text-lg">
+              <Glossary>{herausforderung.closing}</Glossary>
+            </p>
           </Reveal>
-        </div>
-      </Section>
-
-      {/* Ihr Mehrwert — hervorgehobener Value-Block, direkt nach der Herausforderung */}
-      <Section tone="deep">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>{gewinn.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{gewinn.title}</h2>
-        </Reveal>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {gewinn.items.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={i * 80}
-              className="flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-8 transition-transform duration-500 hover:-translate-y-1 md:p-9"
-            >
-              <h3 className="font-display text-2xl leading-snug text-[var(--color-sage-deep)] md:text-[1.7rem]">
-                {item.title}
-              </h3>
-              <p className="mt-4 text-[var(--color-ink-soft)]">{item.body}</p>
-            </Reveal>
-          ))}
         </div>
       </Section>
 
@@ -136,6 +111,28 @@ export default function UnternehmenPage() {
         <Reveal className="mt-10 max-w-3xl">
           <p className="text-[var(--color-ink-soft)]">{formen.footnote}</p>
         </Reveal>
+      </Section>
+
+      {/* Ihr Nutzen — hervorgehobener Value-Block, direkt nach den Leistungen */}
+      <Section tone="deep">
+        <Reveal className="max-w-2xl">
+          <Eyebrow>{gewinn.eyebrow}</Eyebrow>
+          <h2 className="font-display mt-6 text-4xl md:text-5xl">{gewinn.title}</h2>
+        </Reveal>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {gewinn.items.map((item, i) => (
+            <Reveal
+              key={item.title}
+              delay={i * 80}
+              className="flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-8 transition-transform duration-500 hover:-translate-y-1 md:p-9"
+            >
+              <h3 className="font-display text-2xl leading-snug text-[var(--color-sage-deep)] md:text-[1.7rem]">
+                {item.title}
+              </h3>
+              <p className="mt-4 text-[var(--color-ink-soft)]">{item.body}</p>
+            </Reveal>
+          ))}
+        </div>
       </Section>
 
       {/* Preise / Formate */}

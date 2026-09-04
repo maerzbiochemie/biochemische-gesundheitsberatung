@@ -41,24 +41,35 @@ export const site = {
     "Die biochemische Gesundheitsberatung ersetzt keine ärztliche Diagnostik oder Behandlung.",
 } as const;
 
-// Körper-Signale — geteilt zwischen Landing-B2C-Sektion und Privatkunden-Hero.
+// Körper-Signale — vollständige Liste ausschließlich auf der Startseite
+// („Woran Sie es merken"). Durchgehend „Sie"-Form, einheitlich kurze Sätze.
 export const koerperSignale = [
-  "Man schläft etwas schlechter.",
-  "Die Verdauung ist empfindlicher.",
-  "Die Energie schwankt.",
-  "Stress wirkt stärker nach.",
-  "Training fühlt sich anders an.",
-  "Regeneration dauert länger.",
+  "Der Schlaf wird schlechter.",
+  "Die Verdauung reagiert empfindlicher.",
+  "Die Energie schwankt über den Tag.",
+  "Stress wirkt länger nach.",
+  "Training fühlt sich zäh an.",
+  "Die Regeneration dauert länger.",
   "Der Zyklus verändert sich.",
+] as const;
+
+// Gekürzte Reihe — nur für den Privatkunden-Hero (bewusst nicht die volle Liste,
+// um die Symptom-Aufzählung nicht über zwei Seiten zu doppeln).
+export const koerperSignaleKurz = [
+  "Der Schlaf wird schlechter.",
+  "Die Verdauung reagiert empfindlicher.",
+  "Die Energie schwankt.",
+  "Die Regeneration dauert länger.",
 ] as const;
 
 export const home = {
   hero: {
     eyebrow: "Biochemische Gesundheitsberatung",
-    title:
-      "Wissenschaftlich fundierte Gesundheitsberatung für Prävention, Gesundheit und Verständnis.",
+    title: "Verstehen, was Ihr Körper gerade braucht – statt weiter zu raten.",
+    subtitle:
+      "Wissenschaftlich fundierte Beratung für Menschen, die ihre Gesundheit nicht dem Zufall überlassen.",
     body: [
-      "Aus dem Verständnis Ihrer körperlichen Zusammenhänge entsteht ein individueller Plan – wissenschaftlich fundiert, statt pauschale Standardlösung.",
+      "Statt allgemeiner Tipps schauen wir auf Ihre Werte, Ihre Beschwerden und Ihren Alltag – und leiten daraus konkrete Schritte ab, die zu Ihrem Körper passen.",
     ],
     heroQuote: "Wer Gesundheit verstehen will, muss den Körper als System betrachten.",
     facts: [
@@ -67,12 +78,18 @@ export const home = {
       ["Arbeitsweise", "Individuell & wissenschaftlich fundiert"],
     ],
   },
-  // Section formerly "Der Körper im Zusammenspiel" — now "Bedeutung von Gesundheit"
+  // Section formerly "Bedeutung von Gesundheit" — now "Ein Symptom ist selten
+  // die ganze Geschichte". Fließtext + Untertitel = vom Juristen freigegebene
+  // Fassung (BIO-144/145, Kommentar 2026-09-02): Möglichkeitsform, keine
+  // Ergebniszusage. Die schärfere Variante „…damit sich mehrere Dinge
+  // gleichzeitig verbessern" ist 🔴 und darf NICHT eingebaut werden.
   system: {
-    eyebrow: "Bedeutung von Gesundheit",
-    title: "Der Körper funktioniert nicht isoliert – sondern im Verbund.",
+    eyebrow: "Zusammenhänge",
+    title: "Ein Symptom ist selten die ganze Geschichte",
+    subtitle:
+      "Schlaf, Verdauung, Hormone, Energie, Stress und Regeneration hängen zusammen. Verändert sich eins, kann das die anderen mitbeeinflussen.",
     body: [
-      "Gesundheit ist kein Einzelsymptom, sondern das Zusammenspiel des ganzen Systems: Verdauung, Energiehaushalt, Hormone, Nervensystem, Belastung und Regeneration.",
+      "Deshalb greift es oft zu kurz, ein einzelnes Symptom isoliert zu betrachten. Die Frage ist, welcher Prozess dahintersteht – und wo für Sie ein sinnvoller Ansatzpunkt liegt.",
     ],
     pullquote: "Entscheidend sind deshalb die Prozesse dahinter – nicht nur das einzelne Symptom.",
     heroQuote: "Wer Gesundheit verstehen will, muss den Körper als System betrachten.",
@@ -88,7 +105,7 @@ export const home = {
       "Belastung & Regeneration",
     ],
     more: {
-      label: "Mehr erfahren",
+      label: "So gehe ich vor",
       title: "Der Körper als zusammenhängendes Gefüge",
       body: [
         "Beschwerden zeigen sich oft an einer Stelle, entstehen aber im Zusammenspiel mehrerer Prozesse: Stoffwechsel, Verdauung, Hormonhaushalt, Nervensystem und Regeneration greifen ineinander.",
@@ -97,24 +114,30 @@ export const home = {
       ],
     },
   },
+  // Einheitliches 4-Phasen-Modell — wortgleich auch auf „Über mich" (ueberMich.prinzip).
   approach: {
     eyebrow: "Mein Ansatz",
-    title: "Drei Schritte zu echter Klarheit",
+    title: "In vier Schritten zu einem Plan, der zu Ihnen passt",
     steps: [
       {
         n: "01",
         title: "Verstehen",
-        body: "Körperliche Prozesse sichtbar machen – von Energieproduktion und Verdauung bis Nährstoffversorgung, Stressreaktion und Regeneration.",
+        body: "Wir machen sichtbar, wie Ihr Körper arbeitet – von Energie und Verdauung über Nährstoffe bis zu Stressreaktion und Regeneration.",
       },
       {
         n: "02",
-        title: "Verbinden",
-        body: "Beschwerden, Laborwerte, Gewohnheiten und Lebensstilfaktoren nicht isoliert betrachten, sondern in einen sinnvollen Zusammenhang bringen.",
+        title: "Einordnen",
+        body: "Beschwerden, Laborwerte, Gewohnheiten und Lebensstil betrachten wir nicht einzeln, sondern im Zusammenhang – und ordnen biochemisch ein, was davon gerade zählt.",
       },
       {
         n: "03",
+        title: "Strukturieren",
+        body: "Daraus wird eine klare Reihenfolge: welcher Schritt zuerst kommt und welcher darauf aufbaut.",
+      },
+      {
+        n: "04",
         title: "Umsetzen",
-        body: "Aus komplexen Informationen konkrete Schritte ableiten, die zu Ihrem Körper, Ihrem Alltag und Ihren Zielen passen.",
+        body: "Am Ende stehen konkrete Schritte, die zu Ihrem Körper, Ihrem Alltag und Ihren Zielen passen.",
       },
     ],
   },
@@ -124,11 +147,10 @@ export const home = {
   signalsBlock: {
     eyebrow: "Woran Sie es merken",
     headline:
-      "Oft ist es nicht ein einzelner Auslöser, sondern mehrere kleine Veränderungen, die sich addieren.",
-    intro: [
-      "Biochemische Gesundheitsberatung ordnet diese Signale ein und macht daraus einen klaren nächsten Schritt.",
-    ],
+      "Selten ist es ein großer Auslöser. Meist sind es viele kleine Veränderungen, die sich summieren, bis der Alltag anstrengender wird.",
     signals: koerperSignale,
+    closing:
+      "Diese Signale lassen sich einordnen. Daraus wird ein klarer nächster Schritt.",
   },
   // Split-Card-Sektion — ersetzt die früheren zwei vollen B2C-/B2B-Sektionen.
   audience: {
@@ -137,15 +159,18 @@ export const home = {
     cards: [
       {
         label: "Für Privatkunden",
-        headline: "Ihren Körper wirklich verstehen, statt nur Symptome zu behandeln.",
-        body: "Eine individuelle Einordnung Ihrer Situation – wissenschaftlich fundiert, statt pauschale Standardlösung.",
-        button: { label: "Zur Beratung für Privatkunden", href: "/privatkunden" },
+        // Wortlaut vom Juristen nachgeschärft (BIO-147, 2026-09-03): „nicht nur
+        // Symptome dämpfen" wurde als abwertende Gegenüberstellung zur ärztlichen
+        // Behandlung gelesen (§ 5 UWG). Neutral formuliert, nicht ohne Prüfung ändern.
+        headline: "Sie wollen Ihren Körper verstehen, statt nur an einzelnen Symptomen anzusetzen.",
+        body: "Sie bekommen eine Einordnung Ihrer Situation und einen Plan, der zu Ihrem Alltag passt – auf Basis von Biochemie, nicht von Standardratschlägen.",
+        button: { label: "Beratung für Privatkunden", href: "/privatkunden" },
       },
       {
         label: "Für Unternehmen & Fachpersonen",
-        headline: "Sie arbeiten mit Menschen und möchten fachlich tiefer einordnen?",
-        body: "Kunden bringen heute Laborwerte, Recherchen und widersprüchliche Empfehlungen mit. Nicht jeder Körper reagiert gleich – Standardschemata reichen nicht.",
-        button: { label: "Mehr für Unternehmen erfahren", href: "/unternehmen" },
+        headline: "Ihre Fälle werden komplexer, und Standardschemata reichen nicht mehr.",
+        body: "Ihre Kundinnen und Kunden kommen mit Laborwerten, Recherchen und widersprüchlichen Empfehlungen. Ich helfe Ihnen, das fachlich sauber einzuordnen.",
+        button: { label: "Angebot für Unternehmen", href: "/unternehmen" },
       },
     ],
   },
@@ -196,14 +221,15 @@ export const home = {
   aboutTeaser: {
     eyebrow: "Über mich",
     body: [
-      "Biochemikerin B.Sc., seit Jahren in der Fitness- und Gesundheitsbranche, aktuell in Ausbildung zur Heilpraktikerin. Wissenschaft trifft Alltagstauglichkeit.",
+      "Ich bin Milva März – Biochemikerin B.Sc., seit Jahren in der Fitness- und Gesundheitsbranche und aktuell in Ausbildung zur Heilpraktikerin. Mich interessiert nicht nur, dass etwas im Körper passiert, sondern warum. Genau das gebe ich in der Beratung weiter.",
     ],
+    qualifikationen: "Biochemikerin B.Sc. · Fitnesstrainerin · in Ausbildung zur Heilpraktikerin",
   },
   finalCta: {
-    eyebrow: "Der nächste Schritt",
-    title: "Klarheit schaffen",
+    eyebrow: "Kostenlos & unverbindlich",
+    title: "Der nächste Schritt",
     body: [
-      "Ein kostenloses Erstgespräch ist der passende Einstieg, wenn Ihnen bisher die klare Einordnung fehlt.",
+      "Wenn Ihnen bisher die klare Einordnung fehlt, ist das kostenlose Erstgespräch der richtige Einstieg. 15–20 Minuten, unverbindlich – wir klären, ob und wie ich Ihnen weiterhelfen kann.",
     ],
   },
 } as const;
@@ -226,34 +252,12 @@ export const glossary = {
 export const privatkunden = {
   hero: {
     eyebrow: "Für Privatkunden",
-    title:
-      "Häufig ist es nicht ein einzelner Auslöser, sondern ein Zusammenspiel verschiedener Faktoren.",
-    intro: "Oft beginnt es nicht mit einem klaren Auslöser.",
-    signals: koerperSignale,
-    afterSignals: [],
-    questionLead: "Die entscheidende Frage ist:",
-    question: "Was ist für Ihren Körper jetzt wirklich relevant?",
-    questionTooltip: [
-      "Jeder Körper reagiert anders. Stoffwechsel, Immunsystem, Stressachse, Belastungstoleranz, Ernährung, Schlaf und Alltag greifen individuell ineinander.",
-      "Deshalb reicht es oft nicht, allgemeine Empfehlungen umzusetzen. Entscheidend ist die Frage: Was braucht genau dieser Körper – und was ist jetzt der sinnvollste nächste Schritt?",
-      "Ziel ist ein Konzept, das nicht nur „gesund“ klingt, sondern zu Ihrer aktuellen Situation passt und möglichst gezielt Entlastung, Stabilität und Besserung unterstützt.",
-    ],
-  },
-  catcher: {
-    title: "Sie brauchen nicht mehr Disziplin – sondern mehr Verständnis.",
-    body: [
-      "Viele Menschen versuchen, ihre Gesundheit durch mehr Kontrolle zu verbessern: Ernährung, Bewegung, Schlaf, Stressmanagement oder Supplemente.",
-      "Doch manchmal ist nicht die nächste Maßnahme entscheidend, sondern die Frage, warum der Körper überhaupt so reagiert.",
-      "Biochemische Gesundheitsberatung hilft dabei, diese Zusammenhänge verständlich einzuordnen und daraus eine passende Strategie abzuleiten.",
-    ],
-  },
-  praevention: {
-    title: "Nicht erst handeln, wenn der Körper laut wird.",
-    body: [
-      "Gesundheit bedeutet nicht nur, Beschwerden zu reduzieren. Es bedeutet auch, den eigenen Körper besser zu verstehen, Belastungsgrenzen zu erkennen und Routinen aufzubauen, die langfristig tragen.",
-      "Biochemische Gesundheitsberatung kann deshalb auch dann sinnvoll sein, wenn keine akuten Beschwerden bestehen – sondern der Wunsch, den eigenen Gesundheitsstatus bewusster einzuordnen.",
-      "Für mehr Prävention, Verständnis und eine Strategie, die zu Ihrem Leben passt.",
-    ],
+    title: "Was ist für Ihren Körper gerade wirklich relevant?",
+    subtitle:
+      "Meist beginnt es leise: schlechterer Schlaf, empfindlichere Verdauung, schwankende Energie, längere Regeneration. Einzeln wirkt nichts davon dramatisch – zusammen verändern sie Ihren Alltag.",
+    intro:
+      "In der Beratung sortieren wir diese Signale und finden heraus, wo es sich für Sie lohnt anzusetzen.",
+    signals: koerperSignaleKurz,
   },
   zielgruppen: {
     title: "Für wen ist die Beratung geeignet?",
@@ -261,21 +265,33 @@ export const privatkunden = {
       "Die Beratung eignet sich für Menschen, die ihre Gesundheit nicht pauschal betrachten möchten, sondern verstehen wollen, welche körperlichen Zusammenhänge bei ihnen eine Rolle spielen können.",
     items: [
       {
-        title: "Leistungsorientierte Menschen mit wenig Zeit",
-        body: "Für Menschen, die viel leisten, Verantwortung tragen und merken, dass Energie, Schlaf, Verdauung, Stress oder Belastbarkeit nicht mehr selbstverständlich funktionieren.",
+        title: "Leistungsorientiert, wenig Zeit",
+        body: "Sie funktionieren, aber Energie, Schlaf oder Verdauung ziehen nicht mehr richtig mit.",
       },
       {
-        title: "Sportlich aktive Menschen und ehemalige Leistungssportler",
-        body: "Für Menschen, die ihren Körper gut kennen, aber merken, dass frühere Strategien heute nicht mehr ausreichen. Wenn Training allein nicht mehr alles reguliert, werden Regeneration, Ernährung, Stress, Schlaf, Zyklus, Alltag und Belastungssteuerung wichtiger.",
+        title: "Sportlich aktiv / ehemalige Leistungssportler",
+        body: "Was früher funktioniert hat, reicht heute nicht mehr – und Sie wollen wissen, warum.",
       },
       {
-        title: "Menschen mit wiederkehrenden Beschwerden",
-        body: "Für Menschen, die immer wieder an ähnlichen Themen hängen bleiben und bereits vieles ausprobiert haben. Hier geht es nicht darum, noch mehr einzelne Tipps zu sammeln, sondern körperliche Zusammenhänge verständlich einzuordnen und daraus eine sinnvolle Strategie abzuleiten.",
+        title: "Wiederkehrende Beschwerden",
+        body: "Sie haben vieles ausprobiert und suchen das Muster dahinter, nicht den nächsten Tipp.",
       },
       {
-        title: "Gesundheitsbewusste und neugierige Menschen",
-        body: "Für Menschen, die nicht erst warten möchten, bis etwas nicht mehr funktioniert. Wenn Sie Ihren Gesundheitsstatus besser verstehen, Ihre Routinen gezielter gestalten oder Ihren Körper präventiv unterstützen möchten, kann die Beratung helfen, vorhandene Informationen sinnvoll zu sortieren und Ihre nächsten Schritte bewusster zu wählen.",
+        title: "Gesundheitsbewusst und neugierig",
+        body: "Sie wollen vorsorgen, bevor etwas aus dem Ruder läuft.",
       },
+    ],
+  },
+  catcher: {
+    title: "Sie brauchen nicht mehr Disziplin – sondern mehr Verständnis.",
+    body: [
+      "Viele versuchen, Gesundheit über mehr Kontrolle zu lösen: strenger essen, härter trainieren, mehr Regeln. Das hält selten lange. Sinnvoller ist zu verstehen, wie Ihr Körper auf Belastung, Ernährung und Schlaf reagiert – und die Strategie darauf aufzubauen.",
+    ],
+  },
+  praevention: {
+    title: "Nicht erst handeln, wenn der Körper laut wird.",
+    body: [
+      "Prävention heißt nicht, auf Beschwerden zu warten und erst dann zu reagieren. Es heißt, die Belastungsgrenzen Ihres Körpers zu kennen und Routinen aufzubauen, die Sie auch in stressigen Phasen tragen.",
     ],
   },
   nutzen: {
@@ -285,42 +301,56 @@ export const privatkunden = {
     items: [
       {
         title: "Verständliche Einordnung",
-        body: "Sie verstehen, welche körperlichen Prozesse und Einflussfaktoren bei Ihrer Situation eine Rolle spielen können.",
+        body: "Eine verständliche Einordnung, welche Prozesse bei Ihnen gerade zählen.",
       },
       {
         title: "Klare Prioritäten",
-        body: "Aus vielen Informationen entsteht eine klare Struktur: Was ist jetzt wichtig, was kann warten und was passt realistisch in Ihren Alltag?",
+        body: "Klare Prioritäten statt zwanzig gut gemeinter Ratschläge.",
       },
       {
-        title: "Biochemischer Gesundheitskompass",
-        body: "Sie erhalten eine schriftliche Ausarbeitung mit biochemischer Einordnung, individueller Strategie und konkreten Empfehlungen zum Nachlesen.",
+        title: "Empfehlungen für Ihren Alltag",
+        body: "Empfehlungen, die in Ihren Alltag passen – nicht in einen Idealtag.",
       },
       {
-        title: "Alltagstaugliche Umsetzung",
-        body: "Die Empfehlungen werden so aufgebaut, dass sie zu Ihrer Belastbarkeit, Ihren Routinen und Ihren Zielen passen.",
-      },
-      {
-        title: "Mehr Verständnis für Ihren Körper",
-        body: "Sie sollen nicht nur Empfehlungen erhalten, sondern verstehen, warum bestimmte Schritte für Ihren Körper sinnvoll sein können.",
+        title: "Wissen für eigene Entscheidungen",
+        body: "Genug Hintergrundwissen, um selbst gute Entscheidungen zu treffen.",
       },
     ],
   },
+  kompass: {
+    eyebrow: "Ihr Ergebnis",
+    title: "Ihr Ergebnis: der Biochemische Gesundheitskompass",
+    intro:
+      "Nach dem Analysegespräch bekommen Sie Ihre Einordnung schriftlich – kein Standard-PDF, sondern auf Ihre Situation geschrieben.",
+    listIntro: "Darin steht:",
+    list: [
+      "wie Ihre aktuelle Ausgangslage biochemisch einzuordnen ist",
+      "welche Prozesse bei Ihnen im Vordergrund stehen",
+      "konkrete Empfehlungen für Ernährung, Bewegung, Schlaf, Stress und Regeneration",
+      "auf Wunsch: ergänzende Nährstoffstrategien",
+    ],
+    outro:
+      "Der Kompass ist Maßnahmenplan und Nachschlagewerk zugleich – Sie können jederzeit nachlesen, warum ein Schritt für Sie sinnvoll ist.",
+  },
+  // Operativer Ablauf — bleibt bei 5 Schritten (nicht das konzeptionelle
+  // 4-Phasen-Modell). Als Zeitstrahl dargestellt (BIO-139-Optik).
   process: {
-    eyebrow: "So läuft die Zusammenarbeit ab",
-    title: "So beginnt die Zusammenarbeit",
+    eyebrow: "Ablauf",
+    title: "So läuft die Zusammenarbeit ab",
     steps: [
-      { title: "Kostenloses Erstgespräch", body: "Ihr Anliegen, Ihre Erwartungen und die Passung zur Beratung werden geklärt." },
-      { title: "Anamnese", body: "Sie erhalten einen ausführlichen Fragebogen als Grundlage für die Analyse." },
-      { title: "Analysegespräch", body: "Ihre Beschwerden, Ziele, Routinen und relevanten Einflussfaktoren werden im Detail besprochen." },
-      { title: "Biochemischer Gesundheitskompass", body: "Sie erhalten eine schriftliche Ausarbeitung mit biochemischer Einordnung, individueller Strategie und konkreten Empfehlungen." },
-      { title: "Abschlussgespräch & Ausblick", body: "Das Abschlussgespräch findet nach drei Monaten statt. Wir werten Ihre bisherige Entwicklung aus, ordnen Veränderungen ein und strukturieren die nächsten sinnvollen Schritte." },
+      { title: "Kostenloses Erstgespräch", body: "Wir klären Ihr Anliegen und ob die Beratung passt. 15–20 Minuten, unverbindlich." },
+      { title: "Anamnese", body: "Sie füllen einen ausführlichen Fragebogen aus – die Grundlage für alles Weitere." },
+      { title: "Analysegespräch", body: "Wir gehen Ihre Beschwerden, Ziele, Routinen und Werte gemeinsam durch." },
+      { title: "Biochemischer Gesundheitskompass", body: "Sie erhalten Ihre schriftliche Einordnung mit konkreter Strategie." },
+      // Schritt-5-Text an die Zeitstrahl-Auflage angeglichen (BIO-147, 2026-09-03):
+      // „auf Ihre Entwicklung schauen" setzt voraus, dass es eine Entwicklung gibt.
+      { title: "Abschlussgespräch & Ausblick", body: "Nach rund drei Monaten besprechen wir Ihre bisherigen Erfahrungen und die nächsten Schritte." },
     ],
   },
   finalCta: {
     title: "Sie möchten wissen, was für Ihren Körper relevant ist?",
     body: [
-      "Im kostenlosen Erstgespräch klären wir gemeinsam, worum es bei Ihnen geht, welche Themen im Vordergrund stehen und ob die biochemische Gesundheitsberatung zu Ihrer Situation passt.",
-      "Sie müssen vorab nicht wissen, welche Leistung die richtige ist.",
+      "Buchen Sie ein kostenloses Erstgespräch. Sie müssen sich vorher für kein Paket entscheiden – wir schauen erst, ob es passt.",
     ],
     note: "Die biochemische Gesundheitsberatung ersetzt keine ärztliche Diagnostik oder Behandlung.",
   },
@@ -338,8 +368,8 @@ export const leistungen = {
     eyebrow: "Erster Schritt",
     title: "Kostenloses Erstgespräch",
     price: "0 €",
-    meta: "ca. 15–20 Minuten",
-    body: "Das kostenlose Erstgespräch dient dazu, Ihr Anliegen kennenzulernen und einzuschätzen, ob meine biochemische Gesundheitsberatung zu Ihrer Situation passt.",
+    meta: "15–20 Minuten",
+    body: "15–20 Minuten, um Ihr Anliegen kennenzulernen und einzuschätzen, ob meine biochemische Gesundheitsberatung zu Ihrer Situation passt.",
     listIntro: "Diese Fragen klären wir gemeinsam:",
     list: [
       "Worum geht es bei Ihnen?",
@@ -347,8 +377,7 @@ export const leistungen = {
       "Ist eine Zusammenarbeit sinnvoll?",
       "Welcher nächste Schritt passt?",
     ],
-    footnote:
-      "Das Erstgespräch ist keine ausführliche Beratung, sondern eine erste Orientierung für beide Seiten.",
+    footnote: "Keine ausführliche Beratung, kein Verkaufsgespräch.",
   },
   basispaket: {
     eyebrow: "Das Herzstück",
@@ -397,10 +426,10 @@ export const leistungen = {
   },
   begleitung: {
     eyebrow: "Optionale Begleitung",
-    title: "Unterstützung in der Umsetzung",
+    title: "Optionale Begleitung danach",
     intro: [
-      "Ein schriftlicher Gesundheitskompass schafft Klarheit. Die eigentliche Veränderung entsteht jedoch im Alltag: bei der Umsetzung, bei Rückfragen, bei Stressphasen, bei unerwarteten Reaktionen oder wenn Empfehlungen angepasst werden müssen.",
-      "Deshalb können nach dem Basispaket weitere Unterstützungsangebote ergänzt werden.",
+      "Nur wenn Sie die Umsetzung nicht allein machen möchten.",
+      "Nach dem Basispaket können diese Angebote ergänzt werden – mit Mindestlaufzeit direkt am Preis.",
     ],
     items: [
       {
@@ -446,7 +475,7 @@ export const leistungen = {
         sub: "Analysegespräch + Besprechung + Biochemischer Gesundheitskompass + Abschlussgespräch & Ausblick",
         price: "640 €",
         priceSuffix: "Gesamtumfang",
-        body: "Der strukturierte Einstieg in die biochemische Gesundheitsberatung. Geeignet, wenn Sie Ihre Situation fundiert verstehen, körperliche Zusammenhänge nachvollziehen und einen klaren schriftlichen Plan erhalten möchten.",
+        body: "Der Einstieg: Ihre vollständige Einordnung und ein schriftlicher Plan.",
         note: "Abrechnung erfolgt schrittweise nach erbrachter Leistung.",
         featured: false,
       },
@@ -455,7 +484,7 @@ export const leistungen = {
         sub: "Gesundheitskompass + regelmäßige Begleitung",
         price: "640 €",
         priceSuffix: "zzgl. 90 € pro Woche",
-        body: "Geeignet, wenn Sie Ihr Konzept nicht nur erhalten, sondern aktiv und strukturiert umsetzen möchten – mit regelmäßiger Unterstützung, fachlicher Einordnung und Anpassung einzelner Empfehlungen.",
+        body: "Wenn Sie die Umsetzung nicht allein machen wollen: wöchentliche Begleitung und Anpassung.",
         note: "Mindestlaufzeit der Begleitung: 4 Wochen.",
         featured: true,
       },
@@ -464,7 +493,7 @@ export const leistungen = {
         sub: "Gesundheitskompass + persönliche und tägliche Begleitung",
         price: "640 €",
         priceSuffix: "zzgl. 160 € pro Woche",
-        body: "Geeignet, wenn Sie eine persönliche und tägliche Begleitung wünschen, beruflich oder sportlich stark eingespannt sind oder komplexere Themen mitbringen. Im Vordergrund stehen die persönliche, tägliche Begleitung sowie engere Verlaufseinordnung und Anpassung der Strategie.",
+        body: "Enge Begleitung bei hohem Anspruch – beruflich, sportlich oder bei komplexen Themen.",
         note: "Mindestlaufzeit der Begleitung: 4 Wochen.",
         featured: false,
       },
@@ -519,11 +548,10 @@ export const leistungen = {
 
 export const ueberMich = {
   hero: {
-    eyebrow: "Über mich und meine Vorgehensweise",
-    title: "Gesundheit verständlich machen – von Zellprozessen bis zum Alltag",
+    eyebrow: "Über mich",
+    title: "Gesundheit verständlich machen – von der Zelle bis in den Alltag",
     body: [
-      "Zwischen Trends, Laborwerten, Diagnosen, Empfehlungen und widersprüchlichen Informationen bleibt oft eine entscheidende Frage offen: Was ist für den eigenen Körper wirklich relevant?",
-      "Genau hier setzt meine Arbeit an. Ich verbinde biochemisches Verständnis mit praktischer Gesundheitsberatung, um Zusammenhänge sichtbar zu machen, Informationen einzuordnen und daraus eine Strategie zu entwickeln, die zum Menschen und seinem Alltag passt.",
+      "Zwischen Trends, Laborwerten, Diagnosen und widersprüchlichen Empfehlungen bleibt eine Frage oft offen: Was ist für den eigenen Körper wirklich relevant? Genau da setze ich an.",
     ],
   },
   person: {
@@ -531,25 +559,18 @@ export const ueberMich = {
     name: "Milva März",
     role: "Biochemikerin B.Sc. · in Ausbildung zur Heilpraktikerin",
     body: [
-      "Ich bin Milva März, Biochemikerin B.Sc. und seit vielen Jahren in der Fitness- und Gesundheitsbranche tätig. Ergänzend befinde ich mich in der Ausbildung zur Heilpraktikerin.",
-      "Mich hat der menschliche Körper schon immer fasziniert. Ich wollte nicht nur wissen, dass etwas funktioniert oder nicht funktioniert – sondern warum. Warum entstehen Krankheiten? Welche Prozesse laufen im Hintergrund ab? Wie beeinflussen sich Zellen, Organe, Stoffwechsel, Hormone, Immunsystem und Nervensystem gegenseitig? Und an welchen Stellen kann man den Körper sinnvoll unterstützen?",
-      "Diese Neugier hat mich zur Biochemie geführt. Dort beginnt für mich das Verständnis von Gesundheit: nicht an der Oberfläche einzelner Symptome, sondern bei den Prozessen, die im Körper im Hintergrund ablaufen.",
-      "Durch meine langjährige Erfahrung in der Fitness- und Gesundheitsbranche habe ich außerdem gelernt, wie entscheidend Prävention, Bewegung, Regeneration und Alltag für langfristige Gesundheit sind. Gleichzeitig habe ich gesehen, dass Wissen allein nicht reicht. Strategien müssen verständlich, realistisch und umsetzbar sein.",
-      "Deshalb verbinde ich wissenschaftliches Verständnis mit praktischer Umsetzung – damit Gesundheitsstrategien nicht nur fachlich sinnvoll sind, sondern auch im Alltag funktionieren.",
+      "Ich bin Milva März. Nach dem Biochemie-Studium (B.Sc.) hat mich eine Frage nicht losgelassen: Warum laufen bestimmte Prozesse im Körper so ab – und nicht nur, dass sie es tun. Parallel habe ich jahrelang in der Fitness- und Gesundheitsbranche gearbeitet und gesehen, wie oft gutes Wissen an der Umsetzung scheitert. Aktuell bin ich in Ausbildung zur Heilpraktikerin.",
     ],
   },
   biochemie: {
     eyebrow: "Wissenschaftliche Grundlage",
     title: "Warum Biochemie und Gesundheit zusammengehören",
     body: [
-      "Biochemie zeigt, wie der Körper im Inneren arbeitet – auf Ebene der Zellen, Moleküle und Regulationssysteme.",
-      "Sie erklärt, wie Energie entsteht, Nährstoffe verarbeitet werden, Hormone wirken, Immunreaktionen ablaufen und der Körper auf Belastungen reagiert.",
-      "Dabei funktioniert kein System für sich allein: Stoffwechsel, Immunsystem, Nervensystem, Organe und Alltag stehen ständig miteinander in Verbindung.",
-      "Genau deshalb können Beschwerden, Laborwerte oder körperliche Veränderungen selten nur aus einer einzelnen Perspektive verstanden werden.",
-      "Wichtig ist der Blick auf die Prozesse dahinter – und darauf, was den Körper im Alltag unterstützt oder zusätzlich belastet.",
+      "Biochemie zeigt, was auf Zell- und Molekülebene passiert – und wie eng Stoffwechsel, Immunsystem, Nervensystem, Organe und Alltag zusammenhängen. Wer diese Ebene versteht, kann Empfehlungen einordnen, statt ihnen ausgeliefert zu sein.",
     ],
     pullquote: "So entsteht Orientierung statt Informationsüberflutung.",
   },
+  // Wortgleich zum 4-Phasen-Modell auf der Startseite (home.approach).
   prinzip: {
     eyebrow: "Mein Arbeitsprinzip",
     title: "Verstehen → Einordnen → Strukturieren → Umsetzen",
@@ -558,32 +579,41 @@ export const ueberMich = {
         n: "1",
         title: "Verstehen",
         phase: "Start der Zusammenarbeit",
-        body: "Zuerst geht es darum, Ihre aktuelle Situation wirklich zu verstehen: Beschwerden, Ziele, Routinen, Ernährung, Bewegung, Schlaf, Stress, bisherige Maßnahmen und vorhandene Informationen wie Laborwerte.",
+        body: "Wir machen sichtbar, wie Ihr Körper arbeitet – von Energie und Verdauung über Nährstoffe bis zu Stressreaktion und Regeneration.",
       },
       {
         n: "2",
         title: "Einordnen",
         phase: "Analysephase",
-        body: "Diese Informationen werden in einen körperlichen Zusammenhang gebracht. Im Mittelpunkt stehen Stoffwechselprozesse, Energiehaushalt, Nährstoffversorgung, Belastung, Regeneration, Hormone, Immunsystem und Alltag.",
+        body: "Beschwerden, Laborwerte, Gewohnheiten und Lebensstil betrachten wir nicht einzeln, sondern im Zusammenhang – und ordnen biochemisch ein, was davon gerade zählt.",
       },
       {
         n: "3",
         title: "Strukturieren",
         phase: "Biochemischer Gesundheitskompass",
-        body: "Aus der Einordnung entsteht eine klare Priorisierung: Was ist jetzt wichtig? Was kann warten? Welche Maßnahmen passen zu Ihrem Körper, Ihrer Situation und Ihrem Alltag?",
+        body: "Daraus wird eine klare Reihenfolge: welcher Schritt zuerst kommt und welcher darauf aufbaut.",
       },
       {
         n: "4",
         title: "Umsetzen",
         phase: "Beginn der Veränderung",
-        body: "Am Ende steht eine konkrete Strategie mit verständlichen Schritten für Ernährung, Bewegung, Schlaf, Stressregulation, Regeneration und auf Wunsch ergänzende Nährstoffstrategien.",
+        body: "Am Ende stehen konkrete Schritte, die zu Ihrem Körper, Ihrem Alltag und Ihren Zielen passen.",
       },
     ],
-    notes: [
-      "Nach den ersten Wochen: Erste Veränderungen können spürbar werden – zum Beispiel bei Energie, Verdauung, Schlaf, Wasserhaushalt oder Belastbarkeit.",
-      "Nach ca. 4 Wochen: Umsetzungserfahrungen lassen sich besser einordnen; bei Bedarf können Empfehlungen angepasst werden.",
-      "Nach 8–12 Wochen: Viele körperliche Prozesse brauchen Zeit, um sich stabiler anzupassen – deshalb ist der Blick auf Verlauf und Alltag entscheidend.",
-      "Nach 3 Monaten: Die Entwicklung wird ausgewertet und die nächsten Schritte können sinnvoll geplant werden.",
+  },
+  // Zeitlicher Ablauf — Fassung vom Juristen freigegeben (BIO-144/145,
+  // 2026-09-02) UNTER AUFLAGEN: Überschrift nicht „Zeitverlauf"; Sätze 1 und 3
+  // exakt wie hier; der Hinweis muss gleichwertig ÜBER dem Zeitstrahl stehen,
+  // nicht klein darunter. Nichts an diesen vier Sätzen ohne erneute Prüfung ändern.
+  verlauf: {
+    eyebrow: "Zeitlicher Ablauf der Beratung",
+    disclaimer:
+      "Ob und wie sich etwas verändert, ist individuell, zeitlich nicht vorhersehbar und lässt sich nicht zusichern.",
+    steps: [
+      "In den ersten Wochen setzen Sie erste Schritte im Alltag um. Was Ihnen dabei auffällt – etwa zu Schlaf, Energie oder Verdauung – halten wir fest und besprechen es.",
+      "Nach ~4 Wochen – wir schauen auf die Umsetzung und passen an.",
+      "8–12 Wochen – die Umsetzung wird zur Routine; wir justieren bei Bedarf nach.",
+      "Nach ~3 Monaten – Abschlussgespräch: Entwicklung einordnen, nächste Schritte planen.",
     ],
   },
   anders: {
@@ -632,25 +662,24 @@ export const ueberMich = {
 export const b2b = {
   hero: {
     eyebrow: "Für Unternehmen & Fachpersonen",
-    title: "Biochemische Gesundheitsberatung für Unternehmen & Fachpersonen",
-    subtitle: "Wenn Gesundheitswissen Tiefe braucht – aber im Alltag funktionieren muss.",
+    title: "Fachliche Tiefe für Ihre Fälle – ohne dass sie im Alltag verloren geht.",
+    subtitle:
+      "Für Praxen, Studios, Coaches und Fachpersonen, die Laborwerte, Empfehlungen und bestehende Konzepte fachlich sauber einordnen wollen.",
     body: [
-      "Immer mehr Informationen bedeuten nicht automatisch mehr Klarheit. Für Praxen, Studios, Coaches und Fachpersonen wird es zunehmend anspruchsvoll, Laborwerte, Empfehlungen, gesundheitliche Fragestellungen und bestehende Konzepte fachlich sauber einzuordnen.",
-      "Genau hier setzt meine Arbeit an: Ich unterstütze gesundheitsnahe Unternehmen und Fachpersonen dabei, biochemisches Fachwissen verständlich, strukturiert und praxisnah in ihre Arbeit zu integrieren – ohne Standardsystem, sondern passend zu Zielgruppe, Angebot und fachlichem Anspruch.",
+      "Mehr Informationen bedeuten nicht automatisch mehr Klarheit. Ich unterstütze Sie dabei, biochemisches Wissen so in Ihre Arbeit einzubinden, dass es fachlich trägt und praktisch anwendbar bleibt.",
     ],
   },
   herausforderung: {
     eyebrow: "Die Herausforderung",
     title: "Wenn Kundenfälle komplexer werden, braucht Beratung mehr Tiefe.",
+    lead: "Sie kennen das:",
     highlights: [
       "Nicht jeder Körper reagiert gleich.",
       "Nicht jede Empfehlung passt zu jedem Menschen.",
-      "Und nicht jeder Fall lässt sich mit einem Standardschema sinnvoll begleiten.",
+      "Nicht jeder Fall lässt sich mit einem Standardschema sinnvoll begleiten.",
     ],
-    body: [
-      "Gerade wenn Kunden Laborwerte, Beschwerden, Supplemente oder widersprüchliche Informationen mitbringen, braucht Beratung mehr Tiefe.",
-      "Biochemische Gesundheitsberatung unterstützt dabei, Zusammenhänge zu erkennen, Informationen zu sortieren und Empfehlungen fachlich fundierter aufzubauen.",
-    ],
+    closing:
+      "Genau an diesen Stellen komme ich dazu – als fachliches Sparring, nicht als weiteres Konzept von der Stange.",
   },
   zielgruppe: {
     eyebrow: "Für wen",
@@ -660,94 +689,75 @@ export const b2b = {
     categories: [
       {
         title: "Praxen & therapeutische Einrichtungen",
-        body: "Für Praxen und therapeutische Einrichtungen, die komplexe Beschwerden, wiederkehrende Themen oder vorhandene Informationen ihrer Patienten fachlich tiefer einordnen möchten.",
+        body: "Wenn Patientenfälle mehr biochemische Einordnung brauchen.",
         roles: ["Heilpraktiker", "Osteopathen", "Physiotherapeuten", "Therapeuten", "Praxisteams"],
       },
       {
         title: "Training, Coaching & Performance",
-        body: "Für Trainer, Coaches und Studios, die Bewegung, Regeneration, Ernährung und Belastbarkeit nicht isoliert betrachten, sondern wissenschaftlich fundierter in ihre Arbeit integrieren möchten.",
+        body: "Wenn Standardpläne bei anspruchsvollen Kundinnen und Kunden nicht mehr reichen.",
         roles: [
           "Personal Trainer",
           "Fitness Coaches",
           "Athletiktrainer",
           "Gesundheitscoaches",
           "Studios",
-          "performance-orientierte Anbieter",
         ],
       },
       {
         title: "Unternehmen, Konzepte & Teams",
-        body: "Für Unternehmen und Teams, die bestehende Konzepte fachlich schärfen, neue Angebote entwickeln oder interne Wissensgrundlagen verständlich und biochemisch fundiert aufbauen möchten.",
+        body: "Wenn Angebote oder Materialien fachlich fundiert (weiter-)entwickelt werden sollen.",
         roles: [
           "Gesundheitszentren",
           "Ernährungsberatungen",
           "Präventionsanbieter",
           "kleine Gesundheitsunternehmen",
           "Teams im gesundheitsnahen Bereich",
-          "Anbieter mit bestehenden Beratungs- oder Workshopformaten",
         ],
       },
     ],
   },
   formen: {
-    eyebrow: "Mögliche Formen der Zusammenarbeit",
+    eyebrow: "Leistungen",
     title: "Tiefe nach Bedarf",
     items: [
       {
         n: "01",
         title: "Fachliche Beratung",
-        body: "Für konkrete Fragestellungen, Fallbesprechungen, fachliche Unsicherheiten oder wiederkehrende Themen in der Arbeit mit Kunden, Klienten oder Patienten.",
+        body: "Für konkrete Fragen, anonymisierte Fallbesprechungen oder regelmäßiges fachliches Sparring.",
       },
       {
         n: "02",
         title: "Konzeptentwicklung",
-        body: "Für bestehende Angebote, Workshops, Beratungsprozesse oder fachliche Materialien, die strukturiert überarbeitet oder neu aufgebaut werden sollen.",
+        body: "Für Angebote, Beratungsprozesse, Workshops oder Materialien, die strukturiert überarbeitet oder neu aufgebaut werden.",
       },
       {
         n: "03",
         title: "Schriftliche Ausarbeitung",
-        body: "Für individuelle Ausarbeitungen zu Fachthemen, Fällen, Konzepten oder internen Wissensgrundlagen – verständlich, wissenschaftlich fundiert und praxisnah.",
+        body: "Zu einem Thema, Fall oder Konzept: als interne Grundlage, Schulungsunterlage oder Konzeptpapier.",
       },
     ],
     footnote:
       "Die Zusammenarbeit kann einmalig stattfinden oder in regelmäßigen Meetings fortgeführt werden – je nachdem, wie viel fachliche Tiefe und Begleitung benötigt wird.",
   },
-  staerken: {
+  gewinn: {
     eyebrow: "Nutzen",
     title: "Fachliche Tiefe, die Ihre Arbeit stärkt",
-    body: [
-      "Bei Fragestellungen, Konzepten und Fallbesprechungen geht es nicht darum, noch mehr Informationen zu sammeln. Entscheidend ist, Informationen verständlich zu sortieren, fachlich einzuordnen und daraus klare Handlungsschritte abzuleiten.",
-      "Meine Arbeit hilft Unternehmen und Fachpersonen dabei, biochemisches Wissen nicht nur theoretisch zu verstehen, sondern in der täglichen Praxis sicherer anzuwenden.",
-      "So entstehen Konzepte, Beratungsansätze und fachliche Grundlagen, die verständlicher, strukturierter und individueller werden – für Sie, Ihr Team und die Menschen, mit denen Sie arbeiten.",
-    ],
-  },
-  gewinn: {
-    eyebrow: "Ihr Mehrwert",
-    title: "Was Sie durch die Zusammenarbeit gewinnen",
     items: [
       {
-        title: "Mehr fachliche Sicherheit",
-        body: "Sie erhalten eine fundierte zweite Perspektive auf komplexe Themen, Fälle oder Konzepte.",
+        title: "Fachliche Sicherheit",
+        body: "Sie können komplexe Fälle einordnen, ohne sich auf Halbwissen zu verlassen.",
       },
       {
-        title: "Klare Struktur",
-        body: "Aus vielen Informationen entsteht eine klare Entscheidungsgrundlage für Beratung, Coaching, Training oder interne Arbeit.",
+        title: "Struktur",
+        body: "Aus widersprüchlichen Infos wird ein nachvollziehbarer roter Faden.",
       },
       {
-        title: "Individuelle Tiefe",
-        body: "Die Zusammenarbeit wird an Ihr Angebot, Ihre Zielgruppe und Ihren fachlichen Bedarf angepasst.",
+        title: "Bessere Angebote",
+        body: "Ihre Beratungen und Konzepte gewinnen an fachlicher Tiefe.",
       },
       {
-        title: "Praxisnahe Umsetzung",
-        body: "Biochemisches Wissen wird so aufbereitet, dass es im Alltag, im Team oder in der Arbeit mit Klienten wirklich nutzbar wird.",
-      },
-      {
-        title: "Bessere Zielorientierung",
-        body: "Empfehlungen können individueller begründet, verständlicher erklärt und gezielter auf die Ziele Ihrer Kunden ausgerichtet werden.",
-      },
-      {
-        title: "Stärkere Angebotsqualität",
-        body: "Bestehende Beratungsprozesse, Workshops, Konzepte oder Programme können fachlich geschärft und hochwertiger positioniert werden.",
+        title: "Anwendbar im Alltag",
+        body: "Die Ergebnisse passen in Ihre Abläufe, nicht in ein Lehrbuch.",
       },
     ],
   },
@@ -780,16 +790,15 @@ export const b2b = {
   },
   finalCta: {
     eyebrow: "Zusammenarbeit",
-    title: "Sie möchten Ihr Angebot fachlich vertiefen?",
-    body: "Im kostenlosen Erstgespräch klären wir, wobei Sie Unterstützung benötigen und welche Form der Zusammenarbeit sinnvoll ist.",
+    title: "Lassen Sie uns über Ihren Fall sprechen.",
+    body: "Im kostenlosen Erstgespräch klären wir, wo Sie stehen und ob eine Zusammenarbeit sinnvoll ist.",
   },
 } as const;
 
 export const faq = {
   eyebrow: "Häufige Fragen",
   title: "Häufige Fragen",
-  subtitle:
-    "Antworten auf die wichtigsten Fragen zur biochemischen Gesundheitsberatung, zum Ablauf und zur Zusammenarbeit.",
+  subtitle: "Was Menschen vor dem Erstgespräch am häufigsten wissen wollen.",
   items: [
     {
       q: "Was ist biochemische Gesundheitsberatung?",
@@ -816,7 +825,7 @@ export const faq = {
     {
       q: "Was passiert im kostenlosen Erstgespräch?",
       a: [
-        "Das kostenlose Erstgespräch dauert ca. 15–20 Minuten und dient der ersten Orientierung.",
+        "Das kostenlose Erstgespräch dauert 15–20 Minuten und dient der Orientierung.",
         "Wir klären, worum es bei Ihnen geht, welche Themen im Vordergrund stehen, ob meine Beratung zu Ihrer Situation passt und welcher nächste Schritt sinnvoll wäre.",
         "Das Erstgespräch ist keine ausführliche Beratung, sondern ein erstes Kennenlernen und eine Einschätzung der Passung.",
       ],

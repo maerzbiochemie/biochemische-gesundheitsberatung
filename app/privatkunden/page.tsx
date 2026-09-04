@@ -3,10 +3,10 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { ButtonLink, Eyebrow, Section, SignalList } from "@/components/ui";
-import { Glossary, InlineInfo } from "@/components/Glossary";
+import { Glossary } from "@/components/Glossary";
 import { BookingButton } from "@/components/BookingButton";
 import { BookletMockup } from "@/components/BookletMockup";
-import { privatkunden, home, leistungen, site } from "@/content/site";
+import { privatkunden, leistungen, site } from "@/content/site";
 
 /**
  * Calm, minimal line drawings for the benefit items — one per item, matching
@@ -64,11 +64,11 @@ export const metadata: Metadata = {
 };
 
 export default function PrivatkundenPage() {
-  const { hero, catcher, praevention, zielgruppen, nutzen, process, finalCta } = privatkunden;
+  const { hero, catcher, praevention, zielgruppen, nutzen, kompass, process, finalCta } = privatkunden;
   const { pakete } = leistungen;
   return (
     <>
-      {/* Hero — auf Sand-Fläche (echot die Privatkunden-Karte der Startseite), Frage als Walnuss-Zitatkasten */}
+      {/* Hero — auf Sand-Fläche (echot die Privatkunden-Karte der Startseite) */}
       <section className="bg-[var(--color-sand)] pb-16 pt-32 md:pb-20 md:pt-44">
         <div className="container-x">
           <div className="grid gap-12 md:grid-cols-12">
@@ -82,28 +82,41 @@ export default function PrivatkundenPage() {
             </div>
             <div className="md:col-span-6 md:col-start-7">
               <Reveal delay={140} className="text-lg text-[var(--color-ink-soft)]">
-                <Glossary>{hero.intro}</Glossary>
+                {hero.subtitle}
               </Reveal>
               <SignalList items={hero.signals} layout="cards" className="mt-8" />
-              <Reveal delay={120} className="mt-8 space-y-4 text-[var(--color-ink-soft)] md:text-lg">
-                {hero.afterSignals.map((p) => (
-                  <p key={p}>
-                <Glossary>{p}</Glossary>
-              </p>
-                ))}
-                <p className="text-[var(--color-sage-deep)]">{hero.questionLead}</p>
-              </Reveal>
-              <Reveal delay={160}>
-                <div className="on-dark-quote font-display mt-4 rounded-[var(--radius-card)] bg-[var(--color-walnut)] px-6 py-6 text-2xl leading-snug text-[var(--color-paper)] md:px-7 md:py-7 md:text-3xl">
-                  <InlineInfo trigger={hero.question} paragraphs={hero.questionTooltip} />
-                </div>
+              <Reveal delay={160} className="mt-8 text-lg text-[var(--color-sage-deep)] md:text-xl">
+                <Glossary>{hero.intro}</Glossary>
               </Reveal>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Verständnis & Prävention — zwei ruhige, hochwertige Boxen */}
+      {/* Für wen ist die Beratung geeignet? — direkt hinter dem Hero (Pos. 2) */}
+      <Section tone="cream">
+        <Reveal className="max-w-2xl">
+          <Eyebrow>Für wen</Eyebrow>
+          <h2 className="font-display mt-6 text-4xl md:text-5xl">{zielgruppen.title}</h2>
+          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">
+            <Glossary>{zielgruppen.intro}</Glossary>
+          </p>
+        </Reveal>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+          {zielgruppen.items.map((item, i) => (
+            <Reveal
+              key={item.title}
+              delay={i * 90}
+              className="flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-8"
+            >
+              <h3 className="font-display text-2xl leading-snug text-[var(--color-sage-deep)]">{item.title}</h3>
+              <p className="mt-3 text-[var(--color-ink-soft)]">{item.body}</p>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* Verständnis & Prävention — zwei ruhige, hochwertige Boxen (Pos. 3–4) */}
       <Section tone="paper">
         <div className="grid gap-6 md:grid-cols-2">
           <Reveal className="flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-cream)] p-8 md:p-10">
@@ -129,63 +142,14 @@ export default function PrivatkundenPage() {
         </div>
       </Section>
 
-      {/* Biochemischer Gesundheitskompass — greifbar gemacht (Signature-Element der Seite) */}
-      <Section tone="deep">
-        <div className="grid gap-12 md:grid-cols-12 md:items-center">
-          <Reveal className="md:col-span-5">
-            <BookletMockup />
-          </Reveal>
-          <div className="md:col-span-6 md:col-start-7">
-            <Reveal delay={120}>
-              <Eyebrow>Ihr Ergebnis</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-                {home.services.items[1].title}
-              </h2>
-              <p className="mt-6 text-lg text-[var(--color-ink-soft)]">
-                {home.services.items[1].body}
-              </p>
-              <Link
-                href="/leistungen"
-                className="link-underline mt-7 inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
-              >
-                Leistungen & Preise ansehen <span aria-hidden>→</span>
-              </Link>
-            </Reveal>
-          </div>
-        </div>
-      </Section>
-
-      {/* Zielgruppen */}
+      {/* Was Sie konkret mitnehmen (Pos. 5) */}
       <Section tone="cream">
         <Reveal className="max-w-2xl">
-          <Eyebrow>Für wen</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{zielgruppen.title}</h2>
-          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">
-            <Glossary>{zielgruppen.intro}</Glossary>
-          </p>
-        </Reveal>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
-          {zielgruppen.items.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={i * 90}
-              className="flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-8"
-            >
-              <h3 className="font-display text-2xl leading-snug text-[var(--color-sage-deep)]">{item.title}</h3>
-              <p className="mt-3 text-[var(--color-ink-soft)]">{item.body}</p>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* Nutzen / was Sie mitnehmen */}
-      <Section tone="paper">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>Ihr Ergebnis</Eyebrow>
+          <Eyebrow>Was Sie mitnehmen</Eyebrow>
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{nutzen.title}</h2>
           <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{nutzen.intro}</p>
         </Reveal>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {nutzen.items.map((item, i) => (
             <Reveal
               key={item.title}
@@ -200,7 +164,70 @@ export default function PrivatkundenPage() {
         </div>
       </Section>
 
-      {/* Pakete im Vergleich — gespiegelt von /leistungen, mit Link zu allen Details */}
+      {/* Ihr Ergebnis: der Biochemische Gesundheitskompass — Signature-Element (Pos. 6) */}
+      <Section tone="deep">
+        <div className="grid gap-12 md:grid-cols-12 md:items-center">
+          <Reveal className="md:col-span-5">
+            <BookletMockup />
+          </Reveal>
+          <div className="md:col-span-6 md:col-start-7">
+            <Reveal delay={120}>
+              <Eyebrow>{kompass.eyebrow}</Eyebrow>
+              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
+                {kompass.title}
+              </h2>
+              <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{kompass.intro}</p>
+              <p className="mt-6 text-[var(--color-ink-soft)]">{kompass.listIntro}</p>
+              <ul className="mt-4 space-y-3">
+                {kompass.list.map((li) => (
+                  <li key={li} className="flex gap-3 text-[var(--color-ink-soft)]">
+                    <span
+                      aria-hidden
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-terra)]"
+                    />
+                    <span>{li}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-[var(--color-ink-soft)]">{kompass.outro}</p>
+              <Link
+                href="/leistungen"
+                className="link-underline mt-7 inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
+              >
+                Leistungen & Preise ansehen <span aria-hidden>→</span>
+              </Link>
+            </Reveal>
+          </div>
+        </div>
+      </Section>
+
+      {/* So läuft die Zusammenarbeit ab — operativer Ablauf als Zeitstrahl (Pos. 7) */}
+      <Section tone="paper">
+        <Reveal className="max-w-2xl">
+          <Eyebrow>{process.eyebrow}</Eyebrow>
+          <h2 className="font-display mt-6 text-4xl md:text-5xl">{process.title}</h2>
+        </Reveal>
+        <ol className="mt-14">
+          {process.steps.map((step, i) => {
+            const isLast = i === process.steps.length - 1;
+            return (
+              <Reveal key={step.title} as="li" delay={i * 90} className="flex gap-5 sm:gap-7">
+                <div className="flex flex-col items-center" aria-hidden>
+                  <span className="mt-1.5 h-3.5 w-3.5 shrink-0 rounded-full border-2 !border-[var(--color-terra)] bg-[var(--color-paper)]" />
+                  {!isLast && <span className="w-px flex-1 bg-[var(--color-terra)]/35" />}
+                </div>
+                <div className={isLast ? "pb-1" : "pb-12"}>
+                  <span className="marker-num !text-[var(--color-terra)]">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="font-display mt-2 text-2xl md:text-[1.7rem]">{step.title}</h3>
+                  <p className="mt-2 max-w-xl text-[var(--color-ink-soft)]">{step.body}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </ol>
+      </Section>
+
+      {/* Pakete im Vergleich — gespiegelt von /leistungen, mit Link zu allen Details (Pos. 8) */}
       <Section tone="deep">
         <Reveal className="max-w-2xl">
           <Eyebrow>{pakete.eyebrow}</Eyebrow>
@@ -281,32 +308,6 @@ export default function PrivatkundenPage() {
             Alle Details zu Leistungen & Preisen ansehen <span aria-hidden>→</span>
           </Link>
         </Reveal>
-      </Section>
-
-      {/* Ablauf / Prozess */}
-      <Section tone="cream">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>{process.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{process.title}</h2>
-        </Reveal>
-        <ol className="mt-14">
-          {process.steps.map((step, i) => {
-            const isLast = i === process.steps.length - 1;
-            return (
-              <Reveal key={step.title} as="li" delay={i * 90} className="flex gap-5 sm:gap-7">
-                <div className="flex flex-col items-center" aria-hidden>
-                  <span className="mt-1.5 h-3.5 w-3.5 shrink-0 rounded-full border-2 !border-[var(--color-terra)] bg-[var(--color-paper)]" />
-                  {!isLast && <span className="w-px flex-1 bg-[var(--color-terra)]/35" />}
-                </div>
-                <div className={isLast ? "pb-1" : "pb-12"}>
-                  <span className="marker-num !text-[var(--color-terra)]">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="font-display mt-2 text-2xl md:text-[1.7rem]">{step.title}</h3>
-                  <p className="mt-2 max-w-xl text-[var(--color-ink-soft)]">{step.body}</p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </ol>
       </Section>
 
       {/* Final CTA */}

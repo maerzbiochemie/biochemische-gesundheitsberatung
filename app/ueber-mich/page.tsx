@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function UeberMichPage() {
-  const { hero, person, biochemie, prinzip, anders, werte, vision, finalCta } = ueberMich;
+  const { hero, person, biochemie, prinzip, verlauf, anders, werte, vision, finalCta } = ueberMich;
   return (
     <>
       {/* Hero */}
@@ -64,6 +64,26 @@ export default function UeberMichPage() {
               ))}
             </div>
           </Reveal>
+        </div>
+      </Section>
+
+      {/* „Das Problem ist oft nicht fehlende Information …" — hervorgehobenes
+          Zitat direkt nach der Bio (Pos. 3, BIO-142 Seite 4 Block 06). */}
+      <Section tone="deep">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <Eyebrow>{anders.eyebrow}</Eyebrow>
+        </Reveal>
+        <Reveal delay={80} className="mx-auto mt-8 max-w-4xl">
+          <p className="font-display text-center text-[2rem] leading-[1.15] text-[var(--color-ink)] md:text-[2.8rem]">
+            „{anders.statement}“
+          </p>
+        </Reveal>
+        <div className="mx-auto mt-12 grid max-w-3xl gap-5 text-[var(--color-ink-soft)] md:text-lg">
+          {anders.body.map((p) => (
+            <Reveal key={p}>
+              <p>{p}</p>
+            </Reveal>
+          ))}
         </div>
       </Section>
 
@@ -118,43 +138,37 @@ export default function UeberMichPage() {
           </ol>
         </div>
 
-        {/* Microcopy — Orientierung im Verlauf (keine Ergebnisversprechen) */}
-        <Reveal className="mt-16">
-          <p className="eyebrow">Orientierung im Verlauf</p>
-        </Reveal>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {prinzip.notes.map((note, i) => {
-            const [lead, ...rest] = note.split(":");
-            return (
-              <Reveal
-                key={note}
-                delay={i * 80}
-                className="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-cream)] p-5 text-sm text-[var(--color-ink-soft)]"
-              >
-                <span className="font-medium text-[var(--color-ink)]">{lead}:</span>
-                {rest.join(":")}
-              </Reveal>
-            );
-          })}
-        </div>
-      </Section>
-
-      {/* Warum dieser Ansatz anders ist — prominentes Statement */}
-      <Section tone="deep">
-        <Reveal className="mx-auto max-w-4xl text-center">
-          <Eyebrow>{anders.eyebrow}</Eyebrow>
-        </Reveal>
-        <Reveal delay={80} className="mx-auto mt-8 max-w-4xl">
-          <p className="font-display text-center text-[2rem] leading-[1.15] text-[var(--color-ink)] md:text-[2.8rem]">
-            „{anders.statement}“
-          </p>
-        </Reveal>
-        <div className="mx-auto mt-12 grid max-w-3xl gap-5 text-[var(--color-ink-soft)] md:text-lg">
-          {anders.body.map((p) => (
-            <Reveal key={p}>
-              <p>{p}</p>
-            </Reveal>
-          ))}
+        {/* Zeitlicher Ablauf der Beratung — Jurist-Auflage (BIO-144/145, 2026-09-02):
+            Überschrift NICHT „Zeitverlauf"; der Hinweis steht gleichwertig ÜBER dem
+            Zeitstrahl, nicht klein darunter. Die vier Sätze wortgetreu aus content/site.ts. */}
+        <div className="mt-20 border-t border-[var(--color-line)] pt-14">
+          <Reveal>
+            <Eyebrow>{verlauf.eyebrow}</Eyebrow>
+          </Reveal>
+          <Reveal delay={80} className="mt-6 max-w-2xl">
+            <p className="rounded-[var(--radius-card)] border border-[var(--color-terra)]/40 bg-[var(--color-cream)] px-6 py-5 text-lg text-[var(--color-ink)]">
+              {verlauf.disclaimer}
+            </p>
+          </Reveal>
+          <ol className="mt-12">
+            {verlauf.steps.map((step, i) => {
+              const isLast = i === verlauf.steps.length - 1;
+              return (
+                <Reveal key={step} as="li" delay={i * 90} className="flex gap-5 sm:gap-7">
+                  <div className="flex flex-col items-center" aria-hidden>
+                    <span className="mt-1.5 h-3.5 w-3.5 shrink-0 rounded-full border-2 !border-[var(--color-terra)] bg-[var(--color-paper)]" />
+                    {!isLast && <span className="w-px flex-1 bg-[var(--color-terra)]/35" />}
+                  </div>
+                  <div className={isLast ? "pb-1" : "pb-10"}>
+                    <span className="marker-num !text-[var(--color-terra)]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="mt-2 max-w-xl text-[var(--color-ink-soft)]">{step}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </ol>
         </div>
       </Section>
 
