@@ -147,7 +147,7 @@ export const home = {
   signalsBlock: {
     eyebrow: "Woran Sie es merken",
     headline:
-      "Selten ist es ein großer Auslöser. Meist sind es viele kleine Veränderungen, die sich summieren, bis der Alltag anstrengender wird.",
+      "Selten ist es nur ein Auslöser. Meistens ist es die Überlastung des Systems.",
     signals: koerperSignale,
     closing:
       "Diese Signale lassen sich einordnen. Daraus wird ein klarer nächster Schritt.",
