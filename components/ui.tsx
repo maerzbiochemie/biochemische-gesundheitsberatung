@@ -111,7 +111,7 @@ export function Section({
   children: ReactNode;
   className?: string;
   id?: string;
-  tone?: "cream" | "paper" | "ink" | "deep";
+  tone?: "cream" | "paper" | "ink" | "deep" | "sage" | "sand";
 }) {
   const toneClass =
     tone === "paper"
@@ -120,7 +120,11 @@ export function Section({
         ? "bg-[var(--color-ink)] text-[var(--color-paper)]"
         : tone === "deep"
           ? "bg-[var(--color-cream-deep)]"
-          : "bg-[var(--color-cream)]";
+          : tone === "sage"
+            ? "bg-[var(--color-sage-mist)]"
+            : tone === "sand"
+              ? "bg-[var(--color-sand-soft)]"
+              : "bg-[var(--color-cream)]";
   return (
     <section
       id={id}

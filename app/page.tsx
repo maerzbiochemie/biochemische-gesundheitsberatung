@@ -63,23 +63,27 @@ export default function HomePage() {
               <TermPopover term="biochemie">{home.hero.eyebrow}</TermPopover>
             </Eyebrow>
           </Reveal>
-          <WordReveal
-            as="h1"
-            text={home.hero.title}
-            delay={0.15}
-            className="font-display mt-7 max-w-4xl text-[2.3rem] leading-[1.08] sm:text-5xl lg:text-[3.9rem]"
-          />
-          <Reveal delay={120} className="mt-6 max-w-2xl font-display text-xl text-[var(--color-sage-deep)] md:text-2xl">
-            {home.hero.subtitle}
-          </Reveal>
-
-          <div className="mt-12 grid gap-10 md:grid-cols-12 md:gap-8">
+          {/* Heading and the credentials card share the same top edge on desktop. */}
+          <div className="mt-7 grid gap-10 md:grid-cols-12 md:gap-8">
             <Reveal delay={160} className="md:col-span-7 lg:col-span-6">
-              <div className="space-y-5 text-lg text-[var(--color-ink-soft)]">
+              <WordReveal
+                as="h1"
+                text={home.hero.title}
+                delay={0.15}
+                className="font-display max-w-4xl text-[2.3rem] leading-[1.08] sm:text-5xl lg:text-[3.9rem]"
+              />
+              <Reveal
+                as="p"
+                delay={120}
+                className="mt-6 max-w-2xl font-display text-xl text-[var(--color-sage-deep)] md:text-2xl"
+              >
+                {home.hero.subtitle}
+              </Reveal>
+              <div className="mt-10 space-y-5 text-lg text-[var(--color-ink-soft)]">
                 {home.hero.body.map((p) => (
                   <p key={p}>
-                  <Glossary>{p}</Glossary>
-                </p>
+                    <Glossary>{p}</Glossary>
+                  </p>
                 ))}
               </div>
               <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-start">
@@ -90,20 +94,14 @@ export default function HomePage() {
               </div>
             </Reveal>
 
-            <Reveal delay={240} className="md:col-span-5 md:col-start-9 lg:col-span-4 lg:col-start-9">
-              <div className="card flex h-full flex-col p-7 md:p-8">
-                {/* Small portrait of Milva März — personal touch, not dominant. */}
-                <Portrait
-                  src={frontPhoto}
-                  alt="Milva März"
-                  ratio="aspect-[5/4]"
-                  position="object-[center_25%]"
-                  priority
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="mb-7"
-                />
-                <p className="font-display text-2xl leading-snug">„{home.hero.heroQuote}“</p>
-                <dl className="mt-8 space-y-4 border-t border-[var(--color-line)] pt-6 text-sm">
+            <Reveal delay={240} className="md:col-span-5 md:col-start-9 md:self-start lg:col-span-4 lg:col-start-9">
+              <div className="card flex flex-col p-7 md:p-8">
+                {/* Credentials lead the card; the portrait sits below as a
+                    personal touch, not the dominant element. */}
+                <p className="font-display text-[1.6rem] leading-snug md:text-[1.75rem]">
+                  „{home.hero.heroQuote}“
+                </p>
+                <dl className="mt-7 space-y-4 text-sm">
                   {home.hero.facts.map(([k, v]) => (
                     <div key={k} className="flex flex-col gap-0.5">
                       <dt className="text-[var(--color-muted)]">{k}</dt>
@@ -111,9 +109,38 @@ export default function HomePage() {
                     </div>
                   ))}
                 </dl>
+                <div className="mt-8 border-t border-[var(--color-line)] pt-7">
+                  <Portrait
+                    src={frontPhoto}
+                    alt="Milva März"
+                    ratio="aspect-[5/4]"
+                    position="object-[center_25%]"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* ------- Themenfelder-Band — die Bereiche, die zusammen betrachtet werden */}
+      <section className="border-y border-[var(--color-line)] bg-[var(--color-sand-soft)] py-10 md:py-12">
+        <div className="container-x">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-6">
+            {home.system.themenfelder.map((label, i) => {
+              const Icon = themenfelderIcons[i];
+              return (
+                <Reveal as="li" key={label} delay={i * 70} className="flex items-center gap-3">
+                  <Icon className="h-6 w-6 shrink-0 text-[var(--color-terra)]" />
+                  <span className="text-sm font-medium tracking-wide text-[var(--color-ink-soft)]">
+                    {label}
+                  </span>
+                </Reveal>
+              );
+            })}
+          </ul>
         </div>
       </section>
 
@@ -138,7 +165,7 @@ export default function HomePage() {
       </Section>
 
       {/* ---------------- Ein Symptom ist selten die ganze Geschichte (Pos. 3) */}
-      <Section tone="cream" id="ansatz">
+      <Section tone="sage" id="ansatz">
         <Reveal className="max-w-2xl">
           <Eyebrow>{home.system.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
@@ -169,19 +196,6 @@ export default function HomePage() {
                 body={home.system.more.body}
                 className="mt-8"
               />
-              <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-[var(--color-line)] pt-8 sm:grid-cols-3">
-                {home.system.themenfelder.map((label, i) => {
-                  const Icon = themenfelderIcons[i];
-                  return (
-                    <li key={label} className="flex items-center gap-3">
-                      <Icon className="h-6 w-6 shrink-0 text-[var(--color-terra)]" />
-                      <span className="text-sm font-medium tracking-wide text-[var(--color-ink-soft)]">
-                        {label}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
             </Reveal>
           </div>
         </div>
@@ -271,7 +285,7 @@ export default function HomePage() {
       </Section>
 
       {/* ---------------------------------------- Kurzbio Milva (Pos. 6) */}
-      <Section tone="paper">
+      <Section tone="sand">
         <div className="grid gap-12 md:grid-cols-12 md:items-center">
           <Reveal className="md:col-span-4">
             <Portrait src={profilPhoto} alt="Milva März" ratio="aspect-[4/5]" />
@@ -301,7 +315,7 @@ export default function HomePage() {
       </Section>
 
       {/* --------------------------------------------------------------- FAQ */}
-      <Section tone="cream" id="faq">
+      <Section tone="deep" id="faq">
         <Reveal className="max-w-2xl">
           <Eyebrow>{faq.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{faq.title}</h2>
