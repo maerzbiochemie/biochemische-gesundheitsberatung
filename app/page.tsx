@@ -11,27 +11,11 @@ import { BookletMockup } from "@/components/BookletMockup";
 import { Faq } from "@/components/Faq";
 import { Glossary, TermPopover } from "@/components/Glossary";
 import { IconUnderstand, IconConnect, IconStructure, IconAct } from "@/components/icons";
-import {
-  IconMetabolism,
-  IconEnergy,
-  IconDigestion,
-  IconHormones,
-  IconNervous,
-  IconLoadRecovery,
-} from "@/components/icons";
 import { site, home, faq } from "@/content/site";
 import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
 
 const approachIcons = [IconUnderstand, IconConnect, IconStructure, IconAct];
-const themenfelderIcons = [
-  IconMetabolism,
-  IconEnergy,
-  IconDigestion,
-  IconHormones,
-  IconNervous,
-  IconLoadRecovery,
-];
 
 export default function HomePage() {
   return (
@@ -125,26 +109,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------- Themenfelder-Band — die Bereiche, die zusammen betrachtet werden */}
-      <section className="border-y border-[var(--color-line)] bg-[var(--color-sand-soft)] py-10 md:py-12">
-        <div className="container-x">
-          <ul className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-6">
-            {home.system.themenfelder.map((label, i) => {
-              const Icon = themenfelderIcons[i];
-              return (
-                <Reveal as="li" key={label} delay={i * 70} className="flex items-center gap-3">
-                  <Icon className="h-6 w-6 shrink-0 text-[var(--color-terra)]" />
-                  <span className="text-sm font-medium tracking-wide text-[var(--color-ink-soft)]">
-                    {label}
-                  </span>
-                </Reveal>
-              );
-            })}
-          </ul>
-        </div>
-      </section>
+      {/* -------- Keyword-Band (Pos. 2) — trägt jetzt die Themenfelder-Symbole */}
+      <Marquee />
 
-      {/* ------------------------- Woran Sie es merken (Symptomblock, Pos. 2) */}
+      {/* ------------------------- Woran Sie es merken (Symptomblock, Pos. 3) */}
       <Section tone="paper">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
@@ -164,14 +132,13 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ---------------- Ein Symptom ist selten die ganze Geschichte (Pos. 3) */}
+      {/* ---------------- Ein Symptom ist selten die ganze Geschichte (Pos. 4) */}
       <Section tone="sage" id="ansatz">
         <Reveal className="max-w-2xl">
           <Eyebrow>{home.system.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
             {home.system.title}
           </h2>
-          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{home.system.subtitle}</p>
         </Reveal>
         <div className="mt-14 grid gap-12 md:grid-cols-12 md:items-center">
           {/* Booklet-Mockup als Eyecatcher — greifbar machen, was am Ende entsteht */}
@@ -201,10 +168,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ----------------- Keyword band — moved below "Bedeutung von Gesundheit" */}
-      <Marquee />
-
-      {/* -------------------------------------- Mein Ansatz (4 Phasen, Pos. 4) */}
+      {/* -------------------------------------- Mein Ansatz (4 Phasen, Pos. 5) */}
       <Section tone="paper">
         <Reveal className="max-w-2xl">
           <Eyebrow>{home.approach.eyebrow}</Eyebrow>
@@ -239,7 +203,7 @@ export default function HomePage() {
         </Reveal>
       </Section>
 
-      {/* ------------------------------- Für wen: Split-Cards (Pos. 5) */}
+      {/* ------------------------------- Für wen: Split-Cards (Pos. 6) */}
       <Section tone="cream">
         <Reveal className="max-w-2xl">
           <Eyebrow>{home.audience.eyebrow}</Eyebrow>
@@ -284,7 +248,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ---------------------------------------- Kurzbio Milva (Pos. 6) */}
+      {/* ---------------------------------------- Kurzbio Milva (Pos. 7) */}
       <Section tone="sand">
         <div className="grid gap-12 md:grid-cols-12 md:items-center">
           <Reveal className="md:col-span-4">

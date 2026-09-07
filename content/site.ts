@@ -86,25 +86,12 @@ export const home = {
   system: {
     eyebrow: "Zusammenhänge",
     title: "Ein Symptom ist selten die ganze Geschichte",
-    subtitle:
-      "Schlaf, Verdauung, Hormone, Energie, Stress und Regeneration hängen zusammen. Verändert sich eins, kann das die anderen mitbeeinflussen.",
     body: [
       "Deshalb greift es oft zu kurz, ein einzelnes Symptom isoliert zu betrachten. Die Frage ist, welcher Prozess dahintersteht – und wo für Sie ein sinnvoller Ansatzpunkt liegt.",
     ],
     pullquote:
       "Wer die Zusammenhänge kennt, muss nicht alles auf einmal angehen – sondern das, was zuerst zählt.",
     heroQuote: "Wer Gesundheit verstehen will, muss den Körper als System betrachten.",
-    // Themenfelder — dieselben Begriffe, die bereits in system.body und im
-    // Gesundheitskompass (leistungen.kompass) verwendet werden, hier als
-    // eigene Liste mit Icons statt Bulletpoints.
-    themenfelder: [
-      "Stoffwechsel",
-      "Energiehaushalt",
-      "Verdauung",
-      "Hormonregulation",
-      "Nervensystem",
-      "Belastung & Regeneration",
-    ],
     more: {
       label: "So gehe ich vor",
       title: "Der Körper als zusammenhängendes Gefüge",
