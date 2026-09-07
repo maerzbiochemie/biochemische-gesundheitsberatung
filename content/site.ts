@@ -91,7 +91,8 @@ export const home = {
     body: [
       "Deshalb greift es oft zu kurz, ein einzelnes Symptom isoliert zu betrachten. Die Frage ist, welcher Prozess dahintersteht – und wo für Sie ein sinnvoller Ansatzpunkt liegt.",
     ],
-    pullquote: "Entscheidend sind deshalb die Prozesse dahinter – nicht nur das einzelne Symptom.",
+    pullquote:
+      "Wer die Zusammenhänge kennt, muss nicht alles auf einmal angehen – sondern das, was zuerst zählt.",
     heroQuote: "Wer Gesundheit verstehen will, muss den Körper als System betrachten.",
     // Themenfelder — dieselben Begriffe, die bereits in system.body und im
     // Gesundheitskompass (leistungen.kompass) verwendet werden, hier als
