@@ -187,7 +187,7 @@ export default function HomePage() {
                   </p>
                 ))}
               </div>
-              <blockquote className="font-display mt-8 rounded-[var(--radius-card)] bg-[var(--color-walnut)] px-7 py-8 text-2xl leading-snug text-[var(--color-paper)] md:px-9 md:py-9">
+              <blockquote className="font-display mt-8 rounded-[var(--radius-card)] border border-[color:var(--color-line-soft)] bg-[rgb(230_215_184_/_0.55)] px-7 py-8 text-2xl leading-snug text-[var(--color-walnut)] md:px-9 md:py-9">
                 {home.system.pullquote}
               </blockquote>
               <MoreInfo
