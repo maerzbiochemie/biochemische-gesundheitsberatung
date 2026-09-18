@@ -3,6 +3,7 @@
 import type {
   CheckField,
   Field,
+  MedsField,
   NoteField,
   RadioTextField,
   ScaleField,
@@ -10,6 +11,7 @@ import type {
   TextField,
   TextareaField,
 } from "@/content/anamnesebogen";
+import { medsColumns, medsHint } from "@/content/anamnesebogen";
 import { useFormData } from "./FormContext";
 
 const INPUT =
@@ -180,28 +182,21 @@ export function ScaleInput({ field }: { field: ScaleField }) {
   );
 }
 
-export function TableInput({ field }: { field: TableField }) {
-  const { getVal, setVal } = useFormData();
-  const rows = getVal<string[][]>(field.name, Array.from({ length: field.rows ?? 4 }, () => field.columns.map(() => "")));
+interface TableGridProps {
+  columns: string[];
+  rows: string[][];
+  onChange: (rowIdx: number, colIdx: number, value: string) => void;
+  onAddRow: () => void;
+}
 
-  function updateCell(rowIdx: number, colIdx: number, value: string) {
-    const next = rows.map((r) => [...r]);
-    next[rowIdx][colIdx] = value;
-    setVal(field.name, next);
-  }
-
-  function addRow() {
-    setVal(field.name, [...rows, field.columns.map(() => "")]);
-  }
-
+function TableGrid({ columns, rows, onChange, onAddRow }: TableGridProps) {
   return (
-    <div className="my-4 print:break-inside-avoid">
-      <FieldLabel {...field} />
+    <>
       <div className="overflow-x-auto rounded-lg border border-[var(--color-line)] print:overflow-visible print:rounded-none print:border-black/25">
         <table className="w-full min-w-[560px] border-collapse text-[13.3px] print:min-w-0 print:table-fixed">
           <thead>
             <tr className="print:break-inside-avoid">
-              {field.columns.map((c) => (
+              {columns.map((c) => (
                 <th
                   key={c}
                   className="whitespace-nowrap border-b border-[var(--color-line)] bg-[var(--color-cream-deep)] px-2.5 py-2 text-left text-[12.3px] font-medium text-[var(--color-muted)] print:whitespace-normal print:break-words print:border-black/40 print:bg-transparent print:align-bottom print:text-[11px] print:text-black"
@@ -223,7 +218,7 @@ export function TableInput({ field }: { field: TableField }) {
                       type="text"
                       className="w-full bg-transparent px-2 py-1.5 text-[13.5px] text-[var(--color-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--color-sage)] print:hidden"
                       value={cell}
-                      onChange={(e) => updateCell(rIdx, cIdx, e.target.value)}
+                      onChange={(e) => onChange(rIdx, cIdx, e.target.value)}
                     />
                     <div className={TABLE_CELL_PRINT_VALUE}>{cell || "—"}</div>
                   </td>
@@ -235,11 +230,73 @@ export function TableInput({ field }: { field: TableField }) {
       </div>
       <button
         type="button"
-        onClick={addRow}
+        onClick={onAddRow}
         className="mt-2 rounded-md border border-dashed border-[var(--color-line)] px-2.5 py-1 text-xs text-[var(--color-sage-deep)] hover:border-[var(--color-sage)] print:hidden"
       >
         + Zeile hinzufügen
       </button>
+    </>
+  );
+}
+
+function useTableRows(name: string, columns: string[], initialRows: number) {
+  const { getVal, setVal } = useFormData();
+  const rows = getVal<string[][]>(name, Array.from({ length: initialRows }, () => columns.map(() => "")));
+
+  function updateCell(rowIdx: number, colIdx: number, value: string) {
+    const next = rows.map((r) => [...r]);
+    next[rowIdx][colIdx] = value;
+    setVal(name, next);
+  }
+
+  function addRow() {
+    setVal(name, [...rows, columns.map(() => "")]);
+  }
+
+  return { rows, updateCell, addRow };
+}
+
+export function TableInput({ field }: { field: TableField }) {
+  const { rows, updateCell, addRow } = useTableRows(field.name, field.columns, field.rows ?? 4);
+  return (
+    <div className="my-4 print:break-inside-avoid">
+      <FieldLabel {...field} />
+      <TableGrid columns={field.columns} rows={rows} onChange={updateCell} onAddRow={addRow} />
+    </div>
+  );
+}
+
+/**
+ * Abschluss eines Themenfeldes: Ja/Nein-Frage plus Tabelle. Die Einträge
+ * erscheinen automatisch in der Zusammenfassung am Ende des Bogens.
+ */
+export function MedsInput({ field }: { field: MedsField }) {
+  const { getVal, setVal } = useFormData();
+  const choice = getVal<string>(`${field.name}_ja`, "");
+  const { rows, updateCell, addRow } = useTableRows(field.name, medsColumns, field.rows ?? 3);
+
+  return (
+    <div className="my-5 rounded-xl border border-[var(--color-sage-soft)]/50 bg-[var(--color-sage)]/[0.05] p-4 print:break-inside-avoid print:border-black/25">
+      <p className="mb-2 text-sm font-medium text-[var(--color-ink)]">{field.label}</p>
+      <div className="mb-3 flex flex-wrap items-center gap-4 print:hidden">
+        {["nein", "ja"].map((opt) => (
+          <label key={opt} className="flex cursor-pointer items-center gap-1.5 text-[14.5px] text-[var(--color-ink)]">
+            <input
+              type="radio"
+              name={`${field.name}_ja`}
+              className="h-4 w-4 [accent-color:var(--color-sage-deep)]"
+              checked={choice === opt}
+              onChange={() => setVal(`${field.name}_ja`, opt)}
+            />
+            {opt}
+          </label>
+        ))}
+      </div>
+      <div className={PRINT_VALUE}>{choice || "—"}</div>
+      <p className="mb-2 mt-3 text-xs text-[var(--color-muted)]">
+        {field.hint && field.hint !== medsHint ? `${field.hint} — ${medsHint}` : medsHint}
+      </p>
+      <TableGrid columns={medsColumns} rows={rows} onChange={updateCell} onAddRow={addRow} />
     </div>
   );
 }
@@ -274,6 +331,8 @@ export function RenderField({ field }: { field: Field }) {
       return <ScaleInput field={field} />;
     case "table":
       return <TableInput field={field} />;
+    case "meds":
+      return <MedsInput field={field} />;
     case "note":
       return <NoteBlock field={field} />;
     default:
@@ -301,13 +360,23 @@ export function isFieldFilled(field: Field, state: Record<string, unknown>): boo
       const v = state[field.name];
       return v !== undefined && v !== null;
     }
-    case "table": {
-      const v = state[field.name];
-      return Array.isArray(v) && v.some((row) => Array.isArray(row) && row.some((cell) => typeof cell === "string" && cell.trim().length > 0));
+    case "meds": {
+      const choice = state[`${field.name}_ja`];
+      if (typeof choice === "string" && choice.length > 0) return true;
+      return hasTableContent(state[field.name]);
     }
+    case "table":
+      return hasTableContent(state[field.name]);
     case "note":
       return false;
     default:
       return false;
   }
+}
+
+function hasTableContent(value: unknown): boolean {
+  return (
+    Array.isArray(value) &&
+    value.some((row) => Array.isArray(row) && row.some((cell) => typeof cell === "string" && cell.trim().length > 0))
+  );
 }

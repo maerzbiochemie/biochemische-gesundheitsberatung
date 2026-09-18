@@ -4,6 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import {
   consentCheckboxes,
   consentIntro,
+  medsFields,
+  medsOther,
+  medsSummaryColumns,
   optionalProtocol,
   privacyNoticeBlocks,
   sections,
@@ -14,12 +17,16 @@ import { PasswordGate } from "./PasswordGate";
 import { Toolbar } from "./Toolbar";
 import { BodyMap } from "./BodyMap";
 import { SignaturePad } from "./SignaturePad";
-import { RenderField, TableInput, isFieldFilled } from "./fields";
+import { MedsInput, RenderField, TableInput, isFieldFilled } from "./fields";
+
+const numberedSections = sections.filter((s) => s.n !== null);
+const totalThemen = numberedSections.length;
 
 const navItems = [
-  ...sections.map((s) => ({ id: `s${s.n}`, label: `${s.n}. ${s.title.split(",")[0].split(" und ")[0]}` })),
-  { id: "s18", label: "18. Datenschutz" },
-  { id: "s19", label: "Kurzprotokoll" },
+  ...sections.map((s) => ({ id: s.key, label: s.n === null ? s.short : `${s.n}. ${s.short}` })),
+  { id: "zusammenfassung", label: "Zusammenfassung" },
+  { id: "datenschutz", label: "Datenschutz" },
+  { id: "protokoll", label: "Kurzprotokoll" },
 ];
 
 function useProgress() {
@@ -126,21 +133,94 @@ function WarnNote({ title, children }: { title: string; children: React.ReactNod
   );
 }
 
-function SectionCard({ n, total, title, children }: { n: number; total: number; title: string; children: React.ReactNode }) {
+function SectionCard({
+  id,
+  n,
+  eyebrow,
+  title,
+  children,
+}: {
+  id: string;
+  n?: number | null;
+  eyebrow?: string;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div
-      id={`s${n}`}
-      data-section-card
-      className="card scroll-mt-24 p-6 print:break-inside-avoid print:border-black/20 print:shadow-none sm:p-8"
-    >
+    <div id={id} data-section-card className="card scroll-mt-24 p-6 print:break-inside-avoid print:border-black/20 print:shadow-none sm:p-8">
       <div className="mb-1 text-xs font-semibold tracking-wide text-[var(--color-sage-deep)]">
-        Abschnitt {n} von {total}
+        {eyebrow ?? (n ? `Themenfeld ${n} von ${totalThemen}` : "")}
       </div>
       <div className="mb-4 flex items-baseline gap-4 border-b border-[var(--color-line)] pb-4">
-        <span className="marker-num-lg">{n}</span>
+        {n ? <span className="marker-num-lg">{n}</span> : null}
         <h2 className="font-display text-xl text-[var(--color-ink)] md:text-2xl">{title}</h2>
       </div>
       {children}
+    </div>
+  );
+}
+
+/** Führt alle Medikamenten-/Supplement-Angaben aus den Themenfeldern zusammen. */
+function MedsSummary() {
+  const { state } = useFormData();
+
+  const rows = useMemo(() => {
+    const all = [...medsFields, medsOther];
+    const out: string[][] = [];
+    all.forEach((field) => {
+      const value = state[field.name];
+      if (!Array.isArray(value)) return;
+      value.forEach((row) => {
+        if (!Array.isArray(row)) return;
+        const cells = row.map((c) => (typeof c === "string" ? c.trim() : ""));
+        if (cells.every((c) => c.length === 0)) return;
+        out.push([field.area, ...cells]);
+      });
+    });
+    return out;
+  }, [state]);
+
+  if (rows.length === 0) {
+    return (
+      <p className="rounded-lg border border-dashed border-[var(--color-line)] p-4 text-[13.5px] text-[var(--color-muted)]">
+        Sobald Sie in einem Themenfeld ein Medikament oder ein Nahrungsergänzungsmittel eintragen, erscheint es hier automatisch — Sie
+        müssen nichts doppelt ausfüllen.
+      </p>
+    );
+  }
+
+  return (
+    <div className="overflow-x-auto rounded-lg border border-[var(--color-line)] print:overflow-visible print:rounded-none print:border-black/25">
+      <table className="w-full min-w-[560px] border-collapse text-[13px] print:min-w-0 print:table-fixed">
+        <thead>
+          <tr className="print:break-inside-avoid">
+            {medsSummaryColumns.map((c) => (
+              <th
+                key={c}
+                className="whitespace-nowrap border-b border-[var(--color-line)] bg-[var(--color-cream-deep)] px-2.5 py-2 text-left text-[12px] font-medium text-[var(--color-muted)] print:whitespace-normal print:break-words print:border-black/40 print:bg-transparent print:align-bottom print:text-[10.5px] print:text-black"
+              >
+                {c}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} className="print:break-inside-avoid">
+              {row.map((cell, j) => (
+                <td
+                  key={j}
+                  className={`min-w-[110px] border-b border-[var(--color-line-soft)] px-2 py-1.5 align-top text-[12.8px] last:border-b-0 print:min-w-0 print:border-black/15 print:p-1.5 ${
+                    j === 0 ? "font-medium text-[var(--color-sage-deep)] print:text-black" : "text-[var(--color-ink)]"
+                  }`}
+                >
+                  {cell || "—"}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -152,7 +232,7 @@ function ConsentSection() {
   const ortDatum2 = getVal<string>("s18_ort_datum_2", "");
 
   return (
-    <SectionCard n={18} total={19} title="Datenschutz, Einwilligung und Abschluss">
+    <SectionCard id="datenschutz" eyebrow="Zum Abschluss" title="Datenschutz, Einwilligung und Abschluss">
       <div className="rounded-xl border border-[var(--color-line)] bg-[var(--color-cream-deep)] p-4 text-[13.3px] sm:p-5">
         <p className="font-medium text-[var(--color-ink)]">{consentIntro.heading}</p>
         {consentIntro.paragraphs.map((p) => (
@@ -298,29 +378,54 @@ function AnamnesebogenContent() {
 
         <main className="mt-2 space-y-6">
           {sections.map((sec) => (
-            <SectionCard key={sec.n} n={sec.n} total={19} title={sec.title}>
+            <SectionCard
+              key={sec.key}
+              id={sec.key}
+              n={sec.n}
+              eyebrow={sec.n === null ? "Vorab" : undefined}
+              title={sec.title}
+            >
               {sec.bodymap && <BodyMap />}
               {sec.fields.map((f, i) => (
-                <RenderField key={"name" in f ? f.name : `${sec.n}-note-${i}`} field={f} />
+                <RenderField key={"name" in f ? f.name : `${sec.key}-note-${i}`} field={f} />
               ))}
             </SectionCard>
           ))}
 
+          <SectionCard id="zusammenfassung" eyebrow="Automatische Übersicht" title="Zusammenfassung: Medikamente und Nahrungsergänzung">
+            <p className="mb-4 text-[14px] text-[var(--color-ink-soft)]">
+              Diese Übersicht entsteht automatisch aus Ihren Angaben in den Themenfeldern — so steht am Ende alles auf einen Blick
+              zusammen.
+            </p>
+            <MedsSummary />
+            <div className="mt-6">
+              <MedsInput field={medsOther} />
+            </div>
+          </SectionCard>
+
           <ConsentSection />
 
-          <SectionCard n={19} total={19} title="Optional: 7-Tage-Kurzprotokoll">
+          <SectionCard id="protokoll" eyebrow="Optional" title="7-Tage-Kurzprotokoll">
             <InfoNote title="Optional">
               <p>
                 Dieses Kurzprotokoll kann vor dem Ersttermin hilfreich sein, wenn Beschwerden stark mit Ernährung, Stress, Schlaf, Zyklus
                 oder Bewegung schwanken. Es muss nicht ausgefüllt werden, wenn es nicht notwendig ist.
               </p>
             </InfoNote>
-            <TableInput field={{ type: "table", label: "Tagesprotokoll", name: optionalProtocol.name, columns: optionalProtocol.columns, rows: optionalProtocol.rows }} />
+            <TableInput
+              field={{
+                type: "table",
+                label: "Tagesprotokoll",
+                name: optionalProtocol.name,
+                columns: optionalProtocol.columns,
+                rows: optionalProtocol.rows,
+              }}
+            />
           </SectionCard>
         </main>
 
         <footer className="pb-2 pt-10 text-center text-xs text-[var(--color-muted)]">
-          Version 2.3 · Online-Fragebogen · Ihre Eingaben werden ausschließlich lokal in diesem Browser gespeichert (kein Server-Upload),
+          Version 3.0 · Online-Fragebogen · Ihre Eingaben werden ausschließlich lokal in diesem Browser gespeichert (kein Server-Upload),
           dort verschlüsselt (AES-256) und löschen sich automatisch 24 Stunden nach der letzten Eingabe von selbst. Bitte speichern Sie
           den ausgefüllten Bogen rechtzeitig vorher als PDF — danach senden Sie ihn bitte über den von mir bereitgestellten,
           7 Tage gültigen Proton-Drive-Freigabe-Link oder per Post an die Praxisadresse. Über „Zurücksetzen“ können Sie Ihre Angaben auch jederzeit sofort löschen, was
