@@ -844,8 +844,69 @@ export const sections: Section[] = [
     ],
   },
   {
-    key: "t7",
+    key: "augen_ohren",
     n: 7,
+    short: "Augen & Ohren",
+    title: "Augen und Ohren",
+    fields: [
+      {
+        type: "check",
+        label: "Bekannte Diagnosen in diesem Bereich",
+        name: "augen_ohren_diagnosen",
+        cols: 2,
+        other: true,
+        options: [
+          "keine bekannt",
+          "grauer Star (Katarakt)",
+          "grüner Star (Glaukom)",
+          "Makuladegeneration",
+          "trockene Augen / Sicca-Syndrom",
+          "Hörsturz",
+          "Morbus Menière",
+          "chronische Mittelohrentzündung",
+          "Tinnitus",
+          "Schwerhörigkeit",
+        ],
+      },
+      {
+        type: "check",
+        label: "Beobachtungen zu Augen und Ohren",
+        name: "augen_ohren_beobachtungen",
+        cols: 2,
+        other: true,
+        options: [
+          "keine",
+          "Sehstörungen",
+          "verschwommenes Sehen",
+          "Lichtempfindlichkeit",
+          "trockene / brennende Augen",
+          "tränende Augen",
+          "Ohrgeräusche / Tinnitus",
+          "Hörminderung",
+          "Druckgefühl im Ohr",
+          "Schwindel",
+          "Ohrenschmerzen",
+          "häufige Ohrenentzündungen",
+        ],
+      },
+      {
+        type: "textarea",
+        label: "Weitere Beobachtungen zu Augen oder Ohren",
+        name: "augen_ohren_weitere",
+        lines: 2,
+      },
+      {
+        type: "meds",
+        label: medsQuestionLabel,
+        name: "augen_ohren_meds",
+        area: "Augen & Ohren",
+        hint: "z. B. Augentropfen, künstliche Tränenflüssigkeit, Ginkgo, Zink, Magnesium",
+      },
+    ],
+  },
+  {
+    key: "t7",
+    n: 8,
     short: "Atemwege",
     title: "Atemwege und Lunge",
     fields: [
@@ -908,7 +969,7 @@ export const sections: Section[] = [
   },
   {
     key: "t8",
-    n: 8,
+    n: 9,
     short: "Immunsystem",
     title: "Immunsystem, Haut und Schleimhäute",
     fields: [
@@ -1054,7 +1115,7 @@ export const sections: Section[] = [
   },
   {
     key: "t9",
-    n: 9,
+    n: 10,
     short: "Herz-Kreislauf",
     title: "Herz-Kreislauf und Gefäßsystem",
     fields: [
@@ -1110,7 +1171,7 @@ export const sections: Section[] = [
   },
   {
     key: "t10",
-    n: 10,
+    n: 11,
     short: "Hormone",
     title: "Hormonsystem und Stoffwechsel",
     fields: [
@@ -1243,7 +1304,7 @@ export const sections: Section[] = [
   },
   {
     key: "t11",
-    n: 11,
+    n: 12,
     short: "Lymphe & Gewebe",
     title: "Lymph- und Bindegewebe",
     fields: [
@@ -1304,7 +1365,7 @@ export const sections: Section[] = [
   },
   {
     key: "t12",
-    n: 12,
+    n: 13,
     short: "Nieren & Blase",
     title: "Nieren, Blase und Urogenitalsystem",
     fields: [
@@ -1350,7 +1411,7 @@ export const sections: Section[] = [
   },
   {
     key: "t13",
-    n: 13,
+    n: 14,
     short: "Lebensumstände",
     title: "Lebensumstände, Beruf und Umwelt",
     fields: [
@@ -1452,7 +1513,7 @@ export const sections: Section[] = [
   },
   {
     key: "t14",
-    n: 14,
+    n: 15,
     short: "Laborwerte",
     title: "Laborwerte, Diagnostik und Befunde",
     fields: [
@@ -1510,7 +1571,7 @@ export const sections: Section[] = [
   },
   {
     key: "t15",
-    n: 15,
+    n: 16,
     short: "Ziele",
     title: "Bisherige Maßnahmen, Ziele und Zusammenarbeit",
     fields: [
