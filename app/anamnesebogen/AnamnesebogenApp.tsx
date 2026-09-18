@@ -206,11 +206,14 @@ function MedsSummary() {
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className="print:break-inside-avoid">
+            <tr
+              key={i}
+              className={`print:break-inside-avoid ${i === rows.length - 1 ? "[&>td]:border-b-0" : ""}`}
+            >
               {row.map((cell, j) => (
                 <td
                   key={j}
-                  className={`min-w-[110px] border-b border-[var(--color-line-soft)] px-2 py-1.5 align-top text-[12.8px] last:border-b-0 print:min-w-0 print:border-black/15 print:p-1.5 ${
+                  className={`min-w-[110px] border-b border-[var(--color-line-soft)] px-2 py-1.5 align-top text-[12.8px] print:min-w-0 print:border-black/15 print:p-1.5 ${
                     j === 0 ? "font-medium text-[var(--color-sage-deep)] print:text-black" : "text-[var(--color-ink)]"
                   }`}
                 >

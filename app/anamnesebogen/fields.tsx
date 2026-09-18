@@ -208,11 +208,14 @@ function TableGrid({ columns, rows, onChange, onAddRow }: TableGridProps) {
           </thead>
           <tbody>
             {rows.map((row, rIdx) => (
-              <tr key={rIdx} className="print:break-inside-avoid">
+              <tr
+                key={rIdx}
+                className={`print:break-inside-avoid ${rIdx === rows.length - 1 ? "[&>td]:border-b-0" : ""}`}
+              >
                 {row.map((cell, cIdx) => (
                   <td
                     key={cIdx}
-                    className="min-w-[110px] border-b border-[var(--color-line-soft)] p-1 last:border-b-0 print:min-w-0 print:border-black/15 print:p-1.5 print:align-top"
+                    className="min-w-[110px] border-b border-[var(--color-line-soft)] p-1 print:min-w-0 print:border-black/15 print:p-1.5 print:align-top"
                   >
                     <input
                       type="text"
