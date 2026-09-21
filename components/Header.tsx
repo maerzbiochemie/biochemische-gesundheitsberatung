@@ -37,9 +37,9 @@ export function Header() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="container-x">
+      <div className="container-wide">
         <div className="flex h-16 items-center justify-between md:h-20">
-          <Link href="/" className="group relative flex shrink-0 flex-col justify-center leading-none lg:-ml-4 xl:-ml-6">
+          <Link href="/" className="group relative flex shrink-0 flex-col justify-center leading-none">
             <span className="font-display text-xl tracking-tight md:text-[1.4rem]">
               {site.name}
             </span>
@@ -107,7 +107,7 @@ export function Header() {
           open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="container-x flex flex-col gap-1 py-6">
+        <nav className="container-wide flex flex-col gap-1 py-6">
           {site.nav.map((item, i) => (
             <Link
               key={item.href}

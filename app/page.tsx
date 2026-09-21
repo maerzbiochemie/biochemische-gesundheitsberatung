@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { ButtonLink, Eyebrow, Section, SignalList } from "@/components/ui";
 import { CTABand } from "@/components/CTABand";
@@ -14,6 +15,7 @@ import { IconUnderstand, IconConnect, IconStructure, IconAct } from "@/component
 import { site, home, faq } from "@/content/site";
 import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
+import heroBotanical from "@/assets/hero-botanical.png";
 
 const approachIcons = [IconUnderstand, IconConnect, IconStructure, IconAct];
 
@@ -21,26 +23,26 @@ export default function HomePage() {
   return (
     <>
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="relative overflow-hidden bg-[var(--color-cream)] pb-20 pt-32 md:pb-28 md:pt-44">
-        {/* soft ambient shape */}
-        <div
-          aria-hidden
-          className="animate-float-slow pointer-events-none absolute -right-40 -top-24 h-[34rem] w-[34rem] rounded-full opacity-50 blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle at 30% 30%, rgba(47,93,69,0.30), rgba(47,93,69,0) 70%)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="animate-float-slow pointer-events-none absolute -left-32 top-1/3 h-[22rem] w-[22rem] rounded-full opacity-40 blur-3xl"
-          style={{
-            animationDelay: "-7s",
-            background:
-              "radial-gradient(circle at 50% 50%, rgba(168,96,63,0.20), rgba(168,96,63,0) 70%)",
-          }}
-        />
-        <div className="container-x relative">
+      <section className="relative overflow-hidden bg-[var(--color-cream)] pb-20 pt-20 md:pb-28 md:pt-24">
+        {/* Finished watercolour background graphic (paper texture + botanical
+            branch + left-edge leaf cluster) — a real image file, not a
+            generated CSS/SVG illustration. Sits behind all real content.
+            The wrapper is pinned to the image's own aspect ratio (not the
+            hero section's, which varies with copy length) so object-cover
+            never has to scale/crop more than necessary — below it the
+            section's plain cream background shows through on tall pages. */}
+        <div className="absolute inset-x-0 top-0 aspect-[1756/896] w-full">
+          <Image
+            src={heroBotanical}
+            alt=""
+            aria-hidden
+            fill
+            priority
+            sizes="100vw"
+            className="pointer-events-none object-cover object-center"
+          />
+        </div>
+        <div className="container-wide relative">
           <Reveal>
             {/* First (and only) interactive occurrence — tooltip explains "Biochemie". */}
             <Eyebrow>
@@ -79,7 +81,7 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal delay={240} className="md:col-span-5 md:col-start-9 md:self-start lg:col-span-4 lg:col-start-9">
-              <div className="card flex flex-col p-7 md:p-8">
+              <div className="card flex w-full max-w-[28rem] flex-col p-7 md:p-8">
                 {/* Credentials lead the card; the portrait sits below as a
                     personal touch, not the dominant element. */}
                 <p className="font-display text-[1.6rem] leading-snug md:text-[1.75rem]">
