@@ -53,6 +53,56 @@ export const koerperSignale = [
   "Der Zyklus verändert sich.",
 ] as const;
 
+// Infofenster-Texte pro Körper-Signal (BIO-174) — Titel identisch zu
+// `koerperSignale` oben. Ursprungstext von Milva (Kommentar 2026-09-21),
+// Texte 01/03/04 sowie das Label "focusLabel" auf allen sieben nach
+// Jurist-Rechtscheck (BIO-175, 🟡 mit Auflagen) angepasst — nicht ohne
+// erneute Jurist-Rücksprache zurückändern.
+export const koerperSignaleDetails = [
+  {
+    title: "Der Schlaf wird schlechter.",
+    body: "Schlechter Schlaf kann viele Gründe haben. Entscheidend ist, ob das Einschlafen, Durchschlafen oder das Gefühl von Erholung am Morgen verändert ist – und seit wann.",
+    focusLabel: "Worüber wir im Erstgespräch sprechen:",
+    focus: "Schlafrhythmus, Belastungen im Alltag und Gewohnheiten. Anhaltende Schlafprobleme gehören ärztlich abgeklärt.",
+  },
+  {
+    title: "Die Verdauung reagiert empfindlicher.",
+    body: "Blähungen, Völlegefühl oder ein veränderter Stuhlgang sagen für sich genommen noch wenig über die Ursache aus. Aufschlussreicher ist, wann die Beschwerden auftreten und ob sich ein Muster erkennen lässt.",
+    focusLabel: "Worüber wir im Erstgespräch sprechen:",
+    focus: "Verlauf der Beschwerden, Mahlzeiten, Alltag und weitere Veränderungen. Anhaltende oder auffällige Beschwerden gehören ärztlich abgeklärt.",
+  },
+  {
+    title: "Die Energie schwankt über den Tag.",
+    body: "Ein gelegentliches Tief ist normal. Wenn die Energie regelmäßig stark abfällt, lohnt sich ein genauerer Blick auf die Umstände.",
+    focusLabel: "Worüber wir im Erstgespräch sprechen:",
+    focus: "Schlaf, Tagesrhythmus, Mahlzeiten, Aktivität und – falls vorhanden – ärztlich erhobene Befunde, die Sie mitbringen. Deren Bewertung bleibt bei Ihrer Ärztin oder Ihrem Arzt. Anhaltende Erschöpfung gehört ärztlich abgeklärt.",
+  },
+  {
+    title: "Stress wirkt länger nach.",
+    body: "Manchmal endet eine Belastung, aber das Gefühl von Anspannung bleibt. Das kann sich unter anderem im Schlaf, in der Konzentration oder im Erholungsgefühl zeigen.",
+    focusLabel: "Worüber wir im Erstgespräch sprechen:",
+    focus: "Wie lange die Belastung anhält, welche Pausen möglich sind und was sich im Alltag verändert hat. Daraus lassen sich realistische nächste Schritte im Alltag ableiten. Bei anhaltender seelischer Belastung ist ärztliche oder psychotherapeutische Hilfe der richtige Weg.",
+  },
+  {
+    title: "Training fühlt sich zäh an.",
+    body: "Wenn sich eine vertraute Belastung plötzlich deutlich schwerer anfühlt, muss nicht das Training allein der Grund sein. Auch die Bedingungen außerhalb des Trainings zählen.",
+    focusLabel: "Worüber wir im Erstgespräch sprechen:",
+    focus: "Umfang und Intensität des Trainings, Schlaf, Ernährung und Veränderungen der allgemeinen Gesundheit.",
+  },
+  {
+    title: "Die Regeneration dauert länger.",
+    body: "Nach Anstrengung braucht der Körper Erholung. Wenn Müdigkeit oder Muskelbeschwerden länger als gewohnt anhalten, ist vor allem das Muster über mehrere Tage interessant.",
+    focusLabel: "Worüber wir im Erstgespräch sprechen:",
+    focus: "Das Verhältnis von Belastung und Ruhe, Schlaf, Ernährung und die Frage, ob sich die Erholung im Vergleich zu früher verändert hat.",
+  },
+  {
+    title: "Der Zyklus verändert sich.",
+    body: "Zykluslänge, Blutungsstärke und Beschwerden können schwanken. Neue oder wiederkehrende Veränderungen sollten jedoch nicht vorschnell einer einzigen Ursache zugeschrieben werden.",
+    focusLabel: "Worüber wir im Erstgespräch sprechen:",
+    focus: "Verlauf, Begleitsymptome und Veränderungen bei Stress, Training, Gewicht oder Verhütung. Anhaltende Veränderungen sollten gynäkologisch abgeklärt werden.",
+  },
+] as const;
+
 // Gekürzte Reihe — nur für den Privatkunden-Hero (bewusst nicht die volle Liste,
 // um die Symptom-Aufzählung nicht über zwei Seiten zu doppeln).
 export const koerperSignaleKurz = [
@@ -136,9 +186,13 @@ export const home = {
     eyebrow: "Woran Sie es merken",
     headline:
       "Selten ist es nur ein Auslöser. Meistens ist es die Überlastung des Systems.",
-    signals: koerperSignale,
     closing:
       "Diese Signale lassen sich einordnen. Daraus wird ein klarer nächster Schritt.",
+    // Pflichthinweis laut Jurist-Rechtscheck (BIO-175) — muss sichtbar auf der
+    // Seite stehen (nicht nur im Impressum) und bei künftigen Design-/Text-
+    // Durchläufen erhalten bleiben.
+    disclaimer:
+      "Die Biochemische Gesundheitsberatung stellt keine Diagnosen, behandelt keine Krankheiten und ersetzt keine ärztliche Abklärung.",
   },
   // Split-Card-Sektion — ersetzt die früheren zwei vollen B2C-/B2B-Sektionen.
   audience: {

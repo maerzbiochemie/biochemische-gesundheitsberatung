@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, Eyebrow, Section, SignalList } from "@/components/ui";
+import { ButtonLink, Eyebrow, Section } from "@/components/ui";
+import { SignalAccordion } from "@/components/SignalAccordion";
 import { CTABand } from "@/components/CTABand";
 import { WordReveal } from "@/components/Animated";
 import { Marquee } from "@/components/Marquee";
@@ -12,7 +13,7 @@ import { BookletMockup } from "@/components/BookletMockup";
 import { Faq } from "@/components/Faq";
 import { Glossary, TermPopover } from "@/components/Glossary";
 import { IconUnderstand, IconConnect, IconStructure, IconAct } from "@/components/icons";
-import { site, home, faq } from "@/content/site";
+import { site, home, faq, koerperSignaleDetails } from "@/content/site";
 import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
 import heroBotanical from "@/assets/hero-botanical.png";
@@ -126,10 +127,13 @@ export default function HomePage() {
             </Reveal>
           </div>
           <div className="md:col-span-6 md:col-start-7">
-            <SignalList items={home.signalsBlock.signals} layout="cards" />
+            <SignalAccordion items={koerperSignaleDetails} />
             <Reveal delay={120} className="mt-8 text-[var(--color-ink-soft)] md:text-lg">
               <Glossary>{home.signalsBlock.closing}</Glossary>
             </Reveal>
+            <p className="mt-4 text-xs leading-relaxed text-[var(--color-muted)]">
+              {home.signalsBlock.disclaimer}
+            </p>
           </div>
         </div>
       </Section>
