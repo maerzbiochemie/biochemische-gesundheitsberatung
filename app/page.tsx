@@ -56,7 +56,7 @@ export default function HomePage() {
                 as="h1"
                 text={home.hero.title}
                 delay={0.15}
-                className="font-display max-w-4xl text-[2.3rem] leading-[1.08] sm:text-5xl lg:text-[3.9rem]"
+                className="font-display max-w-md text-[2.3rem] leading-[1.08] sm:max-w-xl sm:text-5xl lg:max-w-[690px] lg:text-[5rem] lg:leading-[1]"
               />
               <Reveal
                 as="p"
@@ -80,7 +80,7 @@ export default function HomePage() {
               </div>
             </Reveal>
 
-            <Reveal delay={240} className="md:col-span-5 md:col-start-9 md:self-start lg:col-span-4 lg:col-start-9">
+            <Reveal delay={240} className="md:col-span-5 md:col-start-9 md:self-start lg:col-span-5 lg:col-start-8 lg:pl-20">
               <div className="card flex w-full max-w-[28rem] flex-col p-7 md:p-8">
                 {/* Credentials lead the card; the portrait sits below as a
                     personal touch, not the dominant element. */}
