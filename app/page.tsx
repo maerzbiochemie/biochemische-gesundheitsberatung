@@ -9,7 +9,6 @@ import { Marquee } from "@/components/Marquee";
 import { MoreInfo } from "@/components/MoreInfo";
 import { BookingButton } from "@/components/BookingButton";
 import { Portrait } from "@/components/Portrait";
-import { BookletMockup } from "@/components/BookletMockup";
 import { Faq } from "@/components/Faq";
 import { Glossary, TermPopover } from "@/components/Glossary";
 import { IconUnderstand, IconConnect, IconStructure, IconAct } from "@/components/icons";
@@ -17,6 +16,7 @@ import { site, home, faq, koerperSignaleDetails } from "@/content/site";
 import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
 import heroBotanical from "@/assets/hero-botanical.png";
+import zusammenhaengeKompass from "@/assets/zusammenhaenge-kompass.png";
 
 const approachIcons = [IconUnderstand, IconConnect, IconStructure, IconAct];
 
@@ -139,40 +139,71 @@ export default function HomePage() {
       </Section>
 
       {/* ---------------- Ein Symptom ist selten die ganze Geschichte (Pos. 4) */}
-      <Section tone="sage" id="ansatz">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>{home.system.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-            {home.system.title}
-          </h2>
-        </Reveal>
-        <div className="mt-14 grid gap-12 md:grid-cols-12 md:items-center">
-          {/* Booklet-Mockup als Eyecatcher — greifbar machen, was am Ende entsteht */}
-          <Reveal className="md:col-span-5">
-            <BookletMockup />
+      <section
+        id="ansatz"
+        className="relative overflow-hidden bg-[var(--color-sage-mist)] px-6 pb-20 pt-14 md:px-10 md:pb-28 md:pt-16 lg:px-0 lg:pb-32 lg:pt-10"
+        style={{ scrollMarginTop: "5rem" }}
+      >
+        {/* Finished watercolour graphic (book, compass, fern, chapter icons,
+            pale-green fill) — a real image, not redrawn. Spans the full
+            section edge-to-edge and scales proportionally (object-contain,
+            never background-size:cover) so the book is never cropped. */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 hidden aspect-[1800/874] w-full md:block">
+          <Image
+            src={zusammenhaengeKompass}
+            alt=""
+            aria-hidden
+            fill
+            sizes="100vw"
+            className="object-contain object-left-top"
+          />
+        </div>
+
+        <div className="relative mx-auto max-w-[1710px] lg:pl-[60px]">
+          <Reveal className="max-w-2xl lg:max-w-[700px]">
+            <Eyebrow>{home.system.eyebrow}</Eyebrow>
+            <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
+              {home.system.title}
+            </h2>
           </Reveal>
-          <div className="md:col-span-6 md:col-start-7">
-            <Reveal delay={120}>
-              <div className="space-y-5 text-[var(--color-ink-soft)]">
-                {home.system.body.map((p) => (
-                  <p key={p}>
-                    <Glossary>{p}</Glossary>
-                  </p>
-                ))}
-              </div>
-              <blockquote className="font-display mt-8 rounded-[var(--radius-card)] border border-[color:var(--color-line-soft)] bg-[rgb(230_215_184_/_0.55)] px-7 py-8 text-2xl leading-snug text-[var(--color-walnut)] md:px-9 md:py-9">
-                {home.system.pullquote}
-              </blockquote>
-              <MoreInfo
-                label={home.system.more.label}
-                title={home.system.more.title}
-                body={home.system.more.body}
-                className="mt-8"
-              />
-            </Reveal>
+
+          {/* Mobile-only crop of the same graphic — book + fern, empty right
+              half cut out of the visible frame — sits between headline and body. */}
+          <div className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-card)] md:hidden">
+            <Image
+              src={zusammenhaengeKompass}
+              alt=""
+              aria-hidden
+              fill
+              sizes="100vw"
+              className="object-cover object-left"
+            />
+          </div>
+
+          <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-12 lg:mt-0 lg:block">
+            <div className="md:col-span-6 md:col-start-7 lg:ml-[800px] lg:mt-[46px] lg:w-[810px]">
+              <Reveal delay={120}>
+                <div className="space-y-5 text-[var(--color-ink-soft)] md:text-[1.625rem] md:leading-relaxed">
+                  {home.system.body.map((p) => (
+                    <p key={p}>
+                      <Glossary>{p}</Glossary>
+                    </p>
+                  ))}
+                </div>
+                <blockquote className="font-display mt-9 border-l-2 border-[var(--color-terra)] pl-6 text-2xl leading-[1.1] text-[var(--color-terra)] sm:text-3xl md:pl-7 md:text-[3.125rem] lg:pl-[35px]">
+                  {home.system.pullquote}
+                </blockquote>
+                <MoreInfo
+                  label={home.system.more.label}
+                  title={home.system.more.title}
+                  body={home.system.more.body}
+                  className="mt-8 md:text-[1.625rem]"
+                />
+              </Reveal>
+            </div>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* -------------------------------------- Mein Ansatz (4 Phasen, Pos. 5) */}
       <Section tone="paper">

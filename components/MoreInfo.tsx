@@ -31,7 +31,7 @@ export function MoreInfo({ label, title, body, className = "" }: MoreInfoProps) 
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`link-underline inline-flex items-center gap-2 text-[var(--color-sage-deep)] ${className}`}
+        className={`link-underline inline-flex items-center gap-2 text-[var(--color-sage-deep)] underline decoration-1 underline-offset-4 ${className}`}
       >
         {label} <span aria-hidden>→</span>
       </button>
