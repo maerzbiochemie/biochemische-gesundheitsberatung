@@ -62,17 +62,17 @@ export function SignalAccordion({
               }}
               onClick={() => setOpenIndex(i)}
               aria-haspopup="dialog"
-              className="group flex w-full items-center gap-4 py-5 text-left transition-colors sm:gap-6 sm:py-6"
+              className="group flex w-full items-center gap-4 py-6 text-left transition-colors sm:gap-6 sm:py-7"
             >
-              <span className="font-display w-7 shrink-0 text-sm text-[var(--color-walnut)] sm:w-9 sm:text-base">
+              <span className="font-display w-8 shrink-0 text-xl text-[var(--color-terra)] sm:w-10 sm:text-[22px]">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="font-display flex-1 text-lg leading-snug text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-sage-deep)] sm:text-xl">
+              <span className="font-display flex-1 text-[27px] leading-snug text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-sage-deep)] sm:text-[28px]">
                 {item.title}
               </span>
               <span
                 aria-hidden
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--color-line)] text-lg leading-none text-[var(--color-sage-deep)] transition-colors group-hover:border-[var(--color-sage-deep)]"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-line)] text-xl leading-none text-[var(--color-sage-deep)] transition-colors group-hover:border-[var(--color-sage-deep)] sm:h-11 sm:w-11"
               >
                 +
               </span>

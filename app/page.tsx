@@ -17,6 +17,7 @@ import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
 import heroBotanical from "@/assets/hero-botanical.png";
 import zusammenhaengeKompass from "@/assets/zusammenhaenge-kompass.png";
+import signaleFarn from "@/assets/signale-hintergrund-farn.png";
 
 const approachIcons = [IconUnderstand, IconConnect, IconStructure, IconAct];
 
@@ -116,19 +117,34 @@ export default function HomePage() {
       <Marquee />
 
       {/* ------------------------- Woran Sie es merken (Symptomblock, Pos. 3) */}
-      <Section tone="paper">
-        <div className="grid gap-12 md:grid-cols-12">
+      <Section tone="paper" className="relative overflow-hidden">
+        {/* Finished watercolour graphic — plain paper tone plus one pale fern
+            in the bottom-left corner. Sized to the image's own aspect ratio
+            (not stretched to the section's full height) so the fern stays a
+            modest, contained accent behind the headline column instead of
+            scaling up with the section's height. */}
+        <div className="pointer-events-none absolute bottom-0 left-0 aspect-[1890/832] w-full max-w-[46rem]">
+          <Image
+            src={signaleFarn}
+            alt=""
+            aria-hidden
+            fill
+            sizes="(min-width: 768px) 46rem, 100vw"
+            className="object-contain object-left-bottom"
+          />
+        </div>
+        <div className="relative grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Reveal>
               <Eyebrow>{home.signalsBlock.eyebrow}</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
+              <h2 className="font-display mt-6 text-4xl leading-tight md:text-[3.625rem] md:leading-[1.05]">
                 {home.signalsBlock.headline}
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-6 md:col-start-7">
             <SignalAccordion items={koerperSignaleDetails} />
-            <Reveal delay={120} className="mt-8 text-[var(--color-ink-soft)] md:text-lg">
+            <Reveal delay={120} className="mt-10 text-[var(--color-ink-soft)] md:text-[1.5rem]">
               <Glossary>{home.signalsBlock.closing}</Glossary>
             </Reveal>
             <p className="mt-4 text-xs leading-relaxed text-[var(--color-muted)]">
