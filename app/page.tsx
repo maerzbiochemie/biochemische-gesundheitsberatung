@@ -18,6 +18,7 @@ import profilPhoto from "@/assets/profil.jpeg";
 import heroBotanical from "@/assets/hero-botanical.png";
 import zusammenhaengeKompass from "@/assets/zusammenhaenge-kompass.png";
 import signaleFarn from "@/assets/signale-hintergrund-farn.png";
+import ansatzFarn from "@/assets/ansatz-hintergrund-farn.png";
 
 const approachIcons = [IconUnderstand, IconConnect, IconStructure, IconAct];
 
@@ -222,39 +223,126 @@ export default function HomePage() {
       </section>
 
       {/* -------------------------------------- Mein Ansatz (4 Phasen, Pos. 5) */}
-      <Section tone="paper">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>{home.approach.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{home.approach.title}</h2>
-        </Reveal>
-        <div className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-2 lg:grid-cols-4">
-          {home.approach.steps.map((step, i) => {
-            const Icon = approachIcons[i];
-            return (
-              <Reveal
-                key={step.n}
-                delay={i * 110}
-                className="group bg-[var(--color-paper)] p-8 transition-colors duration-500 hover:bg-[var(--color-cream-deep)] md:p-10"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="marker-num-lg">{step.n}</span>
-                  <Icon className="h-8 w-8 text-[var(--color-terra)] opacity-80 md:h-9 md:w-9" />
-                </div>
-                <h3 className="font-display mt-5 text-2xl md:text-3xl">{step.title}</h3>
-                <p className="mt-3 text-[var(--color-ink-soft)]">{step.body}</p>
-              </Reveal>
-            );
-          })}
+      {/* Own container instead of <Section> (78rem/container-x cap) — this
+          block alone uses a wider 1480px content column per Milva's spec,
+          without touching the shared container-x utility other pages rely
+          on. */}
+      <section className="relative overflow-hidden bg-[var(--color-paper)] py-20 md:py-28 lg:py-32">
+        <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-[7rem] md:block lg:w-[9rem]">
+          <Image
+            src={ansatzFarn}
+            alt=""
+            aria-hidden
+            fill
+            sizes="9rem"
+            className="object-contain object-right"
+          />
         </div>
-        <Reveal className="mt-10">
-          <Link
-            href="/leistungen"
-            className="link-underline inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
-          >
-            Leistungen & Preise ansehen <span aria-hidden>→</span>
-          </Link>
-        </Reveal>
-      </Section>
+        <div className="relative mx-auto w-full max-w-[1480px] px-6 md:px-14">
+          <Reveal className="max-w-2xl">
+            <Eyebrow>{home.approach.eyebrow}</Eyebrow>
+            <h2 className="font-display mt-6 text-[36px] leading-[1.15] md:text-[56px] md:leading-[1.08]">
+              {home.approach.title}
+            </h2>
+          </Reveal>
+
+          {/* Mobile: simple stacked cards, no connector lines. */}
+          <div className="mt-14 space-y-8 md:hidden">
+            {home.approach.steps.map((step, i) => {
+              const Icon = approachIcons[i];
+              return (
+                <Reveal
+                  key={step.n}
+                  delay={i * 110}
+                  className="rounded-[4px] border border-[var(--color-line)] p-6"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-[44px] leading-none text-[var(--color-terra)]">
+                      {step.n}
+                    </span>
+                    <Icon className="h-7 w-7 text-[var(--color-terra)] opacity-80" />
+                  </div>
+                  <h3 className="font-display mt-4 text-2xl">{step.title}</h3>
+                  <p className="mt-3 text-[17px] leading-relaxed text-[var(--color-ink-soft)]">
+                    {step.body}
+                  </p>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          {/* Desktop: 2x2 grid. The middle column/row are thin gutters that
+              host the fine connector line+dot (between columns) and the
+              short connector tick (between rows), so they sit strictly
+              between cards and never overlap them. Cards keep CSS grid's
+              default row-stretch, which is what gives both cards in a row
+              equal height even though 02's longer copy is what sets it. */}
+          <div className="relative mt-16 hidden md:grid md:grid-cols-[1fr_44px_1fr] md:grid-rows-[auto_44px_auto]">
+            {home.approach.steps.map((step, i) => {
+              const Icon = approachIcons[i];
+              const colClass = i % 2 === 0 ? "md:col-start-1" : "md:col-start-3";
+              const rowClass = i < 2 ? "md:row-start-1" : "md:row-start-3";
+              return (
+                <Reveal
+                  key={step.n}
+                  delay={i * 110}
+                  className={`rounded-[4px] border border-[var(--color-line)] p-8 transition-colors duration-500 hover:border-[var(--color-sage-soft)] lg:p-10 ${colClass} ${rowClass}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-[60px] leading-none text-[var(--color-terra)] lg:text-[64px]">
+                      {step.n}
+                    </span>
+                    <Icon className="h-8 w-8 text-[var(--color-terra)] opacity-80" />
+                  </div>
+                  <h3 className="font-display mt-6 text-[28px] lg:text-[30px]">{step.title}</h3>
+                  <p className="mt-4 text-[19px] leading-relaxed text-[var(--color-ink-soft)] lg:text-[20px]">
+                    {step.body}
+                  </p>
+                </Reveal>
+              );
+            })}
+            <div
+              aria-hidden
+              className="relative flex items-center"
+              style={{ gridColumnStart: 2, gridRowStart: 1 }}
+            >
+              <span className="h-px w-full bg-[var(--color-line)]" />
+              <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-sage-soft)]" />
+            </div>
+            <div
+              aria-hidden
+              className="relative flex items-center"
+              style={{ gridColumnStart: 2, gridRowStart: 3 }}
+            >
+              <span className="h-px w-full bg-[var(--color-line)]" />
+              <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-sage-soft)]" />
+            </div>
+            <div
+              aria-hidden
+              className="flex justify-center"
+              style={{ gridColumnStart: 1, gridRowStart: 2 }}
+            >
+              <span className="h-full w-px bg-[var(--color-line)]" />
+            </div>
+            <div
+              aria-hidden
+              className="flex justify-center"
+              style={{ gridColumnStart: 3, gridRowStart: 2 }}
+            >
+              <span className="h-full w-px bg-[var(--color-line)]" />
+            </div>
+          </div>
+
+          <Reveal className="relative mt-10">
+            <Link
+              href="/leistungen"
+              className="link-underline inline-flex items-center gap-2 text-[19px] text-[var(--color-sage-deep)]"
+            >
+              Leistungen & Preise ansehen <span aria-hidden>→</span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ------------------------------- Für wen: Split-Cards (Pos. 6) */}
       <Section tone="cream">
