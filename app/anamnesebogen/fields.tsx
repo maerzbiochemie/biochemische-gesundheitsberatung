@@ -45,6 +45,7 @@ export function TextInput({ field }: { field: TextField }) {
         value={value}
         onChange={(e) => setVal(field.name, e.target.value)}
       />
+      <div className={PRINT_VALUE}>{value || "—"}</div>
     </div>
   );
 }
@@ -109,6 +110,7 @@ export function CheckGroup({ field }: { field: CheckField }) {
               value={other.text}
               onChange={(e) => setVal(`${field.name}_other`, { checked: other.checked, text: e.target.value })}
             />
+            <span className="hidden text-[14px] text-[var(--color-ink)] print:inline">{other.text || "—"}</span>
           </label>
         )}
       </div>
@@ -138,13 +140,16 @@ export function RadioTextInput({ field }: { field: RadioTextField }) {
           </label>
         ))}
         {field.withText !== false && (
-          <input
-            type="text"
-            className={`${INPUT} min-w-[160px] flex-1`}
-            placeholder={field.textPlaceholder ?? "wann / warum / Details"}
-            value={value.text}
-            onChange={(e) => setVal(field.name, { choice: value.choice, text: e.target.value })}
-          />
+          <>
+            <input
+              type="text"
+              className={`${INPUT} min-w-[160px] flex-1`}
+              placeholder={field.textPlaceholder ?? "wann / warum / Details"}
+              value={value.text}
+              onChange={(e) => setVal(field.name, { choice: value.choice, text: e.target.value })}
+            />
+            <span className="hidden text-[14px] text-[var(--color-ink)] print:inline">{value.text || "—"}</span>
+          </>
         )}
       </div>
     </div>
