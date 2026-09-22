@@ -10,7 +10,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { decryptState, encryptState, isCryptoAvailable, sha256Hex, type EncryptedPayload } from "./crypto";
+import { clearStoredKey, decryptState, encryptState, isCryptoAvailable, sha256Hex, type EncryptedPayload } from "./crypto";
 
 // Client-seitiges Passwort-Gate: schützt vor zufälligem/versehentlichem Aufruf
 // des Links, ist aber KEIN sicherer Zugriffsschutz (Seitenquelltext ist
@@ -102,6 +102,23 @@ export function FormProvider({ children }: { children: ReactNode }) {
   const cryptoAvailable = useMemo(() => isCryptoAvailable(), []);
   const skipNextSave = useRef(true);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const stateRef = useRef(state);
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
+
+  const persist = useCallback((toSave: FormState) => {
+    encryptState(toSave).then((payload) => {
+      try {
+        localStorage.setItem(STORE_KEY, JSON.stringify(payload));
+        localStorage.setItem(STORE_TS_KEY, String(Date.now()));
+      } catch {
+        // ignore quota errors
+      }
+      setSaveStatus("saved");
+      setLastSavedAt(new Date());
+    });
+  }, []);
 
   // Load + decrypt any previously stored (and not-yet-expired) state on mount.
   useEffect(() => {
@@ -117,6 +134,7 @@ export function FormProvider({ children }: { children: ReactNode }) {
         if (savedTs && Date.now() - savedTs > EXPIRY_MS) {
           localStorage.removeItem(STORE_KEY);
           localStorage.removeItem(STORE_TS_KEY);
+          clearStoredKey();
           if (!cancelled) setSaveStatus("expired");
         } else {
           const savedRaw = localStorage.getItem(STORE_KEY);
@@ -128,6 +146,7 @@ export function FormProvider({ children }: { children: ReactNode }) {
             } catch {
               localStorage.removeItem(STORE_KEY);
               localStorage.removeItem(STORE_TS_KEY);
+              clearStoredKey();
               if (!cancelled) setSaveStatus("undecryptable");
             }
           }
@@ -154,21 +173,37 @@ export function FormProvider({ children }: { children: ReactNode }) {
     setSaveStatus("saving");
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(() => {
-      encryptState(state).then((payload) => {
-        try {
-          localStorage.setItem(STORE_KEY, JSON.stringify(payload));
-          localStorage.setItem(STORE_TS_KEY, String(Date.now()));
-        } catch {
-          // ignore quota errors
-        }
-        setSaveStatus("saved");
-        setLastSavedAt(new Date());
-      });
+      saveTimer.current = null;
+      persist(state);
     }, 350);
     return () => {
       if (saveTimer.current) clearTimeout(saveTimer.current);
     };
-  }, [state, hydrated, cryptoAvailable]);
+  }, [state, hydrated, cryptoAvailable, persist]);
+
+  // Falls der Tab in den Hintergrund geht oder geschlossen wird, während ein
+  // debounced Save noch aussteht (z. B. mobile Browser, die Hintergrund-Tabs
+  // jederzeit beenden können), sofort speichern statt die 350ms abzuwarten —
+  // sonst geht die letzte Eingabe vor dem Wechsel verloren.
+  useEffect(() => {
+    if (!hydrated || !cryptoAvailable) return;
+    const flush = () => {
+      if (saveTimer.current) {
+        clearTimeout(saveTimer.current);
+        saveTimer.current = null;
+        persist(stateRef.current);
+      }
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") flush();
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    window.addEventListener("pagehide", flush);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      window.removeEventListener("pagehide", flush);
+    };
+  }, [hydrated, cryptoAvailable, persist]);
 
   const getVal = useCallback(
     <T,>(name: string, fallback: T): T => (name in state ? (state[name] as T) : fallback),
@@ -186,6 +221,7 @@ export function FormProvider({ children }: { children: ReactNode }) {
     } catch {
       // ignore
     }
+    clearStoredKey();
     skipNextSave.current = true;
     setState({});
     setSaveStatus("idle");

@@ -1,8 +1,11 @@
 // Rein clientseitige Verschlüsselung der Anamnesebogen-Eingaben.
-// Der AES-GCM-Schlüssel liegt nur im sessionStorage (an den offenen Tab
-// gebunden, verschwindet beim Schließen). Die Formulardaten liegen
-// verschlüsselt im localStorage und werden nie an einen Server gesendet.
-
+// Der AES-GCM-Schlüssel liegt im localStorage, mit derselben Lebensdauer wie
+// die verschlüsselten Formulardaten (siehe STORE_TS_KEY/EXPIRY_MS in
+// FormContext.tsx). Läge der Schlüssel im sessionStorage, würde er bei jedem
+// Schließen des Tabs/der App verschwinden — beim nächsten Öffnen wären die
+// noch gültigen (nicht abgelaufenen) Daten dann nicht mehr entschlüsselbar
+// und gingen scheinbar "verloren", obwohl die zugesagten 24 Std. noch nicht
+// um sind. Die Formulardaten selbst werden nie an einen Server gesendet.
 const SESSION_KEY_STORAGE = "anamnesebogen_sesskey_v1";
 
 export interface EncryptedPayload {
@@ -31,9 +34,9 @@ function getSessionKey(): Promise<CryptoKey> {
   sessionKeyPromise = (async () => {
     let raw: string | null = null;
     try {
-      raw = sessionStorage.getItem(SESSION_KEY_STORAGE);
+      raw = localStorage.getItem(SESSION_KEY_STORAGE);
     } catch {
-      // sessionStorage unavailable (private mode etc.) — key stays in-memory only.
+      // localStorage unavailable (private mode etc.) — key stays in-memory only.
     }
     let keyBytes: Uint8Array;
     if (raw) {
@@ -41,7 +44,7 @@ function getSessionKey(): Promise<CryptoKey> {
     } else {
       keyBytes = crypto.getRandomValues(new Uint8Array(32));
       try {
-        sessionStorage.setItem(SESSION_KEY_STORAGE, bytesToBase64(keyBytes));
+        localStorage.setItem(SESSION_KEY_STORAGE, bytesToBase64(keyBytes));
       } catch {
         // ignore
       }
@@ -49,6 +52,15 @@ function getSessionKey(): Promise<CryptoKey> {
     return crypto.subtle.importKey("raw", keyBytes, { name: "AES-GCM" }, false, ["encrypt", "decrypt"]);
   })();
   return sessionKeyPromise;
+}
+
+export function clearStoredKey(): void {
+  sessionKeyPromise = null;
+  try {
+    localStorage.removeItem(SESSION_KEY_STORAGE);
+  } catch {
+    // ignore
+  }
 }
 
 export function isCryptoAvailable(): boolean {
