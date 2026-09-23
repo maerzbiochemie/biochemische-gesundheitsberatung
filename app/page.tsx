@@ -19,6 +19,8 @@ import heroBotanical from "@/assets/hero-botanical.png";
 import zusammenhaengeKompass from "@/assets/zusammenhaenge-kompass.png";
 import signaleFarn from "@/assets/signale-hintergrund-farn.png";
 import ansatzFarn from "@/assets/ansatz-hintergrund-farn.png";
+import zweiWegeTexturBeige from "@/assets/zwei-wege-textur-beige.png";
+import zweiWegeTexturGruen from "@/assets/zwei-wege-textur-gruen.png";
 
 const approachIcons = [IconUnderstand, IconConnect, IconStructure, IconAct];
 
@@ -344,50 +346,153 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------- Für wen: Split-Cards (Pos. 6) */}
-      <Section tone="cream">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>{home.audience.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{home.audience.title}</h2>
-        </Reveal>
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {home.audience.cards.map((card, i) => {
-            const isB2B = i === 1;
-            return (
-              <Reveal
-                key={card.label}
-                delay={90}
-                className={`card flex flex-col p-8 transition-transform duration-500 hover:-translate-y-1 md:p-10 ${
-                  isB2B ? "!bg-[var(--color-sage-tief)]" : "!bg-[var(--color-sand)]"
-                }`}
-              >
-                <span className={`eyebrow ${isB2B ? "!text-[var(--color-sand)]" : ""}`}>
-                  {card.label}
-                </span>
-                <h3
-                  className={`font-display mt-5 text-2xl leading-snug md:text-3xl ${
-                    isB2B ? "text-[var(--color-paper)]" : "text-[var(--color-ink)]"
+      {/* ------------------------------- Für wen: Zwei Wege (Pos. 6) */}
+      {/* Own container instead of <Section> (78rem/container-x cap) — same
+          1480px-column pattern as "Mein Ansatz", scoped to this block only. */}
+      <section className="relative overflow-hidden bg-[var(--color-cream)] py-20 md:py-28 lg:py-32">
+        <div className="relative mx-auto w-full max-w-[1480px] px-6 md:px-14">
+          <Reveal className="max-w-2xl">
+            <Eyebrow>{home.audience.eyebrow}</Eyebrow>
+            <h2 className="font-display mt-6 text-4xl leading-tight md:text-[56px] md:leading-[1.08]">
+              {home.audience.title}
+            </h2>
+          </Reveal>
+
+          {/* Mobile: stacked boxes, no connector line. */}
+          <Reveal delay={90} className="mt-14 space-y-6 md:hidden">
+            {home.audience.cards.map((card, i) => {
+              const isB2B = i === 1;
+              return (
+                <div
+                  key={card.label}
+                  className={`relative overflow-hidden rounded-[4px] p-6 ${
+                    isB2B ? "" : "border border-[var(--color-line)]"
                   }`}
                 >
-                  {card.headline}
-                </h3>
-                <p className={`mt-4 ${isB2B ? "text-[var(--color-paper)]/80" : "text-[var(--color-ink-soft)]"}`}>
-                  {card.body}
-                </p>
-                <div className="mt-auto pt-8">
-                  <ButtonLink
-                    href={card.button.href}
-                    variant={isB2B ? "primary" : "secondary"}
-                    className={isB2B ? "!bg-[var(--color-paper)] !text-[var(--color-sage-tief)]" : ""}
+                  {isB2B ? (
+                    <Image src={zweiWegeTexturGruen} alt="" aria-hidden fill className="object-cover" />
+                  ) : (
+                    <Image src={zweiWegeTexturBeige} alt="" aria-hidden fill className="object-cover" />
+                  )}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute bottom-24 right-4 w-[130px] opacity-40"
                   >
-                    {card.button.label}
-                  </ButtonLink>
+                    <img
+                      src={isB2B ? "/zwei-wege-symbol-kreissystem.svg" : "/zwei-wege-symbol-molekuel.svg"}
+                      alt=""
+                    />
+                  </div>
+                  <div className="relative">
+                    <span className="font-display text-[36px] leading-none text-[var(--color-terra)]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="mt-3 block h-px w-9 bg-[var(--color-terra)]" />
+                    <span className={`eyebrow mt-3 block ${isB2B ? "!text-[var(--color-sand)]" : ""}`}>
+                      {card.label}
+                    </span>
+                    <h3
+                      className={`font-display mt-3 text-[25px] leading-snug ${
+                        isB2B ? "text-[var(--color-paper)]" : "text-[var(--color-ink)]"
+                      }`}
+                    >
+                      {card.headline}
+                    </h3>
+                    <p
+                      className={`mt-3 text-[17px] leading-[1.5] ${
+                        isB2B ? "text-[var(--color-paper)]/80" : "text-[var(--color-ink-soft)]"
+                      }`}
+                    >
+                      {card.body}
+                    </p>
+                    <div className="mt-6">
+                      <ButtonLink
+                        href={card.button.href}
+                        variant={isB2B ? "primary" : "secondary"}
+                        className={`!text-[17px] ${isB2B ? "!bg-[var(--color-paper)] !text-[var(--color-sage-tief)]" : ""}`}
+                      >
+                        {card.button.label}
+                      </ButtonLink>
+                    </div>
+                  </div>
                 </div>
-              </Reveal>
-            );
-          })}
+              );
+            })}
+          </Reveal>
+
+          {/* Desktop: two offset boxes with a fine connector line+dot between
+              them — never over them. Left box sits ~20px lower than the
+              right one (and so ends ~20px lower too), matching the editorial
+              stagger in the reference. */}
+          <Reveal
+            delay={90}
+            className="relative mt-16 hidden md:grid md:grid-cols-[1fr_65px_1fr]"
+          >
+            {home.audience.cards.map((card, i) => {
+              const isB2B = i === 1;
+              return (
+                <div
+                  key={card.label}
+                  className={`relative self-start overflow-hidden rounded-[4px] p-14 md:row-start-1 ${
+                    isB2B ? "md:col-start-3" : "md:col-start-1 border border-[var(--color-line)] mt-5"
+                  }`}
+                >
+                  {isB2B ? (
+                    <Image src={zweiWegeTexturGruen} alt="" aria-hidden fill className="object-cover" />
+                  ) : (
+                    <Image src={zweiWegeTexturBeige} alt="" aria-hidden fill className="object-cover" />
+                  )}
+                  <div
+                    aria-hidden
+                    className={`pointer-events-none absolute bottom-8 right-8 w-[210px] ${isB2B ? "opacity-50" : "opacity-40"}`}
+                  >
+                    <img
+                      src={isB2B ? "/zwei-wege-symbol-kreissystem.svg" : "/zwei-wege-symbol-molekuel.svg"}
+                      alt=""
+                    />
+                  </div>
+                  <div className="relative">
+                    <span className="font-display text-[36px] leading-none text-[var(--color-terra)] lg:text-[38px]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="mt-3 block h-px w-9 bg-[var(--color-terra)]" />
+                    <span className={`eyebrow mt-3 block ${isB2B ? "!text-[var(--color-sand)]" : ""}`}>
+                      {card.label}
+                    </span>
+                    <h3
+                      className={`font-display mt-5 max-w-[26rem] text-[38px] leading-snug lg:text-[40px] ${
+                        isB2B ? "text-[var(--color-paper)]" : "text-[var(--color-ink)]"
+                      }`}
+                    >
+                      {card.headline}
+                    </h3>
+                    <p
+                      className={`mt-5 max-w-[26rem] text-[19px] leading-[1.5] lg:text-[20px] ${
+                        isB2B ? "text-[var(--color-paper)]/80" : "text-[var(--color-ink-soft)]"
+                      }`}
+                    >
+                      {card.body}
+                    </p>
+                    <div className="mt-9">
+                      <ButtonLink
+                        href={card.button.href}
+                        variant={isB2B ? "primary" : "secondary"}
+                        className={`!text-[19px] ${isB2B ? "!bg-[var(--color-paper)] !text-[var(--color-sage-tief)]" : ""}`}
+                      >
+                        {card.button.label}
+                      </ButtonLink>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            <div aria-hidden className="relative md:col-start-2 md:row-start-1">
+              <span className="absolute left-1/2 -top-5 -bottom-5 w-px -translate-x-1/2 bg-[var(--color-terra)]" />
+              <span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-terra)]" />
+            </div>
+          </Reveal>
         </div>
-      </Section>
+      </section>
 
       {/* ---------------------------------------- Kurzbio Milva (Pos. 7) */}
       <Section tone="sand">
