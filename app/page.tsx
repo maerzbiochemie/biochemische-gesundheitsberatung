@@ -347,26 +347,53 @@ export default function HomePage() {
       </section>
 
       {/* ------------------------------- Für wen: Zwei Wege (Pos. 6) */}
-      {/* Own container instead of <Section> (78rem/container-x cap) — same
-          1480px-column pattern as "Mein Ansatz", scoped to this block only. */}
+      {/* Own container instead of <Section> (78rem/container-x cap) — the
+          card row itself (663px card + 60px gap + 663px card = 1386px) is
+          per Milva's exact reference math; the outer max-width is 1386px
+          plus this block's own 56px side padding (112px total) so the row
+          hits exactly 1386px once padding is subtracted, without touching
+          the shared container-x utility other pages rely on. */}
       <section className="relative overflow-hidden bg-[var(--color-cream)] py-20 md:py-28 lg:py-32">
-        <div className="relative mx-auto w-full max-w-[1480px] px-6 md:px-14">
-          <Reveal className="max-w-2xl">
-            <Eyebrow>{home.audience.eyebrow}</Eyebrow>
-            <h2 className="font-display mt-6 text-4xl leading-tight md:text-[56px] md:leading-[1.08]">
-              {home.audience.title}
-            </h2>
-          </Reveal>
+        <div className="relative mx-auto w-full max-w-[1498px] px-6 md:px-14">
+          <div className="flex items-start justify-between gap-8">
+            <Reveal className="max-w-2xl">
+              <Eyebrow>{home.audience.eyebrow}</Eyebrow>
+              <h2 className="font-display mt-6 text-4xl leading-tight md:text-[56px] md:leading-[1.08]">
+                {home.audience.title}
+              </h2>
+            </Reveal>
+            <Reveal delay={90} className="hidden shrink-0 md:block">
+              <p className="font-sans text-[11px] font-normal uppercase leading-[1.7] tracking-[1.8px] text-[var(--color-walnut)]">
+                BIOCHEMIE
+                <br />
+                FÜR EIN
+                <br />
+                KLARERES MORGEN
+              </p>
+              <span className="mt-2 block h-px w-[45px] bg-[var(--color-walnut)]" />
+            </Reveal>
+          </div>
 
-          {/* Mobile: stacked boxes, no connector line. */}
-          <Reveal delay={90} className="mt-14 space-y-6 md:hidden">
+          {/* Mobile: stacked boxes, no connector line, straight corners like
+              the desktop reference. */}
+          <Reveal delay={90} className="mt-10 md:hidden">
+            <p className="font-sans text-[11px] font-normal uppercase leading-[1.7] tracking-[1.8px] text-[var(--color-walnut)]">
+              BIOCHEMIE
+              <br />
+              FÜR EIN
+              <br />
+              KLARERES MORGEN
+            </p>
+            <span className="mt-2 block h-px w-[45px] bg-[var(--color-walnut)]" />
+          </Reveal>
+          <Reveal delay={90} className="mt-8 space-y-6 md:hidden">
             {home.audience.cards.map((card, i) => {
               const isB2B = i === 1;
               return (
                 <div
                   key={card.label}
-                  className={`relative overflow-hidden rounded-[4px] p-6 ${
-                    isB2B ? "" : "border border-[var(--color-line)]"
+                  className={`relative overflow-hidden p-6 ${
+                    isB2B ? "pb-[200px]" : "pb-[210px] border border-[var(--color-line)]"
                   }`}
                 >
                   {isB2B ? (
@@ -375,19 +402,42 @@ export default function HomePage() {
                     <Image src={zweiWegeTexturBeige} alt="" aria-hidden fill className="object-cover" />
                   )}
                   <div
-                    aria-hidden
-                    className="pointer-events-none absolute bottom-24 right-4 w-[130px] opacity-40"
+                    aria-hidden="true"
+                    className="pointer-events-none absolute bottom-4 right-4 w-[135px] select-none"
                   >
                     <img
-                      src={isB2B ? "/zwei-wege-symbol-kreissystem.svg" : "/zwei-wege-symbol-molekuel.svg"}
+                      src={isB2B ? "/kreiszeichnung-aus-original-transparent.png" : "/molekuel-aus-original-transparent.png"}
                       alt=""
                     />
                   </div>
+                  {isB2B ? (
+                    <div className="pointer-events-none absolute bottom-[120px] right-4 text-right select-none">
+                      <p className="font-sans text-[11px] font-normal uppercase leading-[1.7] tracking-[1.8px] text-[var(--color-sand)]">
+                        DATEN
+                        <br />
+                        ZUSAMMENHÄNGE
+                        <br />
+                        KLARHEIT
+                      </p>
+                      <span className="ml-auto mt-2 block h-px w-[45px] bg-[var(--color-sand)]" />
+                    </div>
+                  ) : (
+                    <div className="pointer-events-none absolute bottom-6 left-6 select-none">
+                      <p className="font-sans text-[11px] font-normal uppercase leading-[1.7] tracking-[1.8px] text-[var(--color-walnut)]">
+                        MENSCH
+                        <br />
+                        BIOCHEMIE
+                        <br />
+                        ALLTAG
+                      </p>
+                      <span className="mt-2 block h-px w-[45px] bg-[var(--color-walnut)]" />
+                    </div>
+                  )}
                   <div className="relative">
                     <span className="font-display text-[36px] leading-none text-[var(--color-terra)]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="mt-3 block h-px w-9 bg-[var(--color-terra)]" />
+                    <span className="mt-3 block h-px w-[130px] bg-[var(--color-terra)]" />
                     <span className={`eyebrow mt-3 block ${isB2B ? "!text-[var(--color-sand)]" : ""}`}>
                       {card.label}
                     </span>
@@ -421,20 +471,23 @@ export default function HomePage() {
           </Reveal>
 
           {/* Desktop: two offset boxes with a fine connector line+dot between
-              them — never over them. Left box sits ~20px lower than the
-              right one (and so ends ~20px lower too), matching the editorial
-              stagger in the reference. */}
+              them — never over them. Left box sits 16px lower than the right
+              one (and so ends lower too), matching the editorial stagger in
+              the reference. Min-heights (not fixed heights) so longer text
+              never gets clipped. */}
           <Reveal
             delay={90}
-            className="relative mt-16 hidden md:grid md:grid-cols-[1fr_65px_1fr]"
+            className="relative mt-16 hidden md:grid md:grid-cols-[1fr_60px_1fr]"
           >
             {home.audience.cards.map((card, i) => {
               const isB2B = i === 1;
               return (
                 <div
                   key={card.label}
-                  className={`relative self-start overflow-hidden rounded-[4px] p-14 md:row-start-1 ${
-                    isB2B ? "md:col-start-3" : "md:col-start-1 border border-[var(--color-line)] mt-5"
+                  className={`relative self-start overflow-hidden p-[60px] md:row-start-1 ${
+                    isB2B
+                      ? "md:col-start-3 min-h-[700px]"
+                      : "md:col-start-1 mt-4 min-h-[720px] border border-[var(--color-line)]"
                   }`}
                 >
                   {isB2B ? (
@@ -442,20 +495,57 @@ export default function HomePage() {
                   ) : (
                     <Image src={zweiWegeTexturBeige} alt="" aria-hidden fill className="object-cover" />
                   )}
-                  <div
-                    aria-hidden
-                    className={`pointer-events-none absolute bottom-8 right-8 w-[210px] ${isB2B ? "opacity-50" : "opacity-40"}`}
-                  >
+                  {/* Illustration — decorative layer, behind the text. Only
+                      width is set (height auto) so the PNG's own aspect
+                      ratio is never distorted. The small negative offsets
+                      compensate for each PNG's own transparent margin so the
+                      visible line-art lands exactly where the reference has
+                      it, without changing the box's overflow-hidden. */}
+                  {isB2B ? (
                     <img
-                      src={isB2B ? "/zwei-wege-symbol-kreissystem.svg" : "/zwei-wege-symbol-molekuel.svg"}
+                      aria-hidden="true"
                       alt=""
+                      src="/kreiszeichnung-aus-original-transparent.png"
+                      className="pointer-events-none absolute select-none"
+                      style={{ width: 246, right: 52, bottom: -4 }}
                     />
-                  </div>
+                  ) : (
+                    <img
+                      aria-hidden="true"
+                      alt=""
+                      src="/molekuel-aus-original-transparent.png"
+                      className="pointer-events-none absolute select-none"
+                      style={{ width: 216, right: -8, bottom: 4 }}
+                    />
+                  )}
+                  {isB2B ? (
+                    <div className="pointer-events-none absolute bottom-[136px] right-4 text-right select-none">
+                      <p className="font-sans text-[11px] font-normal uppercase leading-[1.7] tracking-[1.8px] text-[var(--color-sand)]">
+                        DATEN
+                        <br />
+                        ZUSAMMENHÄNGE
+                        <br />
+                        KLARHEIT
+                      </p>
+                      <span className="ml-auto mt-2 block h-px w-[45px] bg-[var(--color-sand)]" />
+                    </div>
+                  ) : (
+                    <div className="pointer-events-none absolute bottom-[30px] left-12 select-none">
+                      <p className="font-sans text-[11px] font-normal uppercase leading-[1.7] tracking-[1.8px] text-[var(--color-walnut)]">
+                        MENSCH
+                        <br />
+                        BIOCHEMIE
+                        <br />
+                        ALLTAG
+                      </p>
+                      <span className="mt-2 block h-px w-[45px] bg-[var(--color-walnut)]" />
+                    </div>
+                  )}
                   <div className="relative">
                     <span className="font-display text-[36px] leading-none text-[var(--color-terra)] lg:text-[38px]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="mt-3 block h-px w-9 bg-[var(--color-terra)]" />
+                    <span className="mt-3 block h-px w-[130px] bg-[var(--color-terra)]" />
                     <span className={`eyebrow mt-3 block ${isB2B ? "!text-[var(--color-sand)]" : ""}`}>
                       {card.label}
                     </span>
@@ -488,8 +578,22 @@ export default function HomePage() {
             })}
             <div aria-hidden className="relative md:col-start-2 md:row-start-1">
               <span className="absolute left-1/2 -top-5 -bottom-5 w-px -translate-x-1/2 bg-[var(--color-terra)]" />
+              <span className="absolute left-1/2 top-1/2 h-[30px] w-[30px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--color-terra)]" />
               <span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-terra)]" />
             </div>
+          </Reveal>
+
+          {/* Closing line — sits below the lower (left) card. */}
+          <Reveal delay={90} className="mt-[30px] flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <span className="flex items-center gap-3">
+              <span className="hidden h-px w-[45px] bg-[var(--color-sage-deep)] md:inline-block" />
+              <span className="font-sans text-[12px] font-normal uppercase leading-[1.7] tracking-[1.8px] text-[var(--color-sage-deep)]">
+                Wissenschaft trifft Praxis
+              </span>
+            </span>
+            <span className="font-sans text-[12px] font-normal uppercase leading-[1.7] tracking-[1.8px] text-[var(--color-walnut)]">
+              Ganzheitlich. Fundiert. Individuell.
+            </span>
           </Reveal>
         </div>
       </section>
