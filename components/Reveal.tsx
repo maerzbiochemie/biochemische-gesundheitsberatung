@@ -22,6 +22,13 @@ export function Reveal({ children, as: Tag = "div", className = "", delay = 0 }:
     const node = ref.current;
     if (!node) return;
 
+    // If IntersectionObserver isn't available (old browser, blocked API),
+    // fail open rather than leaving content stuck at opacity: 0 forever.
+    if (typeof IntersectionObserver === "undefined") {
+      setVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

@@ -54,7 +54,7 @@ export default function HomePage() {
           </Reveal>
           {/* Heading and the credentials card share the same top edge on desktop. */}
           <div className="mt-7 grid gap-10 md:grid-cols-12 md:gap-8">
-            <Reveal delay={160} className="md:col-span-7 lg:col-span-6">
+            <Reveal className="md:col-span-7 lg:col-span-6">
               <WordReveal
                 as="h1"
                 text={home.hero.title}
@@ -63,7 +63,7 @@ export default function HomePage() {
               />
               <Reveal
                 as="p"
-                delay={120}
+                delay={90}
                 className="mt-6 max-w-2xl font-display text-xl text-[var(--color-sage-deep)] md:text-2xl"
               >
                 {home.hero.subtitle}
@@ -83,7 +83,7 @@ export default function HomePage() {
               </div>
             </Reveal>
 
-            <Reveal delay={240} className="md:col-span-5 md:col-start-9 md:self-start lg:col-span-5 lg:col-start-8 lg:pl-20">
+            <Reveal delay={90} className="md:col-span-5 md:col-start-9 md:self-start lg:col-span-5 lg:col-start-8 lg:pl-20">
               <div className="card flex w-full max-w-[28rem] flex-col p-7 md:p-8">
                 {/* Credentials lead the card; the portrait sits below as a
                     personal touch, not the dominant element. */}
@@ -144,8 +144,8 @@ export default function HomePage() {
             </Reveal>
           </div>
           <div className="md:col-span-6 md:col-start-7">
-            <SignalAccordion items={koerperSignaleDetails} />
-            <Reveal delay={120} className="mt-10 text-[var(--color-ink-soft)] md:text-[1.5rem]">
+            <SignalAccordion items={koerperSignaleDetails} revealDelay={90} />
+            <Reveal delay={90} className="mt-10 text-[var(--color-ink-soft)] md:text-[1.5rem]">
               <Glossary>{home.signalsBlock.closing}</Glossary>
             </Reveal>
             <p className="mt-4 text-xs leading-relaxed text-[var(--color-muted)]">
@@ -199,7 +199,7 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-12 lg:mt-0 lg:block">
             <div className="md:col-span-6 md:col-start-7 lg:ml-[800px] lg:mt-[46px] lg:w-[810px]">
-              <Reveal delay={120}>
+              <Reveal delay={90}>
                 <div className="space-y-5 text-[var(--color-ink-soft)] md:text-[1.625rem] md:leading-relaxed">
                   {home.system.body.map((p) => (
                     <p key={p}>
@@ -253,7 +253,7 @@ export default function HomePage() {
               return (
                 <Reveal
                   key={step.n}
-                  delay={i * 110}
+                  delay={90}
                   className="rounded-[4px] border border-[var(--color-line)] p-6"
                 >
                   <div className="flex items-center justify-between">
@@ -285,7 +285,7 @@ export default function HomePage() {
               return (
                 <Reveal
                   key={step.n}
-                  delay={i * 110}
+                  delay={90}
                   className={`rounded-[4px] border border-[var(--color-line)] p-8 transition-colors duration-500 hover:border-[var(--color-sage-soft)] lg:p-10 ${colClass} ${rowClass}`}
                 >
                   <div className="flex items-center justify-between">
@@ -356,7 +356,7 @@ export default function HomePage() {
             return (
               <Reveal
                 key={card.label}
-                delay={i * 110}
+                delay={90}
                 className={`card flex flex-col p-8 transition-transform duration-500 hover:-translate-y-1 md:p-10 ${
                   isB2B ? "!bg-[var(--color-sage-tief)]" : "!bg-[var(--color-sand)]"
                 }`}

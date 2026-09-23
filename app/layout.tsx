@@ -67,6 +67,13 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${display.variable} ${inter.variable}`}>
       <body>
+        {/* Progressive-enhancement fallback: the scroll-reveal effect starts
+            elements at opacity:0 and needs JS (Reveal.tsx) to reveal them.
+            If JS never runs, show everything immediately instead of leaving
+            the page blank. */}
+        <noscript>
+          <style>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
         <div className="grain-overlay print:hidden" aria-hidden />
         <ScrollProgress />
         <Header />

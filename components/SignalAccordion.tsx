@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/content/site";
+import { Reveal } from "@/components/Reveal";
 
 type SignalItem = {
   title: string;
@@ -19,9 +20,12 @@ type SignalItem = {
 export function SignalAccordion({
   items,
   className = "",
+  revealDelay,
 }: {
   items: readonly SignalItem[];
   className?: string;
+  /** Fades the list in as one group when scrolled into view; omit to render statically. */
+  revealDelay?: number;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -52,7 +56,11 @@ export function SignalAccordion({
 
   return (
     <>
-      <ul className={`border-t border-[var(--color-line)] ${className}`}>
+      <Reveal
+        as="ul"
+        delay={revealDelay}
+        className={`border-t border-[var(--color-line)] ${className}`}
+      >
         {items.map((item, i) => (
           <li key={item.title} className="border-b border-[var(--color-line)]">
             <button
@@ -79,7 +87,7 @@ export function SignalAccordion({
             </button>
           </li>
         ))}
-      </ul>
+      </Reveal>
 
       {active && (
         <div
