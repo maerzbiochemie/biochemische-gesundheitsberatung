@@ -23,7 +23,7 @@ export function Footer() {
 
         {/* Three columns below: Navigation · Kontakt · Rechtliches */}
         <div className="mt-16 grid gap-10 border-t border-[var(--color-paper)]/15 pt-12 text-center sm:grid-cols-3">
-          <div>
+          <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-sage-soft)]">
               Navigation
             </p>
@@ -41,7 +41,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-sage-soft)]">
               Kontakt
             </p>
@@ -50,7 +50,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-[var(--color-paper)]/70">
               <li>{site.name}</li>
               <li>
-                <a href={`mailto:${site.email}`} className="link-underline whitespace-nowrap">
+                <a href={`mailto:${site.email}`} className="link-underline break-words">
                   {site.email}
                 </a>
               </li>
@@ -76,7 +76,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-sage-soft)]">
               Rechtliches
             </p>

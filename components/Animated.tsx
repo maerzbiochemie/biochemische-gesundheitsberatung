@@ -39,11 +39,13 @@ export function WordReveal({
   return (
     <MotionTag className={className} variants={container} initial="hidden" animate="show">
       {words.map((w, i) => (
-        <span key={i} className="word-mask">
-          <motion.span variants={word} className="inline-block">
-            {w}
-            {i < words.length - 1 ? " " : ""}
-          </motion.span>
+        <span key={i}>
+          <span className="word-mask">
+            <motion.span variants={word} className="inline-block">
+              {w}
+            </motion.span>
+          </span>
+          {i < words.length - 1 ? " " : ""}
         </span>
       ))}
     </MotionTag>

@@ -165,39 +165,37 @@ export default function PrivatkundenPage() {
       </Section>
 
       {/* Ihr Ergebnis: der Biochemische Gesundheitskompass — Signature-Element (Pos. 6) */}
-      <Section tone="deep">
-        <div className="grid gap-12 md:grid-cols-12 md:items-center">
-          <Reveal className="md:col-span-5">
-            <BookletMockup />
+      <Section tone="deep" className="overflow-x-hidden">
+        <div className="mx-auto max-w-2xl">
+          <Reveal>
+            <Eyebrow>{kompass.eyebrow}</Eyebrow>
+            <h2 className="font-display mt-6 text-4xl leading-tight break-words hyphens-auto md:text-5xl">
+              {kompass.title}
+            </h2>
+            <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{kompass.intro}</p>
+            <p className="mt-6 text-[var(--color-ink-soft)]">{kompass.listIntro}</p>
+            <ul className="mt-4 space-y-3">
+              {kompass.list.map((li) => (
+                <li key={li} className="flex gap-3 text-[var(--color-ink-soft)]">
+                  <span
+                    aria-hidden
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-terra)]"
+                  />
+                  <span>{li}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-[var(--color-ink-soft)]">{kompass.outro}</p>
+            <Link
+              href="/leistungen"
+              className="link-underline mt-7 inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
+            >
+              Leistungen & Preise ansehen <span aria-hidden>→</span>
+            </Link>
           </Reveal>
-          <div className="md:col-span-6 md:col-start-7">
-            <Reveal delay={120}>
-              <Eyebrow>{kompass.eyebrow}</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-                {kompass.title}
-              </h2>
-              <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{kompass.intro}</p>
-              <p className="mt-6 text-[var(--color-ink-soft)]">{kompass.listIntro}</p>
-              <ul className="mt-4 space-y-3">
-                {kompass.list.map((li) => (
-                  <li key={li} className="flex gap-3 text-[var(--color-ink-soft)]">
-                    <span
-                      aria-hidden
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-terra)]"
-                    />
-                    <span>{li}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-[var(--color-ink-soft)]">{kompass.outro}</p>
-              <Link
-                href="/leistungen"
-                className="link-underline mt-7 inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
-              >
-                Leistungen & Preise ansehen <span aria-hidden>→</span>
-              </Link>
-            </Reveal>
-          </div>
+          <Reveal delay={120} className="mt-14">
+            <BookletMockup className="mx-auto" />
+          </Reveal>
         </div>
       </Section>
 
