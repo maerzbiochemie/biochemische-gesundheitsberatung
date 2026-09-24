@@ -599,34 +599,70 @@ export default function HomePage() {
       </section>
 
       {/* ---------------------------------------- Kurzbio Milva (Pos. 7) */}
-      <Section tone="sand">
-        <div className="grid gap-12 md:grid-cols-12 md:items-center">
-          <Reveal className="md:col-span-4">
-            <Portrait src={profilPhoto} alt="Milva März" ratio="aspect-[4/5]" />
+      <section className="relative overflow-hidden bg-[var(--color-cream)] px-6 py-14 min-[600px]:px-8 min-[600px]:py-[88px]">
+        {/* Same finished watercolour graphic as the hero, reused rather than
+            regenerated (per BIO-178) — but only the narrow left-edge sliver
+            that holds the small leaf cluster. Constraining the image's own
+            box to a fraction of the section width is what makes object-cover
+            crop to that sliver instead of the big centre branch; the plain
+            cream section background (already "ruhiges Papier") carries the
+            rest, so no leaves land behind the text column. */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 w-[62%] max-w-[520px] min-[900px]:w-[34%]"
+          style={{
+            maskImage: "linear-gradient(to right, black 55%, transparent 95%)",
+            WebkitMaskImage: "linear-gradient(to right, black 55%, transparent 95%)",
+          }}
+        >
+          <Image
+            src={heroBotanical}
+            alt=""
+            aria-hidden
+            fill
+            sizes="520px"
+            className="object-cover object-left"
+          />
+        </div>
+        <div className="relative mx-auto flex max-w-[1240px] flex-col gap-9 min-[900px]:flex-row min-[900px]:items-center min-[900px]:gap-x-[80px] min-[900px]:gap-y-0">
+          <Reveal className="relative mx-auto w-full max-w-[320px] min-[900px]:mx-0 min-[900px]:w-[360px] min-[900px]:max-w-[360px] min-[900px]:shrink-0">
+            <div className="rounded-[24px] border border-[var(--color-line)] bg-[var(--color-paper)] p-4 shadow-[0_20px_44px_-30px_rgba(27,33,28,0.28)]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[14px]">
+                <Image
+                  src={profilPhoto}
+                  alt="Milva März"
+                  fill
+                  sizes="(max-width: 900px) 320px, 360px"
+                  placeholder="blur"
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </Reveal>
-          <div className="md:col-span-7 md:col-start-6">
+          <div className="min-[900px]:max-w-[680px]">
             <Reveal>
               <Eyebrow>{home.aboutTeaser.eyebrow}</Eyebrow>
-              <div className="mt-6 space-y-5 text-lg text-[var(--color-ink-soft)]">
-                {home.aboutTeaser.body.map((p) => (
-                  <p key={p}>
-                  <Glossary>{p}</Glossary>
-                </p>
-                ))}
-              </div>
-              <p className="mt-6 text-sm tracking-wide text-[var(--color-sage-deep)]">
+              <p className="mt-6 text-[18px] leading-[1.6] text-[var(--color-ink-soft)] min-[600px]:text-[20px]">
+                <Glossary>{home.aboutTeaser.intro}</Glossary>
+              </p>
+              <p className="font-display mt-7 text-[28px] font-normal leading-[1.2] text-[var(--color-sage-deep)] min-[600px]:text-[36px]">
+                {home.aboutTeaser.highlight}
+              </p>
+              <p className="mt-5 text-[18px] leading-[1.6] text-[var(--color-ink-soft)] min-[600px]:text-[20px]">
+                {home.aboutTeaser.closing}
+              </p>
+              <p className="mt-6 text-sm leading-[1.6] tracking-wide text-[var(--color-sage-deep)]">
                 {home.aboutTeaser.qualifikationen}
               </p>
               <Link
                 href="/ueber-mich"
-                className="link-underline mt-7 inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
+                className="link-underline mt-7 inline-flex items-center gap-2 text-lg text-[var(--color-sage-deep)]"
               >
                 Mehr über mich erfahren <span aria-hidden>→</span>
               </Link>
             </Reveal>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* --------------------------------------------------------------- FAQ */}
       <Section tone="deep" id="faq">

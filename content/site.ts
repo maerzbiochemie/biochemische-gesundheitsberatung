@@ -262,9 +262,10 @@ export const home = {
   },
   aboutTeaser: {
     eyebrow: "Über mich",
-    body: [
-      "Ich bin Milva März – Biochemikerin B.Sc., seit Jahren in der Fitness- und Gesundheitsbranche und aktuell in Ausbildung zur Heilpraktikerin. Mich interessiert nicht nur, dass etwas im Körper passiert, sondern warum. Genau das gebe ich in der Beratung weiter.",
-    ],
+    intro:
+      "Ich bin Milva März – Biochemikerin B.Sc., seit Jahren in der Fitness- und Gesundheitsbranche und aktuell in Ausbildung zur Heilpraktikerin.",
+    highlight: "Mich interessiert nicht nur, dass etwas im Körper passiert, sondern warum.",
+    closing: "Genau das gebe ich in der Beratung weiter.",
     qualifikationen: "Biochemikerin B.Sc. · Fitnesstrainerin · in Ausbildung zur Heilpraktikerin",
   },
   finalCta: {
