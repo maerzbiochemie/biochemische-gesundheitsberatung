@@ -16,7 +16,8 @@ import { site, home, faq, koerperSignaleDetails } from "@/content/site";
 import frontPhoto from "@/assets/front.jpeg";
 import profilPhoto from "@/assets/profil.jpeg";
 import heroBotanical from "@/assets/hero-botanical.png";
-import zusammenhaengeKompass from "@/assets/zusammenhaenge-kompass.png";
+import zusammenhaengeBuch from "@/assets/zusammenhaenge-buch-freigestellt.png";
+import zusammenhaengePapier from "@/assets/zusammenhaenge-papier-textur.png";
 import signaleFarn from "@/assets/signale-hintergrund-farn.png";
 import ansatzFarn from "@/assets/ansatz-hintergrund-farn.png";
 import zweiWegeTexturBeige from "@/assets/zwei-wege-textur-beige.png";
@@ -160,64 +161,78 @@ export default function HomePage() {
       {/* ---------------- Ein Symptom ist selten die ganze Geschichte (Pos. 4) */}
       <section
         id="ansatz"
-        className="relative overflow-hidden bg-[var(--color-sage-mist)] px-6 pb-20 pt-14 md:px-10 md:pb-28 md:pt-16 lg:px-0 lg:pb-32 lg:pt-10"
+        className="relative overflow-hidden bg-[var(--color-cream)] px-6 py-14 min-[600px]:px-10 min-[600px]:py-[88px]"
         style={{ scrollMarginTop: "5rem" }}
       >
-        {/* Finished watercolour graphic (book, compass, fern, chapter icons,
-            pale-green fill) — a real image, not redrawn. Spans the full
-            section edge-to-edge and scales proportionally (object-contain,
-            never background-size:cover) so the book is never cropped. */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 hidden aspect-[1800/874] w-full md:block">
+        {/* Paper-grain texture at low opacity over the ivory base — this
+            replaces the old flat mint-green fill that used to be baked into
+            the illustration file itself. */}
+        <div className="pointer-events-none absolute inset-0">
           <Image
-            src={zusammenhaengeKompass}
+            src={zusammenhaengePapier}
             alt=""
             aria-hidden
             fill
             sizes="100vw"
-            className="object-contain object-left-top"
+            className="object-cover opacity-[0.48]"
           />
         </div>
 
-        <div className="relative mx-auto max-w-[1710px] lg:pl-[60px]">
-          <Reveal className="max-w-2xl lg:max-w-[700px]">
-            <Eyebrow>{home.system.eyebrow}</Eyebrow>
-            <h2 className="font-display mt-6 text-4xl leading-tight md:text-5xl">
-              {home.system.title}
-            </h2>
-          </Reveal>
-
-          {/* Mobile-only crop of the same graphic — book + fern, empty right
-              half cut out of the visible frame — sits between headline and body. */}
-          <div className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-card)] md:hidden">
-            <Image
-              src={zusammenhaengeKompass}
-              alt=""
-              aria-hidden
-              fill
-              sizes="100vw"
-              className="object-cover object-left"
-            />
-          </div>
-
-          <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-12 lg:mt-0 lg:block">
-            <div className="md:col-span-6 md:col-start-7 lg:ml-[800px] lg:mt-[46px] lg:w-[810px]">
+        <div className="relative mx-auto max-w-[1360px]">
+          <div className="grid grid-cols-1 items-center gap-y-9 min-[901px]:grid-cols-2 min-[901px]:gap-x-10 min-[901px]:gap-y-0 min-[1200px]:gap-x-16">
+            {/* Text column — first in source order so it also comes first
+                in the single-column mobile/tablet stack. */}
+            <div>
+              <Reveal>
+                <Eyebrow>{home.system.eyebrow}</Eyebrow>
+                <h2 className="font-display mt-5 text-[34px] leading-[1.15] tracking-[-0.015em] min-[600px]:text-[46px] min-[600px]:leading-[1.12] min-[901px]:text-[40px] min-[1200px]:text-[46px]">
+                  {home.system.title}
+                </h2>
+              </Reveal>
               <Reveal delay={90}>
-                <div className="space-y-5 text-[var(--color-ink-soft)] md:text-[1.625rem] md:leading-relaxed">
+                <div className="mt-[26px] space-y-5 text-[18px] leading-[1.6] text-[var(--color-ink-soft)] min-[600px]:text-[20px]">
                   {home.system.body.map((p) => (
                     <p key={p}>
                       <Glossary>{p}</Glossary>
                     </p>
                   ))}
                 </div>
-                <blockquote className="font-display mt-9 border-l-2 border-[var(--color-terra)] pl-6 text-2xl leading-[1.1] text-[var(--color-terra)] sm:text-3xl md:pl-7 md:text-[3.125rem] lg:pl-[35px]">
+                <blockquote className="font-display mt-[30px] text-[26px] leading-[1.3] text-[var(--color-terra)] min-[600px]:text-[30px] min-[901px]:text-[28px] min-[1200px]:text-[30px]">
                   {home.system.pullquote}
                 </blockquote>
                 <MoreInfo
                   label={home.system.more.label}
                   title={home.system.more.title}
                   body={home.system.more.body}
-                  className="mt-8 md:text-[1.625rem]"
+                  className="mt-[26px] !text-[18px] !leading-[1.5]"
                 />
+              </Reveal>
+            </div>
+
+            {/* Illustration column — real image (book, compass, fern,
+                chapter icons), cut out of its original flat-green source so
+                only the artwork itself remains, plus a soft sage glow
+                behind it that fades into the paper texture with no hard
+                edge. Never cropped: width is capped, height scales freely. */}
+            <div className="relative">
+              <Reveal>
+                <div className="relative mx-auto max-w-[480px] min-[901px]:max-w-[580px]">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-12 -z-10 rounded-full blur-3xl"
+                    style={{
+                      background:
+                        "radial-gradient(closest-side, rgba(221,229,215,0.9), rgba(221,229,215,0) 72%)",
+                    }}
+                  />
+                  <Image
+                    src={zusammenhaengeBuch}
+                    alt=""
+                    aria-hidden
+                    sizes="(min-width: 901px) 580px, 480px"
+                    className="h-auto w-full"
+                  />
+                </div>
               </Reveal>
             </div>
           </div>
