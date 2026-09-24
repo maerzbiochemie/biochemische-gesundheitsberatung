@@ -49,7 +49,7 @@ export function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-x-6 lg:flex xl:gap-x-8">
+          <nav className="hidden items-center gap-x-2 lg:flex 2xl:gap-x-6">
             {site.nav.map((item) => {
               const base = item.href.split("#")[0];
               // "/#ansatz" points at the home page section — never a "page".
@@ -58,7 +58,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`link-underline whitespace-nowrap text-lg transition-colors ${
+                  className={`link-underline whitespace-nowrap text-base transition-colors 2xl:text-lg ${
                     active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-soft)]"
                   } hover:text-[var(--color-ink)]`}
                 >
@@ -70,7 +70,7 @@ export function Header() {
               href={site.booking.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary whitespace-nowrap !px-5 !py-2.5 text-lg"
+              className="btn btn-primary whitespace-nowrap !px-3 !py-2 text-base 2xl:!px-5 2xl:!py-2.5 2xl:text-lg"
             >
               Erstgespräch
               <span className="arrow" aria-hidden>
