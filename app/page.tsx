@@ -117,9 +117,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* -------- Keyword-Band (Pos. 2) — trägt jetzt die Themenfelder-Symbole */}
-      <Marquee />
-
       {/* ------------------------- Woran Sie es merken (Symptomblock, Pos. 3) */}
       <Section tone="paper" className="relative overflow-hidden">
         {/* Finished watercolour graphic — plain paper tone plus one pale fern
@@ -238,6 +235,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* -------- Keyword-Band — direkt unter dem Kompass-Abschnitt, ohne Lücke */}
+      <Marquee />
 
       {/* -------------------------------------- Mein Ansatz (4 Phasen, Pos. 5) */}
       {/* Own container instead of <Section> (78rem/container-x cap) — this
