@@ -185,7 +185,7 @@ export const home = {
   signalsBlock: {
     eyebrow: "Woran Sie es merken",
     headline:
-      "Selten ist es nur ein Auslöser. Meistens ist es die Überlastung des Systems.",
+      "Meistens ist es nicht nur ein Auslöser, sondern die Überlastung des gesamten Systems.",
     closing:
       "Diese Signale lassen sich einordnen. Daraus wird ein klarer nächster Schritt.",
     // Pflichthinweis laut Jurist-Rechtscheck (BIO-175) — muss sichtbar auf der
