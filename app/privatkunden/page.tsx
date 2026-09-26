@@ -201,18 +201,18 @@ export default function PrivatkundenPage() {
           </div>
 
           {/* Erstgespräch-Aufruf */}
-          <div className="mt-10 border-t border-[var(--color-hairline-warm)] pt-10 text-center">
+          <div className="mt-10 border-t border-[var(--color-hairline-warm)] pt-10">
             <Reveal>
               <h2 className="font-display text-[28px] leading-[1.2] text-[var(--color-forest)] min-[600px]:text-[34px]">
                 {beispieleCta.title}
               </h2>
-              <p className="mx-auto mt-4 max-w-[780px] text-[18px] leading-[1.55] text-[var(--color-slate)]">
+              <p className="mt-4 max-w-[780px] text-[18px] leading-[1.55] text-[var(--color-slate)]">
                 {beispieleCta.body}
               </p>
-              <div className="mt-7 flex justify-center">
+              <div className="mt-7">
                 <BookingButton
                   label="Kostenloses Erstgespräch buchen"
-                  align="center"
+                  align="left"
                   className="!bg-[var(--color-forest)] hover:!bg-[var(--color-sage-deep)]"
                 />
               </div>
