@@ -1,12 +1,27 @@
 import type { Metadata } from "next";
 import { Fragment } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, Eyebrow, Section, SignalList } from "@/components/ui";
+import { ButtonLink, Eyebrow, Section } from "@/components/ui";
 import { Glossary } from "@/components/Glossary";
 import { BookingButton } from "@/components/BookingButton";
 import { BookletMockup } from "@/components/BookletMockup";
 import { privatkunden, leistungen, site } from "@/content/site";
+import privatkundenHintergrund from "@/assets/privatkunden-hintergrund.png";
+import privatkundenDna from "@/assets/privatkunden-dna.png";
+import privatkundenFarn from "@/assets/privatkunden-farn.png";
+import privatkundenSupplements from "@/assets/privatkunden-supplements.png";
+import privatkundenInfusion from "@/assets/privatkunden-infusion.png";
+import privatkundenTeller from "@/assets/privatkunden-teller.png";
+import privatkundenPlan from "@/assets/privatkunden-plan.png";
+
+const beispielBilder = {
+  supplements: privatkundenSupplements,
+  infusion: privatkundenInfusion,
+  teller: privatkundenTeller,
+  plan: privatkundenPlan,
+} as const;
 
 /**
  * Calm, minimal line drawings for the benefit items — one per item, matching
@@ -64,31 +79,144 @@ export const metadata: Metadata = {
 };
 
 export default function PrivatkundenPage() {
-  const { hero, catcher, praevention, zielgruppen, nutzen, kompass, process, finalCta } = privatkunden;
+  const { hero, beispiele, beispieleCta, catcher, praevention, zielgruppen, nutzen, kompass, process, finalCta } =
+    privatkunden;
   const { pakete } = leistungen;
   return (
     <>
-      {/* Hero — auf Sand-Fläche (echot die Privatkunden-Karte der Startseite) */}
-      <section className="bg-[var(--color-sand)] pb-16 pt-32 md:pb-20 md:pt-44">
-        <div className="container-x">
-          <div className="grid gap-12 md:grid-cols-12">
-            <div className="md:col-span-5">
-              <Reveal>
-                <Eyebrow>{hero.eyebrow}</Eyebrow>
-              </Reveal>
-              <Reveal as="h1" delay={80} className="font-display mt-7 text-[2.1rem] leading-[1.08] sm:text-4xl lg:text-5xl">
-                {hero.title}
-              </Reveal>
+      {/* Privatkunden-Einstieg — ruhige, reduzierte Variante nach Layoutreferenz
+          (BIO-183): Hero, vier Beispiele, Erstgespräch-Aufruf. Elfenbeinfläche
+          mit dezenter Papierstruktur am oberen Rand, feine Trennlinien statt
+          Kartenrahmen. */}
+      <section className="relative overflow-hidden bg-[var(--color-ivory)]">
+        <div className="pointer-events-none absolute inset-x-0 top-0 aspect-[1536/1024] w-full">
+          <Image
+            src={privatkundenHintergrund}
+            alt=""
+            aria-hidden
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="pointer-events-none absolute -right-6 top-6 aspect-[1222/1287] w-[90px] opacity-20 min-[600px]:w-[130px] min-[901px]:-right-10 min-[901px]:top-10 min-[901px]:w-[180px]">
+          <Image
+            src={privatkundenFarn}
+            alt=""
+            aria-hidden
+            fill
+            sizes="180px"
+            className="object-contain"
+          />
+        </div>
+
+        <div className="relative mx-auto max-w-[1280px] px-6 pb-20 min-[600px]:px-10 min-[600px]:pb-24 min-[901px]:pb-28">
+          {/* Hero */}
+          <div className="pt-24 min-[600px]:pt-28 min-[901px]:pt-[152px]">
+            <div className="relative min-[901px]:flex min-[901px]:items-center min-[901px]:gap-10">
+              <div className="min-[901px]:flex-1">
+                <Reveal>
+                  <span className="block font-sans text-[12px] font-medium uppercase tracking-[1.8px] text-[var(--color-clay)]">
+                    {hero.eyebrow}
+                  </span>
+                </Reveal>
+                <Reveal
+                  as="h1"
+                  delay={80}
+                  className="font-display mt-5 text-[36px] font-normal leading-[1.12] tracking-[-0.015em] min-[600px]:text-[56px]"
+                >
+                  {hero.headline.map((line) => (
+                    <span
+                      key={line.text}
+                      className={`block ${
+                        line.tone === "accent" ? "text-[var(--color-clay)]" : "text-[var(--color-forest)]"
+                      }`}
+                    >
+                      {line.text}
+                    </span>
+                  ))}
+                </Reveal>
+              </div>
+
+              {/* Vertically centered only against the eyebrow+headline (not the
+                  intro below), so it sits in the upper-right quadrant of the
+                  hero rather than mid-height of the whole block. */}
+              <div className="pointer-events-none absolute right-0 top-0 hidden aspect-[1024/1536] w-[90px] opacity-45 min-[600px]:block min-[901px]:relative min-[901px]:w-[240px] min-[901px]:shrink-0">
+                <Image src={privatkundenDna} alt="" aria-hidden fill sizes="240px" className="object-contain" />
+              </div>
             </div>
-            <div className="md:col-span-6 md:col-start-7">
-              <Reveal delay={140} className="text-lg text-[var(--color-ink-soft)]">
-                {hero.subtitle}
-              </Reveal>
-              <SignalList items={hero.signals} layout="cards" className="mt-8" />
-              <Reveal delay={160} className="mt-8 text-lg text-[var(--color-sage-deep)] md:text-xl">
-                <Glossary>{hero.intro}</Glossary>
-              </Reveal>
+
+            <Reveal
+              delay={140}
+              className="mt-6 max-w-2xl text-[18px] leading-[1.55] text-[var(--color-slate)] min-[600px]:text-[21px]"
+            >
+              <Glossary>{hero.intro}</Glossary>
+            </Reveal>
+          </div>
+
+          {/* Vier Beispiele */}
+          <div className="mt-14">
+            <Reveal>
+              <span className="block font-sans text-[12px] font-medium uppercase tracking-[1.8px] text-[var(--color-clay)]">
+                {beispiele.eyebrow}
+              </span>
+            </Reveal>
+            <div className="relative mt-8">
+              <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-[var(--color-hairline-warm)] min-[901px]:block" />
+              <div className="grid grid-cols-1 gap-x-12 gap-y-8 min-[901px]:grid-cols-2">
+              {beispiele.items.map((item, i) => (
+                <Reveal
+                  key={item.title}
+                  delay={i * 80}
+                  className="border-t border-[var(--color-hairline-warm)] pt-6"
+                >
+                  <div className="flex flex-col gap-5 min-[600px]:flex-row min-[600px]:items-center min-[600px]:justify-between min-[600px]:gap-5">
+                    <div className="min-[600px]:flex-1">
+                      <span className="font-display block text-[32px] text-[var(--color-clay)]">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="font-display mt-2 text-[26px] leading-[1.15] text-[var(--color-forest)] min-[600px]:text-[30px]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 text-[17px] leading-[1.55] text-[var(--color-slate)] min-[600px]:text-[18px]">
+                        {item.body}
+                      </p>
+                    </div>
+                    <div className="relative h-[126px] w-[88px] shrink-0 self-end min-[600px]:h-[200px] min-[600px]:w-[140px] min-[600px]:self-center">
+                      <Image
+                        src={beispielBilder[item.image]}
+                        alt=""
+                        aria-hidden
+                        fill
+                        sizes="140px"
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+              </div>
             </div>
+          </div>
+
+          {/* Erstgespräch-Aufruf */}
+          <div className="mt-10 border-t border-[var(--color-hairline-warm)] pt-10 text-center">
+            <Reveal>
+              <h2 className="font-display text-[28px] leading-[1.2] text-[var(--color-forest)] min-[600px]:text-[34px]">
+                {beispieleCta.title}
+              </h2>
+              <p className="mx-auto mt-4 max-w-[780px] text-[18px] leading-[1.55] text-[var(--color-slate)]">
+                {beispieleCta.body}
+              </p>
+              <div className="mt-7 flex justify-center">
+                <BookingButton
+                  label="Kostenloses Erstgespräch buchen"
+                  align="center"
+                  className="!bg-[var(--color-forest)] hover:!bg-[var(--color-sage-deep)]"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

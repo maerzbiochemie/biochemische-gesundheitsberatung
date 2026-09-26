@@ -24,6 +24,14 @@
   --color-line: rgba(27, 33, 28, 0.12);
   --color-line-soft: rgba(27, 33, 28, 0.07);
 
+  /* Precise "calm" accent set for the Privatkunden intro (BIO-183) — client
+     specified exact hex values distinct from the sage/terra defaults above. */
+  --color-ivory: #f7f5ef;
+  --color-forest: #193d32;
+  --color-slate: #303d36;
+  --color-clay: #ad6346;
+  --color-hairline-warm: #d8ccbd;
+
   --font-serif: var(--font-display), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 

@@ -293,14 +293,46 @@ export const glossary = {
 } as const;
 
 export const privatkunden = {
+  // Ruhiger Einstieg im "layoutreferenz"-Stil (BIO-183): eigene Hero-Texte,
+  // eine Vier-Beispiele-Sektion und ein kurzer Erstgespräch-Aufruf darunter.
   hero: {
     eyebrow: "Für Privatkunden",
-    title: "Was ist für Ihren Körper gerade wirklich relevant?",
-    subtitle:
-      "Meist beginnt es leise: schlechterer Schlaf, empfindlichere Verdauung, schwankende Energie, längere Regeneration. Einzeln wirkt nichts davon dramatisch – zusammen verändern sie Ihren Alltag.",
+    headline: [
+      { text: "Noch ein Supplement.", tone: "dark" },
+      { text: "Noch eine Ernährungsumstellung.", tone: "dark" },
+      { text: "Und trotzdem keine Klarheit?", tone: "accent" },
+    ],
     intro:
-      "In der Beratung sortieren wir diese Signale und finden heraus, wo es sich für Sie lohnt anzusetzen.",
-    signals: koerperSignaleKurz,
+      "Sie investieren Zeit, Geld und Disziplin in Ihre Gesundheit. Aber wissen Sie, welche Maßnahmen zu Ihrer Situation passen?",
+  },
+  beispiele: {
+    eyebrow: "Kommt Ihnen das bekannt vor?",
+    items: [
+      {
+        title: "Der Supplement-Schrank wird voller.",
+        body: "Für Energie, Schlaf, Darm und Hormone steht etwas bereit. Doch welche Präparate Sie tatsächlich brauchen, bleibt unklar.",
+        image: "supplements",
+      },
+      {
+        title: "Die nächste Infusion ist schon gebucht.",
+        body: "Sie hoffen auf mehr Energie und Belastbarkeit. Aber wie die Behandlung in einen längerfristigen Plan passt, ist offen.",
+        image: "infusion",
+      },
+      {
+        title: "Der Speiseplan wird immer kürzer.",
+        body: "Glutenfrei, milchfrei, Low Carb – Sie haben vieles verändert. Was Ihnen wirklich bekommt, lässt sich kaum noch auseinanderhalten.",
+        image: "teller",
+      },
+      {
+        title: "Der nächste Gesundheitsplan beginnt am Montag.",
+        body: "Mehr Training, neue Routinen, der nächste Selbstversuch. Sie setzen viel um – doch eine klare Richtung fehlt.",
+        image: "plan",
+      },
+    ],
+  },
+  beispieleCta: {
+    title: "Was ist für Ihren Körper gerade wirklich relevant?",
+    body: "Gemeinsam entwickeln wir nachvollziehbare Prioritäten und konkrete Schritte, die zu Ihrer Situation passen.",
   },
   zielgruppen: {
     title: "Für wen ist die Beratung geeignet?",
