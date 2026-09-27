@@ -335,27 +335,32 @@ export const privatkunden = {
     body: "Gemeinsam entwickeln wir nachvollziehbare Prioritäten und konkrete Schritte, die zu Ihrer Situation passen.",
   },
   zielgruppen: {
-    title: "Für wen ist die Beratung geeignet?",
-    intro:
-      "Die Beratung eignet sich für Menschen, die ihre Gesundheit nicht pauschal betrachten möchten, sondern verstehen wollen, welche körperlichen Zusammenhänge bei ihnen eine Rolle spielen können.",
+    eyebrow: "FÜR WEN",
+    title: "Sie müssen nicht in eine Schublade passen.",
+    intro: [
+      "Die Beratung richtet sich an Menschen, die viel leisten, sportlich aktiv sind, wiederkehrende Beschwerden einordnen möchten oder bewusst vorsorgen wollen.",
+      "Vielleicht trifft mehr als eines davon auf Sie zu. Gemeinsam betrachten wir, was bei Ihnen zusammenkommt und welche nächsten Schritte zu Ihrer Situation passen.",
+    ],
     items: [
       {
-        title: "Leistungsorientiert, wenig Zeit",
-        body: "Sie funktionieren, aber Energie, Schlaf oder Verdauung ziehen nicht mehr richtig mit.",
+        title: "Im Alltag stark gefordert",
+        body: "Beruf, Familie und wenig Zeit für sich.",
       },
       {
-        title: "Sportlich aktiv / ehemalige Leistungssportler",
-        body: "Was früher funktioniert hat, reicht heute nicht mehr – und Sie wollen wissen, warum.",
+        title: "Sportlich aktiv",
+        body: "Training, Leistungsfähigkeit und Regeneration.",
       },
       {
         title: "Wiederkehrende Beschwerden",
-        body: "Sie haben vieles ausprobiert und suchen das Muster dahinter, nicht den nächsten Tipp.",
+        body: "Veränderungen bei Energie, Schlaf oder Verdauung.",
       },
       {
-        title: "Gesundheitsbewusst und neugierig",
-        body: "Sie wollen vorsorgen, bevor etwas aus dem Ruder läuft.",
+        title: "Gesundheitsbewusst & neugierig",
+        body: "Zusammenhänge verstehen und frühzeitig vorsorgen.",
       },
     ],
+    centerTitle: "Ihr Körper im Zusammenhang",
+    footnote: "Unterschiedliche Ausgangspunkte. Ein gemeinsamer Blick.",
   },
   catcher: {
     title: "Sie brauchen nicht mehr Disziplin – sondern mehr Verständnis.",

@@ -15,6 +15,7 @@ import privatkundenSupplements from "@/assets/privatkunden-supplements.png";
 import privatkundenInfusion from "@/assets/privatkunden-infusion.png";
 import privatkundenTeller from "@/assets/privatkunden-teller.png";
 import privatkundenPlan from "@/assets/privatkunden-plan.png";
+import zweiWegeTexturBeige from "@/assets/zwei-wege-textur-beige.png";
 
 const beispielBilder = {
   supplements: privatkundenSupplements,
@@ -22,6 +23,80 @@ const beispielBilder = {
   teller: privatkundenTeller,
   plan: privatkundenPlan,
 } as const;
+
+/**
+ * Fill/border colours and layout anchors for the four overlapping
+ * "Für wen"-circles (BIO-184). Order matches `zielgruppen.items`:
+ * top-left, top-right, bottom-left, bottom-right.
+ */
+const zielgruppenVisual = [
+  {
+    corner: "top-left",
+    fill: "bg-[#D8B779]/[0.10]",
+    border: "border-[#8a6f45]/40",
+    titleBreak: "Im Alltag\nstark gefordert",
+    bodyBreak: "Beruf, Familie und wenig\nZeit für sich.",
+  },
+  {
+    corner: "top-right",
+    fill: "bg-[#98A184]/[0.12]",
+    border: "border-[#5f6e52]/40",
+    titleBreak: "Sportlich aktiv",
+    bodyBreak: "Training, Leistungsfähigkeit\nund Regeneration.",
+  },
+  {
+    corner: "bottom-left",
+    fill: "bg-[#A98F71]/[0.10]",
+    border: "border-[#7a6349]/40",
+    titleBreak: "Wiederkehrende\nBeschwerden",
+    bodyBreak: "Veränderungen bei Energie,\nSchlaf oder Verdauung.",
+  },
+  {
+    corner: "bottom-right",
+    fill: "bg-[#D5AB67]/[0.11]",
+    border: "border-[#8a6f3f]/40",
+    titleBreak: "Gesundheitsbewusst\n& neugierig",
+    bodyBreak: "Zusammenhänge verstehen\nund frühzeitig vorsorgen.",
+  },
+] as const;
+
+type ZielgruppenCorner = (typeof zielgruppenVisual)[number]["corner"];
+
+const zielgruppenCirclePosition: Record<ZielgruppenCorner, string> = {
+  "top-left": "left-0 top-0",
+  "top-right": "right-0 top-0",
+  "bottom-left": "left-0 bottom-0",
+  "bottom-right": "right-0 bottom-0",
+};
+
+/** Text-Positionen: 700–1199px (kleinere Zeichenfläche) und ab 1200px
+ * (großer Desktop, BIO-184-Korrektur — weniger Kreis-Überschneidung, mehr
+ * Platz pro Beschriftung). */
+const zielgruppenLabelPosition: Record<ZielgruppenCorner, string> = {
+  "top-left": "left-[25%] top-[24%] w-[31%] min-[1200px]:left-[27%] min-[1200px]:top-[25%] min-[1200px]:w-[34%]",
+  "top-right": "left-[75%] top-[24%] w-[31%] min-[1200px]:left-[73%] min-[1200px]:top-[25%] min-[1200px]:w-[34%]",
+  "bottom-left": "left-[25%] top-[76%] w-[31%] min-[1200px]:left-[27%] min-[1200px]:top-[75%] min-[1200px]:w-[34%]",
+  "bottom-right": "left-[75%] top-[76%] w-[31%] min-[1200px]:left-[73%] min-[1200px]:top-[75%] min-[1200px]:w-[34%]",
+};
+
+/** Rendert einen Titel/Body-Text: natürlicher Umbruch bis 1199px, ab 1200px
+ * die von Milva vorgegebenen manuellen Zeilenumbrüche (BIO-184-Korrektur). */
+function BreakableText({ natural, desktop, as: Tag = "span" }: { natural: string; desktop: string; as?: "span" | "p" }) {
+  const lines = desktop.split("\n");
+  return (
+    <>
+      <Tag className="min-[1200px]:hidden">{natural}</Tag>
+      <Tag className="hidden min-[1200px]:block">
+        {lines.map((line, idx) => (
+          <Fragment key={idx}>
+            {line}
+            {idx < lines.length - 1 && <br />}
+          </Fragment>
+        ))}
+      </Tag>
+    </>
+  );
+}
 
 /**
  * Calm, minimal line drawings for the benefit items — one per item, matching
@@ -202,28 +277,121 @@ export default function PrivatkundenPage() {
         </div>
       </section>
 
-      {/* Für wen ist die Beratung geeignet? — direkt hinter dem Hero (Pos. 2) */}
-      <Section tone="cream">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>Für wen</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{zielgruppen.title}</h2>
-          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">
-            <Glossary>{zielgruppen.intro}</Glossary>
-          </p>
-        </Reveal>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
-          {zielgruppen.items.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={i * 90}
-              className="flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-8"
-            >
-              <h3 className="font-display text-2xl leading-snug text-[var(--color-sage-deep)]">{item.title}</h3>
-              <p className="mt-3 text-[var(--color-ink-soft)]">{item.body}</p>
-            </Reveal>
-          ))}
+      {/* Für wen ist die Beratung geeignet? — direkt hinter dem Hero (Pos. 2).
+          Vier echte, überlappende Kreise auf der Original-Aquarelltextur,
+          direkt aus Website-Elementen aufgebaut (BIO-184, Referenz:
+          Schublade.png). Unter 700px werden die Kreise durch vier gestapelte
+          Zielgruppenflächen ersetzt, damit nichts unlesbar klein wird.
+          Eigener, breiterer Container (1470px statt 1248px) und eigene
+          Typo-Skala ab 1200px, weil die Referenz eine großzügigere
+          Komposition zeigt als der Rest der Seite (BIO-184-Korrektur). */}
+      <section className="relative overflow-hidden py-[56px]">
+        <div className="absolute inset-0">
+          <Image src={zweiWegeTexturBeige} alt="" aria-hidden fill sizes="100vw" className="object-cover" />
         </div>
-      </Section>
+        {/* Gleichmäßige elfenbeinfarbene Aufhellung über der ganzen Textur,
+            unter allen Inhalten — die Papierstruktur bleibt sichtbar
+            (BIO-184-Korrektur: kein warmer/gelber Farbfilter mehr). */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#FFFDF8]/[0.15]" />
+
+        <div className="relative mx-auto w-full max-w-[1470px] px-6 md:px-10">
+          <div className="flex flex-col gap-10 min-[1200px]:grid min-[1200px]:grid-cols-[550fr_840fr] min-[1200px]:items-center min-[1200px]:gap-[80px]">
+            {/* Text links */}
+            <Reveal className="max-w-[760px]">
+              <span className="inline-flex items-center gap-3">
+                <span className="font-sans text-[12px] font-medium uppercase tracking-[2px] text-[var(--color-forest)] min-[1200px]:text-[14px]">
+                  {zielgruppen.eyebrow}
+                </span>
+                <span aria-hidden className="h-px w-[60px] bg-[var(--color-forest)] min-[1200px]:w-[85px]" />
+              </span>
+              <h2 className="font-display mt-[26px] text-[36px] font-normal leading-[1.12] tracking-[-0.015em] text-[var(--color-forest)] min-[700px]:text-[48px] min-[1200px]:mt-[40px] min-[1200px]:text-[68px] min-[1200px]:leading-[1.06] min-[1200px]:tracking-[-0.02em]">
+                <BreakableText natural={zielgruppen.title} desktop={"Sie müssen nicht\nin eine Schublade\npassen."} as="span" />
+              </h2>
+              <p className="mt-[28px] text-[18px] leading-[1.6] text-[var(--color-slate)] min-[700px]:text-[20px] min-[1200px]:mt-[32px] min-[1200px]:text-[22px] min-[1200px]:leading-[1.5]">
+                <Glossary>{zielgruppen.intro[0]}</Glossary>
+              </p>
+              <p className="mt-[24px] text-[18px] leading-[1.6] text-[var(--color-slate)] min-[700px]:text-[20px] min-[1200px]:mt-[28px] min-[1200px]:text-[22px] min-[1200px]:leading-[1.5]">
+                <Glossary>{zielgruppen.intro[1]}</Glossary>
+              </p>
+            </Reveal>
+
+            {/* Grafik rechts */}
+            <div className="flex flex-col items-center">
+              {/* ≥700px: vier echte, überlappende Kreise */}
+              <Reveal delay={100} className="hidden w-full max-w-[780px] min-[700px]:block min-[1200px]:max-w-[840px]">
+                <div className="relative aspect-square w-full">
+                  {zielgruppenVisual.map((v, i) => {
+                    const item = zielgruppen.items[i];
+                    return (
+                      <span
+                        key={item.title}
+                        aria-hidden
+                        className={`absolute h-[60%] w-[60%] rounded-full border ${v.fill} ${v.border} ${zielgruppenCirclePosition[v.corner]}`}
+                      />
+                    );
+                  })}
+                  {zielgruppenVisual.map((v, i) => {
+                    const item = zielgruppen.items[i];
+                    return (
+                      <div
+                        key={item.title}
+                        className={`absolute -translate-x-1/2 -translate-y-1/2 text-center ${zielgruppenLabelPosition[v.corner]}`}
+                      >
+                        <h3 className="font-display text-[26px] font-normal leading-[1.15] text-[var(--color-forest)] min-[1200px]:text-[32px] min-[1200px]:leading-[1.1]">
+                          <BreakableText natural={item.title} desktop={v.titleBreak} />
+                        </h3>
+                        <p className="mt-[14px] text-[17px] leading-[1.4] text-[var(--color-slate)] min-[1200px]:mt-[18px] min-[1200px]:text-[20px]">
+                          <BreakableText natural={item.body} desktop={v.bodyBreak} />
+                        </p>
+                      </div>
+                    );
+                  })}
+                  {/* Ovaler Akzent exakt um die gemeinsame Mitte — wie in
+                      Schublade.png (BIO-184-Korrektur, 4. Runde: größer + oval
+                      statt rund). */}
+                  <span
+                    aria-hidden
+                    className="absolute left-1/2 top-1/2 h-[38%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#A76343]/40 bg-[#A76343]/[0.08]"
+                  />
+                  <div className="absolute left-1/2 top-1/2 w-[40%] -translate-x-1/2 -translate-y-1/2 text-center min-[1200px]:w-[48%]">
+                    <p className="font-display text-[28px] leading-[1.15] text-[#A76343] min-[1200px]:text-[36px]">
+                      <BreakableText natural={zielgruppen.centerTitle} desktop={"Ihr Körper\nim Zusammenhang"} />
+                    </p>
+                  </div>
+                </div>
+                <p className="mx-auto mt-[24px] max-w-[420px] text-center text-[16px] leading-[1.5] text-[var(--color-forest)] min-[1200px]:max-w-[640px] min-[1200px]:text-[18px]">
+                  {zielgruppen.footnote}
+                </p>
+              </Reveal>
+
+              {/* <700px: gestapelte Zielgruppenflächen statt Kreisgrafik */}
+              <div className="w-full min-[700px]:hidden">
+                <div className="flex flex-col gap-4">
+                  {zielgruppenVisual.map((v, i) => {
+                    const item = zielgruppen.items[i];
+                    return (
+                      <Reveal
+                        key={item.title}
+                        delay={i * 80}
+                        className={`rounded-[var(--radius-card)] border p-6 ${v.fill} ${v.border}`}
+                      >
+                        <h3 className="font-display text-[25px] font-normal leading-[1.15] text-[var(--color-forest)]">
+                          {item.title}
+                        </h3>
+                        <p className="mt-[14px] text-[16px] leading-[1.4] text-[var(--color-slate)]">{item.body}</p>
+                      </Reveal>
+                    );
+                  })}
+                </div>
+                <Reveal delay={340} className="mt-8 text-center">
+                  <p className="font-display text-[28px] leading-[1.15] text-[#A76343]">{zielgruppen.centerTitle}</p>
+                  <p className="mt-3 text-[16px] leading-[1.5] text-[var(--color-forest)]">{zielgruppen.footnote}</p>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Verständnis & Prävention — zwei ruhige, hochwertige Boxen (Pos. 3–4) */}
       <Section tone="paper">
