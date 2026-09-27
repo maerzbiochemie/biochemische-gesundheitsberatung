@@ -79,8 +79,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivatkundenPage() {
-  const { hero, beispiele, beispieleCta, catcher, praevention, zielgruppen, nutzen, kompass, process, finalCta } =
-    privatkunden;
+  const { hero, beispiele, catcher, praevention, zielgruppen, nutzen, kompass, process, finalCta } = privatkunden;
   const { pakete } = leistungen;
   return (
     <>
@@ -200,24 +199,6 @@ export default function PrivatkundenPage() {
             </div>
           </div>
 
-          {/* Erstgespräch-Aufruf */}
-          <div className="mt-10 border-t border-[var(--color-hairline-warm)] pt-10">
-            <Reveal>
-              <h2 className="font-display text-[28px] leading-[1.2] text-[var(--color-forest)] min-[600px]:text-[34px]">
-                {beispieleCta.title}
-              </h2>
-              <p className="mt-4 max-w-[780px] text-[18px] leading-[1.55] text-[var(--color-slate)]">
-                {beispieleCta.body}
-              </p>
-              <div className="mt-7">
-                <BookingButton
-                  label="Kostenloses Erstgespräch buchen"
-                  align="left"
-                  className="!bg-[var(--color-forest)] hover:!bg-[var(--color-sage-deep)]"
-                />
-              </div>
-            </Reveal>
-          </div>
         </div>
       </section>
 
