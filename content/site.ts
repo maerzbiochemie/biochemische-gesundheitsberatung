@@ -41,65 +41,58 @@ export const site = {
     "Die biochemische Gesundheitsberatung ersetzt keine ärztliche Diagnostik oder Behandlung.",
 } as const;
 
-// Körper-Signale — vollständige Liste ausschließlich auf der Startseite
-// („Woran Sie es merken"). Durchgehend „Sie"-Form, einheitlich kurze Sätze.
-export const koerperSignale = [
-  "Der Schlaf wird schlechter.",
-  "Die Verdauung reagiert empfindlicher.",
-  "Die Energie schwankt über den Tag.",
-  "Stress wirkt länger nach.",
-  "Training fühlt sich zäh an.",
-  "Die Regeneration dauert länger.",
-  "Der Zyklus verändert sich.",
-] as const;
-
-// Infofenster-Texte pro Körper-Signal (BIO-174) — Titel identisch zu
-// `koerperSignale` oben. Ursprungstext von Milva (Kommentar 2026-09-21),
-// Texte 01/03/04 sowie das Label "focusLabel" auf allen sieben nach
-// Jurist-Rechtscheck (BIO-175, 🟡 mit Auflagen) angepasst — nicht ohne
-// erneute Jurist-Rücksprache zurückändern.
+// Infofenster-Texte für den Homepage-Abschnitt „Wenn Standardantworten nicht
+// weiterhelfen" (BIO-185, Ursprungstext von Milva, Kommentar 2026-09-28).
+// Ersetzt die vorherigen sieben kurzen Körper-Signale durch fünf längere,
+// spezifischere Beschwerdebilder. Wortlaut nach Jurist-Rechtscheck (BIO-186,
+// 🟡 unter Auflagen, Punkt 01 war für sich 🔴) satzweise korrigiert — v.a.
+// Ärztin/Arzt behält explizit die Bewertungshoheit über Befunde/Diagnosen,
+// „einordnen"/„Plan"/„Anamnese" vermieden. Nicht ohne erneuten Rechtscheck
+// zurück auf die Ursprungsformulierungen ändern.
 export const koerperSignaleDetails = [
   {
-    title: "Der Schlaf wird schlechter.",
-    body: "Schlechter Schlaf kann viele Gründe haben. Entscheidend ist, ob das Einschlafen, Durchschlafen oder das Gefühl von Erholung am Morgen verändert ist – und seit wann.",
-    focusLabel: "Worüber wir im Erstgespräch sprechen:",
-    focus: "Schlafrhythmus, Belastungen im Alltag und Gewohnheiten. Anhaltende Schlafprobleme gehören ärztlich abgeklärt.",
+    title: "Endometriose – und offene Fragen zu Ernährung und Alltag?",
+    body: [
+      "Eine Endometriose wird ärztlich diagnostiziert und ärztlich behandelt. Daneben bleiben für viele Betroffene Fragen zu Ernährung, Verdauung und Alltag offen.",
+      "Vielleicht sind Herde bereits behandelt oder operiert worden und trotzdem bleiben Schmerzen, Verdauungsprobleme, Erschöpfung oder zyklusabhängige Beschwerden bestehen. Solche fortbestehenden Beschwerden gehören zuerst in die ärztliche Abklärung – meine Beratung ersetzt sie nicht.",
+      "Parallel dazu lohnt sich ein Blick auf Ernährung, Alltag und Belastung: Was davon möchten Sie gezielter anschauen? Was ist bereits abgeklärt? Welche Fragen sind offen geblieben?",
+      "In meiner Beratung ordnen wir, was bereits vorliegt: ärztliche Befunde, Ihre eigenen Beobachtungen, Ernährung und Lebensstil. Die Bewertung der ärztlichen Befunde bleibt bei Ihrer Ärztin oder Ihrem Arzt. Damit Sie nicht noch eine weitere Einzelmaßnahme auf eigene Faust ausprobieren, sondern einen geordneten Überblick haben – auch darüber, welche Fragen Sie beim nächsten ärztlichen Termin ansprechen möchten.",
+    ],
   },
   {
-    title: "Die Verdauung reagiert empfindlicher.",
-    body: "Blähungen, Völlegefühl oder ein veränderter Stuhlgang sagen für sich genommen noch wenig über die Ursache aus. Aufschlussreicher ist, wann die Beschwerden auftreten und ob sich ein Muster erkennen lässt.",
-    focusLabel: "Worüber wir im Erstgespräch sprechen:",
-    focus: "Verlauf der Beschwerden, Mahlzeiten, Alltag und weitere Veränderungen. Anhaltende oder auffällige Beschwerden gehören ärztlich abgeklärt.",
+    title: "Ihre Blutwerte sind unauffällig – und Sie haben trotzdem offene Fragen?",
+    body: [
+      "Ein unauffälliger Laborbefund heißt nicht, dass Ihre Beschwerden nicht real sind – er ist zunächst eine ärztliche Aussage über diese Werte.",
+      "Wir sortieren deshalb gemeinsam, was bereits untersucht wurde, was Sie im Alltag beobachten und welche Fragen daraus offen bleiben. Dabei klären wir auch, an welchen Stellen eine weiterführende ärztliche Abklärung sinnvoll sein könnte. Die Bewertung der Werte selbst bleibt ärztlich.",
+      "Das Ziel: Ordnung in das, was schon vorliegt – und eine klare Liste der Fragen für Ihren nächsten ärztlichen Termin.",
+    ],
   },
   {
-    title: "Die Energie schwankt über den Tag.",
-    body: "Ein gelegentliches Tief ist normal. Wenn die Energie regelmäßig stark abfällt, lohnt sich ein genauerer Blick auf die Umstände.",
-    focusLabel: "Worüber wir im Erstgespräch sprechen:",
-    focus: "Schlaf, Tagesrhythmus, Mahlzeiten, Aktivität und – falls vorhanden – ärztlich erhobene Befunde, die Sie mitbringen. Deren Bewertung bleibt bei Ihrer Ärztin oder Ihrem Arzt. Anhaltende Erschöpfung gehört ärztlich abgeklärt.",
+    title: "Sie haben Ihre Ernährung längst angepasst – doch die Beschwerden bleiben?",
+    body: [
+      "Glutenfrei. Histaminarm. FODMAP-reduziert. Zuckerarm. Nahrungsergänzungsmittel. Vielleicht sogar mehrere Eliminationsdiäten.",
+      "Wenn Ernährung immer restriktiver wird, aber keine echte Stabilität entsteht, ist ‚noch mehr weglassen‘ nicht automatisch die Lösung.",
+      "Gemeinsam schauen wir darauf, was Ihnen im Alltag gut bekommt, welche Veränderungen Ihnen geholfen haben und wo möglicherweise unnötige Einschränkungen entstanden sind. Gleichzeitig beziehen wir Ihre Beobachtungen zu Verdauung, Nährstoffversorgung und Alltag mit ein. Wenn Einschränkungen ärztlich empfohlen wurden, ändern wir daran nichts ohne ärztliche Rücksprache.",
+      "Denn eine Ernährung sollte Ihren Körper langfristig unterstützen – nicht Ihr gesamtes Leben bestimmen.",
+    ],
   },
   {
-    title: "Stress wirkt länger nach.",
-    body: "Manchmal endet eine Belastung, aber das Gefühl von Anspannung bleibt. Das kann sich unter anderem im Schlaf, in der Konzentration oder im Erholungsgefühl zeigen.",
-    focusLabel: "Worüber wir im Erstgespräch sprechen:",
-    focus: "Wie lange die Belastung anhält, welche Pausen möglich sind und was sich im Alltag verändert hat. Daraus lassen sich realistische nächste Schritte im Alltag ableiten. Bei anhaltender seelischer Belastung ist ärztliche oder psychotherapeutische Hilfe der richtige Weg.",
+    title: "Sie gehen ein Symptom nach dem anderen an – und trotzdem kommt immer etwas Neues dazu?",
+    body: [
+      "Verdauung. Haut. Zyklus. Erschöpfung. Schmerzen. Konzentration. Schlaf. Leistungsfähigkeit.",
+      "Wenn Beschwerden in mehreren Bereichen auftreten, wirkt es schnell so, als hätte man fünf verschiedene Probleme. Manchmal lohnt es sich jedoch zu prüfen, welche Systeme miteinander verbunden sein könnten.",
+      "Genau hier beginnt meine Arbeit: Wir sortieren Ihre Angaben, die vorliegenden ärztlichen Befunde und bisherige Maßnahmen und suchen nach Mustern, die im klassischen ‚ein Symptom – eine Lösung‘-Denken leicht verloren gehen.",
+      "Nicht, um vorschnell eine Ursache zu behaupten – sondern um gezielter zu entscheiden, welcher nächste Schritt wirklich sinnvoll ist.",
+    ],
   },
   {
-    title: "Training fühlt sich zäh an.",
-    body: "Wenn sich eine vertraute Belastung plötzlich deutlich schwerer anfühlt, muss nicht das Training allein der Grund sein. Auch die Bedingungen außerhalb des Trainings zählen.",
-    focusLabel: "Worüber wir im Erstgespräch sprechen:",
-    focus: "Umfang und Intensität des Trainings, Schlaf, Ernährung und Veränderungen der allgemeinen Gesundheit.",
-  },
-  {
-    title: "Die Regeneration dauert länger.",
-    body: "Nach Anstrengung braucht der Körper Erholung. Wenn Müdigkeit oder Muskelbeschwerden länger als gewohnt anhalten, ist vor allem das Muster über mehrere Tage interessant.",
-    focusLabel: "Worüber wir im Erstgespräch sprechen:",
-    focus: "Das Verhältnis von Belastung und Ruhe, Schlaf, Ernährung und die Frage, ob sich die Erholung im Vergleich zu früher verändert hat.",
-  },
-  {
-    title: "Der Zyklus verändert sich.",
-    body: "Zykluslänge, Blutungsstärke und Beschwerden können schwanken. Neue oder wiederkehrende Veränderungen sollten jedoch nicht vorschnell einer einzigen Ursache zugeschrieben werden.",
-    focusLabel: "Worüber wir im Erstgespräch sprechen:",
-    focus: "Verlauf, Begleitsymptome und Veränderungen bei Stress, Training, Gewicht oder Verhütung. Anhaltende Veränderungen sollten gynäkologisch abgeklärt werden.",
+    title: "Sie haben schon so viel ausprobiert, dass Sie gar nicht mehr wissen, was eigentlich noch sinnvoll ist?",
+    body: [
+      "Arzttermine, Nahrungsergänzungsmittel, Ernährungsformen, Tests, Therapien, Empfehlungen aus dem Internet – irgendwann wird aus Gesundheitsvorsorge ein Vollzeitprojekt.",
+      "Und häufig fehlt nicht noch eine weitere Information. Es fehlt jemand, der Ordnung in das Vorhandene bringt und mit Ihnen sortiert, was Sie ärztlich klären lassen möchten und welche Schritte bei Ernährung und Alltag zu Ihnen passen. Genau das machen wir gemeinsam.",
+      "Was ist bereits gut abgeklärt? Welche Fragen sind Ihnen am wichtigsten? Welche Maßnahmen passen zu Ihrer Situation? Und wann braucht es eine weitere ärztliche Diagnostik?",
+      "Damit aus ‚Ich probiere einfach noch etwas aus‘ wieder ein nachvollziehbarer Weg wird.",
+    ],
   },
 ] as const;
 
@@ -182,17 +175,25 @@ export const home = {
   // Zusammengelegte B2C+„Stagnation"-Sektion — ein Problem-Framing statt zwei.
   // Headline bewusst anders formuliert als privatkunden.hero.title, damit
   // Besucher beim Klick zu /privatkunden keine wortgleiche Zeile doppelt lesen.
+  // Text komplett überarbeitet für BIO-185 (Ursprungstext Milva, 2026-09-28),
+  // Intro/Closing/Disclaimer nach Jurist-Rechtscheck (BIO-186) angepasst —
+  // Bewertungshoheit über Befunde bleibt explizit bei Ärztin/Arzt. Eyebrow
+  // laut Jurist nur "optional 🟡" (Abgrenzung zur ärztlichen Regelversorgung)
+  // — bewusst unverändert gelassen, Milva entscheidet.
   signalsBlock: {
-    eyebrow: "Woran Sie es merken",
+    eyebrow: "Wenn Standardantworten nicht weiterhelfen",
     headline:
-      "Meistens ist es nicht nur ein Auslöser, sondern die Überlastung des gesamten Systems.",
+      "Sie haben schon viel versucht. Und trotzdem fehlt das Gefühl, wirklich zu verstehen, was in Ihrem Körper passiert.",
+    intro:
+      "Beschwerden entstehen nicht immer dort, wo sie sich zeigen. Deshalb schauen wir gemeinsam auf Ernährung, Verdauung, Alltag und Belastungsfaktoren – und beziehen die ärztlichen Befunde ein, die Sie mitbringen. Nicht isoliert, sondern im Zusammenhang. Deren Bewertung bleibt bei Ihrer Ärztin oder Ihrem Arzt.",
     closing:
-      "Diese Signale lassen sich einordnen. Daraus wird ein klarer nächster Schritt.",
-    // Pflichthinweis laut Jurist-Rechtscheck (BIO-175) — muss sichtbar auf der
-    // Seite stehen (nicht nur im Impressum) und bei künftigen Design-/Text-
-    // Durchläufen erhalten bleiben.
+      "Sie müssen nicht mit einer fertigen Diagnose zu mir kommen. Bringen Sie Ihre Beschwerden, bisherigen Befunde und offenen Fragen mit. Wir beginnen dort, wo Sie gerade stehen – und klären gemeinsam, was davon in ärztliche Hände gehört.",
+    ctaLabel: "Erstgespräch vereinbaren",
+    // Pflichthinweis, erweitert nach Jurist-Rechtscheck (BIO-186) wegen der
+    // erstmals benannten Diagnose (Endometriose) — muss sichtbar auf der Seite
+    // UND im SignalAccordion-Detailfenster stehen, nicht nur im Impressum.
     disclaimer:
-      "Die Biochemische Gesundheitsberatung stellt keine Diagnosen, behandelt keine Krankheiten und ersetzt keine ärztliche Abklärung.",
+      "Die Biochemische Gesundheitsberatung stellt keine Diagnosen, behandelt keine Krankheiten und ersetzt keine ärztliche Abklärung. Bestehende ärztliche Diagnosen und Behandlungen werden weder ersetzt noch verändert; die Bewertung von Befunden bleibt bei Ihrer Ärztin oder Ihrem Arzt.",
   },
   // Split-Card-Sektion — ersetzt die früheren zwei vollen B2C-/B2B-Sektionen.
   audience: {

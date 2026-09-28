@@ -6,9 +6,7 @@ import { Reveal } from "@/components/Reveal";
 
 type SignalItem = {
   title: string;
-  body: string;
-  focusLabel: string;
-  focus: string;
+  body: readonly string[];
 };
 
 /**
@@ -21,11 +19,14 @@ export function SignalAccordion({
   items,
   className = "",
   revealDelay,
+  disclaimer,
 }: {
   items: readonly SignalItem[];
   className?: string;
   /** Fades the list in as one group when scrolled into view; omit to render statically. */
   revealDelay?: number;
+  /** Legal disclaimer shown inside the modal — the texts are long enough that a reader may close without ever seeing an external disclaimer below the list (BIO-186). */
+  disclaimer?: string;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -117,11 +118,11 @@ export function SignalAccordion({
               {active.title}
             </h3>
             <div className="mt-5 space-y-4 border-t border-[var(--color-line)] pt-5">
-              <p className="text-[var(--color-ink-soft)]">{active.body}</p>
-              <p className="text-sm leading-relaxed text-[var(--color-muted)]">
-                <strong className="text-[var(--color-ink-soft)]">{active.focusLabel}</strong>{" "}
-                {active.focus}
-              </p>
+              {active.body.map((paragraph, i) => (
+                <p key={i} className="text-[var(--color-ink-soft)]">
+                  {paragraph}
+                </p>
+              ))}
             </div>
             <a
               href={site.booking.url}
@@ -132,6 +133,11 @@ export function SignalAccordion({
               Zum Erstgespräch
               <span aria-hidden>→</span>
             </a>
+            {disclaimer && (
+              <p className="mt-5 border-t border-[var(--color-line)] pt-4 text-xs leading-relaxed text-[var(--color-muted)]">
+                {disclaimer}
+              </p>
+            )}
           </div>
         </div>
       )}

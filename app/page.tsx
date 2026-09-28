@@ -141,12 +141,22 @@ export default function HomePage() {
               <h2 className="font-display mt-6 text-4xl leading-tight md:text-[3.625rem] md:leading-[1.05]">
                 {home.signalsBlock.headline}
               </h2>
+              <p className="mt-6 max-w-md text-[var(--color-ink-soft)] md:text-lg">
+                {home.signalsBlock.intro}
+              </p>
             </Reveal>
           </div>
           <div className="md:col-span-6 md:col-start-7">
-            <SignalAccordion items={koerperSignaleDetails} revealDelay={90} />
+            <SignalAccordion
+              items={koerperSignaleDetails}
+              revealDelay={90}
+              disclaimer={home.signalsBlock.disclaimer}
+            />
             <Reveal delay={90} className="mt-10 text-[var(--color-ink-soft)] md:text-[1.5rem]">
               <Glossary>{home.signalsBlock.closing}</Glossary>
+            </Reveal>
+            <Reveal delay={120} className="mt-8">
+              <BookingButton label={home.signalsBlock.ctaLabel} />
             </Reveal>
             <p className="mt-4 text-xs leading-relaxed text-[var(--color-muted)]">
               {home.signalsBlock.disclaimer}
