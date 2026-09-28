@@ -185,7 +185,7 @@ export const home = {
     headline:
       "Sie haben schon viel versucht. Und trotzdem fehlt das Gefühl, wirklich zu verstehen, was in Ihrem Körper passiert.",
     intro:
-      "Beschwerden entstehen nicht immer dort, wo sie sich zeigen. Deshalb schauen wir gemeinsam auf Ernährung, Verdauung, Alltag und Belastungsfaktoren – und beziehen die ärztlichen Befunde ein, die Sie mitbringen. Nicht isoliert, sondern im Zusammenhang. Deren Bewertung bleibt bei Ihrer Ärztin oder Ihrem Arzt.",
+      "Beschwerden entstehen nicht immer dort, wo sie sich zeigen. Wir schauen gemeinsam auf Ernährung, Verdauung, Alltag und Belastungsfaktoren – und beziehen die ärztlichen Befunde ein, die Sie mitbringen. Nicht isoliert, sondern im Zusammenhang. Deren Bewertung bleibt bei Ihrer Ärztin oder Ihrem Arzt.",
     closing:
       "Sie müssen nicht mit einer fertigen Diagnose zu mir kommen. Bringen Sie Ihre Beschwerden, bisherigen Befunde und offenen Fragen mit. Wir beginnen dort, wo Sie gerade stehen – und klären gemeinsam, was davon in ärztliche Hände gehört.",
     ctaLabel: "Erstgespräch vereinbaren",

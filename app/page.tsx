@@ -118,7 +118,7 @@ export default function HomePage() {
       </section>
 
       {/* ------------------------- Woran Sie es merken (Symptomblock, Pos. 3) */}
-      <Section tone="paper" className="relative overflow-hidden">
+      <Section tone="paper" padding="tight" className="relative overflow-hidden">
         {/* Finished watercolour graphic — plain paper tone plus one pale fern
             in the bottom-left corner. Sized to the image's own aspect ratio
             (not stretched to the section's full height) so the fern stays a
@@ -135,7 +135,7 @@ export default function HomePage() {
           />
         </div>
         <div className="relative grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <div className="flex flex-col md:col-span-5">
             <Reveal>
               <Eyebrow>{home.signalsBlock.eyebrow}</Eyebrow>
               <h2 className="font-display mt-6 text-4xl leading-tight md:text-[3.625rem] md:leading-[1.05]">
@@ -145,6 +145,11 @@ export default function HomePage() {
                 {home.signalsBlock.intro}
               </p>
             </Reveal>
+            {/* Pflichthinweis unten links in der Spalte verankert (Milva-Wunsch,
+                Kommentar 2026-09-28) — Text/Sichtbarkeit unverändert, nur Position. */}
+            <p className="mt-10 max-w-md text-xs leading-relaxed text-[var(--color-muted)] md:mt-auto">
+              {home.signalsBlock.disclaimer}
+            </p>
           </div>
           <div className="md:col-span-6 md:col-start-7">
             <SignalAccordion
@@ -158,9 +163,6 @@ export default function HomePage() {
             <Reveal delay={120} className="mt-8">
               <BookingButton label={home.signalsBlock.ctaLabel} />
             </Reveal>
-            <p className="mt-4 text-xs leading-relaxed text-[var(--color-muted)]">
-              {home.signalsBlock.disclaimer}
-            </p>
           </div>
         </div>
       </Section>

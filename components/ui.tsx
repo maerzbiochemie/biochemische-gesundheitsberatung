@@ -107,11 +107,14 @@ export function Section({
   className = "",
   id,
   tone = "cream",
+  padding = "default",
 }: {
   children: ReactNode;
   className?: string;
   id?: string;
   tone?: "cream" | "paper" | "ink" | "deep" | "sage" | "sand";
+  /** "tight" shortens the vertical section padding for content-heavy sections. */
+  padding?: "default" | "tight";
 }) {
   const toneClass =
     tone === "paper"
@@ -125,10 +128,11 @@ export function Section({
             : tone === "sand"
               ? "bg-[var(--color-sand-soft)]"
               : "bg-[var(--color-cream)]";
+  const paddingClass = padding === "tight" ? "py-14 md:py-20 lg:py-24" : "py-20 md:py-28 lg:py-32";
   return (
     <section
       id={id}
-      className={`${toneClass} py-20 md:py-28 lg:py-32 ${className}`}
+      className={`${toneClass} ${paddingClass} ${className}`}
       style={id ? { scrollMarginTop: "5rem" } : undefined}
     >
       <div className="container-x">{children}</div>
