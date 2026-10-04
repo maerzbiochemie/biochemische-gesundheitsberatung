@@ -43,7 +43,7 @@ export function Header() {
             <span className="font-display text-xl tracking-tight md:text-[1.4rem]">
               {site.name}
             </span>
-            <span className="absolute left-0 top-full whitespace-nowrap text-[0.62rem] uppercase tracking-[0.2em] text-[var(--color-muted)]">
+            <span className="absolute left-0 top-full whitespace-nowrap text-[0.78rem] uppercase tracking-[0.2em] text-[var(--color-muted)]">
               {site.tagline}
             </span>
           </Link>

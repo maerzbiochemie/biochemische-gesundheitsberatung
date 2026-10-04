@@ -40,30 +40,48 @@ export default function HomePage() {
           supplied file. That book takes the circle drawing's former slot
           (same corner/size) since the spec didn't ask to keep both. */}
       <section className="relative overflow-hidden bg-[var(--color-cream)] pb-10 pt-20 md:pb-12 md:pt-24">
-        {/* DNA + fern — centre watermark; opacity 0.08 → 0.12 per the
-            2026-10-04 spec's explicit 0.10–0.14 range. Hidden on mobile. */}
-        <div className="pointer-events-none absolute left-1/2 top-[400px] z-0 hidden w-[420px] -translate-x-1/2 opacity-[0.12] md:block">
+        {/* DNA + fern — centre watermark. Per Milva's 2026-10-04 reference
+            image: stays pale in the upper gap above the horizontal lines,
+            then intensifies around the vertical line + dot and below. Mask
+            gradient does the fade; base opacity raised again 0.22 → 0.30
+            per her 2026-10-04 "sichtbarer machen" follow-up (upper part
+            still faded via the same mask). */}
+        <div
+          className="pointer-events-none absolute left-1/2 top-[400px] z-0 hidden w-[420px] -translate-x-1/2 opacity-[0.30] md:block"
+          style={{
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, transparent 15%, black 50%, black 100%)",
+            maskImage: "linear-gradient(to bottom, transparent 0%, transparent 15%, black 50%, black 100%)",
+          }}
+        >
           <Image src={heroDnaFarn} alt="" aria-hidden width={420} height={630} sizes="420px" className="h-auto w-full object-contain" />
         </div>
 
-        {/* Molecule (top-left) + DNA helix (top-right) — still bleed past the
-            edge, pulled in slightly and made more visible per the
-            2026-10-04 spec's position/opacity ranges. Hidden on mobile. */}
-        <div className="pointer-events-none absolute left-[-10px] top-[85px] z-0 hidden aspect-[1536/1024] w-[320px] opacity-[0.42] md:block">
-          <Image src={heroMolecule} alt="" aria-hidden fill sizes="320px" className="object-contain object-left-top" />
+        {/* Molecule (top-left) + DNA helix (top-right) — enlarged and made
+            clearer per Milva's reference image (HEROSymbole.png, 2026-10-04),
+            the DNA now bleeding down most of the hero height instead of just
+            the top corner. The big jump is scoped to lg+ (1024px) — at
+            tablet width the enlarged DNA collided with the headline text, so
+            md keeps the previous, more contained sizing. 2026-10-04 latest
+            follow-up: molecule shrunk (440→340px) so its lower structures no
+            longer land past the horizontal rule at the top of the two-column
+            section; DNA pushed back out past the edge (right-0 was "too
+            flush" per her follow-up — she wants it bleeding off again).
+            Hidden on mobile. */}
+        <div className="pointer-events-none absolute left-[-10px] top-[85px] z-0 hidden aspect-[1536/1024] w-[320px] opacity-[0.42] md:block lg:left-[-70px] lg:top-[250px] lg:w-[340px] lg:opacity-[0.55]">
+          <Image src={heroMolecule} alt="" aria-hidden fill sizes="(min-width: 1024px) 340px, 320px" className="object-contain object-left-top" />
         </div>
-        <div className="pointer-events-none absolute right-[-10px] top-[35px] z-0 hidden aspect-[1024/1536] w-[250px] opacity-[0.44] md:block">
-          <Image src={heroDna} alt="" aria-hidden fill sizes="250px" className="object-contain object-right-top" />
+        <div className="pointer-events-none absolute right-[-10px] top-[35px] z-0 hidden aspect-[1024/1536] w-[250px] opacity-[0.44] md:block lg:right-[-170px] lg:w-[550px] lg:opacity-[0.5]">
+          <Image src={heroDna} alt="" aria-hidden fill sizes="(min-width: 1024px) 550px, 250px" className="object-contain object-right-top" />
         </div>
         {/* Book watermark — bottom right, exact file Milva supplied
             (offenes_buch_mit_dna_und_mikroskop.png), slightly desaturated;
-            opacity raised again 0.20 → 0.32 per Milva's "weniger Fade" request. */}
+            enlarged again 125px → 170px per her "vergrößern" request. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute bottom-[25px] right-[32px] z-0 hidden aspect-[1448/1086] w-[125px] opacity-[0.32] md:block"
+          className="pointer-events-none absolute bottom-[25px] right-[32px] z-0 hidden aspect-[1448/1086] w-[170px] opacity-[0.45] md:block"
           style={{ filter: "saturate(0.75)" }}
         >
-          <Image src={heroBook} alt="" fill sizes="125px" className="object-contain object-right-bottom" />
+          <Image src={heroBook} alt="" fill sizes="170px" className="object-contain object-right-bottom" />
         </div>
 
         {/* Dedicated hero-wide container: max-width 1500px, width calc(100% -
@@ -127,7 +145,7 @@ export default function HomePage() {
               <span className="absolute left-1/2 top-[265px] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-olive-line)]" />
             </div>
 
-            <Reveal delay={120} className="relative flex flex-col items-start md:pl-[28px]">
+            <Reveal delay={120} className="relative flex flex-col items-start md:pl-[56px]">
               <span className="h-px w-full bg-[var(--color-olive-line)]" aria-hidden />
               <h2
                 className="font-display max-w-[620px] text-[28px] leading-[1.15] text-[var(--color-ink)] md:text-[32px] lg:text-[46px] lg:leading-[1.05]"
