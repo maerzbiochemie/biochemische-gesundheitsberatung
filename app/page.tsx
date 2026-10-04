@@ -8,14 +8,16 @@ import { WordReveal } from "@/components/Animated";
 import { Marquee } from "@/components/Marquee";
 import { MoreInfo } from "@/components/MoreInfo";
 import { BookingButton } from "@/components/BookingButton";
-import { Portrait } from "@/components/Portrait";
 import { Faq } from "@/components/Faq";
 import { Glossary, TermPopover } from "@/components/Glossary";
 import { IconUnderstand, IconConnect, IconStructure, IconAct } from "@/components/icons";
-import { site, home, faq, koerperSignaleDetails } from "@/content/site";
-import frontPhoto from "@/assets/front.jpeg";
+import { home, faq, koerperSignaleDetails } from "@/content/site";
 import profilPhoto from "@/assets/profil.jpeg";
 import heroBotanical from "@/assets/hero-botanical.png";
+import heroDnaFarn from "@/assets/hero-dna-farn.png";
+import heroDna from "@/assets/hero-dna.png";
+import heroMolecule from "@/assets/hero-molecule.png";
+import heroBook from "@/assets/hero-book.png";
 import zusammenhaengeBuch from "@/assets/zusammenhaenge-buch-freigestellt.png";
 import zusammenhaengePapier from "@/assets/zusammenhaenge-papier-textur.png";
 import signaleFarn from "@/assets/signale-hintergrund-farn.png";
@@ -29,88 +31,124 @@ export default function HomePage() {
   return (
     <>
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="relative overflow-hidden bg-[var(--color-cream)] pb-20 pt-20 md:pb-28 md:pt-24">
-        {/* Finished watercolour background graphic (paper texture + botanical
-            branch + left-edge leaf cluster) — a real image file, not a
-            generated CSS/SVG illustration. Sits behind all real content.
-            The wrapper is pinned to the image's own aspect ratio (not the
-            hero section's, which varies with copy length) so object-cover
-            never has to scale/crop more than necessary — below it the
-            section's plain cream background shows through on tall pages. */}
-        <div className="absolute inset-x-0 top-0 aspect-[1756/896] w-full">
-          <Image
-            src={heroBotanical}
-            alt=""
-            aria-hidden
-            fill
-            priority
-            sizes="100vw"
-            className="pointer-events-none object-cover object-center"
-          />
+      {/* Rebuilt October 2026 (BIO-192). 2026-10-04 revision: a 29-point
+          geometry/detail pass on top of the prior exact-spec round — wider
+          container (1500px), stronger/bigger corner symbols, a longer centre
+          divider reaching back down to button height, more breathing room
+          between the hairlines and the column text, a muted-tint secondary
+          button, and a new "book" watermark bottom-right using Milva's exact
+          supplied file. That book takes the circle drawing's former slot
+          (same corner/size) since the spec didn't ask to keep both. */}
+      <section className="relative overflow-hidden bg-[var(--color-cream)] pb-10 pt-20 md:pb-12 md:pt-24">
+        {/* DNA + fern — centre watermark; opacity 0.08 → 0.12 per the
+            2026-10-04 spec's explicit 0.10–0.14 range. Hidden on mobile. */}
+        <div className="pointer-events-none absolute left-1/2 top-[400px] z-0 hidden w-[420px] -translate-x-1/2 opacity-[0.12] md:block">
+          <Image src={heroDnaFarn} alt="" aria-hidden width={420} height={630} sizes="420px" className="h-auto w-full object-contain" />
         </div>
-        <div className="container-wide relative">
-          <Reveal>
+
+        {/* Molecule (top-left) + DNA helix (top-right) — still bleed past the
+            edge, pulled in slightly and made more visible per the
+            2026-10-04 spec's position/opacity ranges. Hidden on mobile. */}
+        <div className="pointer-events-none absolute left-[-10px] top-[85px] z-0 hidden aspect-[1536/1024] w-[320px] opacity-[0.42] md:block">
+          <Image src={heroMolecule} alt="" aria-hidden fill sizes="320px" className="object-contain object-left-top" />
+        </div>
+        <div className="pointer-events-none absolute right-[-10px] top-[35px] z-0 hidden aspect-[1024/1536] w-[250px] opacity-[0.44] md:block">
+          <Image src={heroDna} alt="" aria-hidden fill sizes="250px" className="object-contain object-right-top" />
+        </div>
+        {/* Book watermark — bottom right, exact file Milva supplied
+            (offenes_buch_mit_dna_und_mikroskop.png), slightly desaturated;
+            opacity raised again 0.20 → 0.32 per Milva's "weniger Fade" request. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute bottom-[25px] right-[32px] z-0 hidden aspect-[1448/1086] w-[125px] opacity-[0.32] md:block"
+          style={{ filter: "saturate(0.75)" }}
+        >
+          <Image src={heroBook} alt="" fill sizes="125px" className="object-contain object-right-bottom" />
+        </div>
+
+        {/* Dedicated hero-wide container: max-width 1500px, width calc(100% -
+            96px) per the 2026-10-04 spec (was 1480px). z-[2] so it always
+            paints above the edge/centre graphics. */}
+        <div className="relative z-[2] mx-auto w-[calc(100%-96px)] max-w-[1500px]">
+          {/* Centred intro */}
+          <Reveal className="relative mx-auto max-w-[1320px] text-center">
             {/* First (and only) interactive occurrence — tooltip explains "Biochemie". */}
-            <Eyebrow>
+            <p className="eyebrow block text-center text-[19px]">
               <TermPopover term="biochemie">{home.hero.eyebrow}</TermPopover>
-            </Eyebrow>
+            </p>
+            <WordReveal
+              as="h1"
+              text={home.hero.title}
+              delay={0.15}
+              className="font-display mx-auto mt-[28px] max-w-[1320px] text-center leading-[1.1] tracking-[-0.025em] text-[var(--color-ink)] text-[2.3rem] sm:text-[2.75rem] md:leading-[0.98] md:text-[clamp(64px,4.7vw,82px)]"
+            />
           </Reveal>
-          {/* Heading and the credentials card share the same top edge on desktop. */}
-          <div className="mt-7 grid gap-10 md:grid-cols-12 md:gap-8">
-            <Reveal className="md:col-span-7 lg:col-span-6">
-              <WordReveal
-                as="h1"
-                text={home.hero.title}
-                delay={0.15}
-                className="font-display max-w-md text-[2.3rem] leading-[1.08] sm:max-w-xl sm:text-5xl lg:max-w-[690px] lg:text-[5rem] lg:leading-[1]"
-              />
-              <Reveal
-                as="p"
-                delay={90}
-                className="mt-6 max-w-2xl font-display text-xl text-[var(--color-sage-deep)] md:text-2xl"
+          <Reveal
+            as="p"
+            delay={90}
+            className="relative mx-auto mt-[30px] max-w-[1260px] text-center font-display leading-[1.3] text-[var(--color-olive)] text-2xl sm:text-3xl md:leading-[1.05] md:text-[clamp(38px,2.8vw,50px)]"
+          >
+            {home.hero.subtitle}
+          </Reveal>
+
+          {/* Two columns — left/right, left-aligned, divided by a fine
+              vertical line with a ring+dot centred on it, pulled down to the
+              disclaimer per Milva's "bis nach unten ziehen" follow-up; the
+              two horizontal lines above the columns are now flush (no
+              vertical offset) per her "auf eine Höhe" request. The line
+              above each column doubles as the mobile divider once the grid
+              stacks. */}
+          <div
+            className="relative grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_90px_minmax(0,1fr)] md:items-start md:gap-0"
+            style={{ marginTop: 65 }}
+          >
+            <Reveal delay={90} className="relative flex flex-col items-start">
+              <span className="h-px w-full bg-[var(--color-olive-line)]" aria-hidden />
+              <p
+                className="max-w-[610px] text-[var(--color-ink-soft)]"
+                style={{ marginTop: 54, fontSize: 22, lineHeight: 1.5 }}
               >
-                {home.hero.subtitle}
-              </Reveal>
-              <div className="mt-10 space-y-5 text-lg text-[var(--color-ink-soft)]">
-                {home.hero.body.map((p) => (
-                  <p key={p}>
-                    <Glossary>{p}</Glossary>
-                  </p>
-                ))}
-              </div>
-              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-start">
-                <BookingButton />
-                <ButtonLink href={site.cta.secondary.href} variant="secondary">
-                  {site.cta.secondary.label}
-                </ButtonLink>
+                <span className="text-[#45514D]">{home.hero.left.body}</span>
+              </p>
+              <h2
+                className="font-display max-w-[620px] text-[28px] leading-[1.15] text-[var(--color-ink)] md:text-[32px] lg:text-[46px] lg:leading-[1.05]"
+                style={{ marginTop: 38 }}
+              >
+                {home.hero.left.headline}
+              </h2>
+              <div style={{ marginTop: 32 }}>
+                <BookingButton className="btn-hero-olive w-full justify-center lg:!h-[60px] lg:!w-auto lg:!px-8 lg:!text-[17px] lg:justify-start" />
               </div>
             </Reveal>
 
-            <Reveal delay={90} className="md:col-span-5 md:col-start-9 md:self-start lg:col-span-5 lg:col-start-8 lg:pl-20">
-              <div className="card flex w-full max-w-[28rem] flex-col p-7 md:p-8">
-                {/* Credentials lead the card; the portrait sits below as a
-                    personal touch, not the dominant element. */}
-                <p className="font-display text-[1.6rem] leading-snug md:text-[1.75rem]">
-                  „{home.hero.heroQuote}“
-                </p>
-                <dl className="mt-7 space-y-4 text-sm">
-                  {home.hero.facts.map(([k, v]) => (
-                    <div key={k} className="flex flex-col gap-0.5">
-                      <dt className="text-[var(--color-muted)]">{k}</dt>
-                      <dd className="text-[var(--color-ink)]">{v}</dd>
-                    </div>
-                  ))}
-                </dl>
-                <div className="mt-8 border-t border-[var(--color-line)] pt-7">
-                  <Portrait
-                    src={frontPhoto}
-                    alt="Milva März"
-                    ratio="aspect-[5/4]"
-                    position="object-[center_25%]"
-                    priority
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
+            <div aria-hidden className="relative hidden md:block">
+              <span className="absolute top-0 h-[530px] left-1/2 w-px -translate-x-1/2 bg-[var(--color-olive-line)]" />
+              <span className="absolute left-1/2 top-[265px] h-[26px] w-[26px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--color-olive-line)] bg-[var(--color-cream)]" />
+              <span className="absolute left-1/2 top-[265px] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-olive-line)]" />
+            </div>
+
+            <Reveal delay={120} className="relative flex flex-col items-start md:pl-[28px]">
+              <span className="h-px w-full bg-[var(--color-olive-line)]" aria-hidden />
+              <h2
+                className="font-display max-w-[620px] text-[28px] leading-[1.15] text-[var(--color-ink)] md:text-[32px] lg:text-[46px] lg:leading-[1.05]"
+                style={{ marginTop: 54 }}
+              >
+                {home.hero.right.headline}
+              </h2>
+              <p
+                className="max-w-[620px] text-[var(--color-ink-soft)]"
+                style={{ marginTop: 36, fontSize: 22, lineHeight: 1.5 }}
+              >
+                <span className="text-[#45514D]">{home.hero.right.body}</span>
+              </p>
+              <div style={{ marginTop: 32 }}>
+                <ButtonLink
+                  href={home.hero.right.ctaHref}
+                  variant="secondary"
+                  className="btn-hero-outline w-full justify-center lg:!h-[60px] lg:!w-auto lg:!px-8 lg:!text-[17px] lg:justify-start"
+                >
+                  {home.hero.right.ctaLabel}
+                </ButtonLink>
               </div>
             </Reveal>
           </div>

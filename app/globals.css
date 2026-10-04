@@ -32,6 +32,17 @@
   --color-clay: #ad6346;
   --color-hairline-warm: #d8ccbd;
 
+  /* Olive/taupe accent for the hero (BIO-192). Updated 2026-10-03 to Milva's
+     exact hex spec: --color-olive is the "Taupe/Sage hell" (#9B9178) used for
+     the second headline + secondary-button border; --color-olive-deep is the
+     muted sage-olive (#77755E) used for the primary button fill; both close
+     to #706957 for the secondary button's text. --color-olive-line is the
+     hairline colour (#C8BBA5) for the divider/rule lines. Hero-only family —
+     doesn't touch the shared ink/ink-soft/cream tokens used sitewide. */
+  --color-olive: #9b9178;
+  --color-olive-deep: #77755e;
+  --color-olive-line: #c8bba5;
+
   --font-serif: var(--font-display), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
@@ -176,6 +187,27 @@ body {
 }
 .btn-secondary:hover {
   border-color: var(--color-ink);
+}
+/* Hero-only CTA variants (BIO-192, 2026-10-03 exact-spec revision) — primary
+   is a muted sage-olive fill (#77755E, explicitly "KEIN kräftiges Grün");
+   secondary is transparent/outlined, never filled, border + text in the same
+   olive family — explicitly "NICHT braun ausfüllen". */
+.btn-hero-olive {
+  background: var(--color-olive-deep);
+  color: var(--color-paper);
+}
+.btn-hero-olive:hover {
+  background: var(--color-ink);
+}
+.btn-hero-outline {
+  background: rgba(119, 117, 94, 0.22);
+  border: 1.5px solid var(--color-olive-deep);
+  color: var(--color-olive-deep);
+}
+.btn-hero-outline:hover {
+  background: rgba(119, 117, 94, 0.32);
+  border-color: var(--color-ink);
+  color: var(--color-ink);
 }
 
 .btn .arrow {

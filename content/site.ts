@@ -106,20 +106,23 @@ export const koerperSignaleKurz = [
 ] as const;
 
 export const home = {
+  // Hero-Umbau Oktober 2026 (BIO-192) — Copy wortgleich wie von Milva
+  // vorgegeben, keine eigene Formulierung. Gesundheitsbezogen → vor
+  // Veröffentlichung Jurist-Review Pflicht (siehe Issue-Kommentar).
   hero: {
     eyebrow: "Biochemische Gesundheitsberatung",
-    title: "Verstehen, was Ihr Körper gerade braucht – statt weiter zu raten.",
-    subtitle:
-      "Wissenschaftlich fundierte Beratung für Menschen, die ihre Gesundheit nicht dem Zufall überlassen.",
-    body: [
-      "Statt allgemeiner Tipps schauen wir auf Ihre Werte, Ihre Beschwerden und Ihren Alltag – und leiten daraus konkrete Schritte ab, die zu Ihrem Körper passen.",
-    ],
-    heroQuote: "Wer Gesundheit verstehen will, muss den Körper als System betrachten.",
-    facts: [
-      ["Fachlicher Hintergrund", "Biochemie Bachelor of Science · Fitnesstrainerin"],
-      ["Fokus", "Einordnung · Struktur · Umsetzung"],
-      ["Arbeitsweise", "Individuell & wissenschaftlich fundiert"],
-    ],
+    title: "Wenn Sie viele Antworten bekommen – aber noch keine klare Richtung haben.",
+    subtitle: "Gesundheit braucht nicht mehr Informationen – sondern bessere Einordnung.",
+    left: {
+      body: "Sie investieren Zeit, Geld und Disziplin in Ihre Gesundheit. Sie verändern Ernährung, nehmen Supplemente, buchen Behandlungen, lassen Werte kontrollieren – und trotzdem bleibt oft die Frage:",
+      headline: "Welche Maßnahmen passen eigentlich wirklich zu Ihrer Situation?",
+    },
+    right: {
+      headline: "Warum Biochemische Gesundheitsberatung?",
+      body: "Genau hier setzt das Konzept an: Ich helfe Ihnen, Zusammenhänge zu verstehen, Informationen wissenschaftlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
+      ctaLabel: "Meinen Ansatz kennenlernen",
+      ctaHref: "/#ansatz",
+    },
   },
   // Section formerly "Bedeutung von Gesundheit" — now "Ein Symptom ist selten
   // die ganze Geschichte". Fließtext + Untertitel = vom Juristen freigegebene
