@@ -13,6 +13,8 @@ import { Glossary, TermPopover } from "@/components/Glossary";
 import { IconUnderstand, IconConnect, IconStructure, IconAct } from "@/components/icons";
 import { home, faq, koerperSignaleDetails } from "@/content/site";
 import profilPhoto from "@/assets/profil.jpeg";
+import visionFarnGross from "@/assets/vision-farn-gross.png";
+import visionZweigKlein from "@/assets/vision-zweig-klein.png";
 import heroBotanical from "@/assets/hero-botanical.png";
 import heroDnaFarn from "@/assets/hero-dna-farn.png";
 import heroDna from "@/assets/hero-dna.png";
@@ -167,6 +169,152 @@ export default function HomePage() {
                 >
                   {home.hero.right.ctaLabel}
                 </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------- Über mich & meine Vision (BIO-194) */}
+      {/* Right-column rebuild 2026-10-08 per Milva's "Foto-Rahmen/Zitat-Kasten/
+          Farn bereits vorhanden, nur Position/Größe/Ausschnitt ändern"-Spec:
+          the quote card is now positioned as a percentage of the portrait
+          frame itself (frame is the positioning context), overlapping only
+          the frame's own bottom padding — never the photo — by design. Left
+          column, headline and body copy are untouched (locked by her prior
+          instruction). Portrait image source is still the existing website
+          photo — see the accompanying issue comment for why. */}
+      <section className="relative overflow-hidden bg-[#F7F4EC] pb-[78px] pt-[92px]">
+        {/* Linker Rand-Farn (section edge, neben dem Text, 45%-88% Sektionshöhe) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute bottom-[40px] left-[-90px] z-0 aspect-[667/1013] w-[220px] -scale-x-100 select-none opacity-[0.14] min-[1101px]:bottom-[12%] min-[1101px]:left-[-100px] min-[1101px]:top-auto min-[1101px]:h-[43%] min-[1101px]:w-[260px] min-[1101px]:opacity-[0.65]"
+        >
+          <Image src={visionFarnGross} alt="" fill sizes="(min-width: 1101px) 260px, 220px" className="object-contain" />
+        </div>
+
+        {/* Rechter Rand-Farn (section edge, hinter dem Rahmen, 20%-65% Sektionshöhe) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-[-90px] top-[20%] z-0 hidden h-[45%] w-[260px] select-none opacity-[0.6] min-[1101px]:block"
+        >
+          <Image src={visionFarnGross} alt="" fill sizes="260px" className="object-contain" />
+        </div>
+
+        <div className="relative z-[1] mx-auto max-w-[1480px] px-[24px] min-[768px]:px-[48px]">
+          <div className="relative grid grid-cols-1 gap-y-12 min-[1101px]:grid-cols-[minmax(0,56%)_minmax(0,44%)] min-[1101px]:items-center min-[1101px]:gap-x-[72px]">
+            {/* Left column */}
+            <Reveal className="relative min-[1101px]:max-w-[820px]">
+              <span className="inline-flex items-center gap-[18px]">
+                <span className="font-sans text-[15px] font-semibold uppercase tracking-[0.18em] text-[#315D52]">
+                  {home.visionIntro.eyebrow}
+                </span>
+                <span aria-hidden className="h-px w-[34px] bg-[#92A198]" />
+              </span>
+
+              <h2 className="font-display mt-[36px] max-w-[850px] text-[clamp(42px,11vw,56px)] leading-[1.03] tracking-[-0.02em] text-[#1F2B26] min-[768px]:text-[clamp(58px,4.25vw,82px)] min-[768px]:leading-[1.02]">
+                {home.visionIntro.headline}
+              </h2>
+
+              <div className="mt-[34px] max-w-[800px]">
+                <h3 className="font-display mb-[12px] text-[36px] leading-[1.05] text-[#315D52] min-[768px]:text-[42px]">
+                  {home.visionIntro.introHeading}
+                </h3>
+                <p className="max-w-[800px] text-[17px] leading-[1.55] text-[#4B5651] min-[768px]:text-[19px]">
+                  {home.visionIntro.bio.map((part, i) =>
+                    part.bold ? (
+                      <strong key={i} className="font-bold">
+                        {part.text}
+                      </strong>
+                    ) : (
+                      <span key={i}>{part.text}</span>
+                    )
+                  )}
+                </p>
+              </div>
+
+              <div className="mt-[26px] max-w-[800px]">
+                <h3 className="font-display mb-[10px] text-[36px] leading-[1.05] text-[#315D52] min-[768px]:text-[42px]">
+                  {home.visionIntro.visionHeading}
+                </h3>
+                <p className="max-w-[800px] text-[17px] leading-[1.55] text-[#4B5651] min-[768px]:text-[19px]">
+                  {home.visionIntro.vision.map((part, i) =>
+                    "break" in part && part.break ? (
+                      <br key={i} className="hidden min-[1101px]:inline min-[1360px]:hidden" />
+                    ) : part.bold ? (
+                      <strong key={i} className="font-bold">
+                        {part.text}
+                      </strong>
+                    ) : (
+                      <span key={i}>{part.text}</span>
+                    )
+                  )}
+                </p>
+              </div>
+            </Reveal>
+
+            {/* Right column */}
+            {/* Desktop (min-[1101px]): rebuilt 2026-10-08. The frame (not an
+                outer "stage") is now the positioning context: the quote-card
+                is a child of the frame and sits via left:-101px / width:647px
+                / top:calc(100% - 28px) — i.e. it overlaps only the frame's
+                own 28px bottom padding, never the photo itself. The wrapper
+                reserves pb-[250px] of flow space so the card (which escapes
+                the frame's box via overflow:visible) doesn't collide with
+                the next section. Mobile (<1101px) stays flow/margin-based. */}
+            <Reveal delay={90} className="relative min-[1101px]:ml-auto min-[1101px]:w-[520px] min-[1101px]:pb-[250px]">
+              <div className="relative overflow-hidden rounded-[28px] border border-[rgba(120,110,90,0.18)] bg-[#F8F6F0]/90 p-[18px] shadow-[0_10px_32px_rgba(40,50,40,0.05)] min-[1101px]:overflow-visible min-[1101px]:p-[28px]">
+                {/* Großer Farn hinter dem Bild — ragt links aus dem Rahmen heraus */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute left-[-40px] top-[-30px] z-0 aspect-[667/1013] w-[220px] -rotate-[6deg] select-none opacity-[0.22] min-[1101px]:left-[-120px] min-[1101px]:top-[-50px] min-[1101px]:w-[380px] min-[1101px]:opacity-[0.65]"
+                >
+                  <Image src={visionFarnGross} alt="" fill sizes="(min-width: 1101px) 380px, 220px" className="object-contain" />
+                </div>
+
+                {/* Foto — quadratisch, vollständig sichtbar */}
+                <div className="relative z-[2] aspect-square w-full overflow-hidden rounded-[22px]">
+                  <Image
+                    src={profilPhoto}
+                    alt="Milva März"
+                    fill
+                    sizes="(min-width: 1101px) 520px, 100vw"
+                    placeholder="blur"
+                    className="object-cover object-[center_35%]"
+                  />
+                </div>
+
+                {/* Statement-Card — überdeckt nur den unteren Rahmen-Rand, nicht das Foto */}
+                <div className="relative z-[4] mt-[-32px] w-full rounded-[24px] border border-[rgba(120,110,90,0.18)] bg-[#F8F6F0] px-[24px] py-[24px] shadow-[0_10px_30px_rgba(40,50,40,0.035)] min-[1101px]:absolute min-[1101px]:left-[-101px] min-[1101px]:top-[calc(100%-28px)] min-[1101px]:mt-0 min-[1101px]:flex min-[1101px]:w-[647px] min-[1101px]:min-h-[270px] min-[1101px]:items-center min-[1101px]:px-0 min-[1101px]:py-[24px] min-[1101px]:pr-[28px]">
+                  {/* Zweig — groß, am linken Kastenrand, fast über die ganze Höhe (Desktop) */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute left-[16px] top-1/2 z-0 hidden w-[150px] -translate-y-1/2 select-none opacity-[0.85] min-[1101px]:block"
+                    style={{ height: 235 }}
+                  >
+                    <Image src={visionZweigKlein} alt="" fill sizes="150px" className="object-contain" />
+                  </div>
+                  {/* Zweig — klein, oberhalb des Zitats (Mobile) */}
+                  <div aria-hidden className="pointer-events-none mb-[12px] select-none opacity-[0.80] min-[1101px]:hidden">
+                    <Image src={visionZweigKlein} alt="" width={110} height={117} className="h-auto w-[80px]" />
+                  </div>
+
+                  <div className="relative z-[1] min-[1101px]:ml-[187px] min-[1101px]:w-[432px]">
+                    <blockquote
+                      className="font-display text-[22px] leading-[1.15] text-[#1F2B26] min-[768px]:text-[27px] min-[1101px]:text-[28px]"
+                      style={{ textIndent: "-0.4em", paddingLeft: "0.4em" }}
+                    >
+                      {home.visionIntro.quote}
+                    </blockquote>
+                    <span aria-hidden className="mb-[16px] mt-[20px] block h-px w-[40px] bg-[#7F9188]" />
+                    <p className="font-sans text-[14px] font-semibold tracking-[0.16em] text-[#45514D]">
+                      {home.visionIntro.signatureName}
+                    </p>
+                    <p className="mt-[4px] font-sans text-[11px] font-medium tracking-[0.2em] text-[#6A756F]">
+                      {home.visionIntro.signatureRole}
+                    </p>
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>

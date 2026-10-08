@@ -124,6 +124,57 @@ export const home = {
       ctaHref: "/#ansatz",
     },
   },
+  // Neue Sektion „Über mich & meine Vision" direkt unter dem Hero (BIO-194).
+  // Copy + exakte Fettmarkierungen wortgleich wie von Milva vorgegeben, keine
+  // eigene Formulierung. Gesundheitsbezogen → vor Veröffentlichung
+  // Jurist-Review Pflicht (siehe Issue-Kommentar).
+  visionIntro: {
+    eyebrow: "Über mich & meine Vision",
+    headline: "Verstehen, was Ihr Körper gerade braucht – statt weiter zu raten.",
+    introHeading: "Ich bin Milva.",
+    bio: [
+      { text: "Biochemikerin", bold: true },
+      { text: ", ", bold: false },
+      { text: "leidenschaftliche Fitnesstrainerin", bold: true },
+      {
+        text: " und aktuell in Ausbildung zur Heilpraktikerin. Ich habe dieses Unternehmen gegründet, weil ich selbst jahrelang nach ",
+        bold: false,
+      },
+      { text: "individuellen Antworten", bold: true },
+      {
+        text: " gesucht habe – und sie oft nicht bekommen habe. Zu häufig stecken hinter Gesundheitsversprechen nur ",
+        bold: false,
+      },
+      { text: "leere Aussagen", bold: true },
+      { text: ", fehlende Tiefe oder der nächste Trend.", bold: false },
+    ],
+    visionHeading: "Meine Vision.",
+    vision: [
+      { text: "Deshalb habe ich ", bold: false },
+      { text: "Biochemie studiert", bold: true },
+      {
+        text: ": Ich wollte bis ins Detail verstehen, was im Körper überhaupt passiert. Dabei wurde mir bewusst, wie ",
+        bold: false,
+      },
+      { text: "komplex", bold: true },
+      {
+        text: " unser Organismus ist – und dass sich Beschwerden nicht immer oberflächlich erklären lassen. Meine Vision ist, dass Menschen verstehen, was in ihrem Körper vor ",
+        bold: false,
+      },
+      { text: "", bold: false, break: true },
+      { text: "sich geht, um ", bold: false },
+      { text: "fundierte und passende Entscheidungen", bold: true },
+      { text: "", bold: false, break: true },
+      { text: " treffen zu können. Weniger abhängig von Meinungen anderer", bold: false },
+      { text: "", bold: false, break: true },
+      { text: " – und Schritt für Schritt der ", bold: false },
+      { text: "eigene Experte", bold: true },
+      { text: " für den eigenen Körper.", bold: false },
+    ],
+    quote: "„Jeder sollte seinen Körper besser verstehen lernen – um sicherer entscheiden zu können.“",
+    signatureName: "MILVA MÄRZ",
+    signatureRole: "BIOCHEMISCHE GESUNDHEITSBERATUNG",
+  },
   // Section formerly "Bedeutung von Gesundheit" — now "Ein Symptom ist selten
   // die ganze Geschichte". Fließtext + Untertitel = vom Juristen freigegebene
   // Fassung (BIO-144/145, Kommentar 2026-09-02): Möglichkeitsform, keine
