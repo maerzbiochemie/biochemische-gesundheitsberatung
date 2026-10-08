@@ -184,11 +184,20 @@ export default function HomePage() {
           column, headline and body copy are untouched (locked by her prior
           instruction). Portrait image source is still the existing website
           photo — see the accompanying issue comment for why. */}
-      <section className="relative overflow-hidden bg-[#F7F4EC] pb-[78px] pt-[92px]">
+      {/* Background 2026-10-08: sage fill (sampled from her reference image,
+          ~#E3EEE2, close to her #E0EBE1 fallback) instead of the near-duplicate
+          cream that made the transition from the hero above feel monotone.
+          One gradient handles both edge fades AND the subtle top-to-bottom
+          sage shift in a single declaration: fades from the actual neighbour
+          colors (--color-cream above, --color-paper below — not guessed hex
+          values) over the top/bottom 80px, sage-toned in between. */}
+      <section
+        className="relative overflow-hidden pb-[78px] pt-[92px] bg-[linear-gradient(to_bottom,var(--color-cream)_0,#E6EFE7_80px,#DCE8DE_calc(100%-80px),var(--color-paper)_100%)]"
+      >
         {/* Linker Rand-Farn (section edge, neben dem Text, 45%-88% Sektionshöhe) */}
         <div
           aria-hidden
-          className="pointer-events-none absolute bottom-[40px] left-[-90px] z-0 aspect-[667/1013] w-[220px] -scale-x-100 select-none opacity-[0.14] min-[1101px]:bottom-[12%] min-[1101px]:left-[-100px] min-[1101px]:top-auto min-[1101px]:h-[43%] min-[1101px]:w-[260px] min-[1101px]:opacity-[0.65]"
+          className="pointer-events-none absolute bottom-[40px] left-[-90px] z-0 aspect-[667/1013] w-[220px] -scale-x-100 select-none opacity-[0.14] min-[1101px]:bottom-[12%] min-[1101px]:left-[-100px] min-[1101px]:top-auto min-[1101px]:h-[43%] min-[1101px]:w-[260px] min-[1101px]:opacity-[0.75]"
         >
           <Image src={visionFarnGross} alt="" fill sizes="(min-width: 1101px) 260px, 220px" className="object-contain" />
         </div>
@@ -196,7 +205,7 @@ export default function HomePage() {
         {/* Rechter Rand-Farn (section edge, hinter dem Rahmen, 20%-65% Sektionshöhe) */}
         <div
           aria-hidden
-          className="pointer-events-none absolute right-[-90px] top-[20%] z-0 hidden h-[45%] w-[260px] select-none opacity-[0.6] min-[1101px]:block"
+          className="pointer-events-none absolute right-[-90px] top-[20%] z-0 hidden h-[45%] w-[260px] select-none opacity-[0.72] min-[1101px]:block"
         >
           <Image src={visionFarnGross} alt="" fill sizes="260px" className="object-contain" />
         </div>
@@ -267,7 +276,7 @@ export default function HomePage() {
                 {/* Großer Farn hinter dem Bild — ragt links aus dem Rahmen heraus */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute left-[-40px] top-[-30px] z-0 aspect-[667/1013] w-[220px] -rotate-[6deg] select-none opacity-[0.22] min-[1101px]:left-[-120px] min-[1101px]:top-[-50px] min-[1101px]:w-[380px] min-[1101px]:opacity-[0.65]"
+                  className="pointer-events-none absolute left-[-40px] top-[-30px] z-0 aspect-[667/1013] w-[220px] -rotate-[6deg] select-none opacity-[0.22] min-[1101px]:left-[-120px] min-[1101px]:top-[-50px] min-[1101px]:w-[380px] min-[1101px]:opacity-[0.75]"
                 >
                   <Image src={visionFarnGross} alt="" fill sizes="(min-width: 1101px) 380px, 220px" className="object-contain" />
                 </div>
