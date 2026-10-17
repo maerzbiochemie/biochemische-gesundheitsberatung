@@ -106,12 +106,19 @@ export const koerperSignaleKurz = [
 ] as const;
 
 export const home = {
-  // Hero-Umbau Oktober 2026 (BIO-192) — Copy wortgleich wie von Milva
-  // vorgegeben, keine eigene Formulierung. Gesundheitsbezogen → vor
-  // Veröffentlichung Jurist-Review Pflicht (siehe Issue-Kommentar).
+  // Hero-Umbau Oktober 2026 (BIO-192, zuletzt 2026-10-08 BIO-194-Follow-up).
+  // Copy wortgleich wie von Milva vorgegeben, keine eigene Formulierung.
+  // Gesundheitsbezogen → vor Veröffentlichung Jurist-Review Pflicht (siehe
+  // Issue-Kommentar). Die neue `title`-Zeile ist eine NEUE Health-Claim-nahe
+  // Aussage (impliziert "normale Befunde, aber Beschwerden") und braucht
+  // deshalb eine eigene Jurist-Prüfung vor Freigabe, auch wenn der Rest der
+  // Hero-Texte unverändert bleibt.
   hero: {
     eyebrow: "Biochemische Gesundheitsberatung",
-    title: "Wenn Sie viele Antworten bekommen – aber noch keine klare Richtung haben.",
+    title: "Wenn „alles in Ordnung“ ist, Sie sich aber nicht so fühlen.",
+    // Feste 2-Zeilen-Darstellung (Milva: "Zeilenumbruch fest nach 'ist,'").
+    titleLine1: "Wenn „alles in Ordnung“ ist,",
+    titleLine2: "Sie sich aber nicht so fühlen.",
     subtitle: "Gesundheit braucht nicht mehr Informationen – sondern bessere Einordnung.",
     left: {
       body: "Sie investieren Zeit, Geld und Disziplin in Ihre Gesundheit. Sie verändern Ernährung, nehmen Supplemente, buchen Behandlungen, lassen Werte kontrollieren – und trotzdem bleibt oft die Frage:",
@@ -119,7 +126,11 @@ export const home = {
     },
     right: {
       headline: "Warum Biochemische Gesundheitsberatung?",
-      body: "Genau hier setzt das Konzept an: Ich helfe Ihnen, Zusammenhänge zu verstehen, Informationen wissenschaftlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
+      // Aufgeteilt in `lead` (eigene fette Zeile) + `body` (Fließtext
+      // danach) für die 2026-10-08-Formatierung — Wortlaut identisch mit der
+      // bisherigen zusammenhängenden Fassung, nur visuell getrennt.
+      lead: "Genau hier setzt das Konzept an:",
+      body: "Ich helfe Ihnen, Zusammenhänge zu verstehen, Informationen wissenschaftlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
       ctaLabel: "Meinen Ansatz kennenlernen",
       ctaHref: "/#ansatz",
     },
