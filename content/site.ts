@@ -41,60 +41,58 @@ export const site = {
     "Die biochemische Gesundheitsberatung ersetzt keine ärztliche Diagnostik oder Behandlung.",
 } as const;
 
-// Infofenster-Texte für den Homepage-Abschnitt „Wenn Standardantworten nicht
-// weiterhelfen" (BIO-185, Ursprungstext von Milva, Kommentar 2026-09-28).
-// Ersetzt die vorherigen sieben kurzen Körper-Signale durch fünf längere,
-// spezifischere Beschwerdebilder. Wortlaut nach Jurist-Rechtscheck (BIO-186,
-// 🟡 unter Auflagen, Punkt 01 war für sich 🔴) satzweise korrigiert — v.a.
-// Ärztin/Arzt behält explizit die Bewertungshoheit über Befunde/Diagnosen,
-// „einordnen"/„Plan"/„Anamnese" vermieden. Nicht ohne erneuten Rechtscheck
-// zurück auf die Ursprungsformulierungen ändern.
-export const koerperSignaleDetails = [
-  {
-    title: "Endometriose – und offene Fragen zu Ernährung und Alltag?",
-    body: [
-      "Eine Endometriose wird ärztlich diagnostiziert und ärztlich behandelt. Daneben bleiben für viele Betroffene Fragen zu Ernährung, Verdauung und Alltag offen.",
-      "Vielleicht sind Herde bereits behandelt oder operiert worden und trotzdem bleiben Schmerzen, Verdauungsprobleme, Erschöpfung oder zyklusabhängige Beschwerden bestehen. Solche fortbestehenden Beschwerden gehören zuerst in die ärztliche Abklärung – meine Beratung ersetzt sie nicht.",
-      "Parallel dazu lohnt sich ein Blick auf Ernährung, Alltag und Belastung: Was davon möchten Sie gezielter anschauen? Was ist bereits abgeklärt? Welche Fragen sind offen geblieben?",
-      "In meiner Beratung ordnen wir, was bereits vorliegt: ärztliche Befunde, Ihre eigenen Beobachtungen, Ernährung und Lebensstil. Die Bewertung der ärztlichen Befunde bleibt bei Ihrer Ärztin oder Ihrem Arzt. Damit Sie nicht noch eine weitere Einzelmaßnahme auf eigene Faust ausprobieren, sondern einen geordneten Überblick haben – auch darüber, welche Fragen Sie beim nächsten ärztlichen Termin ansprechen möchten.",
-    ],
-  },
-  {
-    title: "Ihre Blutwerte sind unauffällig – und Sie haben trotzdem offene Fragen?",
-    body: [
-      "Ein unauffälliger Laborbefund heißt nicht, dass Ihre Beschwerden nicht real sind – er ist zunächst eine ärztliche Aussage über diese Werte.",
-      "Wir sortieren deshalb gemeinsam, was bereits untersucht wurde, was Sie im Alltag beobachten und welche Fragen daraus offen bleiben. Dabei klären wir auch, an welchen Stellen eine weiterführende ärztliche Abklärung sinnvoll sein könnte. Die Bewertung der Werte selbst bleibt ärztlich.",
-      "Das Ziel: Ordnung in das, was schon vorliegt – und eine klare Liste der Fragen für Ihren nächsten ärztlichen Termin.",
-    ],
-  },
-  {
-    title: "Sie haben Ihre Ernährung längst angepasst – doch die Beschwerden bleiben?",
-    body: [
-      "Glutenfrei. Histaminarm. FODMAP-reduziert. Zuckerarm. Nahrungsergänzungsmittel. Vielleicht sogar mehrere Eliminationsdiäten.",
-      "Wenn Ernährung immer restriktiver wird, aber keine echte Stabilität entsteht, ist ‚noch mehr weglassen‘ nicht automatisch die Lösung.",
-      "Gemeinsam schauen wir darauf, was Ihnen im Alltag gut bekommt, welche Veränderungen Ihnen geholfen haben und wo möglicherweise unnötige Einschränkungen entstanden sind. Gleichzeitig beziehen wir Ihre Beobachtungen zu Verdauung, Nährstoffversorgung und Alltag mit ein. Wenn Einschränkungen ärztlich empfohlen wurden, ändern wir daran nichts ohne ärztliche Rücksprache.",
-      "Denn eine Ernährung sollte Ihren Körper langfristig unterstützen – nicht Ihr gesamtes Leben bestimmen.",
-    ],
-  },
-  {
-    title: "Sie gehen ein Symptom nach dem anderen an – und trotzdem kommt immer etwas Neues dazu?",
-    body: [
-      "Verdauung. Haut. Zyklus. Erschöpfung. Schmerzen. Konzentration. Schlaf. Leistungsfähigkeit.",
-      "Wenn Beschwerden in mehreren Bereichen auftreten, wirkt es schnell so, als hätte man fünf verschiedene Probleme. Manchmal lohnt es sich jedoch zu prüfen, welche Systeme miteinander verbunden sein könnten.",
-      "Genau hier beginnt meine Arbeit: Wir sortieren Ihre Angaben, die vorliegenden ärztlichen Befunde und bisherige Maßnahmen und suchen nach Mustern, die im klassischen ‚ein Symptom – eine Lösung‘-Denken leicht verloren gehen.",
-      "Nicht, um vorschnell eine Ursache zu behaupten – sondern um gezielter zu entscheiden, welcher nächste Schritt wirklich sinnvoll ist.",
-    ],
-  },
-  {
-    title: "Sie haben schon so viel ausprobiert, dass Sie gar nicht mehr wissen, was eigentlich noch sinnvoll ist?",
-    body: [
-      "Arzttermine, Nahrungsergänzungsmittel, Ernährungsformen, Tests, Therapien, Empfehlungen aus dem Internet – irgendwann wird aus Gesundheitsvorsorge ein Vollzeitprojekt.",
-      "Und häufig fehlt nicht noch eine weitere Information. Es fehlt jemand, der Ordnung in das Vorhandene bringt und mit Ihnen sortiert, was Sie ärztlich klären lassen möchten und welche Schritte bei Ernährung und Alltag zu Ihnen passen. Genau das machen wir gemeinsam.",
-      "Was ist bereits gut abgeklärt? Welche Fragen sind Ihnen am wichtigsten? Welche Maßnahmen passen zu Ihrer Situation? Und wann braucht es eine weitere ärztliche Diagnostik?",
-      "Damit aus ‚Ich probiere einfach noch etwas aus‘ wieder ein nachvollziehbarer Weg wird.",
-    ],
-  },
-] as const;
+// Themen-Sektion „Wenn Standardantworten nicht weiterhelfen" (BIO-198,
+// Ursprungstext von Milva, Vorgabe 2026-10-17). Ersetzt die vorherige
+// signalsBlock/koerperSignaleDetails-Darstellung (lange Headline + Fließtext
+// links, fünf lange Accordion-Zeilen rechts) durch sechs kompakte
+// Themenkarten mit Icon + Kurztitel; der Infotext erscheint erst beim
+// Aufklappen. Wortlaut (Eyebrow, Headline, Kartentitel, Infotexte) exakt wie
+// vorgegeben — nicht umformulieren.
+//
+// Rechtscheck BIO-199 abgeschlossen (🟡, freigabefähig). Einzige Pflicht-
+// Auflage: ärztlicher Hinweis in den Karten „Endometriose" und „Histamin &
+// Mastzellen" (siehe note-Feld unten, Jurist-Wortlaut). Übrige Kartentexte
+// wortgleich wie von Milva vorgegeben.
+export const topicsSection = {
+  eyebrow: "Wenn Standardantworten nicht weiterhelfen",
+  headlineLines: ["Viel versucht", "und trotzdem", "keine Klarheit?"],
+  topics: [
+    {
+      id: "endometriose",
+      title: "Endometriose",
+      body: "Eine Diagnose beantwortet nicht automatisch alle Fragen. Ernährung, Verdauung, Belastbarkeit, Entzündungsprozesse und der individuelle Alltag können zusätzliche Themen aufwerfen. Gemeinsam ordnen wir ein, welche Zusammenhänge für Ihre persönliche Situation tatsächlich relevant sind.",
+      // Pflicht-Hinweis laut Rechtscheck BIO-199 (Jurist-Wortlaut, konsistent mit Footer).
+      note: "Hinweis: Die Beratung ersetzt keine ärztliche Diagnostik oder Behandlung; die Bewertung von Befunden und Diagnosen bleibt ärztlich.",
+    },
+    {
+      id: "darmbeschwerden",
+      title: "Chronische Darmbeschwerden",
+      body: "Blähungen, Schmerzen, wechselnde Verdauung oder Unverträglichkeiten können sehr unterschiedliche Hintergründe haben. Statt immer mehr Lebensmittel zu streichen, betrachten wir Ernährung, Schleimhaut, Verdauung und vorhandene Befunde im Zusammenhang.",
+    },
+    {
+      id: "symptome-reaktionen",
+      title: "Unerklärliche Symptome & Reaktionen",
+      body: "Wenn Beschwerden scheinbar unabhängig voneinander auftreten oder Sie auf Lebensmittel, Stress oder Umweltreize ungewöhnlich reagieren, fehlt häufig vor allem eine nachvollziehbare Einordnung. Ziel ist, Muster und mögliche Zusammenhänge sichtbar zu machen.",
+    },
+    {
+      id: "histamin-mastzellen",
+      title: "Histamin & Mastzellen",
+      body: "Histaminproblematik und Mastzellaktivierung werden schnell als Erklärung für sehr unterschiedliche Beschwerden herangezogen. Hier lohnt sich eine saubere Einordnung: Was passt tatsächlich zum Beschwerdebild, welche anderen Faktoren kommen infrage und welche Maßnahmen sind wirklich sinnvoll?",
+      // Pflicht-Hinweis laut Rechtscheck BIO-199 (Jurist-Wortlaut, konsistent mit Footer).
+      note: "Hinweis: Die Beratung ersetzt keine ärztliche Diagnostik oder Behandlung; die Bewertung von Befunden und Diagnosen bleibt ärztlich.",
+    },
+    {
+      id: "chronisch-krank",
+      title: "Chronisch krank – viele Fragen offen",
+      body: "Auch mit einer bestehenden Diagnose bleiben häufig Fragen zum Alltag, zur Ernährung oder zur Belastbarkeit offen. Die Beratung ersetzt keine ärztliche Behandlung, kann Ihnen aber helfen, Ihre Situation und bereits vorhandene Informationen besser zu verstehen.",
+    },
+    {
+      id: "viel-ausprobiert",
+      title: "Viel ausprobiert – kein roter Faden",
+      body: "Supplemente, Ernährungsformen, Behandlungen und neue Routinen können sich mit der Zeit ansammeln. Gemeinsam sortieren wir, was davon für Ihre Situation relevant ist, wo Widersprüche bestehen und welche nächsten Schritte sinnvoll erscheinen.",
+    },
+  ],
+} as const;
 
 // Gekürzte Reihe — nur für den Privatkunden-Hero (bewusst nicht die volle Liste,
 // um die Symptom-Aufzählung nicht über zwei Seiten zu doppeln).
@@ -233,29 +231,6 @@ export const home = {
         body: "Am Ende stehen konkrete Schritte, die zu Ihrem Körper, Ihrem Alltag und Ihren Zielen passen.",
       },
     ],
-  },
-  // Zusammengelegte B2C+„Stagnation"-Sektion — ein Problem-Framing statt zwei.
-  // Headline bewusst anders formuliert als privatkunden.hero.title, damit
-  // Besucher beim Klick zu /privatkunden keine wortgleiche Zeile doppelt lesen.
-  // Text komplett überarbeitet für BIO-185 (Ursprungstext Milva, 2026-09-28),
-  // Intro/Closing/Disclaimer nach Jurist-Rechtscheck (BIO-186) angepasst —
-  // Bewertungshoheit über Befunde bleibt explizit bei Ärztin/Arzt. Eyebrow
-  // laut Jurist nur "optional 🟡" (Abgrenzung zur ärztlichen Regelversorgung)
-  // — bewusst unverändert gelassen, Milva entscheidet.
-  signalsBlock: {
-    eyebrow: "Wenn Standardantworten nicht weiterhelfen",
-    headline:
-      "Sie haben schon viel versucht. Und trotzdem fehlt das Gefühl, wirklich zu verstehen, was in Ihrem Körper passiert.",
-    intro:
-      "Beschwerden entstehen nicht immer dort, wo sie sich zeigen. Wir schauen gemeinsam auf Ernährung, Verdauung, Alltag und Belastungsfaktoren – und beziehen die ärztlichen Befunde ein, die Sie mitbringen. Nicht isoliert, sondern im Zusammenhang. Deren Bewertung bleibt bei Ihrer Ärztin oder Ihrem Arzt.",
-    closing:
-      "Sie müssen nicht mit einer fertigen Diagnose zu mir kommen. Bringen Sie Ihre Beschwerden, bisherigen Befunde und offenen Fragen mit. Wir beginnen dort, wo Sie gerade stehen – und klären gemeinsam, was davon in ärztliche Hände gehört.",
-    ctaLabel: "Erstgespräch vereinbaren",
-    // Pflichthinweis, erweitert nach Jurist-Rechtscheck (BIO-186) wegen der
-    // erstmals benannten Diagnose (Endometriose) — muss sichtbar auf der Seite
-    // UND im SignalAccordion-Detailfenster stehen, nicht nur im Impressum.
-    disclaimer:
-      "Die Biochemische Gesundheitsberatung stellt keine Diagnosen, behandelt keine Krankheiten und ersetzt keine ärztliche Abklärung. Bestehende ärztliche Diagnosen und Behandlungen werden weder ersetzt noch verändert; die Bewertung von Befunden bleibt bei Ihrer Ärztin oder Ihrem Arzt.",
   },
   // Split-Card-Sektion — ersetzt die früheren zwei vollen B2C-/B2B-Sektionen.
   audience: {

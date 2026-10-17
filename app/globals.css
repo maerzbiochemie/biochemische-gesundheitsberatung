@@ -824,3 +824,214 @@ body {
     display: block;
   }
 }
+
+/* ---- Wenn Standardantworten nicht weiterhelfen (Themen-Sektion, BIO-198) ----
+   Eigene Section, kein Fließtext/Fern — nur Eyebrow+Headline links, sechs
+   aufklappbare Themenkarten rechts. .site-container liefert die geteilte
+   Breiten-/Padding-Logik, .topics-container ergänzt nur das Spaltenraster. */
+.topics-section {
+  position: relative;
+  background: #f7f4ec;
+  padding-block: 70px 70px;
+}
+.topics-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 60px;
+  align-items: center;
+}
+.topics-head {
+  max-width: 620px;
+}
+.topics-eyebrow-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.topics-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #365f59;
+}
+.topics-eyebrow-line {
+  display: block;
+  width: 34px;
+  height: 1px;
+  background: #78918a;
+}
+.topics-headline {
+  margin: 42px 0 0;
+  font-size: clamp(48px, 13vw, 62px);
+  line-height: 0.98;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: #18261f;
+}
+.topics-headline span {
+  display: block;
+}
+.topics-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  align-items: stretch;
+}
+.topics-card {
+  position: relative;
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(120, 110, 90, 0.2);
+  border-radius: 18px;
+  background: rgba(250, 248, 242, 0.66);
+  padding: 26px 24px 22px;
+  text-align: center;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+.topics-card:hover,
+.topics-card:focus-within {
+  border-color: rgba(81, 107, 99, 0.42);
+  background: #faf8f2;
+}
+.topics-card__trigger {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.topics-card__icon {
+  display: flex;
+  height: 120px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+}
+.topics-card__icon img {
+  width: var(--icon-width, auto);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.topics-card__title {
+  max-width: 90%;
+  margin: 0 auto;
+  font-size: 24px;
+  line-height: 1.08;
+  font-weight: 400;
+  color: #18261f;
+}
+.topics-card__plus {
+  display: flex;
+  height: 46px;
+  width: 46px;
+  margin-top: auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd4cf;
+  border-radius: 50%;
+  background: transparent;
+  color: #315f59;
+  font-size: 25px;
+  font-weight: 300;
+  transition: border-color 0.25s ease;
+}
+.topics-card:hover .topics-card__plus {
+  border-color: #78918a;
+}
+.topics-card__content {
+  display: grid;
+  width: 100%;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.35s ease,
+    opacity 0.25s ease,
+    margin-top 0.35s ease;
+}
+.topics-card.is-open .topics-card__content {
+  margin-top: 22px;
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.topics-card__content-inner {
+  overflow: hidden;
+}
+.topics-card__rule {
+  display: block;
+  height: 1px;
+  margin: 20px 0;
+  background: #ddd7cb;
+}
+.topics-card__text {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: #46514c;
+  text-align: left;
+}
+.topics-card__note {
+  margin: 12px 0 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #78918a;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .topics-section {
+    padding-block: 100px 110px;
+  }
+  .topics-headline {
+    font-size: clamp(58px, 4.5vw, 76px);
+  }
+  .topics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .topics-card {
+    min-height: 350px;
+  }
+  .topics-card__icon {
+    height: 150px;
+  }
+  .topics-card__title {
+    font-size: 27px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .topics-container {
+    grid-template-columns: minmax(360px, 0.36fr) minmax(0, 0.64fr);
+    column-gap: clamp(64px, 6vw, 100px);
+    row-gap: 0;
+  }
+  .topics-head {
+    max-width: 500px;
+  }
+  .topics-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topics-card__content {
+    transition: none;
+  }
+}

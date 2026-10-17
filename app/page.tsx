@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { ButtonLink, Eyebrow, Section } from "@/components/ui";
-import { SignalAccordion } from "@/components/SignalAccordion";
+import { TopicsSection } from "@/components/TopicsSection";
 import { CTABand } from "@/components/CTABand";
 import { WordReveal } from "@/components/Animated";
 import { Marquee } from "@/components/Marquee";
@@ -11,7 +11,7 @@ import { BookingButton } from "@/components/BookingButton";
 import { Faq } from "@/components/Faq";
 import { Glossary } from "@/components/Glossary";
 import { IconUnderstand, IconConnect, IconStructure, IconAct } from "@/components/icons";
-import { home, faq, koerperSignaleDetails } from "@/content/site";
+import { home, faq } from "@/content/site";
 import profilPhoto from "@/assets/profil.jpeg";
 import visionFarnGross from "@/assets/vision-farn-gross.png";
 import visionZweigKlein from "@/assets/vision-zweig-klein.png";
@@ -21,7 +21,6 @@ import heroMolecule from "@/assets/hero-molecule-trim.png";
 import frontPhoto from "@/assets/front.jpeg";
 import zusammenhaengeBuch from "@/assets/zusammenhaenge-buch-freigestellt.png";
 import zusammenhaengePapier from "@/assets/zusammenhaenge-papier-textur.png";
-import signaleFarn from "@/assets/signale-hintergrund-farn.png";
 import ansatzFarn from "@/assets/ansatz-hintergrund-farn.png";
 import zweiWegeTexturBeige from "@/assets/zwei-wege-textur-beige.png";
 import zweiWegeTexturGruen from "@/assets/zwei-wege-textur-gruen.png";
@@ -218,55 +217,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------- Woran Sie es merken (Symptomblock, Pos. 3) */}
-      <Section tone="paper" padding="tight" className="relative overflow-hidden">
-        {/* Finished watercolour graphic — plain paper tone plus one pale fern
-            in the bottom-left corner. Sized to the image's own aspect ratio
-            (not stretched to the section's full height) so the fern stays a
-            modest, contained accent behind the headline column instead of
-            scaling up with the section's height. */}
-        <div className="pointer-events-none absolute bottom-0 left-0 aspect-[1890/832] w-full max-w-[46rem]">
-          <Image
-            src={signaleFarn}
-            alt=""
-            aria-hidden
-            fill
-            sizes="(min-width: 768px) 46rem, 100vw"
-            className="object-contain object-left-bottom"
-          />
-        </div>
-        <div className="relative grid gap-12 md:grid-cols-12">
-          <div className="flex flex-col md:col-span-5">
-            <Reveal>
-              <Eyebrow>{home.signalsBlock.eyebrow}</Eyebrow>
-              <h2 className="font-display mt-6 text-4xl leading-tight md:text-[3.625rem] md:leading-[1.05]">
-                {home.signalsBlock.headline}
-              </h2>
-              <p className="mt-6 max-w-md text-[var(--color-ink-soft)] md:text-lg">
-                {home.signalsBlock.intro}
-              </p>
-            </Reveal>
-            {/* Pflichthinweis unten links in der Spalte verankert (Milva-Wunsch,
-                Kommentar 2026-09-28) — Text/Sichtbarkeit unverändert, nur Position. */}
-            <p className="mt-10 max-w-md text-xs leading-relaxed text-[var(--color-muted)] md:mt-auto">
-              {home.signalsBlock.disclaimer}
-            </p>
-          </div>
-          <div className="md:col-span-6 md:col-start-7">
-            <SignalAccordion
-              items={koerperSignaleDetails}
-              revealDelay={90}
-              disclaimer={home.signalsBlock.disclaimer}
-            />
-            <Reveal delay={90} className="mt-10 text-[var(--color-ink-soft)] md:text-[1.5rem]">
-              <Glossary>{home.signalsBlock.closing}</Glossary>
-            </Reveal>
-            <Reveal delay={120} className="mt-8">
-              <BookingButton label={home.signalsBlock.ctaLabel} />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      {/* ------------------------- Wenn Standardantworten nicht weiterhelfen (BIO-198) */}
+      <TopicsSection />
 
       {/* ---------------- Ein Symptom ist selten die ganze Geschichte (Pos. 4) */}
       <section
