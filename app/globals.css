@@ -588,12 +588,12 @@ body {
 }
 @media (min-width: 768px) {
   .hero-title-line {
-    font-size: clamp(40px, 5.4vw, 58px);
+    font-size: clamp(38px, 4.8vw, 56px);
   }
 }
 @media (min-width: 1200px) {
   .hero-title-line {
-    font-size: clamp(58px, 4.6vw, 76px);
+    font-size: clamp(46px, 4.1vw, 66px);
   }
 }
 

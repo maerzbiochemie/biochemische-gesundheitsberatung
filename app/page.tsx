@@ -64,7 +64,7 @@ export default function HomePage() {
               <p className="eyebrow block text-center text-[15px] font-normal text-[#2B3A36]">
                 {home.hero.eyebrow}
               </p>
-              <h1 className="font-display mx-auto mt-[24px] max-w-[1100px] text-center leading-[1.15] tracking-[-0.025em] text-[#1C2B28]">
+              <h1 className="font-display mx-auto mt-[24px] max-w-[1240px] text-center leading-[1.15] tracking-[-0.025em] text-[#1C2B28]">
                 <WordReveal
                   as="span"
                   text={home.hero.titleLine1}

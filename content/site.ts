@@ -109,16 +109,13 @@ export const home = {
   // Hero-Umbau Oktober 2026 (BIO-192, zuletzt 2026-10-08 BIO-194-Follow-up).
   // Copy wortgleich wie von Milva vorgegeben, keine eigene Formulierung.
   // Gesundheitsbezogen → vor Veröffentlichung Jurist-Review Pflicht (siehe
-  // Issue-Kommentar). Die neue `title`-Zeile ist eine NEUE Health-Claim-nahe
-  // Aussage (impliziert "normale Befunde, aber Beschwerden") und braucht
-  // deshalb eine eigene Jurist-Prüfung vor Freigabe, auch wenn der Rest der
-  // Hero-Texte unverändert bleibt.
+  // Issue-Kommentar).
   hero: {
     eyebrow: "Biochemische Gesundheitsberatung",
-    title: "Wenn „alles in Ordnung“ ist, Sie sich aber nicht so fühlen.",
-    // Feste 2-Zeilen-Darstellung (Milva: "Zeilenumbruch fest nach 'ist,'").
-    titleLine1: "Wenn „alles in Ordnung“ ist,",
-    titleLine2: "Sie sich aber nicht so fühlen.",
+    title: "Wenn Sie viele Antworten bekommen – aber noch keine klare Richtung haben.",
+    // Feste 2-Zeilen-Darstellung (Umbruch nach dem Gedankenstrich).
+    titleLine1: "Wenn Sie viele Antworten bekommen –",
+    titleLine2: "aber noch keine klare Richtung haben.",
     subtitle: "Gesundheit braucht nicht mehr Informationen – sondern bessere Einordnung.",
     left: {
       body: "Sie investieren Zeit, Geld und Disziplin in Ihre Gesundheit. Sie verändern Ernährung, nehmen Supplemente, buchen Behandlungen, lassen Werte kontrollieren – und trotzdem bleibt oft die Frage:",
