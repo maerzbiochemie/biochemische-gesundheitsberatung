@@ -6,7 +6,7 @@ import { TopicsSection } from "@/components/TopicsSection";
 import { CTABand } from "@/components/CTABand";
 import { WordReveal } from "@/components/Animated";
 import { Marquee } from "@/components/Marquee";
-import { MoreInfo } from "@/components/MoreInfo";
+import { CompassBookletIllustration } from "@/components/CompassBookletIllustration";
 import { BookingButton } from "@/components/BookingButton";
 import { Faq } from "@/components/Faq";
 import { Glossary } from "@/components/Glossary";
@@ -19,7 +19,6 @@ import heroBotanical from "@/assets/hero-botanical.png";
 import heroDna from "@/assets/hero-dna-trim.png";
 import heroMolecule from "@/assets/hero-molecule-trim.png";
 import frontPhoto from "@/assets/front.jpeg";
-import zusammenhaengeBuch from "@/assets/zusammenhaenge-buch-freigestellt.png";
 import zusammenhaengePapier from "@/assets/zusammenhaenge-papier-textur.png";
 import ansatzFarn from "@/assets/ansatz-hintergrund-farn.png";
 import zweiWegeTexturBeige from "@/assets/zwei-wege-textur-beige.png";
@@ -221,15 +220,14 @@ export default function HomePage() {
       {/* ------------------------- Wenn Standardantworten nicht weiterhelfen (BIO-198) */}
       <TopicsSection />
 
-      {/* ---------------- Ein Symptom ist selten die ganze Geschichte (Pos. 4) */}
+      {/* ---------------------------- Biochemischer Kompass (BIO-201, Pos. 4) */}
       <section
         id="ansatz"
-        className="relative overflow-hidden bg-[var(--color-cream)] px-6 py-14 min-[600px]:px-10 min-[600px]:py-[88px]"
+        className="relative overflow-hidden bg-[var(--color-cream)] px-6 py-14 min-[600px]:px-10 min-[600px]:py-24 min-[1200px]:py-32"
         style={{ scrollMarginTop: "5rem" }}
       >
-        {/* Paper-grain texture at low opacity over the ivory base — this
-            replaces the old flat mint-green fill that used to be baked into
-            the illustration file itself. */}
+        {/* Paper-grain texture at low opacity over the ivory base — unchanged
+            from the previous version of this section. */}
         <div className="pointer-events-none absolute inset-0">
           <Image
             src={zusammenhaengePapier}
@@ -242,9 +240,19 @@ export default function HomePage() {
         </div>
 
         <div className="relative mx-auto max-w-[1360px]">
-          <div className="grid grid-cols-1 items-center gap-y-9 min-[901px]:grid-cols-2 min-[901px]:gap-x-10 min-[901px]:gap-y-0 min-[1200px]:gap-x-16">
-            {/* Text column — first in source order so it also comes first
-                in the single-column mobile/tablet stack. */}
+          {/* Illustration first in source order so it also comes first in
+              the single-column mobile stack (BIO-201 spec: booklet, then
+              label, heading, both paragraphs, button, hint). On desktop the
+              same order places it in the left (narrower, ~42%) column. */}
+          <div className="grid grid-cols-1 items-center gap-y-10 min-[901px]:grid-cols-[42fr_58fr] min-[901px]:gap-y-0 min-[901px]:gap-x-16 min-[1200px]:gap-x-20">
+            <div>
+              <Reveal>
+                <div className="mx-auto max-w-[420px] min-[901px]:mx-0 min-[901px]:max-w-none">
+                  <CompassBookletIllustration />
+                </div>
+              </Reveal>
+            </div>
+
             <div>
               <Reveal>
                 <Eyebrow>{home.system.eyebrow}</Eyebrow>
@@ -253,49 +261,19 @@ export default function HomePage() {
                 </h2>
               </Reveal>
               <Reveal delay={90}>
-                <div className="mt-[26px] space-y-5 text-[18px] leading-[1.6] text-[var(--color-ink-soft)] min-[600px]:text-[20px]">
+                <div className="mt-8 space-y-6 text-[18px] leading-[1.6] text-[var(--color-ink-soft)] min-[600px]:text-[20px]">
                   {home.system.body.map((p) => (
-                    <p key={p}>
-                      <Glossary>{p}</Glossary>
-                    </p>
+                    <p key={p}>{p}</p>
                   ))}
                 </div>
-                <blockquote className="font-display mt-[30px] text-[26px] leading-[1.3] text-[var(--color-terra)] min-[600px]:text-[30px] min-[901px]:text-[28px] min-[1200px]:text-[30px]">
-                  {home.system.pullquote}
-                </blockquote>
-                <MoreInfo
-                  label={home.system.more.label}
-                  title={home.system.more.title}
-                  body={home.system.more.body}
-                  className="mt-[26px] !text-[18px] !leading-[1.5]"
-                />
-              </Reveal>
-            </div>
-
-            {/* Illustration column — real image (book, compass, fern,
-                chapter icons), cut out of its original flat-green source so
-                only the artwork itself remains, plus a soft sage glow
-                behind it that fades into the paper texture with no hard
-                edge. Never cropped: width is capped, height scales freely. */}
-            <div className="relative">
-              <Reveal>
-                <div className="relative mx-auto max-w-[480px] min-[901px]:max-w-[580px]">
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -inset-12 -z-10 rounded-full blur-3xl"
-                    style={{
-                      background:
-                        "radial-gradient(closest-side, rgba(221,229,215,0.9), rgba(221,229,215,0) 72%)",
-                    }}
-                  />
-                  <Image
-                    src={zusammenhaengeBuch}
-                    alt=""
-                    aria-hidden
-                    sizes="(min-width: 901px) 580px, 480px"
-                    className="h-auto w-full"
-                  />
+                <div className="mt-8">
+                  <ButtonLink href={home.system.buttonHref} variant="primary">
+                    {home.system.buttonLabel}
+                  </ButtonLink>
                 </div>
+                <p className="mt-5 max-w-[480px] text-sm leading-relaxed text-[var(--color-ink-soft)]">
+                  {home.system.note}
+                </p>
               </Reveal>
             </div>
           </div>

@@ -181,29 +181,21 @@ export const home = {
     signatureName: "MILVA MÄRZ",
     signatureRole: "BIOCHEMISCHE GESUNDHEITSBERATUNG",
   },
-  // Section formerly "Bedeutung von Gesundheit" — now "Ein Symptom ist selten
-  // die ganze Geschichte". Fließtext + Untertitel = vom Juristen freigegebene
-  // Fassung (BIO-144/145, Kommentar 2026-09-02): Möglichkeitsform, keine
-  // Ergebniszusage. Die schärfere Variante „…damit sich mehrere Dinge
-  // gleichzeitig verbessern" ist 🔴 und darf NICHT eingebaut werden.
+  // "Biochemischer Kompass" (BIO-201, ersetzt die frühere Sektion "Ein Symptom
+  // ist selten die ganze Geschichte"). Titel, beide Absätze, Button-Label und
+  // der Hinweis-Satz sind wortgetreuer Pflichttext, zuletzt korrigiert in
+  // BIO-202 (Jurist-Korrekturlauf, von Milva vollständig übernommen) — nicht
+  // umformulieren, kürzen oder ergänzen ohne neuen Auftrag.
   system: {
-    eyebrow: "Zusammenhänge",
-    title: "Ein Symptom ist selten die ganze Geschichte",
+    eyebrow: "Biochemischer Kompass",
+    title: "Aus vielen Informationen wird Orientierung.",
     body: [
-      "Deshalb greift es oft zu kurz, ein einzelnes Symptom isoliert zu betrachten. Die Frage ist, welcher Prozess dahintersteht – und wo für Sie ein sinnvoller Ansatzpunkt liegt.",
+      "Beschwerden, Diagnosen, Laborwerte – häufig stehen viele Informationen nebeneinander. Der Biochemische Kompass hilft Ihnen, diese besser zu verstehen und mögliche biochemische Zusammenhänge nachzuvollziehen.",
+      "Gemeinsam ordnen wir ein, was für Ihre Situation relevant ist, und entwickeln daraus ein fachlich fundiertes Konzept für Ihre nächsten Schritte.",
     ],
-    pullquote:
-      "Wer die Zusammenhänge kennt, muss nicht alles auf einmal angehen – sondern das, was zuerst zählt.",
-    heroQuote: "Wer Gesundheit verstehen will, muss den Körper als System betrachten.",
-    more: {
-      label: "So gehe ich vor",
-      title: "Der Körper als zusammenhängendes Gefüge",
-      body: [
-        "Beschwerden zeigen sich oft an einer Stelle, entstehen aber im Zusammenspiel mehrerer Prozesse: Stoffwechsel, Verdauung, Hormonhaushalt, Nervensystem und Regeneration greifen ineinander.",
-        "Eine biochemische Einordnung betrachtet diese Zusammenhänge gemeinsam. Statt einzelne Symptome isoliert zu behandeln, rücken die zugrunde liegenden Abläufe in den Blick.",
-        "Daraus entsteht eine Strategie, die an den Ursachen ansetzt – nachvollziehbar, individuell und im Alltag umsetzbar.",
-      ],
-    },
+    buttonLabel: "Mehr über meinen Ansatz",
+    buttonHref: "/ueber-mich",
+    note: "Meine Beratung ergänzt die ärztliche Betreuung. Sie umfasst keine Diagnosestellung und keine Behandlung von Krankheiten und ersetzt keine ärztliche Diagnostik oder Behandlung.",
   },
   // Einheitliches 4-Phasen-Modell — wortgleich auch auf „Über mich" (ueberMich.prinzip).
   approach: {
