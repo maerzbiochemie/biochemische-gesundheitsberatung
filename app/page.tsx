@@ -134,11 +134,12 @@ export default function HomePage() {
 
       {/* ------------------------------- Über mich & meine Vision (BIO-197) */}
       {/* Layout structure: .vision > .site-container.vision-grid >
-          (.vision-head + .vision-body + .vision-visual). The visual sits in
-          grid row 2 beside the body copy, so it starts at "Ich bin Milva."
-          instead of the H1. Portrait and quote card share one relative
-          wrapper; the card overlaps the portrait via negative margin, never
-          absolute coordinates. Only the ferns are absolutely positioned. */}
+          (.vision-head + .vision-body + .vision-visual). The visual spans
+          grid rows 1-2 beside headline and body copy, so it starts level
+          with the headline (Milva-Wunsch, 2026-10-18). Portrait and quote
+          card share one relative wrapper; the card overlaps the portrait via
+          negative margin, never absolute coordinates. Only the ferns are
+          absolutely positioned. */}
       <section className="vision">
         <div aria-hidden className="vision-bg-left">
           <Image src={visionFarnGross} alt="" fill sizes="260px" className="object-contain" />

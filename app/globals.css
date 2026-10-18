@@ -812,8 +812,8 @@ body {
   }
   .vision-visual-slot {
     grid-column: 2;
-    grid-row: 2;
-    margin-top: var(--vision-body-offset);
+    grid-row: 1 / 3;
+    margin-top: 0;
   }
   .vision-visual {
     width: 100%;
