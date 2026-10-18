@@ -877,7 +877,7 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 14px;
-  align-items: stretch;
+  align-items: start;
 }
 .topics-card {
   position: relative;
