@@ -2,6 +2,7 @@
 
 import { useId, useState, type CSSProperties } from "react";
 import Image, { type StaticImageData } from "next/image";
+import { Reveal } from "@/components/Reveal";
 import { topicsSection } from "@/content/site";
 import iconUterus from "@/assets/topics-uterus.png";
 import iconDarm from "@/assets/topics-darm.png";
@@ -43,7 +44,7 @@ export function TopicsSection() {
   return (
     <section className="topics-section">
       <div className="container-wide topics-container">
-        <div className="topics-head">
+        <Reveal className="topics-head">
           <span className="topics-eyebrow-row">
             <span className="topics-eyebrow">{topicsSection.eyebrow}</span>
             <span aria-hidden className="topics-eyebrow-line" />
@@ -53,14 +54,18 @@ export function TopicsSection() {
               <span key={i}>{line}</span>
             ))}
           </h2>
-        </div>
+        </Reveal>
 
         <div className="topics-grid">
           {topicsSection.topics.map((topic) => {
             const isOpen = openId === topic.id;
             const contentId = `${idPrefix}-${topic.id}`;
             return (
-              <div key={topic.id} className={`topics-card${isOpen ? " is-open" : ""}`}>
+              <Reveal
+                key={topic.id}
+                delay={90}
+                className={`topics-card${isOpen ? " is-open" : ""}`}
+              >
                 <button
                   type="button"
                   className="topics-card__trigger"
@@ -91,7 +96,7 @@ export function TopicsSection() {
                     )}
                   </div>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>
