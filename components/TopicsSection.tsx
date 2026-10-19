@@ -42,7 +42,7 @@ export function TopicsSection() {
 
   return (
     <section className="topics-section">
-      <div className="site-container topics-container">
+      <div className="container-wide topics-container">
         <div className="topics-head">
           <span className="topics-eyebrow-row">
             <span className="topics-eyebrow">{topicsSection.eyebrow}</span>

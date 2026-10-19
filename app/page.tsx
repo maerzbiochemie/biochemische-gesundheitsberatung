@@ -30,7 +30,7 @@ export default function HomePage() {
   return (
     <>
       {/* ---------------------------------------------------------------- Hero */}
-      {/* Layout structure (BIO-206): .hero > .site-container > .hero-intro,
+      {/* Layout structure (BIO-206): .hero > .container-wide > .hero-intro,
           a single left-aligned text column. Only the grain and the DNA
           illustration are absolutely positioned (purely decorative). */}
       <section className="hero">
@@ -44,7 +44,7 @@ export default function HomePage() {
           }}
         />
 
-        <div className="wide-container hero-content">
+        <div className="container-wide hero-content">
           <div className="hero-grid">
             <div className="hero-intro">
               <Reveal>
@@ -89,7 +89,7 @@ export default function HomePage() {
           <Image src={situationFarn} alt="" fill sizes="640px" className="object-contain" />
         </div>
 
-        <div className="wide-container situation-grid">
+        <div className="container-wide situation-grid">
           <Reveal className="situation-copy">
             <p className="eyebrow">{home.situation.eyebrow}</p>
             <h2 className="font-display situation-title">{home.situation.headline}</h2>
@@ -113,7 +113,7 @@ export default function HomePage() {
       </section>
 
       {/* ------------------------------- Über mich & meine Vision (BIO-197) */}
-      {/* Layout structure: .vision > .site-container.vision-grid >
+      {/* Layout structure: .vision > .container-wide.vision-grid >
           (.vision-head + .vision-body + .vision-visual). The visual spans
           grid rows 1-2 beside headline and body copy, so it starts level
           with the headline (Milva-Wunsch, 2026-10-18). Portrait and quote
@@ -125,7 +125,7 @@ export default function HomePage() {
           <Image src={visionFarnGross} alt="" fill sizes="260px" className="object-contain" />
         </div>
 
-        <div className="site-container vision-grid">
+        <div className="container-wide vision-grid">
           <Reveal className="vision-copy vision-head">
             <span className="inline-flex items-center gap-[18px]">
               <span className="vision-eyebrow">{home.visionIntro.eyebrow}</span>
@@ -204,7 +204,7 @@ export default function HomePage() {
       {/* ---------------------------- Biochemischer Kompass (BIO-201, Pos. 4) */}
       <section
         id="ansatz"
-        className="relative overflow-hidden bg-[var(--color-cream)] px-6 py-14 min-[600px]:px-10 min-[600px]:py-24 min-[1200px]:py-32"
+        className="relative overflow-hidden bg-[var(--color-cream)] py-14 min-[600px]:py-24 min-[1200px]:py-32"
         style={{ scrollMarginTop: "5rem" }}
       >
         {/* Paper-grain texture at low opacity over the ivory base — unchanged
@@ -220,7 +220,7 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-[1360px]">
+        <div className="relative container-wide">
           {/* Illustration first in source order so it also comes first in
               the single-column mobile stack (BIO-201 spec: booklet, then
               label, heading, both paragraphs, button, hint). On desktop the
@@ -237,7 +237,7 @@ export default function HomePage() {
             <div>
               <Reveal>
                 <Eyebrow>{home.system.eyebrow}</Eyebrow>
-                <h2 className="font-display mt-5 text-[34px] leading-[1.15] tracking-[-0.015em] min-[600px]:text-[46px] min-[600px]:leading-[1.12] min-[901px]:text-[40px] min-[1200px]:text-[46px]">
+                <h2 className="font-display mt-5 text-[36px] leading-[1.15] tracking-[-0.015em] md:text-[56px] md:leading-[1.08]">
                   {home.system.title}
                 </h2>
               </Reveal>
@@ -280,7 +280,7 @@ export default function HomePage() {
             className="object-contain object-right"
           />
         </div>
-        <div className="relative mx-auto w-full max-w-[1480px] px-6 md:px-14">
+        <div className="relative container-wide">
           <Reveal className="max-w-2xl">
             <Eyebrow>{home.approach.eyebrow}</Eyebrow>
             <h2 className="font-display mt-6 text-[36px] leading-[1.15] md:text-[56px] md:leading-[1.08]">
@@ -305,7 +305,7 @@ export default function HomePage() {
                     <Icon className="h-7 w-7 text-[var(--color-terra)] opacity-80" />
                   </div>
                   <h3 className="font-display mt-4 text-2xl">{step.title}</h3>
-                  <p className="mt-3 text-[17px] leading-relaxed text-[var(--color-ink-soft)]">
+                  <p className="mt-3 text-[18px] leading-relaxed text-[var(--color-ink-soft)]">
                     {step.body}
                   </p>
                 </Reveal>
@@ -394,7 +394,7 @@ export default function HomePage() {
           hits exactly 1386px once padding is subtracted, without touching
           the shared container-x utility other pages rely on. */}
       <section className="relative overflow-hidden bg-[var(--color-cream)] py-20 md:py-28 lg:py-32">
-        <div className="relative mx-auto w-full max-w-[1498px] px-6 md:px-14">
+        <div className="relative container-wide">
           <div className="flex items-start justify-between gap-8">
             <Reveal className="max-w-2xl">
               <Eyebrow>{home.audience.eyebrow}</Eyebrow>
@@ -489,7 +489,7 @@ export default function HomePage() {
                       {card.headline}
                     </h3>
                     <p
-                      className={`mt-3 text-[17px] leading-[1.5] ${
+                      className={`mt-3 text-[18px] leading-[1.5] ${
                         isB2B ? "text-[var(--color-paper)]/80" : "text-[var(--color-ink-soft)]"
                       }`}
                     >
@@ -639,7 +639,7 @@ export default function HomePage() {
       </section>
 
       {/* ---------------------------------------- Kurzbio Milva (Pos. 7) */}
-      <section className="relative overflow-hidden bg-[var(--color-cream)] px-6 py-14 min-[600px]:px-8 min-[600px]:py-[88px]">
+      <section className="relative overflow-hidden bg-[var(--color-cream)] py-14 min-[600px]:py-[88px]">
         {/* Same finished watercolour graphic as the hero, reused rather than
             regenerated (per BIO-178) — but only the narrow left-edge sliver
             that holds the small leaf cluster. Constraining the image's own
@@ -663,7 +663,7 @@ export default function HomePage() {
             className="object-cover object-left"
           />
         </div>
-        <div className="relative mx-auto flex max-w-[1240px] flex-col gap-9 min-[900px]:flex-row min-[900px]:items-center min-[900px]:gap-x-[80px] min-[900px]:gap-y-0">
+        <div className="relative container-wide flex flex-col gap-9 min-[900px]:flex-row min-[900px]:items-center min-[900px]:gap-x-[80px] min-[900px]:gap-y-0">
           <Reveal className="relative mx-auto w-full max-w-[320px] min-[900px]:mx-0 min-[900px]:w-[360px] min-[900px]:max-w-[360px] min-[900px]:shrink-0">
             <div className="rounded-[24px] border border-[var(--color-line)] bg-[var(--color-paper)] p-4 shadow-[0_20px_44px_-30px_rgba(27,33,28,0.28)]">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[14px]">

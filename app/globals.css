@@ -431,35 +431,11 @@ body {
    text columns are CSS Grid, and the portrait + quote card live in one
    relative wrapper and overlap via normal flow + a negative margin.
    --------------------------------------------------------------------------- */
-.site-container {
-  width: min(1440px, calc(100% - 96px));
-  margin-inline: auto;
-}
-@media (max-width: 1200px) {
-  .site-container {
-    width: min(100% - 64px, 1100px);
-  }
-}
-@media (max-width: 768px) {
-  .site-container {
-    width: calc(100% - 40px);
-  }
-}
-
-/* Wider container reserved for the hero + "Ihre Ausgangssituation" (BIO-206):
-   these two sections deliberately use noticeably more of the viewport than
-   .site-container (Milva: "deutlich mehr Breite auf großen Desktopbildschirmen"),
-   so they get their own width rather than widening .site-container for every
-   other section on the site. */
-.wide-container {
-  width: min(1680px, 92%);
-  margin-inline: auto;
-}
-@media (max-width: 768px) {
-  .wide-container {
-    width: calc(100% - 40px);
-  }
-}
+/* Homepage sections from the hero down through Kurzbio all share the nav's
+   own .container-wide (BIO-206 follow-up, 2026-10-19: Milva noticed the side
+   margins went narrower below "Über mich & meine Vision" and asked for one
+   consistent width) — reusing it, rather than adding a second wide container,
+   is what guarantees every section lines up with the logo's left edge. */
 
 /* ---- Hero ---- */
 /* BIO-206 revision 2 (Milva feedback, 2026-10-18): a two-column grid — wide
