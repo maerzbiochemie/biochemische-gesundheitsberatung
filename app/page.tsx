@@ -17,7 +17,7 @@ import visionFarnGross from "@/assets/vision-farn-gross.png";
 import visionZweigKlein from "@/assets/vision-zweig-klein.png";
 import heroBotanical from "@/assets/hero-botanical.png";
 import heroDna from "@/assets/hero-dna-trim.png";
-import heroMolecule from "@/assets/hero-molecule-trim.png";
+import situationFarn from "@/assets/situation-farn.png";
 import frontPhoto from "@/assets/front.jpeg";
 import zusammenhaengePapier from "@/assets/zusammenhaenge-papier-textur.png";
 import ansatzFarn from "@/assets/ansatz-hintergrund-farn.png";
@@ -27,16 +27,12 @@ import zweiWegeTexturGruen from "@/assets/zwei-wege-textur-gruen.png";
 const approachIcons = [IconUnderstand, IconConnect, IconStructure, IconAct];
 
 export default function HomePage() {
-  // Forced two-line hero subtitle break after the en-dash (Milva: "Umbruch
-  // nach dem Gedankenstrich") — splits the existing string, wording unchanged.
-  const [heroSubtitleLine1, heroSubtitleLine2] = home.hero.subtitle.split(" – ");
-
   return (
     <>
       {/* ---------------------------------------------------------------- Hero */}
-      {/* Layout structure (BIO-197 cleanup): .hero > .site-container >
-          (.hero-intro + .hero-columns). Only the grain, molecule and DNA are
-          absolutely positioned (purely decorative); text columns are CSS Grid. */}
+      {/* Layout structure (BIO-206): .hero > .site-container > .hero-intro,
+          a single left-aligned text column. Only the grain and the DNA
+          illustration are absolutely positioned (purely decorative). */}
       <section className="hero">
         {/* Feines Papierkorn — reines CSS/SVG-Rauschen, keine neue Bilddatei. */}
         <div
@@ -48,86 +44,71 @@ export default function HomePage() {
           }}
         />
 
-        <div aria-hidden className="hero-molecule">
-          <Image src={heroMolecule} alt="" aria-hidden fill sizes="190px" className="object-contain" />
-        </div>
+        <div className="wide-container hero-content">
+          <div className="hero-grid">
+            <div className="hero-intro">
+              <Reveal>
+                <p className="eyebrow">{home.hero.eyebrow}</p>
+                <h1 className="font-display hero-title">
+                  <WordReveal as="span" text={home.hero.title} delay={0.15} />
+                </h1>
+              </Reveal>
 
-        <div aria-hidden className="hero-dna">
-          <Image src={heroDna} alt="" aria-hidden fill sizes="140px" className="object-contain object-top" />
-        </div>
+              <Reveal as="p" delay={90} className="hero-subtitle font-display">
+                {home.hero.subtitle}
+              </Reveal>
 
-        <div className="site-container hero-content">
-          <div className="hero-intro">
-            <Reveal className="relative">
-              <p className="eyebrow block text-center text-[15px] font-normal text-[#2B3A36]">
-                {home.hero.eyebrow}
-              </p>
-              <h1 className="font-display mx-auto mt-[24px] max-w-[1240px] text-center leading-[1.15] tracking-[-0.025em] text-[#1C2B28]">
-                <WordReveal
-                  as="span"
-                  text={home.hero.titleLine1}
-                  delay={0.15}
-                  className="hero-title-line"
-                />
-                <WordReveal
-                  as="span"
-                  text={home.hero.titleLine2}
-                  delay={0.22}
-                  className="hero-title-line"
-                />
-              </h1>
-            </Reveal>
-            <Reveal
-              as="p"
-              delay={90}
-              className="relative mt-[24px] text-center font-display leading-[1.15] text-[#8B7F66] text-xl sm:text-2xl md:text-[clamp(30px,3.6vw,56px)]"
-            >
-              <span className="md:whitespace-nowrap">{heroSubtitleLine1} –</span>
-              <br className="hidden md:block" /> {heroSubtitleLine2}
-            </Reveal>
-          </div>
+              <Reveal as="p" delay={110} className="hero-description">
+                {home.hero.description}
+              </Reveal>
 
-          <div className="hero-columns">
-            <Reveal delay={90} className="hero-col">
-              <span className="h-px w-full bg-[#B8A58A]" aria-hidden />
-              <p className="mt-[40px] max-w-[540px] text-[18px] leading-[1.65] text-[#3C4743]">
-                {home.hero.left.body}
-              </p>
-              <h2 className="font-display mt-[30px] max-w-[540px] text-[28px] leading-[1.1] text-[#1E2E2A] md:text-[clamp(28px,2.6vw,41px)]">
-                {home.hero.left.headline}
-              </h2>
-              <div className="mt-auto w-full pt-[32px]">
-                <BookingButton className="btn-hero-olive hero-cta hero-cta-primary" />
-              </div>
-            </Reveal>
-
-            <Reveal delay={120} className="hero-col">
-              <span className="h-px w-full bg-[#B8A58A]" aria-hidden />
-              <h2 className="font-display mt-[40px] max-w-[540px] text-[28px] leading-[1.1] text-[#1E2E2A] md:text-[clamp(28px,2.6vw,41px)]">
-                {home.hero.right.headline}
-              </h2>
-              <p className="mt-[30px] max-w-[540px] text-[18px] font-medium leading-[1.65] text-[#2B3A36]">
-                {home.hero.right.lead}
-              </p>
-              <p className="mt-[6px] max-w-[540px] text-[18px] leading-[1.65] text-[#3C4743]">
-                {home.hero.right.body}
-              </p>
-              <div className="mt-auto w-full pt-[32px]">
-                <ButtonLink
-                  href={home.hero.right.ctaHref}
-                  variant="secondary"
-                  className="btn-hero-outline hero-cta hero-cta-secondary"
+              <Reveal delay={130} className="hero-actions">
+                <BookingButton className="btn-hero-olive hero-cta" />
+                <Link
+                  href={home.hero.secondaryCtaHref}
+                  className="link-underline hero-secondary-link"
                 >
-                  {home.hero.right.ctaLabel}
-                </ButtonLink>
-                {/* Invisible spacer matching the left column's Calendly note
-                    height, so both CTA pills land on the same baseline. */}
-                <p aria-hidden className="invisible mt-3 hidden max-w-md text-xs leading-relaxed min-[1200px]:block">
-                  Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter Platzhalter
-                </p>
-              </div>
-            </Reveal>
+                  {home.hero.secondaryCtaLabel} <span aria-hidden>↗</span>
+                </Link>
+              </Reveal>
+            </div>
+
+            <div aria-hidden className="hero-illustration">
+              <Image src={heroDna} alt="" aria-hidden fill sizes="(min-width: 1024px) 30vw, 0px" />
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* ------------------------- Sie investieren viel in Ihre Gesundheit (BIO-206) */}
+      {/* Directly below the hero, same colour family. Only the fern
+          illustration is absolutely positioned (purely decorative, scoped to
+          this section); text uses normal document flow in a responsive grid. */}
+      <section className="situation">
+        <div aria-hidden className="situation-fern">
+          <Image src={situationFarn} alt="" fill sizes="640px" className="object-contain" />
+        </div>
+
+        <div className="wide-container situation-grid">
+          <Reveal className="situation-copy">
+            <p className="eyebrow">{home.situation.eyebrow}</p>
+            <h2 className="font-display situation-title">{home.situation.headline}</h2>
+            <p className="situation-body">{home.situation.body}</p>
+            <p className="font-display situation-question">{home.situation.question}</p>
+          </Reveal>
+
+          <Reveal delay={90} className="situation-panel">
+            <p className="eyebrow">{home.situation.approach.eyebrow}</p>
+            <h3 className="font-display situation-panel-title">{home.situation.approach.headline}</h3>
+            <p className="situation-panel-lead">{home.situation.approach.lead}</p>
+            <p className="situation-panel-body">{home.situation.approach.body}</p>
+            <Link
+              href={home.situation.approach.ctaHref}
+              className="link-underline situation-panel-link"
+            >
+              {home.situation.approach.ctaLabel} <span aria-hidden>↗</span>
+            </Link>
+          </Reveal>
         </div>
       </section>
 

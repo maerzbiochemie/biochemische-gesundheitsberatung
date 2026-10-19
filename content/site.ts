@@ -111,19 +111,23 @@ export const home = {
   hero: {
     eyebrow: "Biochemische Gesundheitsberatung",
     title: "Wenn Sie viele Antworten bekommen – aber noch keine klare Richtung haben.",
-    // Feste 2-Zeilen-Darstellung (Umbruch nach dem Gedankenstrich).
-    titleLine1: "Wenn Sie viele Antworten bekommen –",
-    titleLine2: "aber noch keine klare Richtung haben.",
     subtitle: "Gesundheit braucht nicht mehr Informationen – sondern bessere Einordnung.",
-    left: {
-      body: "Sie investieren Zeit, Geld und Disziplin in Ihre Gesundheit. Sie verändern Ernährung, nehmen Supplemente, buchen Behandlungen, lassen Werte kontrollieren – und trotzdem bleibt oft die Frage:",
-      headline: "Welche Maßnahmen passen eigentlich wirklich zu Ihrer Situation?",
-    },
-    right: {
-      headline: "Warum Biochemische Gesundheitsberatung?",
-      // Aufgeteilt in `lead` (eigene fette Zeile) + `body` (Fließtext
-      // danach) für die 2026-10-08-Formatierung — Wortlaut identisch mit der
-      // bisherigen zusammenhängenden Fassung, nur visuell getrennt.
+    description:
+      "Ich helfe Ihnen, Zusammenhänge zu verstehen, Informationen wissenschaftlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
+    secondaryCtaLabel: "Meinen Ansatz kennenlernen",
+    secondaryCtaHref: "/#ansatz",
+  },
+  // Abschnitt direkt unter dem Hero (BIO-206). Wortlaut identisch mit der
+  // vorherigen Hero-Zweispalten-Fassung (home.hero.left/.right), nur in
+  // eine eigene Sektion mit Farn-Hintergrund verschoben.
+  situation: {
+    eyebrow: "Ihre Ausgangssituation",
+    headline: "Sie investieren viel in Ihre Gesundheit.",
+    body: "Sie investieren Zeit, Geld und Disziplin in Ihre Gesundheit. Sie verändern Ernährung, nehmen Supplemente, buchen Behandlungen, lassen Werte kontrollieren – und trotzdem bleibt oft die Frage:",
+    question: "Welche Maßnahmen passen eigentlich wirklich zu Ihrer Situation?",
+    approach: {
+      eyebrow: "Zusammenhänge verstehen",
+      headline: "Warum biochemische Gesundheitsberatung?",
       lead: "Genau hier setzt das Konzept an:",
       body: "Ich helfe Ihnen, Zusammenhänge zu verstehen, Informationen wissenschaftlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
       ctaLabel: "Meinen Ansatz kennenlernen",
