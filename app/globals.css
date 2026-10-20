@@ -1108,3 +1108,333 @@ body {
     transition: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Mein Ansatz / Zwei Wege / Über mich (Pos. 5-7, BIO-207 redesign, 2026-10-20)
+   Milva's reference images are the binding spec here: flat editorial layout,
+   no cards/icons/connector lines, dark ink-anthracite text on warm cream,
+   taupe/olive accents. Only the circle and molecule motifs are absolutely
+   positioned (purely decorative, cropped at their own section's edge); all
+   text uses normal document flow.
+   --------------------------------------------------------------------------- */
+
+/* ---- Mein Ansatz (Pos. 5) ---- */
+.approach-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-cream);
+  padding-block: 64px 64px;
+}
+.approach-motif {
+  position: absolute;
+  z-index: 0;
+  top: -30px;
+  right: -60px;
+  width: 190px;
+  aspect-ratio: 246 / 194;
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+}
+.approach-head {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+.approach-title {
+  margin-top: 18px;
+  color: var(--color-ink);
+  font-size: clamp(32px, 7vw, 48px);
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+}
+.approach-grid {
+  position: relative;
+  z-index: 1;
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 36px;
+}
+.approach-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-line);
+}
+.approach-step-num {
+  flex: none;
+  width: 2.4rem;
+  font-weight: 380;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--color-olive);
+}
+.approach-step-title {
+  color: var(--color-ink);
+  font-size: 21px;
+  line-height: 1.2;
+}
+.approach-step-body {
+  margin-top: 10px;
+  color: var(--color-ink-soft);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.approach-link {
+  position: relative;
+  z-index: 1;
+  margin-top: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  color: var(--color-sage-deep);
+}
+
+@media (min-width: 768px) {
+  .approach-section {
+    padding-block: 92px 96px;
+  }
+  .approach-motif {
+    width: 380px;
+    top: -60px;
+    right: -50px;
+    opacity: 0.6;
+  }
+  .approach-title {
+    font-size: clamp(40px, 4.6vw, 52px);
+  }
+  .approach-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 72px;
+    row-gap: 48px;
+  }
+  .approach-step-num {
+    font-size: 30px;
+  }
+  .approach-step-title {
+    font-size: 24px;
+  }
+  .approach-step-body {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .approach-title {
+    font-size: clamp(46px, 3.4vw, 56px);
+  }
+  .approach-grid {
+    column-gap: 96px;
+  }
+}
+
+/* ---- Zwei Wege, ein Ansatz (Pos. 6) ----
+   Two flat, equal panels stretched to the same height by CSS grid; buttons
+   anchor to each panel's bottom via flex + margin-top: auto, never a fixed
+   card height. The molecule motif sits only behind the left (Privatkunden)
+   panel, per Milva's reference. */
+.audience-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-cream-deep);
+  padding-block: 64px 64px;
+}
+.audience-head {
+  max-width: 700px;
+}
+.audience-title {
+  margin-top: 18px;
+  color: var(--color-ink);
+  font-size: clamp(32px, 7vw, 48px);
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+}
+.audience-grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 24px;
+}
+.audience-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 36px 32px 32px;
+}
+.audience-card--light {
+  background: var(--color-paper);
+}
+.audience-card--dark {
+  background: var(--color-sand);
+}
+.audience-card-body {
+  position: relative;
+  z-index: 1;
+}
+.audience-card-title {
+  margin-top: 14px;
+  color: var(--color-ink);
+  font-size: clamp(24px, 4.4vw, 32px);
+  line-height: 1.2;
+}
+.audience-card-text {
+  margin-top: 16px;
+  max-width: 30rem;
+  color: var(--color-ink-soft);
+  font-size: 17px;
+  line-height: 1.55;
+}
+.audience-card-foot {
+  position: relative;
+  z-index: 1;
+  margin-top: 28px;
+}
+.audience-motif {
+  position: absolute;
+  z-index: 0;
+  right: -18px;
+  bottom: -14px;
+  width: 150px;
+  aspect-ratio: 216 / 308;
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .audience-section {
+    padding-block: 92px 96px;
+  }
+  .audience-title {
+    font-size: clamp(40px, 4.6vw, 52px);
+  }
+  .audience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+    row-gap: 0;
+    align-items: stretch;
+  }
+  .audience-card {
+    padding: 48px 44px 40px;
+  }
+  .audience-card-title {
+    font-size: clamp(26px, 2.6vw, 34px);
+  }
+  .audience-motif {
+    width: 190px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .audience-title {
+    font-size: clamp(46px, 3.4vw, 56px);
+  }
+  .audience-card-title {
+    font-size: 34px;
+  }
+}
+
+/* Shared outline-pill button variant: thin olive-grey border, transparent
+   fill — layered on top of .btn-secondary's existing pill/transparent base
+   so only the accent colour changes. */
+.btn-outline-olive {
+  color: var(--color-olive-deep);
+  border-color: var(--color-olive-line);
+}
+.btn-outline-olive:hover {
+  border-color: var(--color-olive-deep);
+  color: var(--color-ink);
+}
+
+/* ---- Über mich (Kurzbio, Pos. 7) ----
+   Calm two-column layout: no card frame around the portrait, no extra
+   illustration — only the existing portrait photo and real document-flow
+   text, headline-first reading order. */
+.kurzbio-section {
+  position: relative;
+  background: var(--color-cream);
+  padding-block: 64px 64px;
+}
+.kurzbio-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 36px;
+  align-items: center;
+}
+.kurzbio-portrait {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  margin-inline: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.kurzbio-copy {
+  max-width: 640px;
+}
+.kurzbio-title {
+  margin-top: 18px;
+  color: var(--color-ink);
+  font-size: clamp(30px, 7vw, 42px);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+.kurzbio-intro {
+  margin-top: 22px;
+  color: var(--color-ink-soft);
+  font-size: 18px;
+  line-height: 1.6;
+}
+.kurzbio-closing {
+  margin-top: 16px;
+  color: var(--color-ink-soft);
+  font-size: 18px;
+  line-height: 1.6;
+}
+.kurzbio-qualifikationen {
+  margin-top: 22px;
+  color: var(--color-olive-deep);
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+.kurzbio-link {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  color: var(--color-sage-deep);
+}
+
+@media (min-width: 768px) {
+  .kurzbio-section {
+    padding-block: 88px 92px;
+  }
+  .kurzbio-grid {
+    grid-template-columns: minmax(240px, 40fr) minmax(0, 58fr);
+    column-gap: 56px;
+  }
+  .kurzbio-portrait {
+    max-width: none;
+    margin-inline: 0;
+  }
+  .kurzbio-title {
+    font-size: clamp(36px, 4.2vw, 46px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .kurzbio-grid {
+    column-gap: 80px;
+  }
+  .kurzbio-title {
+    font-size: clamp(40px, 3vw, 50px);
+  }
+}
