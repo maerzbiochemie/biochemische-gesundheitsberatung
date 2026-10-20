@@ -26,7 +26,7 @@ export default function HomePage() {
       {/* Layout structure (BIO-206): .hero > .container-wide > .hero-intro,
           a single left-aligned text column. Only the grain and the DNA
           illustration are absolutely positioned (purely decorative). */}
-      <section className="hero">
+      <section id="top" className="hero" style={{ scrollMarginTop: "5rem" }}>
         {/* Feines Papierkorn — reines CSS/SVG-Rauschen, keine neue Bilddatei. */}
         <div
           aria-hidden

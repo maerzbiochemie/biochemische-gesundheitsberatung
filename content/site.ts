@@ -13,7 +13,7 @@ export const site = {
     { label: "Instagram", url: "" },
   ],
   nav: [
-    { label: "Ansatz", href: "/#ansatz" },
+    { label: "Ansatz", href: "/#top" },
     { label: "Für Privatkunden", href: "/privatkunden" },
     { label: "Für Unternehmen", href: "/unternehmen" },
     { label: "Über mich", href: "/ueber-mich" },
