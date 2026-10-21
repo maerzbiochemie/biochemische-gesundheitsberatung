@@ -8,9 +8,7 @@ import { Glossary } from "@/components/Glossary";
 import { BookingButton } from "@/components/BookingButton";
 import { BookletMockup } from "@/components/BookletMockup";
 import { privatkunden, leistungen, site } from "@/content/site";
-import privatkundenHintergrund from "@/assets/privatkunden-hintergrund.png";
-import privatkundenDna from "@/assets/privatkunden-dna.png";
-import privatkundenFarn from "@/assets/privatkunden-farn.png";
+import heroDna from "@/assets/hero-dna-trim.png";
 import privatkundenSupplements from "@/assets/privatkunden-supplements.png";
 import privatkundenInfusion from "@/assets/privatkunden-infusion.png";
 import privatkundenTeller from "@/assets/privatkunden-teller.png";
@@ -158,122 +156,115 @@ export default function PrivatkundenPage() {
   const { pakete } = leistungen;
   return (
     <>
-      {/* Privatkunden-Einstieg — ruhige, reduzierte Variante nach Layoutreferenz
-          (BIO-183): Hero, vier Beispiele, Erstgespräch-Aufruf. Elfenbeinfläche
-          mit dezenter Papierstruktur am oberen Rand, feine Trennlinien statt
-          Kartenrahmen. */}
-      <section className="relative overflow-hidden bg-[var(--color-ivory)]">
-        <div className="pointer-events-none absolute inset-x-0 top-0 aspect-[1536/1024] w-full">
-          <Image
-            src={privatkundenHintergrund}
-            alt=""
-            aria-hidden
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
-        <div className="pointer-events-none absolute -right-6 top-6 aspect-[1222/1287] w-[90px] opacity-20 min-[600px]:w-[130px] min-[901px]:-right-10 min-[901px]:top-10 min-[901px]:w-[180px]">
-          <Image
-            src={privatkundenFarn}
-            alt=""
-            aria-hidden
-            fill
-            sizes="180px"
-            className="object-contain"
-          />
-        </div>
-
-        <div className="relative mx-auto max-w-[1280px] px-6 pb-20 min-[600px]:px-10 min-[600px]:pb-24 min-[901px]:pb-28">
+      {/* Privatkunden-Einstieg — Kachel-Layout nach Referenzvorlage (BIO-208).
+          Gleiche Containerbreite/-Innenabstände wie die Ansatz-Sektion
+          (.container-wide, siehe app/page.tsx#ansatz): Headline + DNA oben,
+          darunter vier gleichmäßige Karten im 2×2-Raster statt der
+          vorherigen zweispaltigen Liste. Kein Aquarell-Hintergrund, kein
+          Pflanzenornament — ruhige, einfarbige Fläche wie in der Vorlage. */}
+      <section className="bg-[var(--color-ivory)] pt-24 pb-14 min-[600px]:pt-28 min-[600px]:pb-24 min-[901px]:pt-[152px] min-[1200px]:pb-32">
+        <div className="container-wide">
           {/* Hero */}
-          <div className="pt-24 min-[600px]:pt-28 min-[901px]:pt-[152px]">
-            <div className="relative min-[901px]:flex min-[901px]:items-center min-[901px]:gap-10">
-              <div className="min-[901px]:flex-1">
-                <Reveal>
-                  <span className="block font-sans text-[12px] font-medium uppercase tracking-[1.8px] text-[var(--color-clay)]">
-                    {hero.eyebrow}
+          <div className="grid grid-cols-1 items-start gap-10 min-[901px]:grid-cols-[60fr_40fr] min-[901px]:items-stretch min-[901px]:gap-16">
+            <div>
+              <Reveal>
+                <span className="block font-sans text-[12px] font-medium uppercase tracking-[1.8px] text-[var(--color-sage-deep)]">
+                  {hero.eyebrow}
+                </span>
+              </Reveal>
+              <Reveal
+                as="h1"
+                delay={80}
+                className="font-display mt-5 text-[36px] font-normal leading-[1.15] tracking-[-0.015em] min-[600px]:text-[56px] min-[600px]:leading-[1.08]"
+              >
+                {hero.headline.map((line) => (
+                  <span
+                    key={line.text}
+                    className={`block ${
+                      line.tone === "accent" ? "text-[var(--color-sage)]" : "text-[var(--color-forest)]"
+                    }`}
+                  >
+                    {line.text}
                   </span>
-                </Reveal>
-                <Reveal
-                  as="h1"
-                  delay={80}
-                  className="font-display mt-5 text-[36px] font-normal leading-[1.12] tracking-[-0.015em] min-[600px]:text-[56px]"
-                >
-                  {hero.headline.map((line) => (
-                    <span
-                      key={line.text}
-                      className={`block ${
-                        line.tone === "accent" ? "text-[var(--color-clay)]" : "text-[var(--color-forest)]"
-                      }`}
-                    >
-                      {line.text}
+                ))}
+              </Reveal>
+              <Reveal
+                delay={140}
+                className="mt-8 max-w-xl text-[18px] leading-[1.6] text-[var(--color-slate)] min-[600px]:text-[21px]"
+              >
+                <Glossary>{hero.intro}</Glossary>
+              </Reveal>
+            </div>
+
+            {/* DNA — exakt dieselbe Bildbehandlung wie im Website-Hero
+                (dasselbe Asset, object-cover, Opacity 0.4, Fade-Maske oben/
+                unten), auf Milvas Wunsch angeglichen. Nur ab Tablet-Breite
+                sichtbar, skaliert innerhalb der eigenen Grid-Spalte. */}
+            <div aria-hidden className="relative hidden min-h-[360px] min-[901px]:block">
+              <Image
+                src={heroDna}
+                alt=""
+                fill
+                sizes="(min-width: 1200px) 320px, 240px"
+                className="object-cover object-center opacity-40"
+                style={{
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+                  maskImage:
+                    "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Übergang zur Kachelsektion — unter 600px laufen die Linien weg
+              statt den Text zu verdrängen: Text zentriert über volle Breite,
+              Linien erscheinen erst, wenn genug Platz da ist. */}
+          <Reveal delay={100} className="mt-16 flex items-center justify-center gap-6 min-[600px]:mt-20 min-[1200px]:mt-28">
+            <span aria-hidden className="hidden h-px flex-1 bg-[var(--color-hairline-warm)] min-[600px]:block" />
+            <p className="max-w-[90%] text-center font-sans text-[12px] font-medium uppercase tracking-[0.14em] text-[var(--color-sage-deep)] min-[600px]:max-w-none min-[600px]:shrink-0 min-[600px]:text-[13px] min-[600px]:tracking-[0.16em]">
+              {beispiele.eyebrow}
+            </p>
+            <span aria-hidden className="hidden h-px flex-1 bg-[var(--color-hairline-warm)] min-[600px]:block" />
+          </Reveal>
+
+          {/* Vier Karten im 2×2-Raster */}
+          <div className="mt-10 grid grid-cols-1 gap-5 min-[700px]:grid-cols-2 min-[700px]:gap-6">
+            {beispiele.items.map((item, i) => (
+              <Reveal
+                key={item.title}
+                delay={i * 80}
+                className="rounded-[var(--radius-card)] border border-[var(--color-hairline-warm)] bg-[var(--color-paper)] p-8 min-[600px]:p-10"
+              >
+                <div className="flex items-start justify-between gap-6">
+                  <div className="min-w-0">
+                    <span className="font-display block text-[28px] text-[var(--color-sage-deep)] min-[600px]:text-[32px]">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                  ))}
-                </Reveal>
-              </div>
-
-              {/* Vertically centered only against the eyebrow+headline (not the
-                  intro below), so it sits in the upper-right quadrant of the
-                  hero rather than mid-height of the whole block. */}
-              <div className="pointer-events-none absolute right-0 top-0 hidden aspect-[1024/1536] w-[90px] opacity-45 min-[600px]:block min-[901px]:relative min-[901px]:w-[240px] min-[901px]:shrink-0">
-                <Image src={privatkundenDna} alt="" aria-hidden fill sizes="240px" className="object-contain" />
-              </div>
-            </div>
-
-            <Reveal
-              delay={140}
-              className="mt-6 max-w-2xl text-[18px] leading-[1.55] text-[var(--color-slate)] min-[600px]:text-[21px]"
-            >
-              <Glossary>{hero.intro}</Glossary>
-            </Reveal>
-          </div>
-
-          {/* Vier Beispiele */}
-          <div className="mt-14">
-            <Reveal>
-              <span className="block font-sans text-[12px] font-medium uppercase tracking-[1.8px] text-[var(--color-clay)]">
-                {beispiele.eyebrow}
-              </span>
-            </Reveal>
-            <div className="relative mt-8">
-              <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-[var(--color-hairline-warm)] min-[901px]:block" />
-              <div className="grid grid-cols-1 gap-x-12 gap-y-8 min-[901px]:grid-cols-2">
-              {beispiele.items.map((item, i) => (
-                <Reveal
-                  key={item.title}
-                  delay={i * 80}
-                  className="border-t border-[var(--color-hairline-warm)] pt-6"
-                >
-                  <div className="flex flex-col gap-5 min-[600px]:flex-row min-[600px]:items-center min-[600px]:justify-between min-[600px]:gap-5">
-                    <div className="min-[600px]:flex-1">
-                      <span className="font-display block text-[32px] text-[var(--color-clay)]">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="font-display mt-2 text-[26px] leading-[1.15] text-[var(--color-forest)] min-[600px]:text-[30px]">
-                        {item.title}
-                      </h3>
-                      <p className="mt-3 text-[17px] leading-[1.55] text-[var(--color-slate)] min-[600px]:text-[18px]">
-                        {item.body}
-                      </p>
-                    </div>
-                    <div className="relative h-[126px] w-[88px] shrink-0 self-end min-[600px]:h-[200px] min-[600px]:w-[140px] min-[600px]:self-center">
-                      <Image
-                        src={beispielBilder[item.image]}
-                        alt=""
-                        aria-hidden
-                        fill
-                        sizes="140px"
-                        className="object-contain"
-                      />
-                    </div>
+                    <span aria-hidden className="mt-3 block h-px w-10 bg-[var(--color-hairline-warm)]" />
+                    <h3 className="font-display mt-5 text-[22px] leading-[1.2] text-[var(--color-forest)] min-[600px]:text-[26px]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-[16px] leading-[1.55] text-[var(--color-slate)] min-[600px]:text-[17px]">
+                      {item.body}
+                    </p>
                   </div>
-                </Reveal>
-              ))}
-              </div>
-            </div>
+                  <div
+                    aria-hidden
+                    className="relative h-[104px] w-[104px] shrink-0 rounded-full bg-[var(--color-cream-deep)] min-[600px]:h-[132px] min-[600px]:w-[132px]"
+                  >
+                    <Image
+                      src={beispielBilder[item.image]}
+                      alt=""
+                      fill
+                      sizes="132px"
+                      className="object-contain p-2.5 min-[600px]:p-3"
+                    />
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
-
         </div>
       </section>
 

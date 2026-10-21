@@ -340,7 +340,7 @@ export const privatkunden = {
       "Sie investieren Zeit, Geld und Disziplin in Ihre Gesundheit. Aber wissen Sie, welche Maßnahmen zu Ihrer Situation passen?",
   },
   beispiele: {
-    eyebrow: "Kommt Ihnen das bekannt vor?",
+    eyebrow: "Viel ausprobiert – aber was davon ist wirklich sinnvoll?",
     items: [
       {
         title: "Der Supplement-Schrank wird voller.",
