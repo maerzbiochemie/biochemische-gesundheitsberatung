@@ -83,12 +83,12 @@ export const topicsSection = {
     },
     {
       id: "chronisch-krank",
-      title: "Chronisch krank – viele Fragen offen",
+      title: "Chronisch erkrankt",
       body: "Auch mit einer bestehenden Diagnose bleiben häufig Fragen zum Alltag, zur Ernährung oder zur Belastbarkeit offen. Die Beratung ersetzt keine ärztliche Behandlung, kann Ihnen aber helfen, Ihre Situation und bereits vorhandene Informationen besser zu verstehen.",
     },
     {
       id: "viel-ausprobiert",
-      title: "Viel ausprobiert – kein roter Faden",
+      title: "Eine klare Richtung",
       body: "Supplemente, Ernährungsformen, Behandlungen und neue Routinen können sich mit der Zeit ansammeln. Gemeinsam sortieren wir, was davon für Ihre Situation relevant ist, wo Widersprüche bestehen und welche nächsten Schritte sinnvoll erscheinen.",
     },
   ],

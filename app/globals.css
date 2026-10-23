@@ -1007,6 +1007,8 @@ body {
   line-height: 1.08;
   font-weight: 400;
   color: #18261f;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .topics-card__plus {
   display: flex;
@@ -1089,7 +1091,11 @@ body {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1360px) {
+  /* Schwelle bewusst über 1280px (BIO-209): .container-wide springt bei
+     1280px auf 7rem Seitenabstand, was im 1200px-Breakpoint die Karten auf
+     ~120px gequetscht hat und Titel wie "Chronische Darmbeschwerden" aus dem
+     Rahmen schob. 1360px liegt hinter diesem Sprung, Karten bleiben ~210px+. */
   .topics-container {
     grid-template-columns: minmax(360px, 0.36fr) minmax(0, 0.64fr);
     column-gap: clamp(64px, 6vw, 100px);
