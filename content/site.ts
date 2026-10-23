@@ -404,58 +404,121 @@ export const privatkunden = {
       "Prävention heißt nicht, auf Beschwerden zu warten und erst dann zu reagieren. Es heißt, die Belastungsgrenzen Ihres Körpers zu kennen und Routinen aufzubauen, die Sie auch in stressigen Phasen tragen.",
     ],
   },
-  nutzen: {
-    title: "Was Sie konkret aus der Beratung mitnehmen",
+  // BIO-214 (2026-10-23): "Was Sie mitnehmen" und "Ihr Ergebnis" sind jetzt
+  // eine gemeinsame zweispaltige Kachel (Referenzbild "Beratung & Ergebnis").
+  // `beratung` trägt den gemeinsamen Kopf, `nutzen` die linke Spalte,
+  // `kompass` die rechte Spalte. Wortlaut exakt wie von Milva vorgegeben.
+  beratung: {
+    eyebrow: "Beratung & Ergebnis",
+    title: "Verstehen, was Ihr Körper braucht.",
     intro:
-      "Ziel ist nicht, möglichst viele Maßnahmen gleichzeitig umzusetzen. Ziel ist, besser zu verstehen, welche nächsten Schritte für Ihren Körper, Ihren Alltag und Ihre Ziele wirklich relevant sind.",
+      "In der Beratung betrachten wir Ihre Beschwerden, Ziele, Routinen und vorhandenen Werte im Zusammenhang. Daraus entstehen klare Prioritäten und nächste Schritte, die zu Ihrem Alltag passen.",
+    button: "Leistungen & Preise ansehen",
+  },
+  nutzen: {
+    title: "Was Sie mitnehmen",
     items: [
       {
         title: "Verständliche Einordnung",
-        body: "Eine verständliche Einordnung, welche Prozesse bei Ihnen gerade zählen.",
+        body: "Welche Prozesse bei Ihnen gerade im Vordergrund stehen.",
       },
       {
         title: "Klare Prioritäten",
-        body: "Klare Prioritäten statt zwanzig gut gemeinter Ratschläge.",
+        body: "Welche nächsten Schritte für Sie wirklich relevant sind.",
       },
       {
         title: "Empfehlungen für Ihren Alltag",
-        body: "Empfehlungen, die in Ihren Alltag passen – nicht in einen Idealtag.",
+        body: "Für Ernährung, Bewegung, Schlaf, Stress und Regeneration.",
       },
       {
         title: "Wissen für eigene Entscheidungen",
-        body: "Genug Hintergrundwissen, um selbst gute Entscheidungen zu treffen.",
+        body: "Damit Sie Empfehlungen verstehen und bewusst umsetzen können.",
       },
     ],
   },
   kompass: {
-    eyebrow: "Ihr Ergebnis",
-    title: "Ihr Ergebnis: der Biochemische Gesundheitskompass",
-    intro:
-      "Nach dem Analysegespräch bekommen Sie Ihre Einordnung schriftlich – kein Standard-PDF, sondern auf Ihre Situation geschrieben.",
-    listIntro: "Darin steht:",
-    list: [
-      "wie Ihre aktuelle Ausgangslage biochemisch einzuordnen ist",
-      "welche Prozesse bei Ihnen im Vordergrund stehen",
-      "konkrete Empfehlungen für Ernährung, Bewegung, Schlaf, Stress und Regeneration",
-      "auf Wunsch: ergänzende Nährstoffstrategien",
+    title: "Ihr Biochemischer Gesundheitskompass",
+    paragraphs: [
+      "Sie erhalten Ihre persönliche Einordnung schriftlich – individuell auf Ihre Situation abgestimmt.",
+      "Ihr Kompass bündelt Ihre Ausgangslage, die wichtigsten Zusammenhänge und konkrete Empfehlungen. Auf Wunsch ergänzen wir passende Nährstoffstrategien.",
     ],
-    outro:
-      "Der Kompass ist Maßnahmenplan und Nachschlagewerk zugleich – Sie können jederzeit nachlesen, warum ein Schritt für Sie sinnvoll ist.",
+    highlight: "Ihr persönlicher Maßnahmenplan und Ihr Nachschlagewerk für den Alltag.",
   },
-  // Operativer Ablauf — bleibt bei 5 Schritten (nicht das konzeptionelle
-  // 4-Phasen-Modell). Als Zeitstrahl dargestellt (BIO-139-Optik).
+  // Operativer Ablauf — jetzt 6 Schritte: "Besprechung Ihres Kompasses" ist
+  // ein eigener Schritt zwischen Kompass-Erstellung und Abschlussgespräch
+  // (BIO-214, Referenzbild "Ablauf"). Als horizontaler Zeitstrahl dargestellt.
   process: {
     eyebrow: "Ablauf",
     title: "So läuft die Zusammenarbeit ab",
     steps: [
-      { title: "Kostenloses Erstgespräch", body: "Wir klären Ihr Anliegen und ob die Beratung passt. 15–20 Minuten, unverbindlich." },
+      { title: "Kostenloses Kennenlerngespräch", body: "Wir klären Ihr Anliegen und ob die Beratung passt. 15–20 Minuten, unverbindlich." },
       { title: "Anamnese", body: "Sie füllen einen ausführlichen Fragebogen aus – die Grundlage für alles Weitere." },
       { title: "Analysegespräch", body: "Wir gehen Ihre Beschwerden, Ziele, Routinen und Werte gemeinsam durch." },
-      { title: "Biochemischer Gesundheitskompass", body: "Sie erhalten Ihre schriftliche Einordnung mit konkreter Strategie." },
-      // Schritt-5-Text an die Zeitstrahl-Auflage angeglichen (BIO-147, 2026-09-03):
-      // „auf Ihre Entwicklung schauen" setzt voraus, dass es eine Entwicklung gibt.
+      { title: "Ihr Gesundheitskompass", body: "Ich erstelle Ihren persönlichen Biochemischen Gesundheitskompass mit schriftlicher Einordnung und konkreten Empfehlungen." },
+      { title: "Besprechung Ihres Kompasses", body: "Wir besprechen die Zusammenhänge und Empfehlungen, klären Ihre Fragen und legen die nächsten Schritte fest." },
       { title: "Abschlussgespräch & Ausblick", body: "Nach rund drei Monaten besprechen wir Ihre bisherigen Erfahrungen und die nächsten Schritte." },
     ],
+  },
+  // Eigenständige "Pakete im Vergleich"-Kachel für die Privatkunden-Seite
+  // (BIO-214, Referenzbild "Pakete im Vergleich"). Bewusst getrennt von
+  // `leistungen.pakete`, damit die Leistungen-&-Preise-Seite unverändert
+  // bleibt. Preislogik identisch mit leistungen.basispaket.zusammensetzung
+  // (150 + 250 + 120 + 120 = 640 €), nur anders benannt/sortiert gemäß Vorlage.
+  pakete: {
+    eyebrow: "Welche Zusammenarbeit passt zu Ihnen?",
+    title: "Pakete im Vergleich",
+    intro:
+      "Je nach Anliegen unterschiedlich intensiv. Im kostenlosen Erstgespräch finden wir die passende Form.",
+    subheading: "Ihr Basispaket für die ersten 3 Monate",
+    billingHighlight: "640 € insgesamt – schrittweise abgerechnet, jeweils nach erbrachter Leistung.",
+    items: [
+      {
+        title: "Gesundheitskompass",
+        sub: "Das Basispaket",
+        price: "640 €",
+        priceSuffix: "für die ersten 3 Monate",
+        weeklyPrice: "",
+        body: "Ihre persönliche Einordnung und ein schriftlicher Plan – vom Erstanalyse-Gespräch bis zur Endbesprechung nach drei Monaten.",
+        note: "Vier Leistungen. Transparent einzeln abgerechnet.",
+        featured: false,
+      },
+      {
+        title: "Performer",
+        sub: "Basispaket + regelmäßige Begleitung",
+        price: "640 €",
+        priceSuffix: "Basispaket für die ersten 3 Monate",
+        weeklyPrice: "zzgl. 90 € pro Woche",
+        body: "Wöchentliche Begleitung und Anpassung für die Umsetzung in Ihrem Alltag.",
+        note: "Mindestlaufzeit der Begleitung: 4 Wochen.",
+        featured: true,
+      },
+      {
+        title: "High Performer",
+        sub: "Basispaket + persönliche tägliche Begleitung",
+        price: "640 €",
+        priceSuffix: "Basispaket für die ersten 3 Monate",
+        weeklyPrice: "zzgl. 160 € pro Woche",
+        body: "Enge Begleitung bei hohem Anspruch – beruflich, sportlich oder bei komplexen Themen.",
+        note: "Mindestlaufzeit der Begleitung: 4 Wochen.",
+        featured: false,
+      },
+    ],
+    breakdown: {
+      heading: "So setzen sich die 640 € zusammen",
+      rows: [
+        ["Erstanalyse-Gespräch", "150 €"],
+        ["Biochemischer Kompass", "250 €"],
+        ["Besprechung des Kompasses", "120 €"],
+        ["Endbesprechung nach 3 Monaten", "120 €"],
+      ],
+      totalLabel: "Basispaket · erste 3 Monate",
+      totalValue: "640 €",
+      billingNote:
+        "Die Rechnungen werden jeweils erst nach erbrachter Leistung gestellt. Der Gesamtbetrag wird nicht im Voraus fällig.",
+      supplementNote:
+        "Bei Performer und High Performer kommen die ausgewiesenen Kosten für die gebuchte Begleitung hinzu.",
+    },
+    link: "Alle Details zu Leistungen & Preisen ansehen",
   },
   finalCta: {
     title: "Sie möchten wissen, was für Ihren Körper relevant ist?",

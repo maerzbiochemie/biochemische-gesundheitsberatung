@@ -6,13 +6,14 @@ import { Reveal } from "@/components/Reveal";
 import { ButtonLink, Eyebrow, Section } from "@/components/ui";
 import { Glossary } from "@/components/Glossary";
 import { BookingButton } from "@/components/BookingButton";
-import { BookletMockup } from "@/components/BookletMockup";
-import { privatkunden, leistungen, site } from "@/content/site";
+import { privatkunden, site } from "@/content/site";
 import heroDna from "@/assets/hero-dna-trim.png";
 import privatkundenSupplements from "@/assets/privatkunden-supplements.png";
 import privatkundenInfusion from "@/assets/privatkunden-infusion.png";
 import privatkundenTeller from "@/assets/privatkunden-teller.png";
 import privatkundenPlan from "@/assets/privatkunden-plan.png";
+import kompassBuch from "@/assets/kompass-buch-freigestellt.png";
+import ablaufFarn from "@/assets/situation-farn.png";
 
 const beispielBilder = {
   supplements: privatkundenSupplements,
@@ -77,8 +78,8 @@ export const metadata: Metadata = {
 };
 
 export default function PrivatkundenPage() {
-  const { hero, beispiele, catcher, praevention, zielgruppen, nutzen, kompass, process, finalCta } = privatkunden;
-  const { pakete } = leistungen;
+  const { hero, beispiele, catcher, praevention, zielgruppen, beratung, nutzen, kompass, process, pakete, finalCta } =
+    privatkunden;
   return (
     <>
       {/* Privatkunden-Einstieg — Kachel-Layout nach Referenzvorlage (BIO-208).
@@ -287,80 +288,89 @@ export default function PrivatkundenPage() {
         </Reveal>
       </Section>
 
-      {/* Was Sie konkret mitnehmen (Pos. 5) */}
+      {/* Beratung & Ergebnis — eine gemeinsame Kachel statt getrennter
+          Sektionen (BIO-214, Referenzbild "Beratung & Ergebnis"). Links vier
+          Nutzenpunkte, rechts der Gesundheitskompass mit der Original-
+          Booklet-Grafik, unten ein gemeinsamer Outline-Button. (Pos. 5+6) */}
       <Section tone="cream">
-        <Reveal className="max-w-2xl">
-          <Eyebrow>Was Sie mitnehmen</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{nutzen.title}</h2>
-          <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{nutzen.intro}</p>
-        </Reveal>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {nutzen.items.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={i * 90}
-              className="card flex flex-col p-8"
-            >
-              <BenefitIcon index={i} />
-              <h3 className="font-display mt-5 text-2xl leading-snug">{item.title}</h3>
-              <p className="mt-3 text-[var(--color-ink-soft)]">{item.body}</p>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+        <Reveal className="rounded-[var(--radius-card)] border border-[var(--color-hairline-warm)] bg-[var(--color-paper)] p-7 sm:p-10 md:p-14">
+          <Eyebrow>{beratung.eyebrow}</Eyebrow>
+          <h2 className="font-display mt-6 text-4xl text-[var(--color-forest)] md:text-5xl">{beratung.title}</h2>
+          <p className="mt-6 max-w-3xl text-lg text-[var(--color-ink-soft)]">{beratung.intro}</p>
 
-      {/* Ihr Ergebnis: der Biochemische Gesundheitskompass — Signature-Element (Pos. 6) */}
-      <Section tone="deep" className="overflow-x-hidden">
-        <div className="mx-auto max-w-2xl">
-          <Reveal>
-            <Eyebrow>{kompass.eyebrow}</Eyebrow>
-            <h2 className="font-display mt-6 text-4xl leading-tight break-words hyphens-auto md:text-5xl">
-              {kompass.title}
-            </h2>
-            <p className="mt-6 text-lg text-[var(--color-ink-soft)]">{kompass.intro}</p>
-            <p className="mt-6 text-[var(--color-ink-soft)]">{kompass.listIntro}</p>
-            <ul className="mt-4 space-y-3">
-              {kompass.list.map((li) => (
-                <li key={li} className="flex gap-3 text-[var(--color-ink-soft)]">
-                  <span
-                    aria-hidden
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-terra)]"
-                  />
-                  <span>{li}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-[var(--color-ink-soft)]">{kompass.outro}</p>
+          <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-0 md:divide-x md:divide-[var(--color-hairline-warm)]">
+            <div className="md:pr-14">
+              <h3 className="font-display text-2xl text-[var(--color-forest)]">{nutzen.title}</h3>
+              <ul className="mt-7 space-y-7">
+                {nutzen.items.map((item, i) => (
+                  <li key={item.title} className="flex gap-4">
+                    <BenefitIcon index={i} />
+                    <div>
+                      <h4 className="font-display text-xl text-[var(--color-forest)]">{item.title}</h4>
+                      <p className="mt-1 text-[var(--color-ink-soft)]">{item.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="md:pl-14">
+              <h3 className="font-display text-2xl text-[var(--color-forest)]">{kompass.title}</h3>
+              <div className="mt-6 space-y-4 text-[var(--color-ink-soft)]">
+                {kompass.paragraphs.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </div>
+              <p className="mt-5 font-semibold text-[var(--color-forest)]">{kompass.highlight}</p>
+              <div className="mt-8 flex justify-center md:justify-start">
+                <Image
+                  src={kompassBuch}
+                  alt="Aufgeschlagenes Booklet „Ihr biochemischer Kompass“ mit Kompass-Illustration"
+                  className="h-auto w-[min(300px,75%)]"
+                  sizes="300px"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 flex justify-center">
             <Link
               href="/leistungen"
-              className="link-underline mt-7 inline-flex items-center gap-2 text-[var(--color-sage-deep)]"
+              className="btn btn-secondary !border-[var(--color-forest)] !text-[var(--color-forest)] hover:!bg-[var(--color-forest)]/5"
             >
-              Leistungen & Preise ansehen <span aria-hidden>→</span>
+              {beratung.button} <span aria-hidden className="arrow">→</span>
             </Link>
-          </Reveal>
-          <Reveal delay={120} className="mt-14">
-            <BookletMockup className="mx-auto" />
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </Section>
 
-      {/* So läuft die Zusammenarbeit ab — operativer Ablauf als Zeitstrahl (Pos. 7) */}
-      <Section tone="paper">
-        <Reveal className="max-w-2xl">
+      {/* So läuft die Zusammenarbeit ab — horizontaler Zeitstrahl mit sechs
+          Schritten + dezentem Farn (BIO-214, Referenzbild "Ablauf"). Auf
+          Mobilgeräten vertikaler Zeitstrahl. (Pos. 7) */}
+      <Section tone="paper" className="relative overflow-hidden">
+        <Image
+          src={ablaufFarn}
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute -top-6 right-0 w-[220px] select-none opacity-30 sm:w-[300px] md:w-[360px]"
+          sizes="360px"
+        />
+        <Reveal className="relative max-w-2xl">
           <Eyebrow>{process.eyebrow}</Eyebrow>
           <h2 className="font-display mt-6 text-4xl md:text-5xl">{process.title}</h2>
         </Reveal>
-        <ol className="mt-14">
+
+        {/* Mobil/Tablet: vertikaler Zeitstrahl */}
+        <ol className="relative mt-14 md:hidden">
           {process.steps.map((step, i) => {
             const isLast = i === process.steps.length - 1;
             return (
               <Reveal key={step.title} as="li" delay={i * 90} className="flex gap-5 sm:gap-7">
                 <div className="flex flex-col items-center" aria-hidden>
-                  <span className="mt-1.5 h-3.5 w-3.5 shrink-0 rounded-full border-2 !border-[var(--color-terra)] bg-[var(--color-paper)]" />
-                  {!isLast && <span className="w-px flex-1 bg-[var(--color-terra)]/35" />}
+                  <span className="mt-1.5 h-3.5 w-3.5 shrink-0 rounded-full border-2 !border-[var(--color-sage)] bg-[var(--color-paper)]" />
+                  {!isLast && <span className="w-px flex-1 bg-[var(--color-sage)]/35" />}
                 </div>
                 <div className={isLast ? "pb-1" : "pb-12"}>
-                  <span className="marker-num !text-[var(--color-terra)]">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="marker-num !text-[var(--color-sage-deep)]">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="font-display mt-2 text-2xl md:text-[1.7rem]">{step.title}</h3>
                   <p className="mt-2 max-w-xl text-[var(--color-ink-soft)]">{step.body}</p>
                 </div>
@@ -368,87 +378,148 @@ export default function PrivatkundenPage() {
             );
           })}
         </ol>
+
+        {/* Ab Tablet quer: horizontaler Zeitstrahl, Schritte wechseln oben/unten.
+            Fünf echte Grid-Zeilen (nicht sechs feste Pixelhöhen pro Spalte),
+            damit sich Zeile 1/5 an den jeweils längsten Text anpassen und
+            Linie/Punkte in Zeile 3 für alle Spalten exakt auf einer Höhe
+            bleiben, unabhängig von der Textlänge der einzelnen Schritte. */}
+        <Reveal delay={60} className="mt-20 hidden md:block">
+        <div
+          className="relative grid md:gap-x-3 lg:gap-x-6"
+          style={{ gridTemplateColumns: "repeat(6, minmax(0, 1fr))", gridTemplateRows: "auto 24px 24px 24px auto" }}
+        >
+          <span
+            aria-hidden
+            className="h-px self-center bg-[var(--color-sage)]/45"
+            style={{ gridColumn: "1 / -1", gridRow: 3 }}
+          />
+          {process.steps.map((step, i) => {
+            const isTop = i % 2 === 0;
+            const col = i + 1;
+            return (
+              <Fragment key={step.title}>
+                {isTop && (
+                  <div className="self-end" style={{ gridColumn: col, gridRow: 1 }}>
+                    <span className="marker-num !text-[var(--color-sage-deep)]">{String(col).padStart(2, "0")}</span>
+                    <h3 className="font-display mt-2 text-xl leading-snug lg:text-[1.4rem]">{step.title}</h3>
+                    <p className="mt-2 text-sm text-[var(--color-ink-soft)] lg:text-base">{step.body}</p>
+                  </div>
+                )}
+                {isTop && (
+                  <span
+                    aria-hidden
+                    className="h-full w-px justify-self-start bg-[var(--color-sage)]/45"
+                    style={{ gridColumn: col, gridRow: 2 }}
+                  />
+                )}
+                <span
+                  aria-hidden
+                  className="relative z-10 h-3.5 w-3.5 self-center justify-self-start rounded-full border-2 border-[var(--color-sage)] bg-[var(--color-paper)]"
+                  style={{ gridColumn: col, gridRow: 3 }}
+                />
+                {!isTop && (
+                  <span
+                    aria-hidden
+                    className="h-full w-px justify-self-start bg-[var(--color-sage)]/45"
+                    style={{ gridColumn: col, gridRow: 4 }}
+                  />
+                )}
+                {!isTop && (
+                  <div className="self-start" style={{ gridColumn: col, gridRow: 5 }}>
+                    <span className="marker-num !text-[var(--color-sage-deep)]">{String(col).padStart(2, "0")}</span>
+                    <h3 className="font-display mt-2 text-xl leading-snug lg:text-[1.4rem]">{step.title}</h3>
+                    <p className="mt-2 text-sm text-[var(--color-ink-soft)] lg:text-base">{step.body}</p>
+                  </div>
+                )}
+              </Fragment>
+            );
+          })}
+        </div>
+        </Reveal>
       </Section>
 
-      {/* Pakete im Vergleich — gespiegelt von /leistungen, mit Link zu allen Details (Pos. 8) */}
-      <Section tone="deep">
+      {/* Pakete im Vergleich — eigene Kachel mit Kostenaufschlüsselung
+          (BIO-214, Referenzbild "Pakete im Vergleich"). Preise unverändert,
+          nur Darstellung angepasst: mittlere Karte in hellem Salbei statt
+          dunkel. (Pos. 8) */}
+      <Section tone="cream">
         <Reveal className="max-w-2xl">
           <Eyebrow>{pakete.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl md:text-5xl">{pakete.title}</h2>
+          <h2 className="font-display mt-6 text-4xl md:text-5xl text-[var(--color-forest)]">{pakete.title}</h2>
           <p className="mt-6 text-lg text-[var(--color-ink-soft)]">
             <Glossary>{pakete.intro}</Glossary>
           </p>
         </Reveal>
-        <div className="mt-14 grid items-stretch gap-6 md:grid-cols-3">
+
+        <Reveal delay={60} className="mt-10 text-center">
+          <h3 className="font-display text-2xl text-[var(--color-forest)] md:text-3xl">{pakete.subheading}</h3>
+          <p className="mt-3 text-base font-semibold text-[var(--color-sage-deep)] md:text-lg">
+            {pakete.billingHighlight}
+          </p>
+        </Reveal>
+
+        <div className="mt-10 grid items-stretch gap-6 md:grid-cols-3">
           {pakete.items.map((item, i) => (
             <Reveal
               key={item.title}
               delay={i * 110}
               className={`relative flex flex-col rounded-[var(--radius-card)] border p-8 transition-transform duration-500 hover:-translate-y-1 ${
                 item.featured
-                  ? "border-[var(--color-sage)] bg-[var(--color-ink)] text-[var(--color-paper)]"
-                  : "border-[var(--color-line)] bg-[var(--color-paper)]"
+                  ? "border-[var(--color-sage)] bg-[var(--color-sage-mist)]"
+                  : "border-[var(--color-hairline-warm)] bg-[var(--color-paper)]"
               }`}
             >
               {item.featured && (
-                <span className="absolute -top-3 left-8 rounded-full bg-[var(--color-sage)] px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-[var(--color-paper)]">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-sage-deep)] px-4 py-1 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-[var(--color-paper)]">
                   Beliebt
                 </span>
               )}
-              <h3 className="font-display text-2xl">{item.title}</h3>
-              <p
-                className={`mt-2 text-sm ${
-                  item.featured ? "text-[var(--color-paper)]/65" : "text-[var(--color-muted)]"
-                }`}
-              >
-                {item.sub}
-              </p>
-              <div className="mt-6 flex flex-wrap items-baseline gap-x-2">
-                <span className="font-display whitespace-nowrap text-4xl">{item.price}</span>
-                <span
-                  className={`mt-1 w-full text-base font-semibold ${
-                    item.featured ? "text-[var(--color-sage-soft)]" : "text-[var(--color-sage-deep)]"
-                  }`}
-                >
-                  {item.priceSuffix}
+              <h3 className="font-display text-2xl text-[var(--color-forest)]">{item.title}</h3>
+              <p className="mt-2 text-sm text-[var(--color-ink-soft)]">{item.sub}</p>
+              <div className="mt-6">
+                <span className="font-display whitespace-nowrap text-4xl text-[var(--color-forest)]">
+                  {item.price}
                 </span>
+                <p className="mt-1 text-sm font-semibold text-[var(--color-sage-deep)]">{item.priceSuffix}</p>
+                {item.weeklyPrice && (
+                  <p className="mt-1 text-sm font-semibold text-[var(--color-sage-deep)]">{item.weeklyPrice}</p>
+                )}
               </div>
-              <p
-                className={`mt-6 ${
-                  item.featured ? "text-[var(--color-paper)]/75" : "text-[var(--color-ink-soft)]"
-                }`}
-              >
-                {item.body}
-              </p>
-              <p
-                className={`mt-4 text-sm ${
-                  item.featured ? "text-[var(--color-paper)]/60" : "text-[var(--color-muted)]"
-                }`}
-              >
-                {item.note}
-              </p>
+              <p className="mt-6 text-[var(--color-ink-soft)]">{item.body}</p>
+              <p className="mt-4 text-sm text-[var(--color-muted)]">{item.note}</p>
               <div className="mt-auto pt-8">
-                <ButtonLink
-                  href={site.cta.primary.href}
-                  variant={item.featured ? "primary" : "secondary"}
-                  className={
-                    item.featured
-                      ? "!bg-[var(--color-paper)] !text-[var(--color-ink)] hover:!bg-[var(--color-sage-soft)]"
-                      : ""
-                  }
-                >
+                <ButtonLink href={site.cta.primary.href} variant="secondary">
                   Anfragen
                 </ButtonLink>
               </div>
             </Reveal>
           ))}
         </div>
-        <Reveal delay={120} className="mt-10">
-          <Link
-            href="/leistungen"
-            className="link-underline inline-flex items-center gap-2 text-[var(--color-sage-soft)]"
-          >
-            Alle Details zu Leistungen & Preisen ansehen <span aria-hidden>→</span>
+
+        <Reveal delay={150} className="mt-8 rounded-[var(--radius-card)] border border-[var(--color-hairline-warm)] bg-[var(--color-paper)] p-7 sm:p-10">
+          <h3 className="font-display text-2xl text-[var(--color-forest)]">{pakete.breakdown.heading}</h3>
+          <dl className="mt-6 divide-y divide-[var(--color-hairline-warm)]">
+            {pakete.breakdown.rows.map(([label, price]) => (
+              <div key={label} className="flex items-center justify-between gap-4 py-3">
+                <dt className="text-[var(--color-ink-soft)]">{label}</dt>
+                <dd className="shrink-0 font-medium text-[var(--color-forest)]">{price}</dd>
+              </div>
+            ))}
+            <div className="flex items-center justify-between gap-4 py-3">
+              <dt className="font-semibold text-[var(--color-forest)]">{pakete.breakdown.totalLabel}</dt>
+              <dd className="font-display shrink-0 text-xl text-[var(--color-forest)]">
+                {pakete.breakdown.totalValue}
+              </dd>
+            </div>
+          </dl>
+          <p className="mt-4 font-medium text-[var(--color-forest)]">{pakete.breakdown.billingNote}</p>
+          <p className="mt-2 text-sm text-[var(--color-muted)]">{pakete.breakdown.supplementNote}</p>
+        </Reveal>
+
+        <Reveal delay={180} className="mt-8">
+          <Link href="/leistungen" className="link-underline inline-flex items-center gap-2 text-[var(--color-sage-deep)]">
+            {pakete.link} <span aria-hidden>→</span>
           </Link>
         </Reveal>
       </Section>
