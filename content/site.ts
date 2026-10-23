@@ -371,10 +371,8 @@ export const privatkunden = {
   zielgruppen: {
     eyebrow: "FÜR WEN",
     title: "Sie müssen nicht in eine Schublade passen.",
-    intro: [
-      "Die Beratung richtet sich an Menschen, die viel leisten, sportlich aktiv sind, wiederkehrende Beschwerden einordnen möchten oder bewusst vorsorgen wollen.",
+    intro:
       "Vielleicht trifft mehr als eines davon auf Sie zu. Gemeinsam betrachten wir, was bei Ihnen zusammenkommt und welche nächsten Schritte zu Ihrer Situation passen.",
-    ],
     items: [
       {
         title: "Im Alltag stark gefordert",
@@ -393,8 +391,6 @@ export const privatkunden = {
         body: "Zusammenhänge verstehen und frühzeitig vorsorgen.",
       },
     ],
-    centerTitle: "Ihr Körper im Zusammenhang",
-    footnote: "Unterschiedliche Ausgangspunkte. Ein gemeinsamer Blick.",
   },
   catcher: {
     title: "Sie brauchen nicht mehr Disziplin – sondern mehr Verständnis.",
