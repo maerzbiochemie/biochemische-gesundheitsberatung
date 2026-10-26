@@ -832,139 +832,142 @@ export const ueberMich = {
   },
 } as const;
 
+// B2B-Seite (BIO-216): fünf Abschnitte nach verbindlichen Referenzbildern.
+// Alle Texte sind wörtlich vorgegeben — keine Umformulierungen, keine
+// zusätzlichen Absätze. Vor Live-Schaltung: Rechtscheck (HeilprG/Werberecht).
 export const b2b = {
   hero: {
     eyebrow: "Für Unternehmen & Fachpersonen",
-    title: "Fachliche Tiefe für Ihre Fälle – ohne dass sie im Alltag verloren geht.",
-    subtitle:
-      "Für Praxen, Studios, Coaches und Fachpersonen, die Laborwerte, Empfehlungen und bestehende Konzepte fachlich sauber einordnen wollen.",
+    title: "Mehr wissenschaftliche Kompetenz für Ihr Gesundheitsangebot.",
+    subtitle: "Biochemische Expertise, die Ihr Unternehmen fachlich stärkt.",
     body: [
-      "Mehr Informationen bedeuten nicht automatisch mehr Klarheit. Ich unterstütze Sie dabei, biochemisches Wissen so in Ihre Arbeit einzubinden, dass es fachlich trägt und praktisch anwendbar bleibt.",
+      "Sie möchten Ihr Gesundheitsangebot weiterentwickeln, wissenschaftliche Zusammenhänge fundiert einordnen oder hochwertige Fachinhalte erstellen lassen?",
+      "Als Biochemikerin unterstütze ich Sie mit wissenschaftlicher Fachberatung, Konzeptentwicklung und professionellem Medical Writing.",
     ],
+    ctaLabel: "Zusammenarbeit anfragen",
+    competenceLine: "Biochemie · Fachberatung · Konzeptentwicklung · Medical Writing",
+    tile: {
+      title: "Fachwissen für Ihre nächsten Schritte.",
+      items: [
+        { icon: "connect", label: "Wissenschaftliche Fragen einordnen" },
+        { icon: "compass", label: "Gesundheitsangebote weiterentwickeln" },
+        { icon: "document", label: "Fachinhalte verständlich vermitteln" },
+      ],
+      footnote: "Für Gesundheitsunternehmen, Praxen, Labore und Fachpersonen.",
+    },
   },
-  herausforderung: {
-    eyebrow: "Die Herausforderung",
-    title: "Wenn Kundenfälle komplexer werden, braucht Beratung mehr Tiefe.",
-    lead: "Sie kennen das:",
-    highlights: [
-      "Nicht jeder Körper reagiert gleich.",
-      "Nicht jede Empfehlung passt zu jedem Menschen.",
-      "Nicht jeder Fall lässt sich mit einem Standardschema sinnvoll begleiten.",
-    ],
-    closing:
-      "Genau an diesen Stellen komme ich dazu – als fachliches Sparring, nicht als weiteres Konzept von der Stange.",
-  },
-  zielgruppe: {
-    eyebrow: "Für wen",
-    title: "Für wen ist die Zusammenarbeit geeignet?",
-    intro:
-      "Die Zusammenarbeit richtet sich an gesundheitsnahe Unternehmen und Fachpersonen, die ihre Arbeit fachlich vertiefen, bestehende Angebote schärfen oder komplexe Gesundheitsfragen besser einordnen möchten.",
-    categories: [
-      {
-        title: "Praxen & therapeutische Einrichtungen",
-        body: "Wenn Patientenfälle mehr biochemische Einordnung brauchen.",
-        roles: ["Heilpraktiker", "Osteopathen", "Physiotherapeuten", "Therapeuten", "Praxisteams"],
-      },
-      {
-        title: "Training, Coaching & Performance",
-        body: "Wenn Standardpläne bei anspruchsvollen Kundinnen und Kunden nicht mehr reichen.",
-        roles: [
-          "Personal Trainer",
-          "Fitness Coaches",
-          "Athletiktrainer",
-          "Gesundheitscoaches",
-          "Studios",
-        ],
-      },
-      {
-        title: "Unternehmen, Konzepte & Teams",
-        body: "Wenn Angebote oder Materialien fachlich fundiert (weiter-)entwickelt werden sollen.",
-        roles: [
-          "Gesundheitszentren",
-          "Ernährungsberatungen",
-          "Präventionsanbieter",
-          "kleine Gesundheitsunternehmen",
-          "Teams im gesundheitsnahen Bereich",
-        ],
-      },
-    ],
-  },
-  formen: {
+  leistungen: {
     eyebrow: "Leistungen",
-    title: "Tiefe nach Bedarf",
-    items: [
+    title: ["Wissenschaftliche Expertise.", "Individuell für Ihr Unternehmen."],
+    intro:
+      "Ob Fachfrage, Gesundheitskonzept oder Fachtext: biochemisches Wissen für Ihre konkrete Aufgabe.",
+    cards: [
       {
         n: "01",
-        title: "Fachliche Beratung",
-        body: "Für konkrete Fragen, anonymisierte Fallbesprechungen oder regelmäßiges fachliches Sparring.",
+        title: "Wissenschaftliche Fachberatung",
+        lead: "Komplexe Zusammenhänge fundiert bewerten.",
+        body: "Biochemische Einordnung, wissenschaftliche Recherche und fachlicher Austausch zu anonymisierten Fällen.",
+        points: [
+          "Laborparameter und ihre biochemischen Zusammenhänge",
+          "Biochemische und physiologische Zusammenhänge",
+          "Literaturbewertung und wissenschaftliches Sparring",
+        ],
       },
       {
         n: "02",
         title: "Konzeptentwicklung",
-        body: "Für Angebote, Beratungsprozesse, Workshops oder Materialien, die strukturiert überarbeitet oder neu aufgebaut werden.",
+        lead: "Wissen in konkrete Angebote übersetzen.",
+        body: "Fachliche Entwicklung und Überarbeitung von Gesundheits-, Ernährungs- und Präventionskonzepten.",
+        points: [
+          "Neue Beratungsangebote",
+          "Gesundheits- und Präventionsprogramme",
+          "Fachlich strukturierte Beratungsabläufe",
+        ],
       },
       {
         n: "03",
-        title: "Schriftliche Ausarbeitung",
-        body: "Zu einem Thema, Fall oder Konzept: als interne Grundlage, Schulungsunterlage oder Konzeptpapier.",
-      },
-    ],
-    footnote:
-      "Die Zusammenarbeit kann einmalig stattfinden oder in regelmäßigen Meetings fortgeführt werden – je nachdem, wie viel fachliche Tiefe und Begleitung benötigt wird.",
-  },
-  gewinn: {
-    eyebrow: "Nutzen",
-    title: "Fachliche Tiefe, die Ihre Arbeit stärkt",
-    items: [
-      {
-        title: "Fachliche Sicherheit",
-        body: "Sie können komplexe Fälle einordnen, ohne sich auf Halbwissen zu verlassen.",
+        title: "Medical Writing & Scientific Content",
+        lead: "Wissenschaft verständlich und präzise vermitteln.",
+        body: "Wissenschaftlich fundierte Texte für Gesundheitsunternehmen, Labore und Nahrungsergänzungsmittelhersteller.",
+        points: [
+          "Fachartikel und medizinisch-biochemische Texte",
+          "Produkt-, Inhaltsstoff- und Hintergrundinformationen",
+          "Website-Inhalte und Unternehmenspublikationen",
+          "Literaturrecherche und Quellenaufbereitung",
+        ],
       },
       {
-        title: "Struktur",
-        body: "Aus widersprüchlichen Infos wird ein nachvollziehbarer roter Faden.",
-      },
-      {
-        title: "Bessere Angebote",
-        body: "Ihre Beratungen und Konzepte gewinnen an fachlicher Tiefe.",
-      },
-      {
-        title: "Anwendbar im Alltag",
-        body: "Die Ergebnisse passen in Ihre Abläufe, nicht in ein Lehrbuch.",
+        n: "04",
+        title: "Fachliche Schulung & Wissenstransfer",
+        lead: "Wissen, das im Unternehmen ankommt.",
+        body: "Komplexe Themen verständlich aufbereitet für Ihr Team und die Anwendung im Arbeitsalltag.",
+        points: [
+          "Schulungsunterlagen und interne Wissensgrundlagen",
+          "Wissenschaftliche Themenaufbereitung",
+          "Fachliche Workshops nach Vereinbarung",
+        ],
       },
     ],
   },
-  preise: {
-    eyebrow: "Preise & Formate",
-    title: "Mögliche Formen der Zusammenarbeit",
-    items: [
+  ansatz: {
+    eyebrow: "Mein Ansatz",
+    qualifikation: {
+      name: "Milva März",
+      degree: "B.Sc. Biochemie",
+      since: "Seit 2016 in der Fitnessbranche",
+      selfEmployed: "Selbstständige biochemische Gesundheitsberatung",
+    },
+    title: ["Wissenschaft verstehen.", "Wissen nutzbar machen."],
+    body: "Ich verbinde biochemisches Fachwissen mit Erfahrung aus Training und Gesundheitsberatung. So werden wissenschaftliche Erkenntnisse zu einer verständlichen Grundlage für Ihre Arbeit.",
+    rows: [
       {
-        n: "01",
-        title: "Fachliche Beratung",
-        price: "150 €",
-        meta: "pro Stunde",
-        body: "Für konkrete Fragestellungen, anonymisierte Fallbesprechungen, fachliche Unsicherheiten, regelmäßige Meetings oder die Einordnung komplexer gesundheitlicher Zusammenhänge.",
+        title: "Wissenschaftlich fundiert",
+        body: "Biochemisches Fachwissen und kritisch eingeordnete Literatur.",
       },
       {
-        n: "02",
-        title: "Konzeptentwicklung",
-        price: "ab 250 €",
-        meta: "pauschal",
-        body: "Für bestehende Angebote, Beratungsprozesse, Workshops, Coachingformate oder fachliche Materialien, die strukturiert überarbeitet oder neu aufgebaut werden sollen. Der genaue Umfang wird vorab gemeinsam festgelegt.",
+        title: "Praxisnah gedacht",
+        body: "Erfahrung aus der Fitness- und Gesundheitsbranche.",
       },
       {
-        n: "03",
-        title: "Schriftliche Ausarbeitung nach Umfang",
-        price: "individuell",
-        meta: "nach Umfang",
-        body: "Für eine schriftliche Ausarbeitung zu einem Thema, Fall, Konzept oder fachlichen Schwerpunkt – als interne Orientierung, fachliche Grundlage, Vorbereitung für Gespräche, Schulungsunterlage oder Konzeptpapier.",
+        title: "Individuell umgesetzt",
+        body: "Ihre Fragestellung bestimmt die Zusammenarbeit.",
       },
     ],
   },
-  finalCta: {
+  zusammenarbeit: {
     eyebrow: "Zusammenarbeit",
-    title: "Lassen Sie uns über Ihren Fall sprechen.",
-    body: "Im kostenlosen Erstgespräch klären wir, wo Sie stehen und ob eine Zusammenarbeit sinnvoll ist.",
+    title: "Flexible Zusammenarbeit. Klar definierte Leistungen.",
+    intro: "Wir stimmen Aufgabe, Ergebnis und Umfang vor Beginn gemeinsam ab.",
+    rows: [
+      {
+        title: "Fachberatung & wissenschaftliches Sparring",
+        body: "Konkrete Fachfragen und wissenschaftliche Einordnung.",
+        price: "150 € pro Stunde",
+      },
+      {
+        title: "Konzeptentwicklung",
+        body: "Klar abgegrenzte Projekte; größere Vorhaben individuell kalkuliert.",
+        price: "Ab 250 €",
+      },
+      {
+        title: "Medical Writing & wissenschaftliche Ausarbeitungen",
+        body: "Fachtexte, Produktinformationen und Literaturrecherche.",
+        price: "Individuelles Angebot",
+      },
+      {
+        title: "Schulungen & Workshops",
+        body: "Fachliche Weiterbildung und interne Schulungsprojekte.",
+        price: "Individuelles Angebot",
+      },
+    ],
+    process: ["Anliegen klären", "Umfang und Angebot abstimmen", "Fachliche Umsetzung"],
+  },
+  kontakt: {
+    eyebrow: "Kontakt",
+    title: "Lassen Sie uns Ihr Vorhaben gemeinsam weiterdenken.",
+    body: "In einem unverbindlichen Gespräch klären wir Ihre Fragestellung und wie ich Sie unterstützen kann.",
+    ctaLabel: "Unverbindliche Zusammenarbeit anfragen",
+    note: "Einzelprojekte und längerfristige Kooperationen möglich.",
   },
 } as const;
 

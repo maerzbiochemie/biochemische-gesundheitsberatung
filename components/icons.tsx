@@ -113,3 +113,24 @@ export function IconLoadRecovery({ className = "" }: IconProps) {
     </svg>
   );
 }
+
+/** Kompass — Gesundheitsangebote weiterentwickeln (B2B-Hero-Kachel). */
+export function IconCompass({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden {...shared}>
+      <circle cx="16" cy="16" r="11.5" />
+      <path d="M20 12l-5.5 2.5L12 20l5.5-2.5L20 12z" />
+    </svg>
+  );
+}
+
+/** Dokument — Fachinhalte verständlich vermitteln (B2B-Hero-Kachel). */
+export function IconDocument({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden {...shared}>
+      <path d="M9 4h10l5 5v19H9V4z" />
+      <path d="M19 4v5h5" />
+      <path d="M12.5 16h7M12.5 20h7M12.5 24h4.5" />
+    </svg>
+  );
+}
