@@ -38,18 +38,29 @@ export function Header() {
       }`}
     >
       <div className="container-wide">
-        <div className="flex h-16 items-center justify-between md:h-20">
+        <div className="flex h-16 items-center gap-x-8 md:h-20">
           <Link href="/" className="group relative flex shrink-0 flex-col justify-center leading-none">
             <span className="font-display text-xl tracking-tight md:text-[1.4rem]">
               {site.name}
             </span>
-            <span className="absolute left-0 top-full whitespace-nowrap text-[0.78rem] uppercase tracking-[0.2em] text-[var(--color-muted)]">
+            {/* Invisible twin of the tagline: reserves the logo block's
+                min-width at the tagline's own rendered width (same font
+                classes), since the visible copy below is positioned out
+                of flow and would otherwise let the nav crowd in on top
+                of it. */}
+            <span
+              aria-hidden="true"
+              className="invisible hidden h-0 overflow-hidden whitespace-nowrap text-[0.78rem] uppercase tracking-[0.2em] sm:block"
+            >
+              {site.tagline}
+            </span>
+            <span className="absolute left-0 top-full hidden whitespace-nowrap text-[0.78rem] uppercase tracking-[0.2em] text-[var(--color-muted)] sm:block">
               {site.tagline}
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-x-2 lg:flex 2xl:gap-x-6">
+          <nav className="ml-auto hidden items-center gap-x-2 min-[1440px]:flex min-[1600px]:gap-x-6">
             {site.nav.map((item) => {
               const base = item.href.split("#")[0];
               // "/#ansatz" points at the home page section — never a "page".
@@ -58,7 +69,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`link-underline whitespace-nowrap text-base transition-colors 2xl:text-lg ${
+                  className={`link-underline whitespace-nowrap py-2 text-base transition-colors min-[1600px]:text-lg ${
                     active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-soft)]"
                   } hover:text-[var(--color-ink)]`}
                 >
@@ -70,7 +81,7 @@ export function Header() {
               href={site.booking.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary whitespace-nowrap !px-3 !py-2 text-base 2xl:!px-5 2xl:!py-2.5 2xl:text-lg"
+              className="btn btn-primary whitespace-nowrap !px-3 !py-2 text-base min-[1600px]:!px-5 min-[1600px]:!py-2.5 min-[1600px]:text-lg"
             >
               Erstgespräch
               <span className="arrow" aria-hidden>
@@ -85,7 +96,7 @@ export function Header() {
             aria-label={open ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+            className="relative z-50 ml-auto flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-1.5 min-[1440px]:hidden"
           >
             <span
               className={`h-px w-6 bg-[var(--color-ink)] transition-all duration-300 ${
@@ -103,7 +114,7 @@ export function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`overflow-hidden border-t border-[var(--color-line)] bg-[var(--color-cream)] transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
+        className={`overflow-hidden border-t border-[var(--color-line)] bg-[var(--color-cream)] transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] min-[1440px]:hidden ${
           open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
