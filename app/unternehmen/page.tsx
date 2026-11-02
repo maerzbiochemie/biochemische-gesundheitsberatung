@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow } from "@/components/ui";
-import { BookingButton } from "@/components/BookingButton";
-import { IconConnect, IconCompass, IconDocument } from "@/components/icons";
+import { BookingButton, BookingNote } from "@/components/BookingButton";
 import { b2b } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -12,79 +11,95 @@ export const metadata: Metadata = {
     "Biochemische Fachpartnerin für Unternehmen und Fachpersonen aus der Gesundheitsbranche: wissenschaftliche Fachberatung, Konzeptentwicklung, Medical Writing und Schulung.",
 };
 
-const tileIcons = {
-  connect: IconConnect,
-  compass: IconCompass,
-  document: IconDocument,
-} as const;
-
 export default function UnternehmenPage() {
   const { hero, leistungen, ansatz, zusammenarbeit, kontakt } = b2b;
 
   return (
     <>
       {/* 1. Hero */}
-      <section className="bg-[var(--color-cream)] pb-16 pt-32 md:pb-20 md:pt-44">
-        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-10">
-          {/* Linke Spalte ~58% */}
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>{hero.eyebrow}</Eyebrow>
-            </Reveal>
-            <Reveal
-              as="h1"
-              delay={80}
-              className="font-display mt-7 max-w-2xl text-[2.1rem] leading-[1.1] text-[var(--color-ink)] sm:text-5xl lg:text-[3.2rem]"
-            >
-              {hero.title}
-            </Reveal>
-            <Reveal
-              delay={140}
-              className="font-display mt-6 max-w-xl text-xl text-[var(--color-walnut)] md:text-2xl"
-            >
-              {hero.subtitle}
-            </Reveal>
-            <Reveal delay={200} className="mt-8 max-w-xl space-y-4 text-lg text-[var(--color-walnut)]">
-              {hero.body.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-            </Reveal>
-            <Reveal delay={260} className="mt-9">
-              <BookingButton label={hero.ctaLabel} className="btn-hero-olive" />
-            </Reveal>
-            <Reveal delay={300} className="mt-8 text-sm text-[var(--color-muted)]">
-              {hero.competenceLine}
+      <section className="relative overflow-hidden bg-[var(--color-cream)] pb-16 pt-32 md:pb-20 md:pt-44">
+        {/* Blasse DNA-Doppelhelix, senkrecht über die gesamte Abschnittshöhe am rechten Rand, hinter der Karte */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-auto select-none opacity-[0.35] lg:block"
+        >
+          <Image
+            src="/b2b-dna.png"
+            alt=""
+            width={1024}
+            height={1536}
+            className="h-full w-auto object-contain"
+          />
+        </div>
+        <div className="container-x relative z-10">
+          <Reveal>
+            <Eyebrow>{hero.eyebrow}</Eyebrow>
+          </Reveal>
+          <div className="mt-7 grid grid-cols-1 gap-12 lg:grid-cols-[1.22fr_1fr] lg:items-start lg:gap-14">
+            {/* Linke Spalte */}
+            <div>
+              <Reveal
+                as="h1"
+                delay={80}
+                className="font-display max-w-2xl text-[2.1rem] leading-[1.1] text-[var(--color-sage-deep)] sm:text-5xl lg:text-[3.2rem]"
+              >
+                {hero.title}
+              </Reveal>
+              <Reveal
+                delay={140}
+                className="font-display mt-6 max-w-xl text-xl text-[var(--color-sage-deep)] md:text-2xl"
+              >
+                {hero.subtitle}
+              </Reveal>
+              <Reveal delay={200} className="mt-8 max-w-xl space-y-4 text-lg text-[var(--color-ink)]">
+                {hero.body.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </Reveal>
+              <Reveal delay={260} className="mt-9">
+                <BookingButton
+                  label={hero.ctaLabel}
+                  className="!bg-[var(--color-sage-deep)] !text-[var(--color-paper)] hover:!bg-[var(--color-ink)]"
+                  hideNote
+                />
+              </Reveal>
+              <Reveal delay={300} className="mt-7 text-sm text-[var(--color-muted)]">
+                {hero.competenceLine}
+              </Reveal>
+              <Reveal delay={330} className="mt-3">
+                <BookingNote />
+              </Reveal>
+            </div>
+
+            {/* Rechte Kachel ~45% */}
+            <Reveal delay={160}>
+              <div className="rounded-[var(--radius-card)] border border-[var(--color-sage-deep)] bg-[var(--color-sage-mist)]/75 p-8 md:p-9">
+                {hero.tile.blocks.map((block, i) => (
+                  <div
+                    key={block.title}
+                    className={i > 0 ? "mt-7 border-t border-[var(--color-sage-deep)]/15 pt-7" : ""}
+                  >
+                    <h2 className="font-display text-3xl leading-snug text-[var(--color-ink)] md:text-4xl">
+                      {block.title}
+                    </h2>
+                    <p className="mt-2 text-base text-[var(--color-sage-deep)] md:text-lg">
+                      {block.subtitle}
+                    </p>
+                    <ul className="mt-5 space-y-3">
+                      {block.items.map((item) => (
+                        <li key={item} className="text-base leading-snug text-[var(--color-ink)]">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                <div className="mt-7 border-t border-[var(--color-sage-deep)]/15 pt-5">
+                  <p className="text-sm text-[var(--color-walnut)]">{hero.tile.footnote}</p>
+                </div>
+              </div>
             </Reveal>
           </div>
-
-          {/* Rechte Kachel ~42%, mit dezentem Molekül an der oberen rechten Ecke */}
-          <Reveal delay={160} className="relative lg:col-span-5">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-8 -top-10 hidden w-[200px] select-none opacity-[0.28] md:block lg:w-[220px]"
-            >
-              <Image src="/b2b-molekuel.png" alt="" width={1536} height={1024} className="h-auto w-full" />
-            </div>
-            <div className="relative rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-8 md:p-9">
-              <h2 className="font-display text-2xl leading-snug text-[var(--color-ink)] md:text-[1.7rem]">
-                {hero.tile.title}
-              </h2>
-              <ul className="mt-7 space-y-5">
-                {hero.tile.items.map((item) => {
-                  const Icon = tileIcons[item.icon];
-                  return (
-                    <li key={item.label} className="flex items-center gap-4">
-                      <Icon className="h-7 w-7 flex-none text-[var(--color-sage-deep)]" />
-                      <span className="text-[var(--color-walnut)]">{item.label}</span>
-                    </li>
-                  );
-                })}
-              </ul>
-              <div className="mt-7 border-t border-[var(--color-line)] pt-5">
-                <p className="text-sm text-[var(--color-muted)]">{hero.tile.footnote}</p>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 

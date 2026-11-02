@@ -838,20 +838,34 @@ export const ueberMich = {
 export const b2b = {
   hero: {
     eyebrow: "Für Unternehmen & Fachpersonen",
-    title: "Mehr wissenschaftliche Kompetenz für Ihr Gesundheitsangebot.",
-    subtitle: "Biochemische Expertise, die Ihr Unternehmen fachlich stärkt.",
+    title: "Medical Writing & Fachberatung mit biochemischer Expertise.",
+    subtitle: "Wissenschaftlich fundiert. Verständlich. Praxisnah.",
     body: [
-      "Sie möchten Ihr Gesundheitsangebot weiterentwickeln, wissenschaftliche Zusammenhänge fundiert einordnen oder hochwertige Fachinhalte erstellen lassen?",
-      "Als Biochemikerin unterstütze ich Sie mit wissenschaftlicher Fachberatung, Konzeptentwicklung und professionellem Medical Writing.",
+      "Medical Writing für Newsletter, Blogs, Soziale Medien und Websites.",
+      "Als Biochemikerin übersetze ich Fachsprache in verständliche, zielgruppengerechte Texte, damit Ihre Kundinnen und Kunden verstehen, worum es geht. Ergänzend unterstütze ich Unternehmen mit fachlicher Beratung und der Entwicklung verständlicher Gesundheitsangebote.",
     ],
-    ctaLabel: "Zusammenarbeit anfragen",
-    competenceLine: "Biochemie · Fachberatung · Konzeptentwicklung · Medical Writing",
+    ctaLabel: "Medical Writing anfragen",
+    competenceLine: "Medical Writing · Fachberatung · Konzeptentwicklung · Biochemie",
     tile: {
-      title: "Fachwissen für Ihre nächsten Schritte.",
-      items: [
-        { icon: "connect", label: "Wissenschaftliche Fragen einordnen" },
-        { icon: "compass", label: "Gesundheitsangebote weiterentwickeln" },
-        { icon: "document", label: "Fachinhalte verständlich vermitteln" },
+      blocks: [
+        {
+          title: "Medical Writing",
+          subtitle: "Wissenschaftliche Inhalte, die ankommen.",
+          items: [
+            "Newsletter, Blogs, Soziale Medien und Websites",
+            "Fachsprache verständlich und zielgruppengerecht übersetzen",
+            "Wissenschaftlich fundierte Texte mit echtem Mehrwert",
+          ],
+        },
+        {
+          title: "Fachberatung",
+          subtitle: "Wissen einordnen. Angebote weiterentwickeln.",
+          items: [
+            "Wissenschaftliche Fragen einordnen",
+            "Gesundheitsangebote weiterentwickeln",
+            "Fachinhalte verständlich vermitteln",
+          ],
+        },
       ],
       footnote: "Für Gesundheitsunternehmen, Praxen, Labore und Fachpersonen.",
     },
