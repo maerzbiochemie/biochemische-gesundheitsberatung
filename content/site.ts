@@ -115,7 +115,7 @@ export const home = {
     description:
       "Ich helfe Ihnen, Zusammenhänge zu verstehen, Informationen wissenschaftlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
     secondaryCtaLabel: "Meinen Ansatz kennenlernen",
-    secondaryCtaHref: "/#ansatz",
+    secondaryCtaHref: "/privatkunden#mein-ansatz",
   },
   // Abschnitt direkt unter dem Hero (BIO-206). Wortlaut identisch mit der
   // vorherigen Hero-Zweispalten-Fassung (home.hero.left/.right), nur in
@@ -131,7 +131,7 @@ export const home = {
       lead: "Genau hier setzt das Konzept an:",
       body: "Ich helfe Ihnen, Zusammenhänge zu verstehen, Informationen wissenschaftlich einzuordnen und daraus sinnvolle nächste Schritte abzuleiten.",
       ctaLabel: "Meinen Ansatz kennenlernen",
-      ctaHref: "/#ansatz",
+      ctaHref: "/privatkunden#mein-ansatz",
     },
   },
   // Neue Sektion „Über mich & meine Vision" direkt unter dem Hero (BIO-194).
@@ -404,10 +404,11 @@ export const privatkunden = {
       "Prävention heißt nicht, auf Beschwerden zu warten und erst dann zu reagieren. Es heißt, die Belastungsgrenzen Ihres Körpers zu kennen und Routinen aufzubauen, die Sie auch in stressigen Phasen tragen.",
     ],
   },
-  // BIO-214 (2026-10-23): "Was Sie mitnehmen" und "Ihr Ergebnis" sind jetzt
-  // eine gemeinsame zweispaltige Kachel (Referenzbild "Beratung & Ergebnis").
-  // `beratung` trägt den gemeinsamen Kopf, `nutzen` die linke Spalte,
-  // `kompass` die rechte Spalte. Wortlaut exakt wie von Milva vorgegeben.
+  // BIO-214/BIO-225: "Was Sie mitnehmen" und "Ihr Ergebnis" sind eine
+  // gemeinsame Sektion ohne umschließenden Kasten (Anker #mein-ansatz).
+  // `beratung` trägt den gemeinsamen Kopf, `nutzen` die linke 2x2-Kachelspalte,
+  // `kompass` die rechte Salbeigrün-Karte. Wortlaut exakt wie von Milva
+  // vorgegeben.
   beratung: {
     eyebrow: "Beratung & Ergebnis",
     title: "Verstehen, was Ihr Körper braucht.",
@@ -437,6 +438,7 @@ export const privatkunden = {
     ],
   },
   kompass: {
+    eyebrow: "Ihr Ergebnis",
     title: "Ihr Biochemischer Gesundheitskompass",
     paragraphs: [
       "Sie erhalten Ihre persönliche Einordnung schriftlich – individuell auf Ihre Situation abgestimmt.",

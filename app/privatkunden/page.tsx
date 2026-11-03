@@ -23,8 +23,9 @@ const beispielBilder = {
 } as const;
 
 /**
- * Calm, minimal line drawings for the benefit items — one per item, matching
- * the sage accent of the rest of the site. No filled or colourful icons.
+ * Calm, minimal line drawings for the four "Was Sie mitnehmen" tiles — one
+ * per item, matching the sage accent of the rest of the site. No filled or
+ * colourful icons.
  */
 function BenefitIcon({ index }: { index: number }) {
   const drawings = [
@@ -37,22 +38,17 @@ function BenefitIcon({ index }: { index: number }) {
     </Fragment>,
     // Klare Prioritäten — ranked lines
     <path key="priorities" d="M6 9h20M6 16h13M6 23h7" />,
-    // Biochemischer Gesundheitskompass — compass
-    <Fragment key="kompass">
-      <circle cx="16" cy="16" r="11" />
-      <path d="M11 21 L17.5 17.5 L21 11 L14.5 14.5 Z" />
-      <circle cx="16" cy="16" r="0.8" />
-    </Fragment>,
-    // Alltagstaugliche Umsetzung — winding path
-    <Fragment key="umsetzung">
+    // Empfehlungen für Ihren Alltag — winding path
+    <Fragment key="alltag">
       <path d="M7 25c0-6 6-6 6-11s6-5 6 0 6 6 6 0" />
       <circle cx="7" cy="25" r="1.6" />
       <circle cx="25" cy="13" r="1.6" />
     </Fragment>,
-    // Mehr Verständnis für den Körper — person
-    <Fragment key="verstaendnis">
-      <circle cx="16" cy="9" r="3.6" />
-      <path d="M9 25c0-7 3-10 7-10s7 3 7 10" />
+    // Wissen für eigene Entscheidungen — open book
+    <Fragment key="wissen">
+      <path d="M16 10c-2.6-1.8-5.8-2.4-9-2v15c3.2-0.4 6.4 0.2 9 2" />
+      <path d="M16 10c2.6-1.8 5.8-2.4 9-2v15c-3.2-0.4-6.4 0.2-9 2" />
+      <path d="M16 10v15" />
     </Fragment>,
   ];
   return (
@@ -63,7 +59,7 @@ function BenefitIcon({ index }: { index: number }) {
       strokeWidth={1.4}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-9 w-9 text-[var(--color-sage-deep)]"
+      className="h-7 w-7 text-[var(--color-sage-deep)]"
       aria-hidden
     >
       {drawings[index % drawings.length]}
@@ -288,60 +284,92 @@ export default function PrivatkundenPage() {
         </Reveal>
       </Section>
 
-      {/* Beratung & Ergebnis — eine gemeinsame Kachel statt getrennter
-          Sektionen (BIO-214, Referenzbild "Beratung & Ergebnis"). Links vier
-          Nutzenpunkte, rechts der Gesundheitskompass mit der Original-
-          Booklet-Grafik, unten ein gemeinsamer Outline-Button. (Pos. 5+6) */}
-      <Section tone="cream">
-        <Reveal className="rounded-[var(--radius-card)] border border-[var(--color-hairline-warm)] bg-[var(--color-paper)] p-7 sm:p-10 md:p-14">
-          <Eyebrow>{beratung.eyebrow}</Eyebrow>
-          <h2 className="font-display mt-6 text-4xl text-[var(--color-forest)] md:text-5xl">{beratung.title}</h2>
-          <p className="mt-6 max-w-3xl text-lg text-[var(--color-ink-soft)]">{beratung.intro}</p>
+      {/* Beratung & Ergebnis (BIO-225 redesign) — flache Kachel-Sektion ohne
+          umschließenden Kasten, auf dem normalen Cremeton der Seite,
+          optisch angeglichen an die anderen überarbeiteten Kartenabschnitte
+          (sehr helles Creme / Salbeigrün, feine dunkelgrüne 1px-Rahmen, wie
+          z.B. die B2B-Leistungskarten). Anker `#mein-ansatz` ist das Ziel
+          aller "Meinen Ansatz"-Buttons auf der Website. Links ein 2×2-Raster
+          mit den vier Nutzenpunkten, rechts die hervorgehobene
+          Gesundheitskompass-Karte mit der Original-Booklet-Grafik, darunter
+          ein gemeinsamer Outline-Button. (Pos. 5+6) */}
+      <section
+        id="mein-ansatz"
+        className="bg-[var(--color-cream)] py-14 md:py-20 lg:py-24"
+        style={{ scrollMarginTop: "5rem" }}
+      >
+        <div className="container-wide">
+          <Reveal>
+            <Eyebrow>{beratung.eyebrow}</Eyebrow>
+            <h2 className="font-display mt-5 text-[2.25rem] leading-[1.1] text-[var(--color-ink)] md:text-[3.5rem]">
+              {beratung.title}
+            </h2>
+            <p className="mt-6 max-w-[56.25rem] text-[1.125rem] leading-[1.5] text-[var(--color-ink-soft)] md:text-[1.25rem]">
+              {beratung.intro}
+            </p>
+          </Reveal>
 
-          <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-0 md:divide-x md:divide-[var(--color-hairline-warm)]">
-            <div className="md:pr-14">
-              <h3 className="font-display text-2xl text-[var(--color-forest)]">{nutzen.title}</h3>
-              <ul className="mt-7 space-y-7">
+          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[55fr_45fr] lg:items-stretch">
+            {/* Links: Was Sie mitnehmen — 2×2-Kachelraster */}
+            <Reveal delay={60}>
+              <h3 className="font-display text-[2rem] text-[var(--color-ink)]">{nutzen.title}</h3>
+              <div className="mt-6 grid grid-cols-1 auto-rows-fr gap-4 sm:grid-cols-2">
                 {nutzen.items.map((item, i) => (
-                  <li key={item.title} className="flex gap-4">
+                  <div
+                    key={item.title}
+                    className="rounded-[var(--radius-card)] border bg-[var(--color-paper)] p-6"
+                    style={{ borderColor: "var(--color-sage-deep)" }}
+                  >
                     <BenefitIcon index={i} />
-                    <div>
-                      <h4 className="font-display text-xl text-[var(--color-forest)]">{item.title}</h4>
-                      <p className="mt-1 text-[var(--color-ink-soft)]">{item.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="md:pl-14">
-              <h3 className="font-display text-2xl text-[var(--color-forest)]">{kompass.title}</h3>
-              <div className="mt-6 space-y-4 text-[var(--color-ink-soft)]">
-                {kompass.paragraphs.map((p) => (
-                  <p key={p}>{p}</p>
+                    <h4 className="font-display mt-4 text-[1.375rem] leading-[1.2] text-[var(--color-ink)]">
+                      {item.title}
+                    </h4>
+                    <p className="mt-2 text-[16px] leading-[1.5] text-[var(--color-ink-soft)] md:text-[17px]">
+                      {item.body}
+                    </p>
+                  </div>
                 ))}
               </div>
-              <p className="mt-5 font-semibold text-[var(--color-forest)]">{kompass.highlight}</p>
-              <div className="mt-8 flex justify-center md:justify-start">
-                <Image
-                  src={kompassBuch}
-                  alt="Aufgeschlagenes Booklet „Ihr biochemischer Kompass“ mit Kompass-Illustration"
-                  className="h-auto w-[min(300px,75%)]"
-                  sizes="300px"
-                />
+            </Reveal>
+
+            {/* Rechts: Gesundheitskompass-Karte, hell gefülltes Salbeigrün */}
+            <Reveal delay={120}>
+              <div
+                className="flex h-full flex-col rounded-[var(--radius-card)] border bg-[var(--color-sage-mist)] p-8"
+                style={{ borderColor: "var(--color-sage-deep)" }}
+              >
+                <Eyebrow>{kompass.eyebrow}</Eyebrow>
+                <h3 className="font-display mt-4 text-[1.75rem] leading-[1.15] text-[var(--color-ink)] md:text-[2.125rem]">
+                  {kompass.title}
+                </h3>
+                <div className="mt-4 space-y-3 text-[17px] leading-[1.5] text-[var(--color-ink-soft)] md:text-[18px]">
+                  {kompass.paragraphs.map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
+                </div>
+                <p className="mt-4 font-semibold text-[var(--color-forest)]">{kompass.highlight}</p>
+                <div className="mt-auto flex justify-center pt-6 md:justify-end">
+                  <Image
+                    src={kompassBuch}
+                    alt="Aufgeschlagenes Booklet „Ihr biochemischer Kompass“ mit Kompass-Illustration"
+                    className="h-auto w-[min(320px,58%)]"
+                    sizes="320px"
+                  />
+                </div>
               </div>
-            </div>
+            </Reveal>
           </div>
 
-          <div className="mt-12 flex justify-center">
+          <Reveal delay={160} className="mt-10 flex justify-center">
             <Link
               href="/leistungen"
               className="btn btn-secondary !border-[var(--color-forest)] !text-[var(--color-forest)] hover:!bg-[var(--color-forest)]/5"
             >
               {beratung.button} <span aria-hidden className="arrow">→</span>
             </Link>
-          </div>
-        </Reveal>
-      </Section>
+          </Reveal>
+        </div>
+      </section>
 
       {/* So läuft die Zusammenarbeit ab — horizontaler Zeitstrahl mit sechs
           Schritten + dezentem Farn (BIO-214, Referenzbild "Ablauf"). Auf
