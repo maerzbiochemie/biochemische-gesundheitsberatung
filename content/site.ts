@@ -897,58 +897,37 @@ export const b2b = {
     },
     keywords: ["Medical Writing", "Fachberatung", "Konzeptentwicklung", "Biochemie"],
   },
-  ansatz: {
-    eyebrow: "Mein Ansatz",
-    qualifikation: {
-      name: "Milva März",
-      degree: "B.Sc. Biochemie",
-      since: "Seit 2016 in der Fitnessbranche",
-      selfEmployed: "Selbstständige biochemische Gesundheitsberatung",
-    },
-    title: ["Wissenschaft verstehen.", "Wissen nutzbar machen."],
-    body: "Ich verbinde biochemisches Fachwissen mit Erfahrung aus Training und Gesundheitsberatung. So werden wissenschaftliche Erkenntnisse zu einer verständlichen Grundlage für Ihre Arbeit.",
-    rows: [
-      {
-        title: "Wissenschaftlich fundiert",
-        body: "Biochemisches Fachwissen und kritisch eingeordnete Literatur.",
-      },
-      {
-        title: "Praxisnah gedacht",
-        body: "Erfahrung aus der Fitness- und Gesundheitsbranche.",
-      },
-      {
-        title: "Individuell umgesetzt",
-        body: "Ihre Fragestellung bestimmt die Zusammenarbeit.",
-      },
-    ],
-  },
   zusammenarbeit: {
     eyebrow: "Zusammenarbeit",
     title: "Flexible Zusammenarbeit. Klar definierte Leistungen.",
-    intro: "Wir stimmen Aufgabe, Ergebnis und Umfang vor Beginn gemeinsam ab.",
+    intro:
+      "Individuelle, wissenschaftlich fundierte Unterstützung – von professionellem Medical Writing bis zur Konzeptentwicklung.",
     rows: [
       {
+        title: "Medical Writing",
+        body: "Wissenschaftliche Texte für Newsletter, Blogs, Social Media, Websites u. v. m.",
+        price: "ab 60 €/Std.",
+      },
+      {
         title: "Fachberatung & wissenschaftliches Sparring",
-        body: "Konkrete Fachfragen und wissenschaftliche Einordnung.",
-        price: "150 € pro Stunde",
+        body: "Fundierte Einordnung, Beantwortung konkreter Fachfragen und Austausch auf Augenhöhe.",
+        price: "120 €/Std.",
       },
       {
         title: "Konzeptentwicklung",
-        body: "Klar abgegrenzte Projekte; größere Vorhaben individuell kalkuliert.",
-        price: "Ab 250 €",
+        body: "Entwicklung individueller Gesundheits-, Ernährungs- und Präventionskonzepte.",
+        price: "ab 250 €",
       },
       {
-        title: "Medical Writing & wissenschaftliche Ausarbeitungen",
-        body: "Fachtexte, Produktinformationen und Literaturrecherche.",
-        price: "Individuelles Angebot",
-      },
-      {
-        title: "Schulungen & Workshops",
-        body: "Fachliche Weiterbildung und interne Schulungsprojekte.",
+        title: "Ernährungs- und Trainingskonzepte",
+        body: "Praxisnahe Konzepte für Leistung, Regeneration und Wohlbefinden – individuell und zielorientiert.",
         price: "Individuelles Angebot",
       },
     ],
-    process: ["Anliegen klären", "Umfang und Angebot abstimmen", "Fachliche Umsetzung"],
+    priceNote:
+      "Alle Preise sind Endpreise. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung).",
+    processLabel: "So arbeiten wir zusammen:",
+    process: ["Anliegen klären", "Umfang & Angebot abstimmen", "Fachliche Umsetzung"],
   },
   kontakt: {
     eyebrow: "Kontakt",

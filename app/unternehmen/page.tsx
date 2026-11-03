@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow } from "@/components/ui";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function UnternehmenPage() {
-  const { hero, leistungen, ansatz, zusammenarbeit, kontakt } = b2b;
+  const { hero, leistungen, zusammenarbeit, kontakt } = b2b;
 
   return (
     <>
@@ -213,95 +214,77 @@ export default function UnternehmenPage() {
         </div>
       </section>
 
-      {/* 3. Mein Ansatz — schmale Qualifikationskachel + Inhalt, DNA-Grafik dezent hinter der Kachel */}
-      <section className="bg-[var(--color-cream)] py-20 md:py-28">
+      {/* 3. Zusammenarbeit — Leistungstabelle mit Ablaufleiste (ersetzt vormals „Mein Ansatz" + „Zusammenarbeit", BIO-223) */}
+      <section className="bg-[var(--color-cream)] py-14 md:py-16">
         <div className="container-x">
           <Reveal>
-            <Eyebrow>{ansatz.eyebrow}</Eyebrow>
-          </Reveal>
-
-          <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">
-            {/* Qualifikationskachel zuerst im Markup → auf Mobile vor dem Ansatztext */}
-            <Reveal delay={60} className="relative lg:col-span-3">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -left-10 top-1/2 hidden h-[280px] w-auto -translate-y-1/2 select-none opacity-[0.22] md:block"
-              >
-                <Image
-                  src="/b2b-dna.png"
-                  alt=""
-                  width={1024}
-                  height={1536}
-                  className="h-full w-auto"
-                />
-              </div>
-              <div className="relative rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-paper)] p-7">
-                <p className="font-display text-xl text-[var(--color-ink)]">{ansatz.qualifikation.name}</p>
-                <p className="mt-1 text-[var(--color-walnut)]">{ansatz.qualifikation.degree}</p>
-                <div className="my-5 h-px bg-[var(--color-line)]" />
-                <p className="text-[var(--color-walnut)]">{ansatz.qualifikation.since}</p>
-                <p className="mt-4 text-[var(--color-walnut)]">{ansatz.qualifikation.selfEmployed}</p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={120} className="lg:col-span-9">
-              <h2 className="font-display text-4xl text-[var(--color-ink)] md:text-5xl">
-                {ansatz.title.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </h2>
-              <p className="mt-6 max-w-2xl text-lg text-[var(--color-walnut)]">{ansatz.body}</p>
-              <div className="mt-10 divide-y divide-[var(--color-line)] border-t border-[var(--color-line)]">
-                {ansatz.rows.map((row) => (
-                  <div key={row.title} className="grid grid-cols-1 gap-1 py-5 sm:grid-cols-2 sm:gap-6">
-                    <p className="font-display text-xl text-[var(--color-ink)]">{row.title}</p>
-                    <p className="text-[var(--color-walnut)]">{row.body}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Zusammenarbeit und Preise */}
-      <section className="bg-[var(--color-cream)] py-20 md:py-28">
-        <div className="container-x">
-          <Reveal className="max-w-xl">
             <Eyebrow>{zusammenarbeit.eyebrow}</Eyebrow>
-            <h2 className="font-display mt-6 text-4xl text-[var(--color-ink)] md:text-5xl">
+            <h2 className="font-display mt-4 text-[2.2rem] leading-[1.1] text-[var(--color-ink)] sm:text-4xl lg:text-[3.25rem]">
               {zusammenarbeit.title}
             </h2>
-            <p className="mt-6 text-lg text-[var(--color-walnut)]">{zusammenarbeit.intro}</p>
+            <p className="mt-3 text-lg text-[var(--color-sage-deep)] md:text-xl">{zusammenarbeit.intro}</p>
           </Reveal>
 
-          <div className="mt-14 divide-y divide-[var(--color-line)] border-t border-[var(--color-line)]">
-            {zusammenarbeit.rows.map((row, i) => (
-              <Reveal
-                key={row.title}
-                delay={i * 70}
-                className="flex flex-col gap-2 py-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
-              >
-                <div>
-                  <p className="font-display text-xl text-[var(--color-ink)] md:text-2xl">{row.title}</p>
-                  <p className="mt-1 text-[var(--color-walnut)]">{row.body}</p>
-                </div>
-                <p className="font-display whitespace-nowrap text-xl text-[var(--color-ink)] sm:text-right md:text-2xl">
-                  {row.price}
-                </p>
-              </Reveal>
-            ))}
+          <div className="mt-10">
+            {zusammenarbeit.rows.map((row, i) => {
+              const featured = i === 0;
+              return (
+                <Reveal
+                  key={row.title}
+                  delay={i * 70}
+                  className={`grid grid-cols-1 items-start gap-3 px-5 py-6 sm:gap-5 lg:grid-cols-[0.3fr_0.45fr_0.25fr] lg:items-center lg:gap-8 lg:px-8 ${
+                    featured
+                      ? "rounded-[var(--radius-card)] bg-[var(--color-sage-mist)]"
+                      : "border-b border-[var(--color-line)]"
+                  }`}
+                >
+                  <p className="font-display text-[1.95rem] leading-[1.15] text-[var(--color-sage-deep)]">
+                    {row.title}
+                  </p>
+                  <p
+                    className="text-[1.1rem] leading-snug text-[var(--color-ink)] lg:border-l lg:pl-6"
+                    style={{ borderColor: "rgba(40, 79, 59, 0.4)" }}
+                  >
+                    {row.body}
+                  </p>
+                  <div className="lg:justify-self-end">
+                    <span
+                      className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-center text-xl font-bold lg:w-[250px] ${
+                        featured
+                          ? "bg-[var(--color-sage)] text-[var(--color-paper)]"
+                          : "bg-[var(--color-sage-mist)] text-[var(--color-sage-deep)]"
+                      }`}
+                    >
+                      {row.price}
+                    </span>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
 
-          <Reveal delay={200} className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[var(--color-walnut)]">
-            {zusammenarbeit.process.map((step, i) => (
-              <span key={step} className="flex items-center gap-x-3">
-                <span>{step}</span>
-                {i < zusammenarbeit.process.length - 1 && <span aria-hidden>→</span>}
-              </span>
-            ))}
+          <p className="mt-4 text-sm text-[var(--color-muted)]">{zusammenarbeit.priceNote}</p>
+
+          <Reveal
+            delay={280}
+            className="mt-10 flex flex-col gap-4 rounded-[var(--radius-card)] bg-[var(--color-sage-mist)] px-7 py-7 lg:flex-row lg:items-center lg:gap-8"
+          >
+            <p className="font-display shrink-0 text-xl font-semibold text-[var(--color-ink)]">
+              {zusammenarbeit.processLabel}
+            </p>
+            <div className="flex flex-col items-start gap-3 lg:flex-1 lg:flex-row lg:items-center lg:justify-between">
+              {zusammenarbeit.process.map((step, i) => (
+                <Fragment key={step}>
+                  <span className="text-lg text-[var(--color-ink)]">{step}</span>
+                  {i < zusammenarbeit.process.length - 1 && (
+                    <span aria-hidden className="text-[var(--color-sage-deep)]">
+                      <span className="lg:hidden">↓</span>
+                      <span className="hidden lg:inline">→</span>
+                    </span>
+                  )}
+                </Fragment>
+              ))}
+            </div>
           </Reveal>
         </div>
       </section>
