@@ -43,6 +43,12 @@
   --color-olive-deep: #77755e;
   --color-olive-line: #c8bba5;
 
+  /* Two card-background tints for the /unternehmen "Leistungen" bento layout
+     (BIO-221) — pale rosé-cream for the Medical Writing card and a more
+     saturated, muted sage for the Blog teaser card. Scoped to that section. */
+  --color-rose-mist: #f8efec;
+  --color-sage-dim: #cfe0c2;
+
   --font-serif: var(--font-display), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 

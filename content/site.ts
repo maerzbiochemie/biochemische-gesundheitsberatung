@@ -871,57 +871,31 @@ export const b2b = {
     },
   },
   leistungen: {
-    eyebrow: "Leistungen",
+    eyebrow: "Meine Leistungen",
     title: ["Wissenschaftliche Expertise.", "Individuell für Ihr Unternehmen."],
     intro:
-      "Ob Fachfrage, Gesundheitskonzept oder Fachtext: biochemisches Wissen für Ihre konkrete Aufgabe.",
-    cards: [
-      {
-        n: "01",
-        title: "Wissenschaftliche Fachberatung",
-        lead: "Komplexe Zusammenhänge fundiert bewerten.",
-        body: "Biochemische Einordnung, wissenschaftliche Recherche und fachlicher Austausch zu anonymisierten Fällen.",
-        points: [
-          "Laborparameter und ihre biochemischen Zusammenhänge",
-          "Biochemische und physiologische Zusammenhänge",
-          "Literaturbewertung und wissenschaftliches Sparring",
-        ],
-      },
-      {
-        n: "02",
-        title: "Konzeptentwicklung",
-        lead: "Wissen in konkrete Angebote übersetzen.",
-        body: "Fachliche Entwicklung und Überarbeitung von Gesundheits-, Ernährungs- und Präventionskonzepten.",
-        points: [
-          "Neue Beratungsangebote",
-          "Gesundheits- und Präventionsprogramme",
-          "Fachlich strukturierte Beratungsabläufe",
-        ],
-      },
-      {
-        n: "03",
-        title: "Medical Writing & Scientific Content",
-        lead: "Wissenschaft verständlich und präzise vermitteln.",
-        body: "Wissenschaftlich fundierte Texte für Gesundheitsunternehmen, Labore und Nahrungsergänzungsmittelhersteller.",
-        points: [
-          "Fachartikel und medizinisch-biochemische Texte",
-          "Produkt-, Inhaltsstoff- und Hintergrundinformationen",
-          "Website-Inhalte und Unternehmenspublikationen",
-          "Literaturrecherche und Quellenaufbereitung",
-        ],
-      },
-      {
-        n: "04",
-        title: "Fachliche Schulung & Wissenstransfer",
-        lead: "Wissen, das im Unternehmen ankommt.",
-        body: "Komplexe Themen verständlich aufbereitet für Ihr Team und die Anwendung im Arbeitsalltag.",
-        points: [
-          "Schulungsunterlagen und interne Wissensgrundlagen",
-          "Wissenschaftliche Themenaufbereitung",
-          "Fachliche Workshops nach Vereinbarung",
-        ],
-      },
-    ],
+      "Naturwissenschaftliche Informationen verständlich aufbereitet – als Text, Konzept oder Beratung.",
+    medicalWriting: {
+      title: "Medical Writing",
+      subtitle: "Wissenschaftlich fundierte Inhalte, klar und zielgruppengerecht.",
+      body: "Für Newsletter, Blogs, Social Media, Websites und Produkttexte.",
+    },
+    blog: {
+      eyebrow: "Blog",
+      text: "Fachwissen zu Schleimhäuten & chronischen Erkrankungen.",
+      badge: "Coming Soon",
+    },
+    beratung: {
+      title: "Fachliche Beratung",
+      subtitle: "Wissen einordnen. Angebote weiterentwickeln.",
+      items: [
+        "Gesundheits- und Präventionskonzepte",
+        "Laborparameter & biochemische Zusammenhänge",
+        "Konzeptentwicklung & Angebotsdesign",
+        "Schulungen & Wissenstransfer",
+      ],
+    },
+    keywords: ["Medical Writing", "Fachberatung", "Konzeptentwicklung", "Biochemie"],
   },
   ansatz: {
     eyebrow: "Mein Ansatz",

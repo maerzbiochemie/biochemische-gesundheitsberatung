@@ -103,50 +103,113 @@ export default function UnternehmenPage() {
         </div>
       </section>
 
-      {/* 2. Leistungen — 2x2 Kartenraster, diagonal abwechselnde Flächen */}
-      <section className="bg-[var(--color-cream)] py-20 md:py-28">
-        <div className="container-x">
-          <Reveal className="max-w-2xl">
-            <Eyebrow>{leistungen.eyebrow}</Eyebrow>
-            <h2 className="font-display mt-6 text-4xl text-[var(--color-ink)] md:text-5xl">
+      {/* 2. Leistungen — kompaktes Bento-Raster: Medical Writing + Blog-Teaser links, Fachliche Beratung rechts */}
+      <section className="relative overflow-hidden bg-[var(--color-cream)] py-20 md:py-28">
+        {/* Zarter Blätterzweig, kompakt oben rechts neben der Überschrift, reicht bis zur Mitte der rechten Karte, hinter der Karte */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-0 right-0 z-0 hidden w-[220px] select-none opacity-95 lg:block lg:w-[250px] xl:w-[270px]"
+        >
+          <Image
+            src="/b2b-zweig.png"
+            alt=""
+            width={667}
+            height={1013}
+            className="h-auto w-full object-contain"
+          />
+        </div>
+
+        <div className="container-wide relative z-10">
+          <Reveal>
+            <span className="inline-flex items-center gap-2.5 text-sm font-medium uppercase tracking-[0.22em] text-[var(--color-sage-deep)]">
+              {leistungen.eyebrow}
+              <span className="h-px w-6 bg-[var(--color-sage-soft)]" aria-hidden />
+            </span>
+            <h2 className="font-display mt-4 max-w-[1000px] text-4xl text-[var(--color-ink)] md:text-5xl lg:text-[3.375rem]">
               {leistungen.title.map((line) => (
                 <span key={line} className="block">
                   {line}
                 </span>
               ))}
             </h2>
-            <p className="mt-6 text-lg text-[var(--color-walnut)]">{leistungen.intro}</p>
+            <p className="mt-4 max-w-[800px] text-lg leading-snug text-[var(--color-ink)] md:text-xl">
+              {leistungen.intro}
+            </p>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
-            {leistungen.cards.map((card, i) => {
-              const isAltFill = i === 1 || i === 2;
-              return (
-                <Reveal
-                  key={card.n}
-                  delay={i * 90}
-                  className={`flex flex-col rounded-[var(--radius-card)] border border-[var(--color-line)] p-8 md:p-9 ${
-                    isAltFill ? "bg-[var(--color-sage-mist)]" : "bg-[var(--color-paper)]"
-                  }`}
+          <div className="relative z-10 mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:grid-rows-[auto_auto]">
+            {/* Medical Writing */}
+            <Reveal className="lg:col-start-1 lg:row-start-1">
+              <div
+                className="h-full rounded-[var(--radius-card)] border bg-[var(--color-rose-mist)] p-8"
+                style={{ borderColor: "var(--color-sage-deep)" }}
+              >
+                <h3 className="font-display text-3xl leading-snug text-[var(--color-ink)] md:text-4xl lg:text-[2.875rem]">
+                  {leistungen.medicalWriting.title}
+                </h3>
+                <p className="mt-2 text-lg leading-snug text-[var(--color-ink)] md:text-xl lg:text-[1.375rem]">
+                  {leistungen.medicalWriting.subtitle}
+                </p>
+                <div className="mt-4 border-t border-[var(--color-sage-deep)]/15 pt-4">
+                  <p className="text-base leading-snug text-[var(--color-ink)] md:text-lg lg:text-xl">
+                    {leistungen.medicalWriting.body}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Fachliche Beratung — hohe Karte rechts, bündig mit der Blog-Karte */}
+            <Reveal delay={90} className="lg:col-start-2 lg:row-start-1 lg:row-span-2">
+              <div
+                className="h-full rounded-[var(--radius-card)] border bg-[var(--color-sage-mist)]/75 p-8"
+                style={{ borderColor: "var(--color-sage-deep)" }}
+              >
+                <h3 className="font-display text-3xl leading-snug text-[var(--color-ink)] md:text-4xl lg:text-[2.875rem]">
+                  {leistungen.beratung.title}
+                </h3>
+                <p className="mt-2 text-lg leading-snug text-[var(--color-ink)] md:text-xl lg:text-[1.375rem]">
+                  {leistungen.beratung.subtitle}
+                </p>
+                <ul className="mt-4 divide-y divide-[var(--color-sage-deep)]/15 border-t border-[var(--color-sage-deep)]/15">
+                  {leistungen.beratung.items.map((item) => (
+                    <li
+                      key={item}
+                      className="py-3.5 text-base leading-snug text-[var(--color-ink)] md:text-lg lg:whitespace-nowrap lg:text-xl"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+
+            {/* Blog-Teaser */}
+            <Reveal delay={150} className="lg:col-start-1 lg:row-start-2">
+              <div className="flex flex-col gap-5 rounded-[var(--radius-card)] bg-[var(--color-sage-dim)] p-8 lg:flex-row lg:items-center lg:justify-between">
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--color-sage-deep)]">
+                    {leistungen.blog.eyebrow}
+                  </p>
+                  <p className="font-display mt-2 text-xl leading-snug text-[var(--color-ink)] md:text-2xl">
+                    {leistungen.blog.text}
+                  </p>
+                </div>
+                <span
+                  className="inline-flex flex-none items-center self-start rounded-full border px-4 py-2 text-base text-[var(--color-sage-deep)] lg:self-center"
+                  style={{ borderColor: "var(--color-sage-deep)" }}
                 >
-                  <span className="marker-num-lg">{card.n}</span>
-                  <h3 className="font-display mt-4 text-2xl leading-snug text-[var(--color-ink)] md:text-[1.6rem]">
-                    {card.title}
-                  </h3>
-                  <p className="font-display mt-3 text-lg text-[var(--color-walnut)]">{card.lead}</p>
-                  <p className="mt-4 text-[var(--color-walnut)]">{card.body}</p>
-                  <ul className="mt-5 space-y-2">
-                    {card.points.map((point) => (
-                      <li key={point} className="flex gap-3 text-[var(--color-walnut)]">
-                        <span aria-hidden className="mt-[0.6em] h-1 w-1 flex-none rounded-full bg-[var(--color-sage-deep)]" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              );
-            })}
+                  {leistungen.blog.badge}
+                </span>
+              </div>
+            </Reveal>
           </div>
+
+          <Reveal
+            delay={200}
+            className="relative z-10 mt-10 text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]"
+          >
+            {leistungen.keywords.join(" · ")}
+          </Reveal>
         </div>
       </section>
 
